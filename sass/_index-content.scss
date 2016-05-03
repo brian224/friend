@@ -1,0 +1,119 @@
+﻿.main-title {
+	position: relative;
+	color: #fff;
+
+	em {
+		display: block;
+		font-style: italic;
+		font-weight: bold;
+		text-align: left;
+	}
+
+	.slogan {
+		position: absolute;
+	}
+}
+
+.main-content {
+	position: relative;
+	text-align: left;
+
+	&:before, &:after {
+		content: '';
+		margin: 0;
+		padding: 0;
+		display: block;
+		position: absolute;
+	}
+
+	&:before {
+		background: image-url('index/atm.png') 0 0 no-repeat;
+	}
+
+	&:after {
+		background: image-url('index/paper.png') 0 0 no-repeat;
+	}
+
+	.desc {
+		color: #fff;
+		font-size: 15px;
+		line-height: 1.6em;
+	}
+}
+
+.sub-content {
+	background: #0196a6;
+	color: #fff;
+
+	.remark {
+		margin: 0 auto;
+	}
+
+	.remark-list {
+		padding-left: 13px;
+		list-style: decimal outside;
+	}
+}
+
+@include respond-to(Desktops) {}
+
+@include respond-to(Desktops-Tablets) {
+	.main-title {
+		text-shadow: 8px 3px 0 #007985;
+
+		em {
+			font-size: 108px;
+			line-height: 1em;
+
+			+ em {
+				font-size: 84px;
+				line-height: 1em;
+				text-align: right;
+			}
+		}
+
+		.slogan {
+			top: 0;
+			right: -50px;
+			font-size: 24px;
+			text-shadow: 2px 1px 0 #007985;
+		}
+	}
+
+	.main-content {
+		padding-right: 450px;
+		height: 567px;
+
+		&:before {
+			width: 332px;
+			height: 502px;
+			bottom: 0;
+			right: 24px;
+		}
+
+		&:after {
+			width: 544px;
+			height: 230px;
+			bottom: -25px;
+			right: 80px;
+		}
+	}
+}
+
+@include respond-to(Tablets) {}
+
+@include respond-to(Tablets-Mobiles) {}
+
+@include respond-to(Mobiles) {
+	.main-content {}
+}
+
+@include browsers('IE') {}
+
+@include browsers('IE9') {
+	.main-content {
+		@include opacity(1);
+	}
+}
+
+@include browsers('IE8') {}

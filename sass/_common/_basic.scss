@@ -1,0 +1,85 @@
+/* br */
+[class^="b-br-"] , [class*=" b-br-"] {
+    display : none !important;
+}
+
+/* cloak */
+.b-cloak {
+	display : none !important;
+}
+
+/* vertical-align middle */
+.b-middle {
+	font-size  : 0;
+	max-height : 100%;
+
+	&:before {
+		content : '';
+		height  : 100%;
+		@include inline-block;
+	}
+
+	> * {
+		font-size : initial;
+		zoom      : 1;
+		@include inline-block;
+	}
+}
+
+/* clearfix */
+.b-clearfix {
+	&:after {
+		content : '';
+		width   : 100%;
+		height  : 0;
+		clear   : both;
+		@include clearfix;
+		@include display(block);
+	}
+}
+
+.b-count {
+	padding-left: 3px;
+	font-size : 12px;
+}
+
+@include respond-to(Desktops) {
+	.is-tm-show {
+		display : none !important;
+	}
+
+	/* br */
+    .b-br-md {
+        display : block !important;
+    }
+}
+
+@include respond-to(Desktops-Tablets) {
+	.dt-block {
+		display : block;
+	}
+}
+
+@include respond-to(Tablets-Mobiles) {
+	.tm-block {
+		display : block;
+	}
+}
+
+@include respond-to(Tablets) {
+	/* br */
+    .b-br-sm {
+        display : block !important;
+    }
+}
+
+@include respond-to(Mobiles) {
+	.sm-block {
+		display : block;
+	}
+
+	/* br */
+    .b-br-xs {
+        display : block !important;
+    }
+}

@@ -1,0 +1,112 @@
+﻿/* placeholder text */
+@mixin placeholder( $color : $placeholder-color ) {
+	font-family : $font-family;
+
+	&::-moz-placeholder {
+		color   : $color;
+		opacity : 1;
+	}
+
+	&:-ms-input-placeholder {
+		color : $color;
+	}
+
+	&::-webkit-input-placeholder { 
+		color : $color;
+	}
+}
+
+/* text-size-adjust */
+@mixin text-size-adjust {
+	-webkit-text-size-adjust : none;
+	-moz-text-size-adjust    : none;
+	-o-text-size-adjust      : none;
+	-ms-text-size-adjust     : none;
+	text-size-adjust         : none;
+}
+
+/* display */
+@mixin display( $type , $vertical : middle ) {
+	display        : $type;
+	vertical-align : $vertical;
+
+	@if $type == table-cell {
+		float : none;
+	}
+}
+
+/* touch-action */
+@mixin touch-action {
+	-ms-touch-action    : manipulation;
+	touch-action        : manipulation;
+	-webkit-user-select : none;
+	-moz-user-select    : none;
+	-ms-user-select     : none;
+	user-select         : none;
+}
+
+/* appearance  */
+@mixin appearance( $type : menulist ) {
+	-webkit-appearance : $type;
+	-moz-appearance    : $type;
+	-ms-appearance     : $type;
+	-o-appearance      : $type;
+	appearance         : $type;
+}
+
+@mixin button-default {
+	margin         : 0;
+	padding        : 0;
+	font-family    : $font-family;
+	border         : 0;
+	border-spacing : 0;
+	position       : relative;
+	background     : none;
+	outline        : 0;
+	cursor         : pointer;
+	text-indent    : 0;
+	z-index        : 1;
+	text-rendering : auto;
+	text-transform : none;
+	speak          : none;
+	display        : inline-block;
+	@include touch-action;
+}
+
+@mixin browsers($browsers) {
+	@if $browsers == 'IE9' {
+		.IE9 { @content; }
+	} @else if $browsers == 'IE8' {
+		.IE8 { @content; }
+	} @else if $browsers == 'IE' {
+		@media screen\0 { @content; }
+	} @else if $browsers == 'FireFox' {
+		@-moz-document url-prefix() { @content; }
+	} @else if $browsers == 'Chrome' {
+		@media screen and ( -webkit-min-device-pixel-ratio : 0 ) { @content; }
+	}
+}
+
+/* RWD */
+@mixin respond-to($media) {
+	@if $media == Desktops {
+		/* > 999 (PC) */
+		@media \0screen { @content; }
+		@media screen and ( min-width : $screen-pc ) { @content; }
+	} @else if $media == Desktops-Tablets {
+		/* > 740 */
+		@media \0screen { @content; }
+		@media screen and ( min-width : $screen-device ) { @content; }
+	} @else if $media == Tablets-Mobiles {
+		/* < 999 */
+		@media screen and ( max-width : ($screen-pc - 1) ) { @content; }
+	} @else if $media == Tablets {
+		/* > 740 & < 999 */
+		@media screen and ( min-width : $screen-device ) and ( max-width : ($screen-pc - 1) ) { @content; }
+	} @else if $media == Mobiles {
+		/* < 740 */
+		@media screen and ( max-width : ($screen-device - 1) ) { @content; }
+	} @else {
+		@media screen and ( max-width : $media ) { @content; }
+	}
+}
