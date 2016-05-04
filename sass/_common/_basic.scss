@@ -38,9 +38,25 @@
 	}
 }
 
-.b-count {
-	padding-left: 3px;
-	font-size : 12px;
+.m-btn {
+	display: inline-block;
+	height: 36px;
+	border: 0;
+	border-radius: 16px;
+	box-shadow: 0 3px 0 #000;
+	color: #fff;
+	letter-spacing: 1px;
+	line-height: 36px;
+	text-align: center;
+	@include box-sizing(border-box);
+
+	&.m-major {
+		background: #f54a4f;
+	}
+
+	&.m-minor {
+		background: #01a8b8;
+	}
 }
 
 @include respond-to(Desktops) {
@@ -55,6 +71,10 @@
 }
 
 @include respond-to(Desktops-Tablets) {
+	.m-btn {
+		font-size: 18px;
+	}
+
 	.dt-block {
 		display : block;
 	}
@@ -74,6 +94,10 @@
 }
 
 @include respond-to(Mobiles) {
+	.m-btn {
+		font-size: 15px;
+	}
+
 	.sm-block {
 		display : block;
 	}

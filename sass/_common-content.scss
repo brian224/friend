@@ -106,7 +106,6 @@
 		background: #fff;
 		position: relative;
 		z-index: 1;
-		font-size: 0;
 
 		.sub-title {
 			color: #fff;
@@ -126,6 +125,12 @@
 			left: 50%;
 		}
 	}
+	
+	.desc {
+		font-size: 12px;
+		line-height: 1.5em;
+		text-align: left;
+	}
 }
 
 @include respond-to(Desktops) {}
@@ -142,12 +147,12 @@
 			width: 0;
 			height: 0;
 			position: absolute;
-			bottom: 0;
-			left: -200px;
-			border-top: 360px solid transparent;
-			border-right: 100px solid #009faf;
-			border-bottom: 360px solid #009faf;
-			border-left: 100px solid transparent;
+			top: 36px;
+			left: -1000px;
+			border-top: 1800px solid transparent;
+			border-right: 500px solid #009faf;
+			border-bottom: 1800px solid #009faf;
+			border-left: 500px solid transparent;
 		}
 
 		&:after {
