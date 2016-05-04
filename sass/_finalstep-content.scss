@@ -1,12 +1,4 @@
-﻿.main-content {
-	&:before, &:after {
-		content: '';
-		display: block;
-		position: absolute;
-	}
-}
-
-.main-content-ft {
+﻿.main-content-ft {
 	.desc {
 		margin-top: 30px;
 		padding: 0 15px;
@@ -26,36 +18,6 @@
 @include respond-to(Desktops) {}
 
 @include respond-to(Desktops-Tablets) {
-	.l-content {
-		padding-top: 28px;
-	}
-
-	.main-content {
-		width: 600px;
-		border-radius: 45px 45px 0 0;
-
-		&:before {
-			width: 0;
-			height: 0;
-			bottom: 0;
-			left: -200px;
-			border-top: 360px solid transparent;
-			border-right: 100px solid #009faf;
-			border-bottom: 360px solid #009faf;
-			border-left: 100px solid transparent;
-		}
-
-		&:after {
-			background: #000;
-			width: 50%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			border-radius: 45px 0 0 0;
-			@include opacity(0.03);
-		}
-	}
-
 	.main-content-bd {
 		.screen {
 			padding-top: 70px;

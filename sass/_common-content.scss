@@ -4,6 +4,18 @@
 	position: relative;
 	font-size: 12px;
 	text-align: center;
+
+	&:after {
+		content: '';
+		background: #000;
+		display: block;
+		width: 50%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		@include opacity(0.03);
+	}
 }
 
 .main-content-hd {
@@ -121,6 +133,26 @@
 @include respond-to(Desktops-Tablets) {
 	.main-content {
 		padding: 0 46px;
+		width: 600px;
+		border-radius: 45px 45px 0 0;
+
+		&:before {
+			content: '';
+			display: block;
+			width: 0;
+			height: 0;
+			position: absolute;
+			bottom: 0;
+			left: -200px;
+			border-top: 360px solid transparent;
+			border-right: 100px solid #009faf;
+			border-bottom: 360px solid #009faf;
+			border-left: 100px solid transparent;
+		}
+
+		&:after {
+			border-radius: 45px 0 0 0;
+		}
 	}
 
 	.main-content-hd {
@@ -208,7 +240,7 @@
 		padding: 12px 0 42px 0;
 
 		&.sm-ticket {
-			padding-top: 10px;
+			padding: 10px 0 0 0;
 
 			&:before {
 				margin-left: -164px;
@@ -264,6 +296,10 @@
 	.main-content {
 		padding: 0 24px;
 		border-radius: 24px 24px 0 0;
+
+		&:after {
+			border-radius: 24px 0 0 0;
+		}
 	}
 
 	.main-content-hd {
@@ -356,7 +392,7 @@
 		padding: 6px 0 21px 0;
 
 		&.sm-ticket {
-			padding-top: 5px;
+			padding: 5px 0 0 0;
 
 			&:before {
 				margin-left: -110px;
