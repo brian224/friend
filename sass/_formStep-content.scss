@@ -18,6 +18,10 @@
 
 	.list {
 		margin-bottom: 20px;
+
+		&.error .input-box {
+			border-color: #f54a4f;
+		}
 	}
 
 	.enter-type {
@@ -28,7 +32,7 @@
 		background: #ddd;
 		height: 24px;
 		line-height: 24px;
-		border: 0;
+		border: 2px solid #fff;
 		text-indent: 5px;
 	}
 

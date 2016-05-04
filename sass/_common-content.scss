@@ -450,4 +450,31 @@
 
 @include browsers('IE9') {}
 
-@include browsers('IE8') {}
+@include browsers('IE8') {
+	.main-content:after {
+		display: none;
+	}
+
+	.main-content-hd {
+		&:after, .main-title:before, .main-title:after {
+			background: image-url('for-ie/foot-print.png') 0 0 no-repeat;
+		}
+	}
+
+	.main-content-bd {
+		&:before {
+			background: image-url('for-ie/panel.png') 0 0 no-repeat;
+			width: 145px;
+			height: 32px;
+			bottom: 17px;
+		}
+
+		&:after {
+			display: none;
+		}
+
+		.screen:before {
+			background: image-url('for-ie/card.png') 0 0 no-repeat;
+		}
+	}
+}
