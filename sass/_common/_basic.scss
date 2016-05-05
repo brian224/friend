@@ -68,6 +68,11 @@
     .b-br-md {
         display : block !important;
     }
+
+    /* hide */
+    .b-hide-md {
+		display : none !important;
+    }
 }
 
 @include respond-to(Desktops-Tablets) {
@@ -91,6 +96,11 @@
     .b-br-sm {
         display : block !important;
     }
+
+    /* hide */
+    .b-hide-sm {
+		display : none !important;
+    }
 }
 
 @include respond-to(Mobiles) {
@@ -105,5 +115,10 @@
 	/* br */
     .b-br-xs {
         display : block !important;
+    }
+
+    /* hide */
+    .b-hide-xs {
+		display : none !important;
     }
 }
