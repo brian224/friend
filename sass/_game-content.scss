@@ -1,3 +1,8 @@
+.sub-content {
+    position : relative;
+    z-index  : 1;
+}
+
 .game-screen {
     font-size   : 0;
     white-space : nowrap;
@@ -47,40 +52,103 @@
     @include clearfix;
     @include box-sizing(border-box);
 
-    &:before {
-        content    : "";
-        top        : 0;
-        left       : 50%;
-        height     : 100%;
-        background : #000;
-        position   : absolute;
-        z-index    : -1;
-        @include opacity(0);
-        @include transition(opacity .3s);
+    &.is-ready , &.is-end {
+        .game-info {
+            z-index : 400;
+
+            &:before {
+                @include opacity(.7);
+            }
+        }
     }
 
-    &.is-ready , &.is-end {
-        &:before {
-            z-index : 400;
-            @include opacity(.7);
+    &.is-ready {
+        .game-info {
+            > i {
+                &.is-number {
+                    @include animation(ready .8s forwards);
+
+                    &:nth-child(1) {
+                        @include animation-delay(.3s);
+                    }
+
+                    &:nth-child(2) {
+                        @include animation-delay(1.1s);
+                    }
+
+                    &:nth-child(3) {
+                        @include animation-delay(1.9s);
+                    }
+
+                    &:nth-child(4) {
+                        @include animation-delay(2.7s);
+                    }
+                }
+            }
+        }
+    }
+
+    &.is-end {
+        .game-info {
+            > i {
+                &.is-gameover {
+                    @include animation(gameover .8s .3s forwards);
+                }
+            }
         }
     }
 }
 
 .game-info {
-    top        : 0;
-    left       : 50%;
-    text-align : center;
-    position   : absolute;
-    z-index    : 400;
+    top         : 0;
+    left        : 50%;
+    height      : 100%;
+    text-align  : center;
+    word-break  : break-all;
+    line-height : .75;
+    position    : absolute;
+    z-index     : -1;
+
+    &:before {
+        content  : "";
+        top      : 0;
+        left     : 0;
+        width    : 100%;
+        height   : 100%;
+        background  : #000;
+        position : absolute;
+        @include opacity(0);
+        @include transition-property(opacity);
+        @include transition-duration(.3s);
+    }
 
     > i {
+        top      : 50%;
+        left     : 0;
+        width    : 100%;
         color    : #FFF;
-        position : relative;
+        position : absolute;
+        z-index  : 10;
         @include display(block);
+        @include transform-origin(center , top);
+        @include transform(scale(0) translate(0 , -50%));
 
         &:before {
-            content : attr(data-info);
+            content  : attr(data-info);
+            position : relative;
+            z-index  : 2;
+            @include display(block);
+        }
+
+        &:after {
+            top       : 2px;
+            left      : 2px;
+            color     : #000;
+            width     : 100%;
+            height    : 100%;
+            content   : attr(data-info);
+            position  : absolute;
+            z-index   : 1;
             @include display(block);
         }
     }
@@ -212,14 +280,42 @@
     50% { @include opacity(.25) }
 }
 
+@include keyframes(ready) {
+    0% , 100% { @include transform(scale(0) translate(0 , -50%)); }
+    50% { @include transform(scale(1) translate(0 , -50%)); }
+}
+
+@include keyframes(gameover) {
+    100% { @include transform(scale(1) translate(0 , -50%)); }
+}
+
 @include respond-to(Desktops) {
+    .sub-content {
+        padding-top    : 20px;
+        padding-bottom : 20px;
+        text-align     : center;
+    }
+
+    .game-scroll {
+        > div {
+            &:last-child {
+                > i {
+                    display : none;
+                }
+            }
+        }
+    }
+
+    .game-richart {
+        &.is-start {
+            cursor : pointer;
+        }
+    }
+}
+
+@include respond-to(Desktops-Tablets) {
     .game-content {
         height : 315px;
-
-        &:before {
-            margin-left : -145px;
-            width       : 290px;
-        }
     }
 
     .game-screen {
@@ -250,11 +346,20 @@
         width       : 290px;
 
         > i {
-            font-size : 120px;
-            @include text-shadow(#000 3px 3px 0);
+            &.is-number {
+                font-size : 120px;
+            }
+
+            &.is-gameover {
+                font-size : 90px;
+            }
 
             &:before {
                 @include stroke(5 , #01a8b8);
+            }
+
+            &:after {
+                @include stroke(5 , #000);
             }
         }
     }
@@ -265,12 +370,6 @@
 
         > div {
             height : 315px;
-
-            &:last-child {
-                > i {
-                    display : none;
-                }
-            }
 
             &:nth-child(odd) {
                 &:before {
@@ -335,8 +434,6 @@
         height      : 185px;
 
         &.is-start {
-            cursor : pointer;
-
             &.is-run-1 {
                 background-position : -100px 0;
             }
@@ -381,19 +478,80 @@
     }
 }
 
-@include respond-to(Desktops-Tablets) {}
-
 @include respond-to(Tablets-Mobiles) {}
 
-@include respond-to(Tablets) {}
+@include respond-to(Tablets) {
+    .sub-content {
+        padding-top    : 15px;
+        padding-bottom : 15px;
+        text-align     : center;
+    }
+
+    .game-scroll {
+        > div {
+            &:last-child {
+                > i {
+                    &:nth-child(odd) {
+                        left : 15px;
+                    }
+
+                    &:nth-child(even) {
+                        right : 15px;
+                    }
+
+                    &:nth-child(1) {
+                        top : 54px;
+                    }
+
+                    &:nth-child(2) {
+                        top : 120px;
+                    }
+
+                    &:nth-child(3) {
+                        top : 180px;
+                    }
+
+                    &:nth-child(4) {
+                        top : 245px;
+                    }
+                }
+            }
+        }
+    }
+}
 
 @include respond-to(Mobiles) {
+    .sub-content {
+        padding : 5px 10px;
+    }
+
     .game-content {
         height : 250px;
+    }
 
-        &:before {
-            margin-left : -45%;
-            width       : 90%;
+    .game-info {
+        margin-left : -45%;
+        width       : 90%;
+
+        > i {
+            &.is-number {
+                font-size : 100px;
+            }
+
+            &.is-gameover {
+                left        : 50%;
+                margin-left : -100px;
+                width       : 200px;
+                font-size   : 70px;
+            }
+
+            &:before {
+                @include stroke(3 , #01a8b8);
+            }
+
+            &:after {
+                @include stroke(3 , #000);
+            }
         }
     }
 

@@ -126,3 +126,12 @@
 		@media screen and ( max-width : $media ) { @content; }
 	}
 }
+
+/* not support */
+@mixin not-support($browsers) {
+	@if $browsers == 'IE8' {
+		@media \0screen\,screen\9 { @content; }
+	} @else if $browsers == 'IE7' {
+		@media screen\9 { @content; }
+	}
+}

@@ -150,6 +150,10 @@
 	}
 }
 
+.l-not-support {
+	display: none;
+}
+
 .l-footer {
 	background: #027c82;
 	display: block;
@@ -207,15 +211,10 @@
 			}
 		}
 	}
-
-/*	.main-content {
-		padding: 0 30px;
-		width: 960px;
-	}*/
-
 	.sub-content .remark {
 		padding: 12px 30px;
-		width: 900px;
+		width: 960px;
+		@include box-sizing(border-box);
 	}
 
 	.l-footer {
@@ -223,7 +222,12 @@
 	}
 }
 
-@include respond-to(Tablets) {}
+@include respond-to(Tablets) {
+	.sub-content .remark {
+		width: 100%;
+		@include box-sizing(border-box);
+	}
+}
 
 @include respond-to(Tablets-Mobiles) {}
 
@@ -309,8 +313,30 @@
 	}
 }
 
-@include browsers('IE9') {
-}
+@include browsers('IE9') {}
 
-@include browsers('IE8') {
+@include browsers('IE8') {}
+
+@include not-support('IE8') {
+	.l-content {
+		display: none;
+	}
+
+	.l-not-support {
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		color: #fff;
+		font-size: 15px;
+		text-align: center;
+	}
+
+	.l-footer {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+	}
 }

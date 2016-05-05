@@ -4,34 +4,36 @@
     var game = new gameObj();
 
     function gameObj() {
-        this.game          = '.jQ-game';
-        this.screens       = '.jQ-screens';
-        this.screenItem    = '.jQ-screenItem';
-        this.scroll        = '.jQ-scroll';
-        this.scrollItem    = '.jQ-scrollItem';
-        this.richart       = '.jQ-richart';
-        this.distance      = '.jQ-distance';
-        this.started       = '.jQ-start';
-        this.times         = '.jQ-times';
-        this.result        = '.jQ-result';
-        this.replay        = '.jQ-replay';
-        this.replay        = '.jQ-replay';
-        this.messageRandom = '.jQ-messageRandom';
-        this.message       = ['%E6%9C%89%E6%A9%9F%E6%9C%83%E5%88%B0%E5%A4%8F%E5%A8%81%E5%A4%B7%E5%BA%A6%E5%81%87' ,
+        this.game            = '.jQ-game';
+        this.screens         = '.jQ-screens';
+        this.screenItem      = '.jQ-screenItem';
+        this.scroll          = '.jQ-scroll';
+        this.scrollItem      = '.jQ-scrollItem';
+        this.richart         = '.jQ-richart';
+        this.distance        = '.jQ-distance';
+        this.started         = '.jQ-start';
+        this.times           = '.jQ-times';
+        this.result          = '.jQ-result';
+        this.replay          = '.jQ-replay';
+        this.replay          = '.jQ-replay';
+        this.animationNumber = '.jQ-animationNumber';
+        this.animationOver   = '.jQ-animationOver';
+        this.messageRandom   = '.jQ-messageRandom';
+        this.message         = ['%E6%9C%89%E6%A9%9F%E6%9C%83%E5%88%B0%E5%A4%8F%E5%A8%81%E5%A4%B7%E5%BA%A6%E5%81%87' ,
                             '%E5%8D%B3%E5%B0%87%E6%9C%89%E6%A9%9F%E6%9C%83%E6%93%81%E6%9C%89%E8%B6%85%E6%A3%92%E7%9A%84%E7%AD%86%E8%A8%98%E5%9E%8B%E9%9B%BB%E8%85%A6' ,
                             '%E6%9C%89%E6%A9%9F%E6%9C%83%E6%8F%9B%E4%B8%80%E6%94%AF%E6%9C%80%E6%96%B0%E5%9E%8B%E7%9A%84%E6%89%8B%E6%A9%9F' ,
                             '%E6%9C%89%E6%A9%9F%E6%9C%83%E7%8D%B2%E5%BE%97%E9%AB%94%E6%84%9F%E6%BB%91%E6%9D%BF' ,
                             '%E6%9C%89%E6%A9%9F%E6%9C%83%E7%8D%B2%E5%BE%97%E6%96%B0%E5%85%89%E4%B8%89%E8%B6%8A%E7%A6%AE%E5%88%B8NT%241%2C000'];
-        this.random        = null;
-        this.startY        = null;
-        this.moveY         = null;
-        this.isTouch       = false;
-        this.ANIMATE_TIME  = 500;
-        this.resetTime     = jQuery(this.times).text();
-        this.move          = 0;
-        this.runFrequency  = 0;
-        this.scrollTop     = 0;
-        this.runSpace      = (jQuery(this.scrollItem).height() / 5);
+        this.random          = null;
+        this.startY          = null;
+        this.moveY           = null;
+        this.isTouch         = false;
+        this.ANIMATE_TIME    = 500;
+        this.resetTime       = jQuery(this.times).text();
+        this.move            = 0;
+        this.runFrequency    = 0;
+        this.scrollTop       = 0;
+        this.runSpace        = (jQuery(this.scrollItem).height() / 5);
     }
 
     gameObj.prototype.ChromeRemoveLoad = function(isTop) {
@@ -121,9 +123,11 @@
     }
 
     gameObj.prototype.countdown = function() {
-        var time         = ((parseInt(jQuery(game.times).text().split(':')[0] , 10) * 60) + parseInt(jQuery(game.times).text().split(':')[1] , 10));
-        var newTime      = null;
-        var timeinterval = null;
+        var time              = ((parseInt(jQuery(game.times).text().split(':')[0] , 10) * 60) + parseInt(jQuery(game.times).text().split(':')[1] , 10));
+        var newTime           = null;
+        var timeinterval      = null;
+        var timeout           = null;
+        var animationDuration = null;
 
         timeinterval = setInterval(function(){
             if ( time !== 1 ) {
@@ -131,18 +135,25 @@
             } else {
                 time = 0;
                 window.clearInterval(timeinterval);
-                jQuery(game.messageRandom).text(decodeURIComponent(game.message[game.random]));
                 jQuery(game.richart).removeClass(jQuery(game.richart).data('start'));
-                jQuery(game.screenItem).eq(0)
-                    .removeClass(( jQuery(game.screens).data('move') + (game.move + '') ))
-                    .addClass(( jQuery(game.screens).data('move') + ((game.move + 1)  + '') ));
-                game.move ++;
-                jQuery(game.screens).css('height' , jQuery(game.screenItem).eq(game.move).outerHeight());
-                Projects.Factory.HB.removeAttr('style');
+                jQuery(game.game).addClass(jQuery(game.game).data('end'));
 
                 if ( Projects.Factory.UserAgent !== 'PC' ) {
                     jQuery(game.game).removeClass(jQuery(game.game).data('start'));
                 }
+
+                animationDuration = ( ( parseFloat(jQuery(game.animationOver).css('animation-duration') , 10) * 1000 ) + ( parseFloat(jQuery(game.animationOver).css('animation-delay') , 10) * 1000 ) + 1000 );
+
+                timeout = setTimeout(function(){
+                    jQuery(game.game).removeClass(jQuery(game.game).data('end'));
+                    jQuery(game.messageRandom).text(decodeURIComponent(game.message[game.random]));
+                    jQuery(game.screenItem).eq(0)
+                        .removeClass(( jQuery(game.screens).data('move') + (game.move + '') ))
+                        .addClass(( jQuery(game.screens).data('move') + ((game.move + 1)  + '') ));
+                    game.move ++;
+                    jQuery(game.screens).css('height' , jQuery(game.screenItem).eq(game.move).outerHeight());
+                    Projects.Factory.HB.removeAttr('style');
+                } , animationDuration);
             }
 
             newTime = ( ( ( ( time / 60 ) | 0 ) === 0 ? '00' : ( ( (time / 60) | 0 ) < 10 ) ? ( '0' + ( ( (time / 60) | 0 ) + '' ) ) : ( ( time / 60 ) + '' ) ) ) + ':' + ( ( ( time % 60 ) < 10 ) ? '0' + ( ( time % 60 ) + '' ) : ( ( time % 60 ) + '' ) );
@@ -154,6 +165,7 @@
     jQuery(game.started).on('click' , function(e){
         var self               = jQuery(this);
         var transitionDuration = ( parseFloat(jQuery(game.screens).css('transition-duration') , 10) * 1000 ) + 300;
+        var animationDuration  = null;
         var timeout            = null;
 
         game.random = (Math.ceil(Math.random() * game.message.length) - 1);
@@ -162,8 +174,8 @@
             Projects.Factory.HB.animate({
                 'scrollTop' : jQuery(game.game).offset().top
             } , game.ANIMATE_TIME , function(){
-                game.ChromeRemoveLoad();
                 Projects.Factory.HB.css('overflow' , 'hidden');
+                game.ChromeRemoveLoad();
             });
         }
 
@@ -178,10 +190,19 @@
 
         timeout = setTimeout(function(){
             jQuery(game.screenItem).eq((game.move - 1)).removeClass(jQuery(game.screens).data('active'));
-            game.countdown();
-            if ( Projects.Factory.UserAgent !== 'PC' ) {
-                jQuery(game.game).addClass(jQuery(game.game).data('start'));
-            }
+            jQuery(game.game).addClass(jQuery(game.game).data('ready'));
+            window.clearTimeout(timeout);
+
+            animationDuration = ( parseFloat(jQuery(game.animationNumber).css('animation-duration') , 10) * 1000 ) + ( parseFloat(jQuery(game.animationNumber).css('animation-delay') , 10) * 1000 );
+
+            timeout = setTimeout(function(){
+                jQuery(game.game).removeClass(jQuery(game.game).data('ready'));
+                game.countdown();
+                if ( Projects.Factory.UserAgent !== 'PC' ) {
+                    jQuery(game.game).addClass(jQuery(game.game).data('start'));
+                }
+                window.clearTimeout(timeout);
+            } , animationDuration);
         } , transitionDuration);
     });
 
