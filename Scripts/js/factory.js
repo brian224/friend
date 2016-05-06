@@ -12,9 +12,10 @@
 			Device       : /Android|webOS|iPad|BlackBerry/i,
 			IOS          : /iPhone|iPad|iPod/i,
 			UserAgent    : null,
+			browsers     : null,
 			Dynamic      : null,
 			OS           : null,
-			GaLabel      : '',
+			gaScript     : $('#GAScript').data('id'),
 			GetUserAgent : function() {
 				var $this = this;
 				
@@ -28,10 +29,10 @@
 					}
 				}
 
-				if (navigator.userAgent.indexOf('MSIE 10') > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
-					$this.UserAgent = 'IE';
+				if (navigator.userAgent.indexOf('MSIE 10') > 0 || !! navigator.userAgent.match(/Trident.*rv\:11\./)) {
+					$this.browsers = 'IE';
 				} else if (navigator.userAgent.indexOf('MSIE 8') > 0 || navigator.userAgent.indexOf('MSIE 9') > 0) {
-					$this.UserAgent = 'IE89';
+					$this.browsers = 'IE89';
 				}
 				
 				$this.OS = $this.UserAgent !== 'PC' ? ( /iPad|iPhone|iPod/i.test(navigator.userAgent) ? 'IOS' : 'Android' ) : null;
@@ -44,12 +45,12 @@
 			},
 			PrivateMode  : {
 				Init : function() {
-					if (Projects.Factory.UserAgent !== 'IE' && Projects.Factory.UserAgent !== 'IE89') {
+					if (Projects.Factory.browsers !== 'IE' && Projects.Factory.browsers !== 'IE89') {
 						if (typeof(FB) === 'undefined') {
-							alert('提醒您，您目前正在使用私密瀏覽模式，請關閉此模式，以免導致轉轉賺翻天抽獎無法正常運作，謝謝您的配合。');
+							alert('提醒您，您目前正在使用私密瀏覽模式，請關閉此模式，以免導致此活動網站無法正常運作，謝謝您的配合。');
 						}
 						try { localStorage.test = 2; } catch (e) {
-							alert('提醒您，您目前正在使用私密瀏覽模式，請關閉此模式，以免導致轉轉賺翻天抽獎無法正常運作，謝謝您的配合。');
+							alert('提醒您，您目前正在使用私密瀏覽模式，請關閉此模式，以免導致此活動網站無法正常運作，謝謝您的配合。');
 						}
 					}
 				}

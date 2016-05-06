@@ -1,19 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<!--[if IE 8]><html class="no-js IE8" lang="en"><![endif]-->
-<!--[if IE 9]><html class="no-js IE9" lang="en"><![endif]-->
-<!--[if gt IE 9]><!-->
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-Hant-TW" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#" itemscope itemtype="http://schema.org/" xmlns:wb="http://open.weibo.com/wb" class="no-js smart">
-<!--<![endif]-->
-<head>
-    <!--#include virtual="../Shared/GlobalMeta.html" -->
-    <title>Richart gogogo 限時跑拿大獎</title>
-    <link rel="canonical" href="" />
-    <!--#include virtual="../Shared/Globalcss.html" -->
+﻿@{
+	Layout="~/Views/Shared/_Layout.cshtml";
+}
+@section header{ 
     <link rel="stylesheet" href="/Content/css/game.css?CSS=20160420_01">
-    <!--#include virtual="../Shared/GlobalScriptHd.html" -->
-</head>
-<body>
-    <!--#include virtual="../Shared/Header.html" -->
+}
     <div class="l-content game">
         <div class="main-content">
             <div class="main-content-hd">
@@ -73,12 +63,6 @@
             <p>備註：<br class="b-br-xs" />可重複玩遊戲，但每個 Richart 數位活儲帳戶至多僅得享一次 GoGoGo 好禮抽獎及領取 NT$300 用戶禮之機會</p>
         </div>
     </div>
-    <!--#include virtual="../Shared/NotSupport.html" -->
-    <!--#include virtual="../Shared/Footer.html" -->
-</body>
-<!--#include virtual="../Shared/GlobalScriptFt.html" -->
-
-<!-- self scripts begin -->
-<script type="text/javascript" src="/Scripts/js/game.js?JS=20160420_01"></script>
-<!-- self scripts end -->
-</html>
+@section scripts{ 
+	<script type="text/javascript" src="/Scripts/js/game-min.js?JS=20160420_01"></script>
+}

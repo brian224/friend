@@ -112,6 +112,34 @@
 	}
 }
 
+@include keyframes(waveUp) {
+	0% {
+		margin-top: 0;
+	}
+
+	50% {
+		margin-top: 5px;
+	}
+
+	100% {
+		margin-top: 0;
+	}
+}
+
+@include keyframes(waveUp-m) {
+	0% {
+		margin-bottom: 0;
+	}
+
+	50% {
+		margin-bottom: -5px;
+	}
+
+	100% {
+		margin-bottom: 0;
+	}
+}
+
 @include keyframes(light-over) {
 	0% {
 		right: -40px;
@@ -250,6 +278,7 @@
 			height: 202px;
 			top: 310px;
 			left: 258px;
+			@include animation(waveUp 2s ease-in-out infinite !important);
 		}
 	}
 }
@@ -451,6 +480,7 @@
 			height: 101px;
 			bottom: 101px;
 			left: 50%;
+			@include animation(waveUp-m 2s ease-in-out infinite !important);
 		}
 	}
 
