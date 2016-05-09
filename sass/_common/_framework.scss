@@ -7,6 +7,13 @@ html , body  {
 
 body {
 	background: #00a8b8;
+
+	> img, iframe {
+		display: none;
+		position: absolute;
+		bottom: -10px;
+		left: -10px;
+	}
 }
 
 button {
