@@ -22,9 +22,9 @@
         this.animationOver   = '.jQ-animationOver';
         this.messageRandom   = '.jQ-messageRandom';
         this.message         = ['%E6%9C%89%E6%A9%9F%E6%9C%83%E5%88%B0%E5%A4%8F%E5%A8%81%E5%A4%B7%E5%BA%A6%E5%81%87' ,
-                                '%E5%8D%B3%E5%B0%87%E6%9C%89%E6%A9%9F%E6%9C%83%E6%93%81%E6%9C%89%E8%B6%85%E6%A3%92%E7%9A%84%E7%AD%86%E8%A8%98%E5%9E%8B%E9%9B%BB%E8%85%A6' ,
-                                '%E6%9C%89%E6%A9%9F%E6%9C%83%E6%8F%9B%E4%B8%80%E6%94%AF%E6%9C%80%E6%96%B0%E5%9E%8B%E7%9A%84%E6%89%8B%E6%A9%9F' ,
-                                '%E6%9C%89%E6%A9%9F%E6%9C%83%E7%8D%B2%E5%BE%97%E9%AB%94%E6%84%9F%E6%BB%91%E6%9D%BF' ,
+                                '%E5%8D%B3%E5%B0%87%E6%9C%89%E6%A9%9F%E6%9C%83%E6%93%81%E6%9C%89MacBook%20Air13%E5%90%8B' , //即將有機會擁有MacBook Air13吋
+                                '%E6%9C%89%E6%A9%9F%E6%9C%83%E6%8F%9B%E4%B8%80%E6%94%AFiPhone%206s%20Plus' , //有機會換一支iPhone 6s Plus
+                                '%E6%9C%89%E6%A9%9F%E6%9C%83%E7%8D%B2%E5%BE%97Immotion%20H1%E9%AB%94%E6%84%9F%E6%BB%91%E6%9D%BF' , //有機會獲得Immotion H1體感滑板
                                 '%E6%9C%89%E6%A9%9F%E6%9C%83%E7%8D%B2%E5%BE%97%E6%96%B0%E5%85%89%E4%B8%89%E8%B6%8A%E7%A6%AE%E5%88%B8NT%241%2C000'];
         this.random          = null;
         this.startY          = null;

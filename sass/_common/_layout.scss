@@ -73,20 +73,6 @@
 			@include box-sizing(border-box);
 			@include transition(ease-in all 0.3s);
 
-			&:before {
-				content: '';
-				margin: 0 0 0 -10px;
-				padding: 0;
-				display: block;
-				width: 0;
-				height: 0;
-				position: absolute;
-				top: -10px;
-				border-right: 10px solid transparent;
-				border-bottom: 10px solid #fff;
-				border-left: 10px solid transparent;
-			};
-
 			.link {
 				display: block;
 				position: relative;
@@ -191,7 +177,18 @@
 				right: 7px;
 
 				&:before {
+					content: '';
+					margin: 0 0 0 -10px;
+					padding: 0;
+					display: block;
+					width: 0;
+					height: 0;
+					position: absolute;
+					top: -10px;
 					right: 21px;
+					border-right: 10px solid transparent;
+					border-bottom: 10px solid #fff;
+					border-left: 10px solid transparent;
 				}
 
 				.link {
@@ -279,9 +276,18 @@
 				padding: 0 10px;
 				top: 64px;
 				right: 7px;
+				box-shadow: 0 0 3px #a7dae9;
 
 				&:before {
+					content: '';
+					background: #fff;
+					width: 14px;
+					height: 14px;
+					position: absolute;
+					top: -7px;
 					right: 21px;
+					box-shadow: -1px -1px 1px #a7dae9;
+					@include transform(rotate(45deg));
 				}
 
 				.link {
