@@ -162,9 +162,9 @@
                         'scrollTop' : 0
                     } , game.ANIMATE_TIME);
                     if ( Projects.Factory.gaScript ) {
-                        GAPush(jQuery(game.screenItem).eq(ame.move).attr('ga_cat') , jQuery(game.screenItem).eq(ame.move).attr('ga_event') , jQuery(game.screenItem).eq(ame.move).attr('ga_label') , {
+                        GAPush(jQuery(game.screenItem).eq(game.move).attr('ga_cat') , jQuery(game.screenItem).eq(game.move).attr('ga_event') , jQuery(game.screenItem).eq(game.move).attr('ga_label') , {
                             hitCallback : function(){
-                                lbReload(''+jQuery(game.screenItem).eq(ame.move).attr('ga_cat')+'_'+jQuery(game.screenItem).eq(ame.move).attr('ga_label')+'', '', '', '');
+                                lbReload(''+jQuery(game.screenItem).eq(game.move).attr('ga_cat')+'_'+jQuery(game.screenItem).eq(game.move).attr('ga_label')+'', '', '', '');
                             }
                         });
                     }
