@@ -96,6 +96,17 @@
 		background: image-url('index/icons.png') 0 0 no-repeat;
 		z-index: 1;
 	}
+
+	.btn-skip {
+		display: block;
+		color: #fff;
+		text-align: center;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
 }
 
 .sub-content {
@@ -280,6 +291,12 @@
 			left: 258px;
 			@include animation(waveUp 2s ease-in-out infinite !important);
 		}
+
+		.btn-skip {
+			width: 196px;
+			font-size: 15px;
+			line-height: 1.5em;
+		}
 	}
 }
 
@@ -299,7 +316,7 @@
 	}
 
 	.main-content {
-		padding: 0 126px;
+		padding: 0 126px 128px;
 		width: 100%;
 		height: auto;
 
@@ -326,7 +343,6 @@
 		}
 
 		.m-btn {
-			margin-bottom: 150px;
 			width: 180px;
 			height: 44px;
 			font-size: 22px;
@@ -334,14 +350,23 @@
 		}
 	}
 
-	.page-content:after {
-		margin-left: -100px;
-		background-position: -166px -216px;
-		background-size: 446px 317px;
-		width: 176px;
-		height: 101px;
-		top: 450px;
-		left: 50%;
+	.page-content {
+		&:after {
+			margin-left: -100px;
+			background-position: -166px -216px;
+			background-size: 446px 317px;
+			width: 176px;
+			height: 101px;
+			top: 450px;
+			left: 50%;
+		}
+
+		.btn-skip {
+			width: 180px;
+			height: 44px;
+			font-size: 15px;
+			line-height: 44px;
+		}
 	}
 }
 
@@ -434,7 +459,7 @@
 			margin-left: -18px;
 			background-size: 446px 317px;
 			width: 166px;
-			height: 251px;
+			height: 295px;
 			bottom: 0;
 			left: 50%;
 		}
@@ -445,7 +470,7 @@
 			background-size: 446px 317px;
 			width: 280px;
 			height: 101px;
-			bottom: 17px;
+			bottom: 61px;
 			left: 50%;
 		}
 
@@ -478,9 +503,16 @@
 			background-size: 446px 317px;
 			width: 176px;
 			height: 101px;
-			bottom: 101px;
+			bottom: 145px;
 			left: 50%;
 			@include animation(waveUp-m 2s ease-in-out infinite !important);
+		}
+
+		.btn-skip {
+			height: 44px;
+			font-size: 15px;
+			line-height: 44px;
+			text-shadow: 2px 1px 0 #007985;
 		}
 	}
 
