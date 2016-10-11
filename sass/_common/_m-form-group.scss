@@ -1,0 +1,58 @@
+.m-form-group {
+	position : relative;
+	@include box-sizing(border-box);
+
+	> ul {
+		position : relative;
+		@include clearfix;
+		@include box-sizing(border-box);
+
+		> li {
+			position : relative;
+			@include clearfix;
+			@include box-sizing(border-box);
+
+			&:first-child {
+				margin-top : 0;
+
+				&.m-form {
+					margin-top : 0;
+				}
+			}
+		}
+	}
+}
+
+@include respond(Desktops) {
+	.m-form-group {
+		> ul {
+			> li {
+				margin-top : 15px;
+			}
+		}
+	}
+}
+
+@include respond(Desktops-Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {
+	.m-form-group {
+		> ul {
+			> li {
+				margin-top : 1.5625vw; /* device viewport 768 -> 12px */
+			}
+		}
+	}
+}
+
+@include respond(Mobiles) {
+	.m-form-group {
+		> ul {
+			> li {
+				margin-top : 3.125vw; /* device viewport 320 -> 10px */
+			}
+		}
+	}
+}

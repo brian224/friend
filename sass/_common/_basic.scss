@@ -1,8 +1,3 @@
-/* br */
-[class^="b-br-"] , [class*=" b-br-"] {
-    display : none !important;
-}
-
 /* cloak */
 .b-cloak {
 	display : none !important;
@@ -38,87 +33,42 @@
 	}
 }
 
-.m-btn {
-	display: inline-block;
-	height: 36px;
-	border: 0;
-	border-radius: 16px;
-	box-shadow: 0 3px 0 #000;
-	color: #fff;
-	letter-spacing: 1px;
-	line-height: 36px;
-	text-align: center;
-	@include box-sizing(border-box);
+.b-hide-text {
+	overflow: hidden;
+	text-indent: 200%;
+	white-space: nowrap;
+}
 
-	&.m-major {
-		background: #f54a4f;
+.b-align-right {
+	text-align: right !important;
+}
+
+.b-block {
+	display: block;
+}
+
+@include respond(Desktops) {}
+
+@include respond(Desktops-Tablets) {
+	.b-dt-block {
+		display: block;
 	}
 
-	&.m-minor {
-		background: #01a8b8;
+	.b-dt-hide {
+		display: none;
 	}
 }
 
-@include respond-to(Desktops) {
-	.is-tm-show {
-		display : none !important;
+@include respond(Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Mobiles) {
+	.b-m-block {
+		display: block;
 	}
 
-	/* br */
-    .b-br-md {
-        display : block !important;
-    }
-
-    /* hide */
-    .b-hide-md {
-		display : none !important;
-    }
-}
-
-@include respond-to(Desktops-Tablets) {
-	.m-btn {
-		font-size: 18px;
+	.b-m-hide {
+		display: none;
 	}
-
-	.dt-block {
-		display : block;
-	}
-}
-
-@include respond-to(Tablets-Mobiles) {
-	.tm-block {
-		display : block;
-	}
-}
-
-@include respond-to(Tablets) {
-	/* br */
-    .b-br-sm {
-        display : block !important;
-    }
-
-    /* hide */
-    .b-hide-sm {
-		display : none !important;
-    }
-}
-
-@include respond-to(Mobiles) {
-	.m-btn {
-		font-size: 15px;
-	}
-
-	.sm-block {
-		display : block;
-	}
-
-	/* br */
-    .b-br-xs {
-        display : block !important;
-    }
-
-    /* hide */
-    .b-hide-xs {
-		display : none !important;
-    }
 }

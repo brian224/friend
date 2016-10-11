@@ -1,26 +1,37 @@
 (function (window, document, jQuery, undefined) {
 	'use strict';
 
-	Projects.Factory.GetUserAgent();
+	var common = new page();
 
-	$('.jq-menu').on('click' , function(e){
-		e.preventDefault();
-		Projects.Factory.Menu.Click(e, this);
+	function page() {
+		this._menu = '.jq-menu';
+	}
+
+	page.prototype.showFooter = function() {
+	}
+
+	projects.$w.load(function(){
+		$(common._menu).on('click', function(){
+			$(this).toggleClass('is-hover');
+		});
 	});
 
-	Projects.Factory.W.load(function(e){
-		if (Projects.Factory.LContent.hasClass('formstep')) {
-			Projects.Factory.Validate.Init();
-
-			$('.jq-submit').on('click' , function(e){
-				e.preventDefault();
-				Projects.Factory.Validate.Click(this);
-			});
+	projects.$d.ready(function(){
+		if ( projects.device() === 'Mobile') {
+			projects.owlCarousel('.jQ-owl-xs');
 		}
 	});
 
-	Projects.Factory.D.ready(function(e){});
-	Projects.Factory.W.resize(function(e){
-		Projects.Factory.GetUserAgent();
+	projects.$w.on('scroll' , function(){
 	});
+
+	projects.$w.resize(function(){
+		if (projects.$w.width() <= 740){
+			projects.owlCarousel('.jQ-owl-xs');
+		}
+	});
+
+	if ( ! window.common ) {
+		window.common = common;
+	}
 }(window, document, $));

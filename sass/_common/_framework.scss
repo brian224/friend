@@ -6,14 +6,6 @@ html , body  {
 }
 
 body {
-	background: #00a8b8;
-
-	> img, iframe {
-		display: none;
-		position: absolute;
-		bottom: -10px;
-		left: -10px;
-	}
 }
 
 button {
@@ -39,10 +31,10 @@ a {
 	}
 }
 
-@include respond-to(Desktops) {
+@include respond(Desktops) {
 }
 
-@include respond-to(Tablets) {
+@include respond(Tablets) {
 	html , body  {
 		min-height : 100%;
 	}
@@ -52,7 +44,7 @@ a {
 	}
 }
 
-@include respond-to(Mobiles) {
+@include respond(Mobiles) {
 	body {
 		min-height: 100vh;
 		position: relative;

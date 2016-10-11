@@ -1,0 +1,808 @@
+.m-form {
+    &.is-inline {
+        margin-bottom : 0;
+
+        > * {
+            &.m-form-addon {
+                &:first-child {
+                    padding-left : 0;
+                }
+            }
+
+            &.m-form-item {
+                margin-bottom : 0;
+
+                &:first-child {
+                    padding-left : 0;
+                }
+            }
+        }
+    }
+
+    > * {
+        @include display(block);
+
+        &.m-form-addon {
+            &:first-child {
+                margin-top : 0;
+                /*margin-bottom : 0;*/
+            }
+        }
+    }
+}
+
+.m-form-item {
+    font-size : 0;
+
+    &.is-inline {
+        /*width: 100%;
+        @include display(table);*/
+
+        .m-form-input , .m-form-select , .m-form-textarea , .m-form-box {
+            /*margin-top  : 0;
+            white-space : nowrap;
+            @include display(table-cell);*/
+
+            &:first-child {
+                padding-left : 0;
+            }
+        }
+    }
+}
+
+.m-form-input , .m-form-select , .m-form-textarea , .m-form-box {
+    &:first-child {
+        margin-top : 0;
+    }
+}
+
+.m-form-label {
+    font-size   : 13px;
+    width       : 100%;
+    white-space : nowrap;
+    position    : relative;
+    @include display(table);
+
+    &:before , &:after {
+        display : none;
+    }
+
+    &[data-prefix=""] {
+        &:before {
+            display : none !important;
+        }
+    }
+
+    &[data-postfix=""] {
+        &:after {
+            display : none !important;
+        }
+    }
+
+    &[data-prefix] {
+        &:before {
+            @include display(table-cell);
+        }
+    }
+
+    &[data-postfix] {
+        &:after {
+            @include display(table-cell);
+        }
+    }
+
+    &:before , &:after , .m-form-addon {
+        width       : 1%;
+        white-space : nowrap;
+        /*@include display(table-cell);*/
+    }
+
+    &:before {
+        content : attr(data-prefix);
+    }
+
+    &:after {
+        content : attr(data-postfix);
+    }
+
+    .m-form-addon {
+        @include display(table-cell);
+
+        &:first-child {
+            padding-left : 0;
+        }
+    }
+}
+
+.m-form-elem {
+    width: 100%;
+    white-space: nowrap;
+    @include display(table-cell);
+}
+
+.m-form-input {
+    .m-form-label {
+        /*&[data-prefix]:before , &[data-postfix]:after , .m-form-addon {
+            width : 1%;
+            @include display(table-cell);
+        }*/
+
+        /*.m-fotm-type {
+            @include display(table-cell);
+        }*/
+    }
+}
+
+.m-form-select {
+    width : 1%;
+
+    &.is-full {
+        width : 100%;
+
+        .m-form-label {
+            /*&[data-prefix]:before , &[data-postfix]:after , .m-form-addon {
+                width : 1%;
+                @include display(table-cell);
+            }*/
+
+            .m-form-type {
+                width : 100%;
+            }
+        }
+    }
+
+    .m-form-label {
+        /*&[data-prefix]:before , &[data-postfix]:after , .m-form-addon {
+            width : 1%;
+            @include display(table-cell);
+        }*/
+        /*&[data-prefix]:before , &[data-postfix]:after , .m-form-addon {
+            @include inline-block;
+        }*/
+    }
+}
+
+.m-form-box {
+    &.is-inline {
+        margin-top : 0;
+        @include inline-block;
+
+        &:first-child {
+            margin-left : 0;
+        }
+    }
+
+    &.is-default {
+        .m-form-label {
+            .m-form-elem {
+                position : static;
+            }
+        }
+    }
+
+    .m-form-label {
+        .m-form-elem {
+            top       : 0;
+            left      : -99999px;
+            font-size : 0;
+            width     : auto;
+            position  : absolute;
+            @include inline-block;
+        }
+
+        .m-form-type {
+            @include inline-block;
+        }
+
+        &[data-prefix]:before , &[data-postfix]:after , .m-form-addon {
+            @include inline-block;
+        }
+    }
+
+}
+
+.m-form-type {
+    /*top : 50%;*/
+    margin           : 0;
+    width            : 100%;
+    outline          : 0;
+    border           : 1px solid $color-border-major;
+    background-color : lighten($color-gray , 47.5%);
+    /*position: relative;*/
+    @include box-sizing(border-box);
+
+    @at-root {
+        input#{&} {
+            &[type="checkbox"] , &[type="radio"] {
+                padding          : 0;
+                font-size        : 0;
+                width            : auto;
+                border           : 0;
+                background-color : transparent;
+                @include inline-block;
+                @include border-radius(0);
+            }
+        }
+
+        select#{&} {
+            width               : auto;
+            /*background-image    : image-url('m-form/icon-select.png');*/
+            background-position : right center;
+            background-repeat   : no-repeat;
+            /*@include inline-block;*/
+            @include appearance(none);
+
+            &::-ms-expand {
+                display : none;
+            }
+        }
+    }
+}
+
+.m-form-addon {
+    &:first-child {
+        margin-top : 0;
+    }
+}
+
+.m-form-validate {
+    font-size : 13px;
+    @include display(block);
+
+    > * {
+        @include display(block);
+    }
+}
+
+@include respond(Desktops) {
+    $padding-space : 5px;
+
+    .m-form {
+        margin-bottom : -20px;
+
+        &.is-inline {
+            > * {
+                &.m-form-addon {
+                    margin-top     : -20px;
+                    padding-top    : 6px;
+                    padding-bottom : 6px;
+                    padding-left   : ( $padding-space * 2 );
+                    line-height    : 20px;
+
+                    &:first-child {
+                        padding-right : $padding-space;
+                    }
+                }
+
+                &.m-form-item {
+                    /*margin-bottom : 0;*/
+                    padding-left  : $padding-space;
+                }
+            }
+        }
+
+        > * {
+            &.m-form-addon {
+                margin-top    : -15px;
+                margin-bottom : 20px;
+
+                &:first-child {
+                    margin-bottom : 5px;
+                }
+            }
+        }
+    }
+
+    .m-form-item {
+        margin-bottom : 20px;
+
+        &.is-inline {
+            .m-form-input , .m-form-select , .m-form-textarea , .m-form-box {
+                padding-left : $padding-space;
+            }
+        }
+    }
+
+    .m-form-input , .m-form-select , .m-form-textarea , .m-form-box {
+        margin-top: $padding-space;
+    }
+
+    .m-form-input , .m-form-select , .m-form-textarea {
+        .m-form-label {
+            .m-form-addon {
+                padding-left : $padding-space;
+
+                &:first-child {
+                    padding-right : $padding-space;
+                }
+            }
+
+            &:before {
+                padding-right : $padding-space;
+            }
+
+            &:after {
+                padding-left : $padding-space;
+            }
+        }
+    }
+
+    .m-form-select {
+        &.is-full-md {
+            width : 100%;
+
+            .m-form-label {
+                /*&[data-prefix]:before , &[data-postfix]:after , .m-form-addon {
+                    width : 1%;
+                    @include display(table-cell);
+                }*/
+
+                .m-form-type {
+                    width : 100%;
+                }
+            }
+        }
+    }
+
+    .m-form-box {
+        .m-form-label {
+            &:before {
+                padding-right : $padding-space / 2;
+            }
+
+            &:after {
+                padding-left : $padding-space / 2;
+            }
+        }
+
+        &.is-inline {
+            margin-left : ($padding-space * 3);
+        }
+    }
+
+    .m-form-type {
+        @at-root {
+            input#{&} , select#{&} {
+                height : 32px;
+
+                &[type="checkbox"] , &[type="radio"] {
+                    height : auto;
+                }
+            }
+
+            input#{&} , select#{&} , textarea#{&} {
+                padding : 5px 10px;
+                @include border-radius(3px);
+            }
+
+            select#{&} {
+                padding-right   : 20px;
+                background-size : auto 6px;
+            }
+        }
+    }
+
+    .m-form-addon {
+        /*line-height : 32px;*/
+    }
+
+    .m-form-validate {
+        > * {
+            margin-top : 5px;
+        }
+    }
+}
+
+@include respond(Desktops-Tablets) {
+    .m-form {
+        &.is-inline {
+            width : 100%;
+            @include display(table);
+
+            > * {
+                white-space : nowrap;
+                @include display(table-cell , top);
+
+                &.m-form-addon {
+                    width : 1%;
+                }
+            }
+        }
+    }
+
+    .m-form-item {
+        /*font-size : 0;*/
+
+        &.is-inline {
+            width : 100%;
+            @include display(table);
+
+            .m-form-input , .m-form-select , .m-form-textarea , .m-form-box {
+                margin-top  : 0;
+                white-space : nowrap;
+                @include display(table-cell);
+
+                /*&:first-child {
+                    padding-left : 0;
+                }*/
+            }
+        }
+    }
+
+    .m-form-select {
+        &.is-full-dt {
+            width : 100%;
+
+            .m-form-label {
+                /*&[data-prefix]:before , &[data-postfix]:after , .m-form-addon {
+                    width : 1%;
+                    @include display(table-cell);
+                }*/
+
+                .m-form-type {
+                    width : 100%;
+                }
+            }
+        }
+    }
+}
+
+@include respond(Tablets-Mobiles) {
+    .m-form-select {
+        &.is-full-tm {
+            width : 100%;
+
+            .m-form-label {
+                &[data-prefix]:before , &[data-postfix]:after , .m-form-addon {
+                    width : 1%;
+                    @include display(table-cell);
+                }
+
+                .m-form-type {
+                    width : 100%;
+                }
+            }
+        }
+    }
+}
+
+@include respond(Tablets) {
+    $padding-space : 4px;
+
+    .m-form {
+        margin-bottom : -1.95vw;
+
+        &.is-inline {
+            > * {
+                &.m-form-addon {
+                    margin-top     : -1.95vw;
+                    padding-top    : 0.78125vw;
+                    padding-bottom : 0.78125vw;
+                    padding-left   : ( $padding-space * 2 );
+                    line-height    : 2.6vw;
+
+                    &:first-child {
+                        padding-right : $padding-space;
+                    }
+                }
+
+                &.m-form-item {
+                    /*margin-bottom : 0;*/
+                    padding-left  : $padding-space;
+                }
+            }
+        }
+
+        > * {
+            &.m-form-addon {
+                margin-top    : -1.3vw;
+                margin-bottom : 1.95vw;
+
+                &:first-child {
+                    margin-bottom : 0.65vw;
+                }
+            }
+        }
+
+        /*&.is-inline {
+            > * {
+                &.m-form-addon {
+                    padding-left : ( $padding-space * 2 );
+                    line-height: 2.6vw;
+
+                    &:first-child {
+                        padding-right : $padding-space;
+                    }
+                }
+
+                &.m-form-item {
+                    margin-bottom : 0;
+                    padding-left  : $padding-space;
+                }
+            }
+        }
+
+        > * {
+            &.m-form-addon {
+                margin-top : -1.95vw;
+
+                &:first-child {
+                    margin-bottom : 5px;
+                }
+            }
+        }*/
+    }
+
+    .m-form-item {
+        margin-bottom : 1.95vw;
+
+        &.is-inline {
+            .m-form-input , .m-form-select , .m-form-textarea , .m-form-box {
+                padding-left : $padding-space;
+            }
+        }
+    }
+
+    .m-form-input , .m-form-select , .m-form-textarea , .m-form-box {
+        margin-top: $padding-space;
+    }
+
+    .m-form-input , .m-form-select , .m-form-textarea {
+        .m-form-label {
+            .m-form-addon {
+                padding-left : $padding-space;
+
+                &:first-child {
+                    padding-right : $padding-space;
+                }
+            }
+
+            &:before {
+                padding-right : $padding-space;
+            }
+
+            &:after {
+                padding-left : $padding-space;
+            }
+        }
+    }
+
+    .m-form-select {
+        &.is-full-sm {
+            width : 100%;
+
+            .m-form-label {
+                /*&[data-prefix]:before , &[data-postfix]:after , .m-form-addon {
+                    width : 1%;
+                    @include display(table-cell);
+                }*/
+
+                .m-form-type {
+                    width : 100%;
+                }
+            }
+        }
+    }
+
+    .m-form-box {
+        .m-form-label {
+            &:before {
+                padding-right : $padding-space / 2;
+            }
+
+            &:after {
+                padding-left : $padding-space / 2;
+            }
+        }
+
+        &.is-inline {
+            margin-left : ($padding-space * 3);
+        }
+    }
+
+    .m-form-type {
+        @at-root {
+            input#{&} , select#{&} {
+                height : 4.16vw;
+
+                &[type="checkbox"] , &[type="radio"] {
+                    height : auto;
+                }
+            }
+
+            input#{&} , select#{&} , textarea#{&} {
+                padding : 0.52vw 1.04vw;
+                @include border-radius(3px);
+            }
+
+            select#{&} {
+                padding-right   : 2.5vw;
+                background-size : auto 0.78125vw;
+            }
+        }
+    }
+
+    .m-form-addon {
+        /*line-height : 4.16vw;*/
+    }
+
+    .m-form-validate {
+        > * {
+            margin-top : 0.52vw;
+        }
+    }
+}
+
+@include respond(Mobiles) {
+    $padding-space : 3px;
+
+    .m-form {
+        margin-bottom : -3.125vw;
+
+        &.is-inline {
+            > * {
+                &.m-form-addon {
+                    margin-top     : -3.125vw;
+                    padding-top    : 1.5625vw;
+                    padding-bottom : 1.5625vw;
+                    padding-left   : ( $padding-space * 2 );
+                    line-height    : 6.25vw;
+
+                    &:first-child {
+                        padding-right : $padding-space;
+                    }
+                }
+
+                &.m-form-item {
+                    /*margin-bottom : 0;*/
+                    padding-left  : $padding-space;
+                }
+            }
+        }
+
+        > * {
+            &.m-form-addon {
+                margin-top    : -1.5625vw;
+                margin-bottom : 3.125vw;
+
+                &:first-child {
+                    margin-bottom : 1.5625vw;
+                }
+            }
+        }
+
+        /*&.is-inline {
+            > * {
+                &.m-form-addon {
+                    padding-left : ( $padding-space * 2 );
+
+                    &:first-child {
+                        padding-right : $padding-space;
+                    }
+                }
+
+                &.m-form-item {
+                    margin-bottom : 0;
+                }
+            }
+        }
+
+        > * {
+            &.m-form-addon {
+                margin-top : -3.125vw;
+            }
+        }*/
+    }
+
+    .m-form-item {
+        margin-bottom : 3.125vw;
+
+        /*&.is-inline {
+            .m-form-input , .m-form-select , .m-form-textarea , .m-form-box {
+                padding-left : $padding-space;
+            }
+        }*/
+    }
+
+    .m-form-input , .m-form-select , .m-form-textarea , .m-form-box {
+        margin-top: $padding-space;
+    }
+
+    .m-form-input , .m-form-select , .m-form-textarea {
+        .m-form-label {
+            .m-form-addon {
+                padding-left : $padding-space;
+
+                &:first-child {
+                    padding-right : $padding-space;
+                }
+            }
+
+            &:before {
+                padding-right : $padding-space;
+            }
+
+            &:after {
+                padding-left : $padding-space;
+            }
+        }
+    }
+
+    .m-form-select {
+        &.is-full-xs {
+            width : 100%;
+
+            .m-form-label {
+                /*&[data-prefix]:before , &[data-postfix]:after , .m-form-addon {
+                    width : 1%;
+                    @include display(table-cell);
+                }*/
+
+                .m-form-type {
+                    width : 100%;
+                }
+            }
+        }
+    }
+
+    .m-form-box {
+        .m-form-label {
+            &:before {
+                padding-right : $padding-space / 2;
+            }
+
+            &:after {
+                padding-left : $padding-space / 2;
+            }
+        }
+
+        &.is-inline {
+            margin-left : ($padding-space * 3);
+        }
+    }
+
+    .m-form-type {
+        @at-root {
+            input#{&} , select#{&} {
+                height : 9.375vw;
+
+                &[type="checkbox"] , &[type="radio"] {
+                    height : auto;
+                }
+            }
+
+            input#{&} , select#{&} , textarea#{&} {
+                padding : 0.9375vw 1.5625vw;
+                @include border-radius(2px);
+
+                
+            }
+
+            select#{&} {
+                padding-right   : 6.25vw;
+                background-size : auto 1.875vw;
+            }
+        }
+    }
+
+    .m-form-addon {
+        /*line-height : 9.375vw;*/
+    }
+
+    .m-form-validate {
+        > * {
+            margin-top : 0.9375vw;
+        }
+    }
+}
+
+@include browsers('IE8&IE9') {
+    .m-form-type {
+        @at-root {
+            select#{&} {
+                padding-right    : 5px;
+                background-image : none;
+            }
+        }
+    }
+}

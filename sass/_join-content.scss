@@ -1,0 +1,499 @@
+.join-content {
+    position : relative;
+    @include clearfix;
+}
+
+.join-section {
+    position : relative;
+
+    &.is-kv {
+        background : image-url('join/kv-join.jpg') no-repeat center center;
+    }
+
+    &.is-form {
+        background-color : #f3e8e0;
+
+        > *:not(svg) {
+            margin-left  : auto;
+            margin-right : auto;
+        }
+
+        > .svg-icon {
+            bottom   : 0;
+            position : absolute;
+        }
+    }
+}
+
+.join-kv {
+    position   : absolute;
+    text-align : center;
+    @include transform(translateY(-50%));
+
+    &:after {
+        content         : "";
+        position        : absolute;
+        background      : image-url('join/join-kv-richart.png') no-repeat center center;
+        background-size : 100% auto;
+        z-index         : 5;
+    }
+}
+
+.join-kv-title {
+    width    : 100%;
+    top      : 50%;
+    left     : 0;
+    position : absolute;
+    z-index  : 2;
+    @include transform(translateY(-50%));
+}
+
+.join-name {
+    top         : 50%;
+    left        : 50%;
+    position    : absolute;
+    line-height : 1.1;
+}
+
+.join-title {
+    color      : #383838;
+    text-align : center;
+}
+
+.join-para {
+    color : #494848;
+}
+
+.join-form {
+    .m-form-type {
+        border-color : #ab9382;
+        @include box-shadow(rgba($color-black , 0.4) 0 0 4px 0 inset);
+        @include border-radius(0);
+        @include box-sizing(border-box);
+
+        &.is-active {
+            border-color : $color-warning;
+        }
+    }
+
+    .m-form-addon {
+        vertical-align : bottom;
+        color          : #494848;
+    }
+
+    .svg-icon {
+        top      : 50%;
+        right    : 0;
+        position : absolute;
+    }
+}
+
+.join-btn {
+    text-align: center;
+
+    .text {
+        @include display(block);
+        @include border-radius(2vw);
+    }
+
+    .icon-arrow-right {
+        top      : 50%;
+        right    : 3.33vw;
+        position : absolute;
+    }
+}
+
+.join-term {
+    > .join-para {
+        position : relative;
+        z-index  : 5;
+    }
+}
+
+.join-notice {
+    background-color : #e7dad0;
+    position         : relative;
+
+    .vertical-track {
+        width: 2px;
+        background-color: #b99378;
+    }
+
+    .vertical-handle {
+        width       : 8px;
+        margin-left : -3px;
+        background-color: #b99378;
+    }
+}
+
+.join-notice-content {
+    width    : 100% !important;
+    position : relative;
+    z-index  : 5;
+    @include box-sizing(border-box);
+    @include clearfix;
+}
+
+@include respond(Desktops) {
+    .join-section {
+        &.is-kv {
+            height          : 40.625vw;
+            background-size : 100% auto;
+        }
+
+        &.is-form {
+            padding-top    : 3.6458vw;
+            padding-bottom : 8.5vw;
+
+            > *:not(:first-child):not(svg) {
+                margin-top : 2.08vw;
+            }
+
+            > *:not(.join-term):not(svg) {
+                width : 62vw;
+            }
+
+            > .svg-icon {
+                margin-bottom : -6.6875vw;
+                width         : 27.6vw;
+                height        : 30.625vw;
+            }
+        }
+    }
+
+    .join-kv {
+        .svg-icon {
+            width  : 34.375vw;
+            height : 21.458vw;
+        }
+
+        &:after {
+            width  : 8.0729vw;
+            height : 6.61458vw;
+        }
+    }
+
+    .join-kv-title {
+        font-size : 1.5625vw;
+    }
+
+    .join-name {
+        margin-left : -25vw;
+        margin-top  : 9vw;
+        font-size   : 1.25vw;
+    }
+
+    .join-title {
+        font-size : 3.125vw;
+    }
+
+    .join-para {
+        font-size : 1.25vw;
+    }
+
+    .join-form-group {
+        padding-right : 11vw;
+
+        > li:not(:first-child) {
+            margin-top : 1.302vw;
+        }
+    }
+
+    .join-form {
+        .m-form-type {
+            padding   : 0.78125vw 1.5625vw;
+            height    : 4.6875vw;
+            font-size : 2.08vw;
+        }
+
+        .m-form-addon {
+            font-size: 1.25vw;
+        }
+
+        .svg-icon {
+            margin-top : -5.208vw;
+            width      : 9.8958vw;
+            height     : 10.416vw;
+        }
+    }
+
+    .join-btn {
+        .text {
+            padding   : 1.5625vw 4.948vw 1.5625vw 3.125vw;
+            font-size : 2.08vw;
+        }
+
+        .icon-arrow-right {
+            margin-top : -0.625vw;
+        }
+    }
+
+    .join-term {
+        width : 52.5vw;
+
+        > .join-para {
+            padding : 1.3vw;
+        }
+    }
+
+    .join-notice {
+        padding : 1.3vw;
+    }
+
+    .join-notice-content {
+        padding-right : 1.3vw !important;
+        height        : 7.29vw;
+        font-size     : 0.9875vw;
+    }
+}
+
+@include respond(Desktops-Tablets) {
+    .join-section {
+        &.is-form {
+            > .svg-icon {
+                left : 2.6vw;
+            }
+        }
+    }
+
+    .join-kv {
+        top  : 50%;
+        left : 45%;
+
+        &:after {
+            bottom : 0;
+            right  : 0;
+        }
+    }
+}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {
+    .join-section {
+        &.is-kv {
+            height          : 55vw;
+            background-size : auto 100%;
+        }
+
+        &.is-form {
+            padding-top    : 5.58vw;
+            padding-bottom : 13vw;
+
+            > *:not(:first-child):not(svg) {
+                margin-top : 3.9vw;
+            }
+
+            > *:not(.join-term):not(svg) {
+                width : 85vw;
+            }
+
+            > .svg-icon {
+                width         : 32.6vw;
+                height        : 34.625vw;
+                margin-bottom : -7vw;
+            }
+        }
+    }
+
+    .join-kv {
+        .svg-icon {
+            width    : 49vw;
+            height   : 32vw;
+        }
+
+        &:after {
+            width  : 12vw;
+            height : 10vw;
+        }
+    }
+
+    .join-kv-title {
+        font-size : 2.4vw;
+    }
+
+    .join-name {
+        margin-left : -34vw;
+        margin-top  : 12vw;
+        font-size   : 1.95vw;
+    }
+
+    .join-title {
+        font-size : 3.9vw;
+    }
+
+    .join-para {
+        font-size : 1.95vw;
+    }
+
+    .join-form-group {
+        padding-right : 16.5vw;
+
+        > li:not(:first-child) {
+            margin-top : 1.302vw;
+        }
+    }
+
+    .join-form {
+        .m-form-type {
+            font-size : 2.86vw;
+            height    : 7.8125vw;
+            padding   : 1.95vw 2.6vw;
+
+        }
+
+        .m-form-addon {
+            font-size : 2.08vw;
+        }
+
+        .svg-icon {
+            width      : 14vw;
+            height     : 14.5vw;
+            margin-top : -7.25vw;
+        }
+    }
+
+    .join-btn {
+        .text {
+            padding   : 1.5625vw 4.948vw 1.5625vw 3.125vw;
+            font-size : 2.86vw;
+        }
+
+        .icon-arrow-right {
+            margin-top : -0.625vw;
+        }
+    }
+
+    .join-term {
+        width : 70vw;
+
+        > .join-para {
+            padding : 2.6vw;
+        }
+    }
+
+    .join-notice {
+        padding : 2.6vw;
+    }
+
+    .join-notice-content {
+        padding-right : 2.6vw !important;
+        height        : 11.5vw;
+        font-size     : 1.5625vw;
+    }
+}
+
+@include respond(Mobiles) {
+    .join-section {
+        &.is-kv {
+            height              : 95vw;
+            background-position : center left;
+            background-size     : auto 100%;
+        }
+
+        &.is-form {
+            padding-top    : 9.375vw;
+            padding-bottom : 50vw;
+
+            > *:not(:first-child):not(svg) {
+                margin-top : 6.25vw;
+            }
+
+            > *:not(.join-title):not(svg) {
+                width : 85vw;
+            }
+
+            > .svg-icon {
+                left          : 50%;
+                margin-left   : -27vw;
+                margin-bottom : -10vw;
+                width         : 54vw;
+                height        : 58vw;
+            }
+        }
+    }
+
+    .join-kv {
+        top  : 55%;
+        left : 5%;
+
+        .svg-icon {
+            width  : 60vw;
+            height : 40vw;
+        }
+
+        &:after {
+            bottom      : -9vw;
+            left        : 50%;
+            margin-left : -10.3125vw;
+            width       : 20.625vw;
+            height      : 17.5vw;
+        }
+    }
+
+    .join-kv-title {
+        font-size : 4.375vw;
+    }
+
+    .join-title {
+        font-size : 4.6875vw;
+    }
+
+    .join-para {
+        font-size : 3.75vw;
+    }
+
+    .join-form-group {
+        padding-right : 25vw;
+
+        > li:not(:first-child) {
+            margin-top : 3.125vw;
+        }
+    }
+
+    .join-form {
+        .m-form-type {
+            padding   : 3.125vw 4.6875vw;
+            height    : 12.5vw;
+            font-size : 5vw;
+        }
+
+        .m-form-addon {
+            font-size : 3.75vw;
+            margin    : 0 !important;
+        }
+
+        .svg-icon {
+            margin-top : -11.5vw;
+            width      : 23vw;
+            height     : 23vw;
+        }
+    }
+
+    .join-btn {
+        .text {
+            padding   : 4.6875vw 9.375vw 4.6875vw 6.25vw;
+            font-size : 5vw;
+        }
+
+        .icon-arrow-right {
+            margin-top : -6px;
+        }
+    }
+
+    .join-term {
+        > .join-para {
+            padding : 4.6875vw;
+        }
+    }
+
+    .join-notice {
+        padding : 4.6875vw;
+    }
+
+    .join-notice-content {
+        padding-right : 3.125vw !important;
+        height        : 30vw;
+        font-size     : 3.75vw;
+    }
+}
