@@ -19,6 +19,8 @@
         }
 
         > .svg-icon {
+            background: image-url('join/senior-official.png') 0 0 no-repeat;
+            background-size: 100% auto;
             bottom   : 0;
             position : absolute;
         }
@@ -36,6 +38,11 @@
         background      : image-url('join/join-kv-richart.png') no-repeat center center;
         background-size : 100% auto;
         z-index         : 5;
+    }
+
+    .svg-icon {
+        background: image-url('join/bg-circle.png') 0 0 no-repeat;
+        background-size: 100% auto;
     }
 }
 
@@ -82,6 +89,8 @@
     }
 
     .svg-icon {
+        background: image-url('join/dog-food.png') 0 0 no-repeat;
+        background-size: 100% auto;
         top      : 50%;
         right    : 0;
         position : absolute;
@@ -132,6 +141,10 @@
     z-index  : 5;
     @include box-sizing(border-box);
     @include clearfix;
+}
+
+.l-content .svg-icon use {
+    display: none;
 }
 
 @include respond(Desktops) {
@@ -466,7 +479,7 @@
         .svg-icon {
             margin-top : -11.5vw;
             width      : 23vw;
-            height     : 23vw;
+            height     : 24vw;
         }
     }
 

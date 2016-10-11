@@ -461,6 +461,7 @@
 				position: absolute;
 				top: 50%;
 				left: 50%;
+				@include transform(rotate(290deg));
 
 				&:before, &:after {
 					content: '';
@@ -700,11 +701,18 @@
 					}
 				}
 
-				.svg-icon {
+				.abandon {
 					width: 23.54vw;
 					height: 19.53vw;
 					top: 27.24vw;
 					left: 10.94vw;
+				}
+
+				.tear-drop {
+					width: 0.365vw;
+					height: 1.41vw;
+					top: 41.77vw;
+					left: 25.78vw;
 				}
 			}
 
@@ -724,11 +732,18 @@
 					}
 				}
 
-				.svg-icon {
-					width: 23.8vw;
+				.shelter {
+					width: 12.08vw;
 					height: 14.11vw;
 					top: 29.53vw;
 					left: 52.71vw;
+				}
+
+				.web {
+					width: 7.92vw;
+					height: 8.65vw;
+					top: 30.625vw;
+					left: 68.54vw;
 				}
 			}
 
@@ -747,11 +762,18 @@
 					}
 				}
 
-				.svg-icon {
+				.euthanasia {
 					width: 21.35vw;
-					height: 19.69vw;
-					top: 60vw;
+					height: 10.42vw;
+					top: 69.375vw;
 					left: 57.08vw;
+				}
+
+				.soul {
+					width: 6.25vw;
+					height: 7.4vw;
+					top: 60vw;
+					left: 64.58vw;
 				}
 			}
 
@@ -1199,9 +1221,8 @@
 	}
 
 	.dog-list {
-		.owl-stage {
-			display: flex;
-		}
+		width: 100vw;
+		overflow: hidden;
 
 		.owl-item {
 			display: inline-block;
@@ -1291,12 +1312,12 @@
 
 		.img-wrap {
 			display: table-cell;
+			height: 81.875vw;
 			vertical-align: bottom;
 		}
 
 		.list, .img-wrap {
 			width: 100%;
-			height: 100%;
 			overflow: hidden;
 		}
 
@@ -1374,26 +1395,58 @@
 		.encounter-list .list {
 			margin: 0 auto;
 			width: 320px;
+			position: relative;
 			overflow: hidden;
 
 			&:nth-child(1) {
-				.svg-icon {
+				.abandon {
 					margin: -50px 0 0 20px;
 					width: 180px;
+				}
+
+				.tear-drop {
+					width: 3px;
+					height: 11px;
+					position: absolute;
+					bottom: 34px;
+					left: 133px;
 				}
 			}
 
 			&:nth-child(2) {
-				.svg-icon {
-					margin: -30px 0 0 40px;
-					width: 228px;
+				.what-happened {
+					position: relative;
+					z-index: 1;
+				}
+
+				.shelter {
+					margin: -24px 0 0 40px;
+					width: 117px;
+					height: 136px;
+				}
+
+				.web {
+					width: 77px;
+					height: 84px;
+					position: absolute;
+					bottom: 46px;
+					right: 50px;
 				}
 			}
 
 			&:nth-child(3) {
-				.svg-icon {
-					margin: -50px 0 0 20px;
+				.euthanasia {
+					margin: 20px 0 0 20px;
 					width: 163px;
+					height: 80px;
+				}
+
+				.soul {
+					width: 47px;
+					height: 56px;
+					position: absolute;
+					top: 114px;
+					left: 76px;
 				}
 			}
 
