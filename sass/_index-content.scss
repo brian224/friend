@@ -5,6 +5,10 @@
 		position: relative;
 		@include background-image(linear-gradient(to bottom right, #f0efeb 0%, #c1bab6 100%));
 
+		.hover-block {
+			display: none;
+		}
+
 		.info {
 			display: block;
 		}
@@ -263,6 +267,24 @@
 		font-size: 0;
 		white-space: nowrap;
 
+		&.graph-ani .year-data {
+			&:nth-child(1) .percentage {
+				@include animation(y2013 1s ease-in-out forwards);
+			}
+
+			&:nth-child(2) .percentage {
+				@include animation(y2014 1s 0.3s ease-in-out forwards);
+			}
+
+			&:nth-child(3) .percentage {
+				@include animation(y2015 1s 0.6s ease-in-out forwards);
+			}
+
+			&:nth-child(4) .percentage {
+				@include animation(y2016 1s 0.9s ease-in-out forwards);
+			}
+		}
+
 		.year-data {
 			display: inline-block;
 			position: relative;
@@ -280,7 +302,6 @@
 			&:nth-child(1) {
 				.percentage {
 					background: #d94a60;
-					@include animation(y2013 2s ease-in-out forwards);
 				}
 
 				&:before {
@@ -291,7 +312,6 @@
 			&:nth-child(2) {
 				.percentage {
 					background: #5a476c;
-					@include animation(y2014 2s ease-in-out forwards);
 				}
 
 				&:before {
@@ -302,7 +322,6 @@
 			&:nth-child(3) {
 				.percentage {
 					background: #44858e;
-					@include animation(y2015 2s ease-in-out forwards);
 				}
 
 				&:before {
@@ -313,7 +332,6 @@
 			&:nth-child(4) {
 				.percentage {
 					background: #93d3d9;
-					@include animation(y2016 2s ease-in-out forwards);
 				}
 
 				&:before {
@@ -474,7 +492,6 @@
 						position: absolute;
 						top: 50%;
 						left: 50%;
-						@include transform(rotate(290deg));
 
 						&:before, &:after {
 							content: '';
@@ -518,6 +535,10 @@
 
 	.animation-wrap {
 		position: absolute;
+
+		&.weighing-ani .pointer {
+			@include animation(weighing 1s 0.2s ease-in-out forwards);
+		}
 	}
 }
 
@@ -561,6 +582,16 @@
 			position: absolute;
 			top: 50%;
 		}
+	}
+}
+
+@include keyframes(slideshow) {
+	0% {
+		top: 0;
+	}
+
+	100% {
+		top: -1100%;
 	}
 }
 
@@ -704,7 +735,89 @@
 	}
 }
 
-@include respond(Desktops) {}
+@include keyframes(food-drop) {
+	0% {
+		margin-top: -200px;
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		margin-top: 0;
+		opacity: 1;
+	}
+}
+
+@include keyframes(food-drop-m) {
+	0% {
+		margin-top: -100px;
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		margin-top: 0;
+		opacity: 1;
+	}
+}
+
+@include keyframes(weighing) {
+	0% {
+		@include transform(rotate(0deg));
+	}
+
+	50% {
+		@include transform(rotate(297deg));
+	}
+
+	60% {
+		@include transform(rotate(285deg));
+	}
+
+	70% {
+		@include transform(rotate(294deg));
+	}
+
+	80% {
+		@include transform(rotate(287deg));
+	}
+
+	90% {
+		@include transform(rotate(292deg));
+	}
+
+	100% {
+		@include transform(rotate(290deg));
+	}
+}
+
+@include respond(Desktops) {
+	.dog-list .list {
+		cursor: pointer;
+
+		&:hover {
+			img {
+				position: relative;
+				@include animation(slideshow 2s steps(11, end) infinite);
+			}
+
+			.hover-block {
+				display: inline-block;
+				height: 1200%;
+			}
+
+			.hover-hide {
+				display: none;
+			}
+		}
+	}
+}
 
 @include respond(Desktops-Tablets) {
 	.l-content {
@@ -1060,7 +1173,7 @@
 			line-height: 1em;
 
 			&:nth-child(1) {
-				top: -2.4vw;
+				top: -2.8vw;
 				left: 27.24vw;
 			}
 
@@ -1081,7 +1194,7 @@
 
 			&:nth-child(5) {
 				top: 25.42vw;
-				left: 1.54vw;
+				left: 1.04vw;
 			}
 
 			&:nth-child(6) {
@@ -1100,8 +1213,8 @@
 			}
 
 			&:nth-child(9) {
-				top: 4.77vw;
-				left: 13.28vw;
+				top: 4.27vw;
+				left: 13.48vw;
 			}
 
 			&:nth-child(10) {
@@ -1312,18 +1425,21 @@
 							height: 10.3125vw;
 							top: -2.29vw;
 							left: 22.92vw;
+							opacity: 0;
 						}
 
 						&.food-2 {
 							height: 13.54vw;
 							top: -7.86vw;
 							left: 17.03vw;
+							opacity: 0;
 						}
 
 						&.food-3 {
 							height: 11.3vw;
 							top: 5.21vw;
 							left: 8.85vw;
+							opacity: 0;
 						}
 					}
 
@@ -1399,6 +1515,20 @@
 			fill: #e1c1a9;
 			opacity: 0.26;
 		}
+
+		.animation-wrap.weighing-ani {
+			.food-1 {
+				@include animation(food-drop 0.3s ease-in-out forwards);
+			}
+
+			.food-2 {
+				@include animation(food-drop 0.3s 0.2s ease-in-out forwards);
+			}
+
+			.food-3 {
+				@include animation(food-drop 0.3s 0.4s ease-in-out forwards);
+			}
+		}
 	}
 
 	.donate-cut {
@@ -1441,10 +1571,57 @@
 	.dog-list .list {
 		width: 33.33%;
 		height: 25%;
+
+		&:nth-child(2) .desc {
+			left: 4%;
+		}
+
+		&:nth-child(3) .desc {
+			left: 68%;
+		}
+
+		&:nth-child(6) .desc {
+			top: 20%;
+		}
+
+		&:nth-child(7) .desc {
+			top: 15%;
+		}
+
+		&:nth-child(10) .desc {
+			top: 22%;
+			left: 7%;
+		}
+
+		&:nth-child(12) .desc {
+			left: auto;
+			right: 1%;
+		}
+
+		.img-wrap {
+			margin-top: 0;
+			height: 100%;
+		}
 	}
 }
 
-@include respond(Tablets-Mobiles) {}
+@include respond(Tablets-Mobiles) {
+	.dog-list .list.is-hover {
+		img {
+			position: relative;
+			@include animation(slideshow 2s steps(11, end) infinite);
+		}
+
+		.hover-block {
+			display: inline-block;
+			height: 1200%;
+		}
+
+		.hover-hide {
+			display: none;
+		}
+	}
+}
 
 @include respond(Mobiles) {
 	.l-content {
@@ -1453,10 +1630,12 @@
 
 	.dog-list {
 		width: 100vw;
+		height: 81.875vw;
 		overflow: hidden;
 
 		.owl-item {
 			display: inline-block;
+			vertical-align: top;
 
 			&:nth-child(1) .desc {
 				top: 14%;
@@ -1464,7 +1643,7 @@
 			}
 
 			&:nth-child(2) {
-				img {
+				img.hover-hide {
 					margin-left: 30px;
 				}
 
@@ -1510,7 +1689,7 @@
 			}
 
 			&:nth-child(10) {
-				img {
+				img.hover-hide {
 					margin-left: 10px;
 				}
 
@@ -1526,7 +1705,7 @@
 			}
 
 			&:nth-child(12) {
-				img {
+				img.hover-hide {
 					margin-left: -30px;
 				}
 
@@ -1552,7 +1731,7 @@
 			overflow: hidden;
 		}
 
-		img {
+		img.hover-hide {
 			width: 100%;
 		}
 
@@ -1561,6 +1740,39 @@
 
 			.name {
 				font-size: 24px;
+			}
+		}
+
+		.m-owl-dots.is-absolute {
+			height: 44px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 1;
+			text-align: center;
+
+			.m-owl-dot {
+				display: inline-block;
+				width: 26px;
+				height: 100%;
+				position: relative;
+
+				&.active span {
+					background: #f90;
+				}
+
+				span {
+					margin: -4px 0 0 -4px;
+					background: #fff;
+					display: block;
+					width: 8px;
+					height: 8px;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					border-radius: 50%;
+				}
 			}
 		}
 	}
@@ -1918,6 +2130,9 @@
 			z-index: 1;
 			
 			&:nth-child(1) {
+				padding-top: 70px;
+				padding-bottom: 40px;
+
 				.story {
 					width: 300px;
 				}
@@ -1929,37 +2144,38 @@
 					left: 50%;
 	
 					&:before {
-						width: 8px;
-						height: 4px;
-						top: 56px;
-						left: 118px;
+						width: 12px;
+						height: 6px;
+						top: 0;
+						left: 62px;
 					}
 	
 					&:after {
-						width: 50px;
-						height: 9px;
-						top: 91px;
-						left: 132px;
+						width: 72px;
+						height: 12px;
+						top: 51px;
+						left: 84px;
 					}
 	
 					.ground-2 {
 						width: 560px;
 						height: 300px;
-						top: 0;
+						top: -15px;
 						left: -240px;
 					}
 	
 					.ball {
-						width: 17px;
-						height: 17px;
-						left: 114px;
+						width: 20px;
+						height: 20px;
+						top: -66px;
+						left: 58px;
 					}
 	
 					.play-ball {
-						width: 46px;
-						height: 54px;
-						top: 40px;
-						left: 133px;
+						width: 70px;
+						height: 81px;
+						top: -25px;
+						left: 84px;
 					}
 				}
 			}
@@ -1983,10 +2199,10 @@
 					}
 
 					.senior-official {
-						width: 92px;
-						height: 119px;
-						top: 0;
-						left: 40px;
+						width: 112px;
+						height: 143px;
+						top: -26px;
+						left: 11px;
 					}
 				}
 			}
@@ -2016,18 +2232,21 @@
 							height: 20.625vw;
 							top: -4.58vw;
 							left: 45.84vw;
+							opacity: 0;
 						}
 
 						&.food-2 {
 							height: 27.08vw;
 							top: -15.72vw;
 							left: 34.06vw;
+							opacity: 0;
 						}
 
 						&.food-3 {
 							height: 22.6vw;
 							top: 10.42vw;
 							left: 17.7vw;
+							opacity: 0;
 						}
 					}
 
@@ -2098,6 +2317,20 @@
 		.emphasize {
 			font-size: 22px;
 		}
+
+		.animation-wrap.weighing-ani {
+			.food-1 {
+				@include animation(food-drop-m 0.3s ease-in-out forwards);
+			}
+
+			.food-2 {
+				@include animation(food-drop-m 0.3s 0.2s ease-in-out forwards);
+			}
+
+			.food-3 {
+				@include animation(food-drop-m 0.3s 0.4s ease-in-out forwards);
+			}
+		}
 	}
 
 	.donate-cut {
@@ -2155,36 +2388,39 @@
 
 		.situation-list .list {
 			&:nth-child(1) {
-				padding-bottom: 112px;
-
 				.story {
 					width: 280px;
 				}
 
 				.animation-wrap {
 					&:before {
-						top: auto;
-						bottom: 65px;
+						width: 8px;
+						height: 4px;
+						top: 6px;
 						left: auto;
-						right: 121px;
+						right: 117px;
 					}
 
 					&:after {
-						top: auto;
-						bottom: 22px;
+						width: 50px;
+						height: 9px;
+						top: 44px;
 						left: auto;
 						right: 59px;
 					}
 
 					.ball {
-						bottom: 94px;
+						width: 17px;
+						height: 17px;
+						top: -42px;
 						left: auto;
-						right: 116px;
+						right: 112px;
 					}
 
 					.play-ball {
-						top: auto;
-						bottom: 27px;
+						width: 46px;
+						height: 54px;
+						top: -6px;
 						left: auto;
 						right: 60px;
 					}
@@ -2196,6 +2432,9 @@
 				padding-left: 120px;
 	
 				.animation-wrap .senior-official {
+					width: 92px;
+					height: 119px;
+					top: 0;
 					left: 18px;
 				}
 			}

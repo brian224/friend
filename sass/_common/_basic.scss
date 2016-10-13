@@ -47,28 +47,36 @@
 	display: block;
 }
 
-@include respond(Desktops) {}
+@include respond(Desktops) {
+	.b-md-hide {
+		display: none !important;
+	}
+}
 
 @include respond(Desktops-Tablets) {
 	.b-dt-block {
-		display: block;
+		display: block !important;
 	}
 
 	.b-dt-hide {
-		display: none;
+		display: none !important;
 	}
 }
 
 @include respond(Tablets) {}
 
-@include respond(Tablets-Mobiles) {}
+@include respond(Tablets-Mobiles) {
+	.b-tm-hide {
+		display: none !important;
+	}
+}
 
 @include respond(Mobiles) {
 	.b-m-block {
-		display: block;
+		display: block !important;
 	}
 
 	.b-m-hide {
-		display: none;
+		display: none !important;
 	}
 }

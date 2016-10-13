@@ -7,6 +7,10 @@
 		this._menu      = '.jq-menu';
 		this._share     = '.jq-share';
 		this._slideDown = '.jq-slide-down';
+		this._ani       = '.jq-weight-ani';
+		this._weighing  = '.jq-weight';
+		this._slideshow = '.jq-m-slideshow';
+		this._speed     = 400;
 	}
 
 	// 點擊目標區域以外的地方可關閉目標區域
@@ -33,7 +37,27 @@
 		});
 
 		$(common._slideDown).on('click', function(){
-			projects.$hb.animate({'scrollTop': $(this).parent('.section-cut').next().offset().top}, 400);
+			projects.$hb.animate({
+				'scrollTop': $(this).parent('.section-cut').next().offset().top
+			}, common._speed);
+		});
+
+		$(common._ani + ' .svg-icon').each(function(){
+			$(this).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
+				var $this = $(this);
+
+				$(common._weighing).text(parseInt($(common._weighing).text(), 10) + $this.data('weight'));
+			});
+		});
+
+		$(common._slideshow).on('click', function(){
+			if (projects.device() === 'Mobile') {
+				$(this).toggleClass('is-hover');
+			}
+		});
+
+		projects.owlEvents('changed.owl.carousel' , function(){
+			$(common._slideshow).removeClass('is-hover');
 		});
 	});
 
@@ -44,6 +68,14 @@
 	});
 
 	projects.$w.on('scroll' , function(){
+		if ($('.l-content').hasClass('index')) {
+			if (projects.$b.scrollTop() + projects.$w.height() >= $('.after-cut').offset().top) {
+				$('.bar-graph').addClass('graph-ani');
+			}
+			if (projects.$b.scrollTop() + projects.$w.height() >= $('.donate-cut').offset().top) {
+				$(common._ani).addClass('weighing-ani');
+			}
+		}
 	});
 
 	projects.$w.resize(function(){
