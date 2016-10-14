@@ -1,0 +1,1284 @@
+$major-color-1 : #adc56e;
+$major-color-2 : #f4c479;
+
+.donate-content {
+    position         : relative;
+    background-color : #f3e8e0;
+}
+
+.donate-section {
+    position : relative;
+
+    &.is-kv {
+        background : image-url('donate/kv-donate.jpg') no-repeat center center;
+
+        > .donate-para {
+            position    : absolute;
+            color       : $color-white;
+            line-height : 1;
+            text-indent : -2em;
+        }
+    }
+
+    &.is-para {
+        color      : #494848;
+        text-align : center;
+    }
+
+    &.is-term {
+        &:before {
+            content         : "";
+            bottom          : 0;
+            right           : 15%;
+            position        : absolute;
+            background      : image-url('donate/human-pal.png') no-repeat center center;
+            background-size : 100% 100%;
+        }
+
+        .donate-notice {
+            color : #704f60;
+
+            > .donate-notice-btn {
+                color            : $color-white;
+                background-color : #704f60;
+
+                &:after {
+                     border-color: transparent transparent transparent $color-white;
+                }
+            }
+        }
+    }
+}
+
+.donate-tab-hd {
+    font-size : 0;
+    @include clearfix;
+
+    .svg-icon {
+        position : absolute;
+
+        &.is-human {
+            top    : 0;
+            left   : 16%;
+            @include transform(rotateY(180deg));
+        }
+
+        &.is-dog {
+            bottom : -20%;
+            left   : 72%;
+        }
+
+        &.is-food {
+            bottom : -35%;
+            left   : 45%;
+        }
+    }
+
+    > li {
+        width     : 50%;
+        position  : relative;
+        @include inline-block;
+        @include opacity(.4);
+        @include transition(opacity 1s);
+
+        &.is-active {
+            @include opacity(1);
+
+            &:nth-child(1) {
+                .donate-tab-btn {
+                    top : 33%;
+                    background-color: $major-color-1;
+
+                    &:after {
+                        background-color: $major-color-1;
+                    }
+                }
+
+                .text {
+                    @include stroke(2 , $major-color-1);
+                }
+            }
+
+            &:nth-child(2) {
+                .donate-tab-btn {
+                    top : 33%;
+                    background-color: $major-color-2;
+
+                    &:after {
+                        background-color: $major-color-2;
+                    }
+                }
+
+                .text {
+                    @include stroke(2 , $major-color-2);
+                }
+            }
+        }
+    }
+
+    > li:nth-child(1) {
+        .donate-tab-btn {
+            right : 10%;
+        }
+    }
+
+    > li:nth-child(2) {
+        .donate-tab-btn {
+            left : 10%;
+        }
+    }
+
+    .text {
+        margin-left  : -20%;
+        margin-right : -20%;
+        color        : $color-white;
+        @include stroke(2 , #ddd3cb);
+        @include display(block);
+    }
+}
+
+.donate-tab-bd {
+    position: relative;
+    @include box-sizing(border-box);
+    @include transition(height 1s);
+
+    &.is-01 {
+        > li:nth-child(1) {
+            @include opacity(1);
+        }
+    }
+
+    &.is-02 {
+        > li:nth-child(2) {
+            @include opacity(1);
+        }
+    }
+}
+
+.donate-tab-btn {
+    top              : 0;
+    position         : absolute;
+    background-color : #ddd3cb;
+    z-index          : 5;
+    overflow         : visible;
+    @include border-radius(50%);
+    @include transition(top 1s);
+
+    &:after {
+        content : "";
+        left: 50%;
+        height: 50%;
+        position: absolute;
+        background-color: #ddd3cb;
+    }
+}
+
+.donate-tab-frame {
+    width    : 100%;
+    height   : 100%;
+    position : absolute;
+    @include opacity(0);
+    @include transition(opacity 1s);
+    @include box-sizing(border-box);
+
+    &:nth-child(1) {
+        background-color : $major-color-1;
+
+        .donate-notice-btn {
+            color            : $major-color-1;
+            background-color : #425510;
+
+            &:after {
+                border-color : transparent transparent transparent $major-color-1;
+            }
+        }
+
+        &:before {
+            content         : "";
+            bottom          : 0;
+            right           : 0;
+            position        : absolute;
+            background      : image-url('donate/dog-bg-01.png') no-repeat center center;
+            background-size : 100% 100%;
+            z-index         : 1;
+        }
+
+        .btn-rainbow {
+            &:before {
+                background : $major-color-1;
+            }
+        }
+    }
+
+    &:nth-child(2) {
+        background-color : $major-color-2;
+
+        .donate-notice-btn {
+            color            : $major-color-2;
+            background-color : #8d5909;
+
+            &:after {
+                border-color : transparent transparent transparent $major-color-2;
+            }
+        }
+
+        &:before {
+            content         : "";
+            bottom          : 0;
+            left            : 0;
+            position        : absolute;
+            background      : image-url('donate/dog-bg-02.png') no-repeat center center;
+            background-size : 100% 100%;
+            z-index         : 1;
+        }
+
+        .btn-rainbow {
+            &:before {
+                background : $major-color-2;
+            }
+        }
+    }
+
+    > * {
+        position     : relative;
+        z-index      : 2;
+    }
+
+    > .donate-title {
+        color      : $color-white;
+        text-align : center;
+    }
+}
+
+.donate-notice {
+    > em {
+        background-color : rgba($color-black , 0.2);
+        @include inline-block;
+    }
+}
+
+.donate-step {
+    @include box-sizing(border-box);
+
+    &:before {
+        content         : "";
+        background      : image-url('donate/richart-teach.png') no-repeat center center;
+        background-size : 100% 100%;
+    }
+
+    & +* {
+        @include box-sizing(border-box);
+    }
+}
+
+.donate-step-item {
+    background-color : #c9dd96;
+    text-align       : center;
+    position         : relative;
+    @include box-sizing(border-box);
+
+    &:not(:first-child) {
+        &:before {
+            content      : "";
+            width        : 0;
+            height       : 0;
+            position     : absolute;
+            border-style : solid;
+        }
+    }
+
+    &:nth-child(1) {
+        > .donate-step-frame {
+            figure {
+                width       : 60%;
+                top         : 35%;
+                left        : 50%;
+                margin-left : -30%;
+            }
+        }
+    }
+
+    &:nth-child(2) {
+        > .donate-step-frame {
+            figure {
+                width       : 80%;
+                bottom      : 0;
+                left        : 50%;
+                margin-left : -35%;
+            }
+        }
+    }
+
+    &:nth-child(3) {
+        > .donate-step-frame {
+            figure {
+                width       : 75%;
+                bottom      : 0;
+                left        : 50%;
+                margin-left : -20%;
+            }
+        }
+    }
+
+    &:nth-child(4) {
+        > .donate-step-frame {
+            figure {
+                width       : 50%;
+                top         : 30%;
+                left        : 50%;
+                margin-left : -25%;
+            }
+        }
+    }
+
+    &:nth-child(2) , &:nth-child(3) {
+        > .donate-step-frame {
+            &:after {
+                content          : "";
+                width            : 80%;
+                height           : 15%;
+                top              : 15%;
+                left             : 10%;
+                background-color : #cf5252;
+                position         : absolute;
+            }
+        }
+    }
+}
+
+.donate-step-frame {
+    bottom           : 0;
+    font-size        : 0;
+    background-color : #3e454f;
+
+    &:before {
+        content          : "";    
+        background-color : #FFF;
+        height           : 85%;
+        width            : 80%;
+        bottom           : 0;
+        left             : 50%;
+        margin-left      : -40%;
+        position         : absolute;
+    }
+
+    > figure {
+        position : absolute;
+
+        > img {
+            max-width : 100%;
+        }
+    }
+}
+
+.donate-notice-btn {
+    @include inline-block;
+
+    &:after {
+        content      : "";
+        width        : 0;
+        height       : 0;
+        top          : 50%;
+        right        : 7%;
+        position     : absolute;
+        border-style : solid;
+    }
+}
+
+.donate-list {
+    > li {
+        counter-increment : section;
+
+        &:before {
+            content          : counter(section)".";
+            background-color : #ffdfad;
+            color            : #b03c0e;
+            text-align       : center;
+            @include inline-block;
+            @include border-radius(50%);
+        }
+
+        > * {
+            @include inline-block;
+        }
+    }
+}
+
+.donate-btn {
+    text-align: center;
+
+    .text {
+        line-height: 1.2;
+        @include display(block);
+    }
+
+    .icon-arrow-right {
+        top      : 50%;
+        right    : 3.33vw;
+        position : absolute;
+    }
+}
+
+@include respond(Desktops) {
+    .donate-section {
+        &.is-kv {
+            height          : 38vw;
+            background-size : 100% auto;
+
+            > .donate-para {
+                top       : 38%;
+                left      : 28%;
+                font-size : 2.1875vw;
+            }
+
+            .emphasize {
+                font-size : 3.33vw;
+            }
+        }
+
+        &.is-para {
+            padding-top    : 2.6vw;
+            padding-bottom : 2.6vw;
+
+            > *:not(:first-child) {
+                margin-top : 1.5625vw;
+            }
+
+            > .donate-title {
+                font-size : 2.6vw;
+            }
+
+            > .donate-para {
+                font-size : 1.25vw;
+            }
+        }
+
+        &.is-term {
+            padding-top    : 2.6vw;
+            padding-bottom : 4.16vw;
+            font-size      : 0.83vw;
+
+            &:before {
+                width  : 26.3vw;
+                height : 13.02vw;
+            }
+
+            > *:not(.donate-notice) {
+                width : 62.24vw;
+            }
+
+            > *:not(:first-child):not(.donate-notice) {
+                margin-top : 2.34vw;
+            }
+
+            .emphasize {
+                font-size : 1.25vw;
+            }
+
+            .donate-notice {
+                position : absolute;
+                bottom   : 10%;
+                right    : 12%;
+            }
+        }
+    }
+
+    .donate-tab-hd {
+        width : 62.24vw;
+
+        .svg-icon {
+            &.is-human {
+                width  : 11.7vw;
+                height : 15vw;
+            }
+
+            &.is-dog {
+                width  : 8vw;
+                height : 9vw;
+            }
+
+            &.is-food {
+                width  : 9vw;
+                height : 10vw;
+            }
+        }
+
+        > li {
+            height    : 11vw;
+        }
+
+        .text {
+            font-size    : 1.5265vw;
+        }
+
+        .emphasize {
+            font-size : 3.125vw;
+        }
+    }
+
+    .donate-tab-bd {
+        &.is-01 {
+            height : 62.3vw;
+        }
+
+        &.is-02 {
+            height : 49.5vw;
+        }
+    }
+
+    .donate-tab-btn {
+        width  : 9.8vw;
+        height : 9.8vw;
+
+        &:after {
+            width       : 0.52vw;
+            margin-left : -0.26vw;
+        }
+    }
+
+    .donate-tab-frame {
+        padding-top    : 3.125vw;
+        padding-bottom : 4.1666vw;
+
+        &:nth-child(1) {
+            &:before {
+                width  : 30.729vw;
+                height : 41.145vw;
+            }
+        }
+
+        &:nth-child(2) {
+            &:before {
+                width  : 37.5vw;
+                height : 40.833vw;
+            }
+        }
+
+        > * {
+            width : 62.24vw;
+        }
+
+        > *:not(:first-child) {
+            margin-top : 1.5625vw;
+        }
+
+        > .donate-title {
+            font-size : 3.33vw;
+        }
+
+        > .donate-para {
+            font-size : 1.5625vw;
+        }
+
+        > .donate-step , > .donate-btn {
+            margin-top : 3.125vw;            
+        }
+    }
+
+    .donate-notice {
+        font-size : 1.25vw;
+
+        > em {
+            padding : 0.78125vw;
+        }
+    }
+
+    .donate-step {
+        font-size    : 0;
+        padding-left : 8vw;
+
+        &:before {
+            width           : 12.6vw;
+            height          : 12.7vw;
+            left            : -5.2vw;
+        }
+
+        & +* {
+            padding-left : 8vw;
+        }
+    }
+
+    .donate-step-item {
+        width       : 12.29vw;
+        height      : 15.625vw;
+        @include border-radius(0.78125vw 0.78125vw 0 0);
+
+        &:not(:first-child) {
+            margin-left : 1.354vw;
+
+            &:before {
+                margin-top   : -0.78125vw;
+                border-width : 0.78125vw 0 0.78125vw 0.8333vw;
+            }
+        }
+
+        &:nth-child(2) , &:nth-child(3) {
+            > .donate-step-frame {
+                &:after {
+                    @include border-radius(0.5vw 0.5vw 0 0);
+                }
+            }
+        }
+
+        .donate-para {
+            padding-top : 1.3vw;
+            font-size   : 1.25vw;
+        }
+    }
+
+    .donate-step-frame {
+        width       : 7.29vw;
+        height      : 9.1145vw;
+        margin-left : -3.645vw;
+        @include border-radius(0.78125vw 0.78125vw 0 0);
+
+        &:before {
+            @include border-radius(0.78125vw 0.78125vw 0 0);
+        }
+    }
+
+    .donate-notice-btn {
+        margin-left : 1.04vw;
+        padding     : 0.26vw 1.822vw 0.26vw 1.04vw;
+        @include border-radius(0.52vw);
+
+        &:after {
+            margin-top: -0.45875vw;
+            border-width : 0.45875vw 0 0.45875vw 0.78125vw;
+        }
+    }
+
+    .donate-list {
+        > li {
+            &:before {
+                width        : 5.73vw;
+                height       : 5.73vw;
+                margin-right : 1.5625vw; 
+                font-size    : 3.645vw;
+            }
+
+            > * {
+                width     : calc(100% - 5.73vw - 1.5625vw);
+                font-size : 1.5625vw;
+            }
+        }
+
+        > li:not(:first-child) {
+            margin-top : 3.64vw;
+        }
+    }
+
+    .donate-btn {
+        &.is-qrcode {
+            > .btn-rainbow {
+                cursor     : default;
+                box-shadow : none;
+
+                &:before , &:after {
+                    display : none;
+                }
+            }
+
+            .text {
+                padding          : 2.04vw 9.8125vw 2.04vw 2.08vw;
+                text-align       : right;
+                background-color : #c9dd96;
+                @include border-radius(1vw);
+            }
+        }
+
+        .text {
+            padding   : 1.5625vw 4.948vw 1.5625vw 3.125vw;
+            font-size : 1.82vw;
+            @include border-radius(2vw);
+        }
+
+        .small {
+            font-size: 1.25vw;
+        }
+
+        .icon-arrow-right {
+            margin-top : -0.625vw;
+        }
+
+        .icon-qrcode {
+            top        : 50%;
+            right      : 5%;
+            width      : 6.66vw;
+            height     : 6.66vw;
+            margin-top : -3.33vw;
+            position   : absolute;
+            background: image-url('donate/qrcode.jpg') no-repeat center center;
+            background-size: 100% 100%;
+        }
+    }
+}
+
+@include respond(Desktops-Tablets) {
+    .donate-tab-hd {
+        margin-left  : auto;
+        margin-right : auto;
+    }
+
+    .donate-section {
+        &.is-term {
+            > *:not(.donate-notice) {
+                margin-left  : auto;
+                margin-right : auto;
+            }
+        }
+    }
+
+    .donate-tab-frame {
+        > * {
+            margin-left  : auto;
+            margin-right : auto;
+        }
+    }
+
+    .donate-step {
+        &:before {
+            bottom   : 0;
+            position : absolute;
+        }
+    }
+
+    .donate-step-item {
+        @include inline-block;
+
+        &:not(:first-child) {
+            &:before {
+                top          : 50%;
+                left         : 0;
+                border-color : transparent transparent transparent $major-color-1;
+            }
+        }
+    }
+
+    .donate-step-frame {
+        left     : 50%;
+        position : absolute;
+    }
+}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {
+    .donate-section {
+        &.is-kv {
+            height          : 40vw;
+            background-size : auto 100%;
+
+            > .donate-para {
+                top       : 33%;
+                left      : 14%;
+                font-size : 3.255vw;
+            }
+
+            .emphasize {
+                font-size : 5.2vw;
+            }
+        }
+
+        &.is-para {
+            padding-top    : 3.9vw;
+            padding-bottom : 3.9vw;
+
+            > *:not(:first-child) {
+                margin-top : 2.34375vw;
+            }
+
+            > .donate-title {
+                font-size : 3.9vw;
+            }
+
+            > .donate-para {
+                font-size : 2.34375vw;
+            }
+        }
+
+        &.is-term {
+            padding-top    : 3.9vw;
+            padding-bottom : 12vw;
+            font-size      : 1.95vw;
+
+            &:before {
+                width  : 37.76vw;
+                height : 18.75vw;
+            }
+
+            > *:not(.donate-notice) {
+                width : 85vw;
+            }
+
+            > *:not(:first-child):not(.donate-notice) {
+                margin-top : 3.9vw;
+            }
+
+            .emphasize {
+                font-size : 2.343vw;
+            }
+
+            .donate-notice {
+                position : absolute;
+                bottom   : 6%;
+                right    : 10%;
+            }
+        }
+    }
+
+    .donate-tab-hd {
+        width : 85vw;
+
+        .svg-icon {
+            &.is-human {
+                width  : 17vw;
+                height : 22vw;
+            }
+
+            &.is-dog {
+                width  : 10vw;
+                height : 12vw;
+            }
+
+            &.is-food {
+                width  : 12vw;
+                height : 14vw;
+            }
+        }
+
+        > li {
+            height : 14.5vw;
+        }
+
+        .text {
+            font-size : 2.343vw;
+        }
+
+        .emphasize {
+            font-size : 3.6vw;
+        }
+    }
+
+    .donate-tab-bd {
+        &.is-01 {
+            height : 77.08vw;
+        }
+
+        &.is-02 {
+            height : 65.885vw;
+        }
+    }
+
+    .donate-tab-btn {
+        width  : 13vw;
+        height : 13vw;
+
+        &:after {
+            width       : 0.7vw;
+            margin-left : -0.35vw;
+        }
+    }
+
+    .donate-tab-frame {
+        padding-top    : 3.9vw;
+        padding-bottom : 6.24vw;
+
+        &:nth-child(1) {
+            &:before {
+                width  : 37vw;
+                height : 49.479vw;
+            }
+        }
+
+        &:nth-child(2) {
+            &:before {
+                width  : 45vw;
+                height : 48.958vw;
+            }
+        }
+
+        > * {
+            width : 85vw;
+        }
+
+        > *:not(:first-child) {
+            margin-top : 2.6vw;
+        }
+
+        > .donate-title {
+            font-size : 3.9vw;
+        }
+
+        > .donate-para {
+            font-size : 2.34375vw;
+        }
+
+        > .donate-step , > .donate-btn {
+            margin-top : 3.125vw;            
+        }
+    }
+
+    .donate-notice {
+        font-size : 1.822vw;
+
+        > em {
+            padding : 0.78125vw;
+        }
+    }
+
+    .donate-step {
+        font-size    : 0;
+        padding-left : 13vw;
+
+        &:before {
+            width  : 12.6vw;
+            height : 12.7vw;
+            left   : -2vw;
+        }
+    }
+
+    .donate-step-item {
+        width       : 16.3vw;
+        height      : 19.6vw;
+        @include border-radius(0.78125vw 0.78125vw 0 0);
+
+        &:not(:first-child) {
+            margin-left : 1.953vw;
+
+            &:before {
+                margin-top   : -0.8vw;
+                border-width : 0.8vw 0 0.8vw 1.2vw;
+            }
+        }
+
+        &:nth-child(2) , &:nth-child(3) {
+            > .donate-step-frame {
+                &:after {
+                    @include border-radius(0.5vw 0.5vw 0 0);
+                }
+            }
+        }
+
+        .donate-para {
+            padding-top : 1.3vw;
+            font-size   : 1.5625vw;
+        }
+    }
+
+    .donate-step-frame {
+        width       : 9.3vw;
+        height      : 11.2vw;
+        margin-left : -4.65vw;
+        @include border-radius(0.78125vw 0.78125vw 0 0);
+
+        &:before {
+            @include border-radius(0.78125vw 0.78125vw 0 0);
+        }
+    }
+
+    .donate-notice-btn {
+        margin-left : 0.8vw;
+        padding     : 0.4vw 2.6vw 0.4vw 1.4vw;
+        @include border-radius(0.78125vw);
+
+        &:after {
+            margin-top: -0.4vw;
+            border-width : 0.4vw 0 0.4vw 0.75vw;
+        }
+    }
+
+    .donate-list {
+        > li {
+            &:before {
+                width        : 8vw;
+                height       : 8vw;
+                margin-right : 2.6vw; 
+                font-size    : 5vw;
+            }
+
+            > * {
+                width     : calc(100% - 8vw - 2.6vw);
+                font-size : 2.34375vw;
+            }
+        }
+
+        > li:not(:first-child) {
+            margin-top : 3.64vw;
+        }
+    }
+
+    .donate-btn {
+        .text {
+            padding   : 1.5625vw 4.948vw 1.5625vw 3.125vw;
+            font-size : 2.34375vw;
+            @include border-radius(2vw);
+        }
+
+        .small {
+            font-size: 1.822vw;
+        }
+
+        .icon-arrow-right {
+            margin-top : -0.625vw;
+        }
+    }
+}
+
+@include respond(Mobiles) {
+    .donate-section {
+        &.is-kv {
+            height          : 78.125vw;
+            background-size : auto 100%;
+
+            > .donate-para {
+                top       : 40%;
+                left      : 18%;
+                font-size : 4.375vw;
+            }
+
+            .emphasize {
+                font-size : 6.25vw;
+            }
+        }
+
+        &.is-para {
+            padding-top    : 9.375vw;
+            padding-bottom : 9.375vw;
+
+            > *:not(:first-child) {
+                margin-top : 6.4vw;
+            }
+
+            > .donate-title {
+                font-size : 5.625vw;
+            }
+
+            > .donate-para {
+                font-size : 4.375vw;
+            }
+        }
+
+        &.is-term {
+            padding   : 6.4vw 4.6vw 50vw 4.6vw;
+            font-size : 3.75vw;
+
+            &:before {
+                width  : 80vw;
+                height : 39.6875vw;
+            }
+
+            > *:not(:first-child):not(.donate-notice) {
+                margin-top : 6.4vw;
+            }
+
+            .emphasize {
+                font-size : 5vw;
+            }
+
+            .donate-notice {
+                position : absolute;
+                bottom   : 5%;
+                right    : 10%;
+            }
+        }
+    }
+
+    .donate-tab-hd {
+        .svg-icon {
+            &.is-human {
+                width  : 23vw;
+                height : 30vw;
+                left   : 5%;
+            }
+
+            &.is-dog {
+                width  : 16vw;
+                height : 20vw;
+            }
+
+            &.is-food {
+                width  : 13vw;
+                height : 25vw;
+            }
+        }
+
+        > li {
+            height : 29.5vw;
+        }
+
+        .text {
+            font-size : 5.375vw;
+        }
+
+        .emphasize {
+            font-size : 7.625vw;
+        }
+    }
+
+    .donate-tab-bd {
+        &.is-01 {
+            height : 403vw;
+        }
+
+        &.is-02 {
+            height : 165.625vw;
+        }
+    }
+
+    .donate-tab-btn {
+        width  : 26vw;
+        height : 26vw;
+
+        &:after {
+            width       : 1.4vw;
+            margin-left : -0.7vw;
+        }
+    }
+
+    .donate-tab-frame {
+        padding : 6.4vw 4.6vw 6.4vw 4.6vw;
+
+        &:nth-child(1) {
+            &:before {
+                width  : 80vw;
+                height : 107.1875vw;
+            }
+        }
+
+        &:nth-child(2) {
+            &:before {
+                width  : 70vw;
+                height : 76.25vw;
+            }
+        }
+
+        > *:not(:first-child) {
+            margin-top : 6.4vw;
+        }
+
+        > .donate-title {
+            font-size : 5.625vw;
+        }
+
+        > .donate-para {
+            font-size : 4.375vw;
+        }
+    }
+
+    .donate-notice {
+        font-size : 3.75vw;
+
+        > em {
+            padding : 2.5vw;
+        }
+    }
+
+    .donate-step {
+        font-size  : 0;
+        text-align : center;
+
+        &:before {
+            width  : 40vw;
+            height : 40vw;
+            left   : 15px;
+            position: relative;
+            @include inline-block;
+        }
+    }
+
+    .donate-step-item {
+        width        : 70%;
+        height       : auto;
+        margin-left  : auto;
+        margin-right : auto;
+        @include border-radius(10px 10px 10px 10px);
+
+        &:not(:first-child) {
+            margin-top : 4.6vw;
+
+            &:before {
+                top          : 0;
+                left         : 50%;
+                border-color : $major-color-1 transparent transparent transparent;    
+                margin-left  : -3.125vw;
+                border-width : 3.75vw 3.125vw 0 3.125vw;
+            }
+        }
+
+        &:nth-child(2) , &:nth-child(3) {
+            > .donate-step-frame {
+                &:after {
+                    @include border-radius(10px 10px 0 0);
+                }
+            }
+        }
+
+        .donate-para {
+            padding-top : 6.25vw;
+            font-size   : 5vw;
+        }
+    }
+
+    .donate-step-frame {
+        width      : 25vw;
+        height     : 30vw;
+        margin-top : 3.125vw;
+        position    : relative;
+        @include border-radius(10px 10px 0 0);
+        @include inline-block;
+
+        &:before {
+            @include border-radius(10px 10px 0 0);
+        }
+    }
+
+    .donate-notice-btn {
+        margin-left : 0.8vw;
+        padding     : 1.5625vw 5.625vw 1.5625vw 2.5vw;
+        @include border-radius(5px);
+
+        &:after {
+            margin-top   : -1.25vw;
+            border-width : 1.25vw 0 1.25vw 1.875vw;
+        }
+    }
+
+    .donate-list {
+        > li {
+            &:before {
+                width        : 12vw;
+                height       : 12vw;
+                margin-right : 4.6875vw; 
+                font-size    : 7vw;
+            }
+
+            > * {
+                width     : calc(100% - 12vw - 4.6875vw);
+                font-size : 4.375vw;
+            }
+        }
+
+        > li:not(:first-child) {
+            margin-top : 6.4vw;
+        }
+    }
+
+    .donate-btn {
+        .text {
+            padding        : 4.6875vw 6.875vw 4.6875vw 5vw;
+            font-size      : 4.375vw;
+            font-weight    : bold;
+            letter-spacing : 0;
+            @include border-radius(4.5vw);
+        }
+
+        .small {
+            font-size: 3.75vw;
+        }
+
+        .icon-arrow-right {
+            margin-top : -6px;
+        }
+    }
+}

@@ -585,13 +585,53 @@
 	}
 }
 
-@include keyframes(slideshow) {
+@include keyframes(slideshow-12) {
 	0% {
 		top: 0;
 	}
 
 	100% {
 		top: -1100%;
+	}
+}
+
+@include keyframes(slideshow-6) {
+	0% {
+		top: 0;
+	}
+
+	100% {
+		top: -500%;
+	}
+}
+
+@include keyframes(slideshow-7) {
+	0% {
+		top: 0;
+	}
+
+	100% {
+		top: -600%;
+	}
+}
+
+@include keyframes(slideshow-8) {
+	0% {
+		top: 0;
+	}
+
+	100% {
+		top: -700%;
+	}
+}
+
+@include keyframes(slideshow-10) {
+	0% {
+		top: 0;
+	}
+
+	100% {
+		top: -900%;
 	}
 }
 
@@ -735,6 +775,30 @@
 	}
 }
 
+@include keyframes(show-play-ball) {
+	0% {
+		top: 22.14vw;
+		opacity: 0;
+	}
+
+	100% {
+		top: 2.14vw;
+		opacity: 1;
+	}
+}
+
+@include keyframes(show-senior-official) {
+	0% {
+		margin-left: 25.16vw;
+		opacity: 0;
+	}
+
+	100% {
+		margin-left: 5.16vw;
+		opacity: 1;
+	}
+}
+
 @include keyframes(food-drop) {
 	0% {
 		margin-top: -200px;
@@ -800,22 +864,6 @@
 @include respond(Desktops) {
 	.dog-list .list {
 		cursor: pointer;
-
-		&:hover {
-			img {
-				position: relative;
-				@include animation(slideshow 2s steps(11, end) infinite);
-			}
-
-			.hover-block {
-				display: inline-block;
-				height: 1200%;
-			}
-
-			.hover-hide {
-				display: none;
-			}
-		}
 	}
 }
 
@@ -837,6 +885,45 @@
 			width: 25%;
 			height: 33.33%;
 			overflow: hidden;
+
+			&:hover, &.is-hover {
+				img {
+					position: relative;
+				}
+
+				.hover-block {
+					display: inline-block;
+				}
+
+				.hover-hide {
+					display: none;
+				}
+
+				&:nth-child(2) .hover-block {
+					height: 1200%;
+					@include animation(slideshow-12 2s steps(11, end) infinite);
+				}
+
+				&:nth-child(3) .hover-block {
+					height: 700%;
+					@include animation(slideshow-7 1.17s steps(6, end) infinite);
+				}
+
+				&:nth-child(4) .hover-block, &:nth-child(12) .hover-block {
+					height: 1000%;
+					@include animation(slideshow-10 1.67s steps(9, end) infinite);
+				}
+
+				&:nth-child(7) .hover-block {
+					height: 800%;
+					@include animation(slideshow-8 1.33s steps(7, end) infinite);
+				}
+
+				&:nth-child(9) .hover-block {
+					height: 600%;
+					@include animation(slideshow-6 1s steps(5, end) infinite);
+				}
+			}
 
 			&:nth-child(1) .desc {
 				top: 14%;
@@ -1317,8 +1404,14 @@
 				.animation-wrap {
 					width: 48.7vw;
 					height: 37.86vw;
-					top: 2.14vw;
+					top: 22.14vw;
 					left: 7.14vw;
+					opacity: 0;
+					z-index: 0;
+
+					&.go-ani {
+						@include animation(show-play-ball 1s ease-in-out forwards);
+					}
 
 					&:before {
 						width: 1.875vw;
@@ -1374,11 +1467,16 @@
 				}
 
 				.animation-wrap {
-					margin-left: 5.16vw;
+					margin-left: 25.16vw;
 					width: 38.33vw;
 					height: 41.41vw;
 					bottom: -3.4375vw;
 					left: 50%;
+					opacity: 0;
+
+					&.go-ani {
+						@include animation(show-senior-official 1s ease-in-out forwards);
+					}
 				}
 
 				.ground-3 {
@@ -1606,19 +1704,48 @@
 }
 
 @include respond(Tablets-Mobiles) {
-	.dog-list .list.is-hover {
-		img {
-			position: relative;
-			@include animation(slideshow 2s steps(11, end) infinite);
+	.dog-list {
+		.list.is-hover {
+			img {
+				position: relative;
+			}
+	
+			.hover-block {
+				display: inline-block;
+			}
+	
+			.hover-hide {
+				display: none;
+			}
 		}
 
-		.hover-block {
-			display: inline-block;
-			height: 1200%;
-		}
+		.owl-item {
+			&:nth-child(2) .is-hover .hover-block {
+				height: 1200%;
+				@include animation(slideshow-12 2s steps(11, end) infinite);
+			}
 
-		.hover-hide {
-			display: none;
+			&:nth-child(3) .is-hover .hover-block {
+				height: 700%;
+				@include animation(slideshow-7 1.17s steps(6, end) infinite);
+			}
+
+			&:nth-child(4), &:nth-child(12) {
+				.is-hover .hover-block {
+					height: 1000%;
+					@include animation(slideshow-10 1.67s steps(9, end) infinite);
+				}
+			}
+
+			&:nth-child(7) .is-hover .hover-block {
+				height: 800%;
+				@include animation(slideshow-8 1.33s steps(7, end) infinite);
+			}
+
+			&:nth-child(9) .is-hover .hover-block {
+				height: 600%;
+				@include animation(slideshow-6 1s steps(5, end) infinite);
+			}
 		}
 	}
 }

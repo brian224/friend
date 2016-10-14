@@ -102,7 +102,6 @@
 
     .text {
         @include display(block);
-        @include border-radius(2vw);
     }
 
     .icon-arrow-right {
@@ -170,6 +169,7 @@
                 margin-bottom : -6.6875vw;
                 width         : 27.6vw;
                 height        : 30.625vw;
+                left          : 2.6vw;
             }
         }
     }
@@ -234,6 +234,7 @@
         .text {
             padding   : 1.5625vw 4.948vw 1.5625vw 3.125vw;
             font-size : 2.08vw;
+            @include border-radius(2vw);
         }
 
         .icon-arrow-right {
@@ -261,14 +262,6 @@
 }
 
 @include respond(Desktops-Tablets) {
-    .join-section {
-        &.is-form {
-            > .svg-icon {
-                left : 2.6vw;
-            }
-        }
-    }
-
     .join-kv {
         top  : 50%;
         left : 45%;
@@ -305,14 +298,15 @@
                 width         : 32.6vw;
                 height        : 34.625vw;
                 margin-bottom : -7vw;
+                left          : -3vw;
             }
         }
     }
 
     .join-kv {
         .svg-icon {
-            width    : 49vw;
-            height   : 32vw;
+            width  : 49vw;
+            height : 32vw;
         }
 
         &:after {
@@ -370,6 +364,7 @@
         .text {
             padding   : 1.5625vw 4.948vw 1.5625vw 3.125vw;
             font-size : 2.86vw;
+            @include border-radius(2vw);
         }
 
         .icon-arrow-right {
@@ -487,6 +482,7 @@
         .text {
             padding   : 4.6875vw 9.375vw 4.6875vw 6.25vw;
             font-size : 5vw;
+            @include border-radius(4.5vw);
         }
 
         .icon-arrow-right {
