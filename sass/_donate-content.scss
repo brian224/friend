@@ -684,6 +684,18 @@ $major-color-2 : #f4c479;
                 text-align       : right;
                 background-color : #c9dd96;
                 @include border-radius(1vw);
+
+                &:after {
+                    content       : "";
+                    position      : relative;
+                    width         : 0;
+                    height        : 0;
+                    margin-left   : 0.52vw;
+                    border-top    : 0.625vw solid transparent;
+                    border-bottom : 0.625vw solid transparent;
+                    border-left   : 1.15vw solid #000;
+                    @include inline-block;
+                }
             }
         }
 
@@ -702,14 +714,14 @@ $major-color-2 : #f4c479;
         }
 
         .icon-qrcode {
-            top        : 50%;
-            right      : 5%;
-            width      : 6.66vw;
-            height     : 6.66vw;
-            margin-top : -3.33vw;
-            position   : absolute;
-            background: image-url('donate/qrcode.jpg') no-repeat center center;
-            background-size: 100% 100%;
+            top             : 50%;
+            right           : 5%;
+            width           : 6.66vw;
+            height          : 6.66vw;
+            margin-top      : -3.33vw;
+            position        : absolute;
+            background      : image-url('donate/qrcode.jpg') no-repeat center center;
+            background-size : 100% 100%;
         }
     }
 }
