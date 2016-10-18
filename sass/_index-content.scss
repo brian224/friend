@@ -585,13 +585,13 @@
 	}
 }
 
-@include keyframes(slideshow-12) {
+@include keyframes(slideshow-5) {
 	0% {
 		top: 0;
 	}
 
 	100% {
-		top: -1100%;
+		top: -400%;
 	}
 }
 
@@ -899,19 +899,19 @@
 					display: none;
 				}
 
-				&:nth-child(2) .hover-block {
-					height: 1200%;
-					@include animation(slideshow-12 2s steps(11, end) infinite);
+				&:nth-child(2) .hover-block, &:nth-child(10) .hover-block {
+					height: 500%;
+					@include animation(slideshow-5 0.83s steps(4, end) infinite);
 				}
 
-				&:nth-child(3) .hover-block {
+				&:nth-child(1) .hover-block, &:nth-child(5) .hover-block, &:nth-child(6) .hover-block, &:nth-child(8) .hover-block, &:nth-child(9) .hover-block {
+					height: 600%;
+					@include animation(slideshow-6 1s steps(5, end) infinite);
+				}
+
+				&:nth-child(3) .hover-block, &:nth-child(11) .hover-block {
 					height: 700%;
 					@include animation(slideshow-7 1.17s steps(6, end) infinite);
-				}
-
-				&:nth-child(4) .hover-block, &:nth-child(12) .hover-block {
-					height: 1000%;
-					@include animation(slideshow-10 1.67s steps(9, end) infinite);
 				}
 
 				&:nth-child(7) .hover-block {
@@ -919,9 +919,9 @@
 					@include animation(slideshow-8 1.33s steps(7, end) infinite);
 				}
 
-				&:nth-child(9) .hover-block {
-					height: 600%;
-					@include animation(slideshow-6 1s steps(5, end) infinite);
+				&:nth-child(4) .hover-block, &:nth-child(12) .hover-block {
+					height: 1000%;
+					@include animation(slideshow-10 1.67s steps(9, end) infinite);
 				}
 			}
 
@@ -1720,14 +1720,18 @@
 		}
 
 		.owl-item {
-			&:nth-child(2) .is-hover .hover-block {
-				height: 1200%;
-				@include animation(slideshow-12 2s steps(11, end) infinite);
+			&:nth-child(2), &:nth-child(10) {
+				.is-hover .hover-block {
+					height: 500%;
+					@include animation(slideshow-5 0.83s steps(4, end) infinite);
+				}
 			}
 
-			&:nth-child(3) .is-hover .hover-block {
-				height: 700%;
-				@include animation(slideshow-7 1.17s steps(6, end) infinite);
+			&:nth-child(3), &:nth-child(11) {
+				.is-hover .hover-block {
+					height: 700%;
+					@include animation(slideshow-7 1.17s steps(6, end) infinite);
+				}
 			}
 
 			&:nth-child(4), &:nth-child(12) {
@@ -1742,15 +1746,21 @@
 				@include animation(slideshow-8 1.33s steps(7, end) infinite);
 			}
 
-			&:nth-child(9) .is-hover .hover-block {
-				height: 600%;
-				@include animation(slideshow-6 1s steps(5, end) infinite);
+			&:nth-child(1), &:nth-child(5), &:nth-child(6), &:nth-child(8), &:nth-child(9) {
+				.is-hover .hover-block {
+					height: 600%;
+					@include animation(slideshow-6 1s steps(5, end) infinite);
+				}
 			}
 		}
 	}
 }
 
 @include respond(Mobiles) {
+	.l-loading.b-dt-hide img {
+		width: 320px;
+	}
+
 	.l-content {
 		padding-top: 50px;
 	}
@@ -2508,6 +2518,10 @@
 @include browsers('IE') {}
 
 @include respond(Iphone5) {
+	.l-loading.b-dt-hide img {
+		width: 280px;
+	}
+
 	.after-cut {
 		.desc {
 			font-size: 13px;

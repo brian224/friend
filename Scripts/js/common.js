@@ -28,6 +28,10 @@
 		projects.FBInit();
 		common.offClick();
 
+		$('.dog-list').preload(function(){
+			$('.l-loading').addClass('is-hide');
+		});
+
 		$(common._menu).on('click', function(){
 			$(this).toggleClass('is-hover');
 		});
@@ -69,16 +73,16 @@
 
 	projects.$w.on('scroll' , function(){
 		if ($('.l-content').hasClass('index')) {
-			if (projects.$b.scrollTop() + projects.$w.height() >= $('.after-cut').offset().top) {
+			if (projects.$hb.scrollTop() + projects.$w.height() >= $('.after-cut').offset().top) {
 				$('.bar-graph').addClass('graph-ani');
 			}
-			if (projects.$b.scrollTop() + projects.$w.height() >= $('.situation-list .list').eq(1).offset().top) {
+			if (projects.$hb.scrollTop() + projects.$w.height() >= $('.situation-list .list').eq(1).offset().top) {
 				$('.situation-list .list').eq(0).find('.animation-wrap').addClass('go-ani');
 			}
-			if (projects.$b.scrollTop() + projects.$w.height() >= $('.situation-list .list').eq(2).offset().top) {
+			if (projects.$hb.scrollTop() + projects.$w.height() >= $('.situation-list .list').eq(2).offset().top) {
 				$('.situation-list .list').eq(1).find('.animation-wrap').addClass('go-ani');
 			}
-			if (projects.$b.scrollTop() + projects.$w.height() >= $('.donate-cut').offset().top) {
+			if (projects.$hb.scrollTop() + projects.$w.height() >= $('.donate-cut').offset().top) {
 				$(common._ani).addClass('weighing-ani');
 			}
 		}

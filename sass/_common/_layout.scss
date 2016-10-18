@@ -7,8 +7,6 @@ body {}
 	z-index: 2;
 }
 
-.l-content {}
-
 .l-footer {
 	background: #3e454f;
 	color: #fff;
@@ -25,7 +23,13 @@ body {}
 	position: fixed;
 	top: 0;
 	left: 0;
+	opacity: 1;
 	z-index: 5;
+	@include transition(ease-in all 0.3s);
+
+	&.is-hide {
+		opacity: 0;
+	}
 
 	img {
 		max-width: 100%;
