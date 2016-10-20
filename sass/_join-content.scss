@@ -83,17 +83,40 @@
         }
     }
 
+    .m-form {
+        &.is-varifycode {
+            .m-form-label {
+                display : block;
+            }
+
+            .m-form-elem {
+                display: -ms-flexbox;
+                @include display(flex);
+
+                > * {
+                    -ms-flex : 0 1 auto;
+                }
+
+                .varifycode {
+                    img {
+                        max-height : 100%;
+                    }
+                }
+            }
+        }
+    }
+
     .m-form-addon {
         vertical-align : bottom;
         color          : #494848;
     }
 
     .svg-icon {
-        background: image-url('join/dog-food.png') 0 0 no-repeat;
-        background-size: 100% auto;
-        top      : 50%;
-        right    : 0;
-        position : absolute;
+        background      : image-url('join/dog-food.png') 0 0 no-repeat;
+        background-size : 100% auto;
+        top             : 50%;
+        right           : 0;
+        position        : absolute;
     }
 }
 
@@ -228,6 +251,10 @@
             width      : 9.8958vw;
             height     : 10.416vw;
         }
+        
+        .varifycode {
+            height : 4.6875vw;
+        }
     }
 
     .join-btn {
@@ -346,7 +373,6 @@
             font-size : 2.86vw;
             height    : 7.8125vw;
             padding   : 1.95vw 2.6vw;
-
         }
 
         .m-form-addon {
@@ -357,6 +383,10 @@
             width      : 14vw;
             height     : 14.5vw;
             margin-top : -7.25vw;
+        }
+        
+        .varifycode {
+            height : 7.8125vw;
         }
     }
 
@@ -475,6 +505,20 @@
             margin-top : -11.5vw;
             width      : 23vw;
             height     : 24vw;
+        }
+
+        .m-form {
+            &.is-varifycode {
+                .m-form-elem {
+                    flex-direction     : column-reverse;
+                    -ms-flex-direction : column-reverse;
+                }
+            }
+        }
+        
+        .varifycode {
+            height        : 12.5vw;
+            margin-bottom : 1.875vw;
         }
     }
 

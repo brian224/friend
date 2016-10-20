@@ -864,7 +864,7 @@
     factory.prototype.FBShare = function() {
         FB.ui({
             method : 'share',
-            href   : 'http://richart-friend.sugarfun.com.tw/',
+            href   : 'http://richart-friend.sugarfun.com.tw/?utm_source=fb',
         } , function(response) {});
     };
 

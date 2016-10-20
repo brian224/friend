@@ -28,9 +28,13 @@
 		projects.FBInit();
 		common.offClick();
 
-		$('.dog-list').preload(function(){
-			$('.l-loading').addClass('is-hide');
-		});
+		if ($('.l-content').hasClass('index')) {
+			$('.dog-list').preload(function(){
+				$('.l-loading').addClass('is-hide').on('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+					$(this).remove();
+				});
+			});
+		}
 
 		$(common._menu).on('click', function(){
 			$(this).toggleClass('is-hover');
@@ -73,16 +77,24 @@
 
 	projects.$w.on('scroll' , function(){
 		if ($('.l-content').hasClass('index')) {
-			if (projects.$hb.scrollTop() + projects.$w.height() >= $('.after-cut').offset().top) {
+			var _scrollTop;
+
+			if (projects._browsers.msie === true) {
+				_scrollTop = projects.$hb.scrollTop();
+			} else {
+				_scrollTop = projects.$b.scrollTop();
+			}
+
+			if (_scrollTop + projects.$w.height() >= $('.after-cut').offset().top) {
 				$('.bar-graph').addClass('graph-ani');
 			}
-			if (projects.$hb.scrollTop() + projects.$w.height() >= $('.situation-list .list').eq(1).offset().top) {
+			if (_scrollTop + projects.$w.height() >= $('.situation-list .list').eq(1).offset().top) {
 				$('.situation-list .list').eq(0).find('.animation-wrap').addClass('go-ani');
 			}
-			if (projects.$hb.scrollTop() + projects.$w.height() >= $('.situation-list .list').eq(2).offset().top) {
+			if (_scrollTop + projects.$w.height() >= $('.situation-list .list').eq(2).offset().top) {
 				$('.situation-list .list').eq(1).find('.animation-wrap').addClass('go-ani');
 			}
-			if (projects.$hb.scrollTop() + projects.$w.height() >= $('.donate-cut').offset().top) {
+			if (_scrollTop + projects.$w.height() >= $('.donate-cut').offset().top) {
 				$(common._ani).addClass('weighing-ani');
 			}
 		}

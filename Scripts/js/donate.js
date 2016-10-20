@@ -5,7 +5,8 @@
 
     function page() {
         this._tabButton = '.jq-tabButton',
-        this._tab       = '.jq-tab';
+        this._tab       = '.jq-tab',
+        this._qrcodeBtn = '.JQ-qrcodeBtn';
     }
 
     jQuery(donate._tabButton).on('click' , function(e){
@@ -18,8 +19,13 @@
         if( !$self.parent().hasClass(hash) ){
             $self.parent().siblings().removeClass(hash);
             $self.parent().addClass(hash);
-            jQuery(donate._tab).removeClass(_regex);
-            jQuery(donate._tab).addClass(tab);
+            jQuery(donate._tab).removeClass(_regex).addClass(tab);
+        }
+    });
+
+    jQuery(donate._qrcodeBtn).on('click' , function(e){
+        if (projects.$w.width() > 1000) {
+            e.preventDefault();
         }
     });
 
