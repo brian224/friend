@@ -17,6 +17,7 @@ body {}
 	background: rgba(255, 255, 255, 0.73);
 	display: flex;
 	align-items: center;
+	flex-direction: column;
 	justify-content: center;
 	width: 100vw;
 	height: 100vh;
@@ -31,8 +32,84 @@ body {}
 		opacity: 0;
 	}
 
-	img {
-		max-width: 100%;
+	.loading-ani {
+		position: relative;
+
+		> * {
+			position: absolute;
+			overflow: hidden;
+		}
+
+		.bg {
+			width: 100%;
+			height: 100%;
+		}
+
+		.heart {
+			@include animation(loading-heart 1.4s linear infinite);
+
+			img {
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+		}
+
+		.hand {
+			@include transform-origin(top, right);
+			@include animation(loading-hand 5.3s linear infinite);
+
+			img {
+				position: absolute;
+				bottom: 0;
+				right: 100%;
+				@include transform(rotate(90deg));
+				@include transform-origin(bottom, right);
+			}
+		}
+
+		.head img {
+			position: absolute;
+			bottom: 0;
+			right: -43.7%;
+		}
+	}
+
+	.percentage {
+		display: block;
+		text-align: center;
+		color: #333;
+		font-weight: bold;
+		letter-spacing: 1px;
+		line-height: 2em;
+	}
+}
+
+@include keyframes(loading-heart) {
+	0%, 28.57%, 100% {
+		@include transform(scale(1));
+	}
+
+	7.14%, 21.43% {
+		@include transform(scale(0.9));
+	}
+
+	14.29% {
+		@include transform(scale(0.8));
+	}
+}
+
+@include keyframes(loading-hand) {
+	0%, 50%, 64%, 80%, 100% {
+		@include transform(rotate(0deg));
+	}
+
+	52%, 60%, 68%, 76% {
+		@include transform(rotate(-10deg));
+	}
+
+	56%, 72% {
+		@include transform(rotate(-20deg));
 	}
 }
 
@@ -48,6 +125,42 @@ body {}
 		font-size: 14px;
 		line-height: 5.625vw;
 	}
+
+	.l-loading {
+		.loading-ani {
+			width: 52.86vw;
+			height: 18.54vw;
+	
+			> * img {
+				width: 65.89vw;
+			}
+	
+			.heart {
+				width: 13.02vw;
+				height: 12.76vw;
+				top: 0.365vw;
+				left: 22.66vw;
+			}
+	
+			.hand {
+				width: 4.58vw;
+				height: 2.66vw;
+				top: 3.646vw;
+				left: 33.7vw;
+			}
+	
+			.head {
+				width: 9.06vw;
+				height: 5.73vw;
+				top: -2.08vw;
+				left: 32.55vw;
+			}
+		}
+
+		.percentage {
+			font-size: 72px;
+		}
+	}
 }
 
 @include respond(Tablets) {}
@@ -61,6 +174,48 @@ body {}
 
 	.l-footer {
 		padding: 15px 0;
+	}
+
+	.l-loading {
+		.loading-ani {
+			width: 93.75vw;
+			height: 32.88vw;
+	
+			> * img {
+				width: 116.84vw;
+			}
+	
+			.bg img {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+	
+			.heart {
+				width: 23.09vw;
+				height: 22.63vw;
+				top: 0.647vw;
+				left: 40.19vw;
+			}
+	
+			.hand {
+				width: 8.12vw;
+				height: 4.72vw;
+				top: 6.47vw;
+				left: 59.77vw;
+			}
+	
+			.head {
+				width: 16.07vw;
+				height: 10.16vw;
+				top: -3.69vw;
+				left: 57.73vw;
+			}
+		}
+
+		.percentage {
+			font-size: 20vw;
+		}
 	}
 }
 

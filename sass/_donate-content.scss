@@ -29,23 +29,32 @@ $major-color-2 : #f4c479;
         &:before {
             content         : "";
             bottom          : 0;
-            right           : 18%;
             position        : absolute;
             background      : image-url('donate/human-pal.png') no-repeat center center;
             background-size : 100% 100%;
         }
 
         .donate-notice {
-            color : #704f60;
+            text-align : left;
+        }
 
-            > .donate-notice-btn {
-                color            : $color-white;
-                background-color : #704f60;
+        .donate-notice-btn {
+            margin-left      : 0;
+            color            : $color-white;
+            background-color : #704f60;
 
-                &:after {
-                     border-color: transparent transparent transparent $color-white;
-                }
+            &:after {
+                 border-color: transparent transparent transparent $color-white;
             }
+
+            &:hover {
+                background-color : #482738;
+            }
+        }
+
+        .donate-name {
+            color    : #704f60;
+            position : absolute;
         }
     }
 }
@@ -148,7 +157,7 @@ $major-color-2 : #f4c479;
 .donate-tab-btn {
     top      : 0;
     position : absolute;
-    z-index  : 5;
+    z-index  : 2;
     overflow : visible;
     @include transition(top 1s);
 
@@ -371,7 +380,6 @@ $major-color-2 : #f4c479;
         width        : 0;
         height       : 0;
         top          : 50%;
-        right        : 7%;
         position     : absolute;
         border-style : solid;
     }
@@ -447,19 +455,20 @@ $major-color-2 : #f4c479;
 
         &.is-term {
             padding-top    : 2.6vw;
-            padding-bottom : 4.16vw;
+            padding-bottom : 5vw;
             font-size      : 0.83vw;
 
             &:before {
                 width  : 26.3vw;
                 height : 13.02vw;
+                right  : 20%;
             }
 
-            > *:not(.donate-notice) {
+            > *:not(.donate-name) {
                 width : 62.24vw;
             }
 
-            > *:not(:first-child):not(.donate-notice) {
+            > *:not(:first-child):not(.donate-name) {
                 margin-top : 2.34vw;
             }
 
@@ -467,11 +476,14 @@ $major-color-2 : #f4c479;
                 font-size : 1.25vw;
             }
 
-            .donate-notice {
-                bottom   : 10%;
-                right    : 15%;
-                position : absolute;
-                z-index  : 2;
+            .donate-name {
+                right     : 19%;
+                bottom    : 14%;
+                font-size : 1.25vw;
+            }
+
+            .donate-notice-btn:not(:first-child) {
+                margin-left : 0.52vw;
             }
         }
     }
@@ -508,11 +520,11 @@ $major-color-2 : #f4c479;
 
     .donate-tab-bd {
         &.is-01 {
-            height : 62.3vw;
+            height : 63.25vw;
         }
 
         &.is-02 {
-            height : 49.5vw;
+            height : 47.75vw;
         }
     }
 
@@ -678,7 +690,8 @@ $major-color-2 : #f4c479;
         @include border-radius(0.52vw);
 
         &:after {
-            margin-top: -0.45875vw;
+            right        : 0.625vw;
+            margin-top   : -0.45875vw;
             border-width : 0.45875vw 0 0.45875vw 0.78125vw;
         }
     }
@@ -769,7 +782,7 @@ $major-color-2 : #f4c479;
 
     .donate-section {
         &.is-term {
-            > *:not(.donate-notice) {
+            > *:not(.donate-name) {
                 margin-left  : auto;
                 margin-right : auto;
                 position     : relative;
@@ -848,19 +861,20 @@ $major-color-2 : #f4c479;
 
         &.is-term {
             padding-top    : 3.9vw;
-            padding-bottom : 12vw;
+            padding-bottom : 8vw;
             font-size      : 1.95vw;
 
             &:before {
                 width  : 37.76vw;
                 height : 18.75vw;
+                right  :  10%;
             }
 
-            > *:not(.donate-notice) {
+            > *:not(.donate-name) {
                 width : 85vw;
             }
 
-            > *:not(:first-child):not(.donate-notice) {
+            > *:not(:first-child):not(.donate-name) {
                 margin-top : 3.9vw;
             }
 
@@ -868,10 +882,14 @@ $major-color-2 : #f4c479;
                 font-size : 2.343vw;
             }
 
-            .donate-notice {
-                position : absolute;
-                bottom   : 6%;
-                right    : 10%;
+            .donate-name {
+                right     : 8%;
+                bottom    : 8%;
+                font-size : 1.822vw;
+            }
+
+            .donate-notice-btn:not(:first-child) {
+                margin-left : 1.3vw;
             }
         }
     }
@@ -908,11 +926,11 @@ $major-color-2 : #f4c479;
 
     .donate-tab-bd {
         &.is-01 {
-            height : 77.08vw;
+            height : 81.51vw;
         }
 
         &.is-02 {
-            height : 65.885vw;
+            height : 62.89vw;
         }
     }
 
@@ -1074,6 +1092,7 @@ $major-color-2 : #f4c479;
         @include border-radius(0.78125vw);
 
         &:after {
+            right : 1.1718vw;
             margin-top: -0.4vw;
             border-width : 0.4vw 0 0.4vw 0.75vw;
         }
@@ -1151,15 +1170,16 @@ $major-color-2 : #f4c479;
         }
 
         &.is-term {
-            padding   : 6.4vw 4.6vw 50vw 4.6vw;
+            padding   : 6.4vw 4.6vw 46vw 4.6vw;
             font-size : 3.75vw;
 
             &:before {
                 width  : 80vw;
                 height : 39.6875vw;
+                left   : 6%;
             }
 
-            > *:not(:first-child):not(.donate-notice) {
+            > *:not(:first-child):not(.donate-name) {
                 margin-top : 6.4vw;
             }
 
@@ -1167,10 +1187,14 @@ $major-color-2 : #f4c479;
                 font-size : 5vw;
             }
 
-            .donate-notice {
-                position : absolute;
-                bottom   : 5%;
-                right    : 10%;
+            .donate-name {
+                right     : 10%;
+                bottom    : 6%;
+                font-size : 3.75vw;
+            }
+
+            .donate-notice-btn:not(:first-child) {
+                margin-left : 1.2vw;
             }
         }
     }
@@ -1207,11 +1231,11 @@ $major-color-2 : #f4c479;
 
     .donate-tab-bd {
         &.is-01 {
-            height : 403vw;
+            height : 406.5625vw;
         }
 
         &.is-02 {
-            height : 165.625vw;
+            height : 145.3125vw;
         }
     }
 
@@ -1373,6 +1397,7 @@ $major-color-2 : #f4c479;
         @include border-radius(5px);
 
         &:after {
+            right        : 2.415vw;
             margin-top   : -1.25vw;
             border-width : 1.25vw 0 1.25vw 1.875vw;
         }

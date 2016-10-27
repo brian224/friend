@@ -1,56 +1,96 @@
-if ( document.getElementById('GAScript').dataset ? document.getElementById('GAScript').dataset.id : document.getElementById('GAScript').getAttribute('data-id') ) {
-    (function(i , s , o , g , r , a , m){
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function(){(
-            i[r].q = i[r].q || []
-        ).push(arguments)},
+if ( document.getElementById('gaScript') ) {
+    var _gaId = document.getElementById('gaScript').dataset ? document.getElementById('gaScript').dataset.id : document.getElementById('gaScript').getAttribute('data-id');
 
-        i[r].l = 1*new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a , m)
-    })(window , document , 'script' , '//www.google-analytics.com/analytics.js' , 'ga');
+    if ( _gaId ) {
+        var SFGa = new gaFn();
 
-    ga('create', document.getElementById('GAScript').dataset ? document.getElementById('GAScript').dataset.id : document.getElementById('GAScript').getAttribute('data-id'), 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-
-    function GAPush(Cat , Action , Label , HitCallback) {
-        if ( document.getElementById('GAScript').dataset ? document.getElementById('GAScript').dataset.id : document.getElementById('GAScript').getAttribute('data-id') ) {
-            ga('send' , 'event' , Cat , Action , Label , HitCallback);
+        function gaFn() {
+            this._cat   = null;
+            this._event = null;
+            this._label = null;
         }
-    };
 
-    function GAHitBack(Element) {
-        var $URLs = Element.attr('href') ? Element.attr('href') : '';
+        ( function (i , s , o , g , r , a , m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function(){(
+                i[r].q = i[r].q || []
+            ).push(arguments)},
 
-        if ( Element.attr('target') === '_parent' ) {
-            window.parent.location = $URLs;
-        } else {
-            window.location = $URLs;
+            i[r].l = 1*new Date();
+            a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a , m)
+        })(window , document , 'script' , '//www.google-analytics.com/analytics.js' , 'ga');
+
+        ga('create', _gaId , 'auto');
+        ga('require', 'displayfeatures');
+        ga('send', 'pageview');
+
+        gaFn.prototype.push = function(cat , event , label , hitCallback) {
+            var _hitCallback = typeof(hitCallback) === 'function' ? {'hitCallback' : hitCallback} : null;
+            ga('send' , 'event' , cat , event , label , _hitCallback);
+        }
+
+        gaFn.prototype.hitBack = function(element) {
+            var _href = element.href ? element.href : '';
+
+            if ( _href ) {
+                if ( element.target === '_parent' ) {
+                    window.parent.location = _href;
+                } else {
+                    window.location = _href;
+                }
+            }
+        }
+
+        gaFn.prototype.handleClick = function(event) {
+            var _path = [],
+                _elm,
+                _entry;
+            event        = event;
+            event.target = event.target || event.srcElement;
+            
+            for ( _elm = event.target ; _elm ; _elm = _elm.parentNode ) {
+                if ( _entry === 'html' ) {
+                    break;
+                }
+
+                _path.push(_elm);
+            }
+
+            var _regexName = /ga_click_trace/;
+            var _element   = null;
+
+            for ( var i = 0 ; i < _path.length ; i ++ ) {
+                if ( _regexName.test(_path[i].className) ) {
+                    _element = _path[i];
+
+                    SFGa._cat   = _element.getAttribute('ga_cat');
+                    SFGa._event = _element.getAttribute('ga_event');
+                    SFGa._label = _element.getAttribute('ga_label');
+
+                    if ( _element.target !== '_blank' && _element.href && _element.href !== '#' ) {
+                        if ( /(\s|^)ga_click_preventDefault(\s|$)/.test( _element.className ) ) {
+                            SFGa.push(SFGa._cat , SFGa._event , SFGa._label);
+                        } else {
+                            event.preventDefault();
+                            SFGa.push(SFGa._cat , SFGa._event , SFGa._label , SFGa.hitBack(_element));
+                        }
+                    } else {
+                        SFGa.push(SFGa._cat , SFGa._event , SFGa._label);
+                    }
+
+                    return false;
+                }
+            }
+        }
+
+        if ( document.addEventListener ) {
+            document.addEventListener('click' , SFGa.handleClick , true);
+        } else if ( document.attachEvent ) {
+            document.attachEvent('onclick' , SFGa.handleClick);
         }
     }
-
-    (function (window, document, jQuery, undefined) {
-        jQuery(document).on('click' , '.ga_click_trace' , function(e){
-            var $set = {
-                Cat    : jQuery(this).attr('ga_cat'),
-                Action : jQuery(this).attr('ga_event'),
-                Label  : jQuery(this).attr('ga_label')
-            };
-
-            if ( jQuery(this).attr('target') !== '_blank' && jQuery(this).attr('href') && jQuery(this).attr('href') != '#') {
-                if ( jQuery(this).hasClass('ga_click_preventDefault') ) {
-                    GAPush($set.Cat , $set.Action , $set.Label);
-                } else {
-                    e.preventDefault();
-                    GAPush($set.Cat , $set.Action , $set.Label , {'hitCallback' : GAHitBack(jQuery(this))});
-                }
-            } else {
-                GAPush($set.Cat , $set.Action , $set.Label);
-            }
-        });
-    }(window, document, jQuery));
 }

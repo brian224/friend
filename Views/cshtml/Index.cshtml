@@ -4,16 +4,23 @@
 @section header{ 
 	<link rel="stylesheet" href="@Url.Content("~/Content/css/index.css")?CSS=20160420_01">
 }
-	<div class="l-loading b-m-hide"><img src="@Url.Content("~/Content/img/Shared/loading.gif")" alt="Loading..."></div>
-	<div class="l-loading b-dt-hide"><img src="@Url.Content("~/Content/img/Shared/loading2.gif")" alt="Loading..."></div>
+	<div class="l-loading">
+		<div class="loading-ani">
+			<div class="bg"><img src="@Url.Content("~/Content/img/Shared/loading.png")" alt=""></div>
+			<div class="heart"><img src="@Url.Content("~/Content/img/Shared/loading.png")" alt=""></div>
+			<div class="hand"><img src="@Url.Content("~/Content/img/Shared/loading.png")" alt=""></div>
+			<div class="head"><img src="@Url.Content("~/Content/img/Shared/loading.png")" alt=""></div>
+		</div>
+		<span class="percentage">0%</span>
+	</div>
 	<div class="l-content index">
 		<div class="main-content">
 			<div class="section-cut main-cut">
 				<div class="dog-list jQ-owl-xs" data-items="1" data-ctrl="false" data-dots="true" data-mouse-drag="true" data-touch-drag="true">
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/01-ani.png")" alt="阿布 / 8歲 木柵拾獲">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/01.png")" alt="阿布 / 8歲 木柵拾獲">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/01-ani.png")" alt="阿布 / 8歲 木柵拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/01.png")" alt="阿布 / 8歲 木柵拾獲">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">阿布</b>/ 8歲</span>
 								<span class="situation">木柵拾獲</span>
@@ -22,8 +29,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/02-ani.png")" alt="皮皮 / 1歲半 永和仁愛公園拾獲">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/02.png")" alt="皮皮 / 1歲半 永和仁愛公園拾獲">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/02-ani.png")" alt="皮皮 / 1歲半 永和仁愛公園拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/02.png")" alt="皮皮 / 1歲半 永和仁愛公園拾獲">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">皮皮</b>/ 1歲半</span>
 								<span class="situation">永和仁愛公園拾獲</span>
@@ -32,8 +39,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/03-ani.png")" alt="趴趴 / 1歲多 鶯歌拾獲">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/03.png")" alt="趴趴 / 1歲多 鶯歌拾獲">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/03-ani.png")" alt="趴趴 / 1歲多 鶯歌拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/03.png")" alt="趴趴 / 1歲多 鶯歌拾獲">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">趴趴</b>/ 1歲多</span>
 								<span class="situation">鶯歌拾獲</span>
@@ -42,8 +49,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/04-ani.png")" alt="捲黑 / 4歲 板橋拾獲">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/04.png")" alt="捲黑 / 4歲 板橋拾獲">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/04-ani.png")" alt="捲黑 / 4歲 板橋拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/04.png")" alt="捲黑 / 4歲 板橋拾獲">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">捲黑</b>/ 4歲</span>
 								<span class="situation">板橋拾獲</span>
@@ -52,8 +59,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/09-ani.png")" alt="貝貝 / 6歲 棄養懷孕母狗生">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/09.png")" alt="貝貝 / 6歲 棄養懷孕母狗生">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/09-ani.png")" alt="貝貝 / 6歲 棄養懷孕母狗生">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/09.png")" alt="貝貝 / 6歲 棄養懷孕母狗生">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">貝貝</b>/ 6歲</span>
 								<span class="situation">棄養懷孕母狗生</span>
@@ -62,8 +69,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/05-ani.png")" alt="大黑 / 5歲 板橋拾獲">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/05.png")" alt="大黑 / 5歲 板橋拾獲">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/05-ani.png")" alt="大黑 / 5歲 板橋拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/05.png")" alt="大黑 / 5歲 板橋拾獲">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">大黑</b>/ 5歲</span>
 								<span class="situation">板橋拾獲</span>
@@ -72,8 +79,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/07-ani.png")" alt="甜甜 / 6歲 棄養懷孕母狗生">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/07.png")" alt="甜甜 / 6歲 棄養懷孕母狗生">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/07-ani.png")" alt="甜甜 / 6歲 棄養懷孕母狗生">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/07.png")" alt="甜甜 / 6歲 棄養懷孕母狗生">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">甜甜</b>/ 6歲</span>
 								<span class="situation">棄養懷孕母狗生</span>
@@ -82,8 +89,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/08-ani.png")" alt="米妮 / 10歲以上 車禍救援">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/08.png")" alt="米妮 / 10歲以上 車禍救援">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/08-ani.png")" alt="米妮 / 10歲以上 車禍救援">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/08.png")" alt="米妮 / 10歲以上 車禍救援">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">米妮</b>/ 10歲以上</span>
 								<span class="situation">車禍救援</span>
@@ -92,8 +99,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/06-ani.png")" alt="牛妹妹 / 約8歲 台北動檢所搶救">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/06.png")" alt="牛妹妹 / 約8歲 台北動檢所搶救">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/06-ani.png")" alt="牛妹妹 / 約8歲 台北動檢所搶救">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/06.png")" alt="牛妹妹 / 約8歲 台北動檢所搶救">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">牛妹妹</b>/ 約8歲</span>
 								<span class="situation">台北動檢所搶救</span>
@@ -102,8 +109,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/10-ani.png")" alt="弟弟 / 3歲 汐止拾獲">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/10.png")" alt="弟弟 / 3歲 汐止拾獲">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/10-ani.png")" alt="弟弟 / 3歲 汐止拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/10.png")" alt="弟弟 / 3歲 汐止拾獲">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">弟弟</b>/ 3歲</span>
 								<span class="situation">汐止拾獲</span>
@@ -112,8 +119,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/11-ani.png")" alt="可樂 / 12歲 景美拾獲">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/11.png")" alt="可樂 / 12歲 景美拾獲">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/11-ani.png")" alt="可樂 / 12歲 景美拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/11.png")" alt="可樂 / 12歲 景美拾獲">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">可樂</b>/ 12歲</span>
 								<span class="situation">景美拾獲</span>
@@ -122,8 +129,8 @@
 					</div>
 					<div class="list jq-m-slideshow">
 						<figure class="img-wrap">
-							<img class="hover-block" src="@Url.Content("~/Content/img/index/dogs/12-ani.png")" alt="吐司 / 4歲 新北市動檢所搶救">
-							<img class="hover-hide" src="@Url.Content("~/Content/img/index/dogs/12.png")" alt="吐司 / 4歲 新北市動檢所搶救">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/12-ani.png")" alt="吐司 / 4歲 新北市動檢所搶救">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/12.png")" alt="吐司 / 4歲 新北市動檢所搶救">
 							<em class="desc hover-hide">
 								<span class="info"><b class="name">吐司</b>/ 4歲</span>
 								<span class="situation">新北市動檢所搶救</span>
@@ -138,7 +145,7 @@
 					<span class="saying">「一個國家的文明程度，就看它怎麼對待動物。」</span>
 					<span class="celebrity">印度聖雄 甘地</span>
 				</em>
-				<button class="btn-play">
+				<button class="btn-play ga_click_trace" ga_cat="movie" ga_event="click" ga_label="play">
 					<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#play"/></svg>
 					<em class="text">PLAY</em>
 				</button>
@@ -222,7 +229,7 @@
 			</div>
 			<div class="section-cut after-cut">
 				<h3 class="section-title">救援了，然後呢？</h3>
-				<em class="desc">從收容所救回來的浪犬們，<br class="b-dt-hide">雖然免於安樂死的恐懼，<br class="b-m-hide">但接下來的生存問題，<br class="b-dt-hide">仍然是龐大的壓力，<br class="b-m-hide">即便如此，<br class="b-dt-hide">協力園仍然盡心盡力地照顧著這些浪犬們．．．</em>
+				<em class="desc">從收容所救回來的浪犬們，<br class="b-dt-hide">雖然免於安樂死的恐懼，<br class="b-m-hide">但接下來的生存問題，<br class="b-dt-hide">仍然是龐大的壓力，<br class="b-m-hide">即便如此，<br class="b-dt-hide">新北市流浪動物保護協會與協力園<br>仍然盡心盡力地照顧著這些浪犬們．．．</em>
 				<ul class="situation-list">
 					<li class="list">
 						<p class="story"><em class="emphasize">協力園提供的環境</em>總坪數4000坪<br>總共規劃了12區<br>共有4座化糞池<br>園所內有1000以上的狗<br>狗狗們的每天放風時間4小時以上<br>狗狗放風的活動範圍平面面積有1000坪</p>
@@ -260,10 +267,11 @@
 				<button class="btn-slide-down jq-slide-down"></button>
 			</div>
 			<div class="section-cut donate-cut">
-				<h3 class="section-title">協力園愛心共養<br class="b-m-block">流浪狗中途之家</h3>
-				<p class="desc">座落在新店山區間的協力園，當初憑藉著一股愛心而收留了幾隻流浪狗狗，然而這一去就無法回頭，負責人楊香女士超過三十年的照顧浪犬經驗，讓園所內的一千隻狗狗透過共養機制，放心飽餐、並且可以在廣大腹地中自在的奔馳。</p>
+				<h3 class="section-title">現在就伸出手 一起幫助浪浪</h3>
+				<p class="desc">本活動將贊助新北市流浪動物保護協會購買狗狗飼料費用，希望讓園內浪犬可以放心飽餐、繼續在廣大腹地中自在的奔馳。</p>
+				<p class="desc">協會所購買飼料將全數送給協力園愛心共養流浪狗中途之家，Richart邀請您一同響應。</p>
 				<p class="desc b-align-right"><br>協會負責人 楊香</p>
-				<a href="donate" class="b-link btn-rainbow"><em class="text">了解如何幫助浪浪</em><i class="icon-arrow-right"></i></a>
+				<a href="donate" class="b-link btn-rainbow ga_click_trace" ga_cat="btn" ga_event="click" ga_label="help"><em class="text">了解如何幫助浪浪</em><i class="icon-arrow-right"></i></a>
 			</div>
 		</div>
 	</div>
