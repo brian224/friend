@@ -10,6 +10,8 @@
 		this._ani       = '.jq-weight-ani';
 		this._weighing  = '.jq-weight';
 		this._slideshow = '.jq-m-slideshow';
+		this._video     = '.jq-video';
+		this._jqPlay    = '.jq-play';
 		this._speed     = 400;
 		this._images    = [];
 		this._number    = 0;
@@ -79,6 +81,11 @@
 			}, common._speed);
 		});
 
+		$(common._jqPlay).on('click', function(){
+			$(this).parent().addClass('play-video');
+			projects._media._player.playVideo();
+		});
+
 		$(common._ani + ' .svg-icon').each(function(){
 			$(this).on('webkitAnimationEnd oAnimationend oAnimationEnd msAnimationEnd animationend', function(){
 				var $this = $(this);
@@ -99,8 +106,14 @@
 	});
 
 	projects.$d.ready(function(){
+		projects.mediaGet();
+
 		if (projects.device() === 'Mobile') {
 			projects.owlCarousel('.jQ-owl-xs');
+		}
+
+		if ($(common._video).data('media').match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i) !== null) {
+			projects.mediaAppend($(common._video).data('media'));
 		}
 
 		if ($('.l-content').hasClass('index')) {
@@ -111,7 +124,7 @@
 			$.preload(common._images , 1 , function(){
 				for (var i = 0; i < this.length; i++) {
 					common._number += ((100 / common._images.length));
-					$('.percentage').text((common._number | 0) + '%');
+					$('.l-loading .percentage').text((common._number | 0) + '%');
 				}
 
 				for (var i = 0; i < common._images.length; i++) {

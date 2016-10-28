@@ -51,6 +51,16 @@
 	letter-spacing: 1px;
 	text-align: center;
 
+	&.play-video {
+		.jq-video {
+			display: block;
+		}
+
+		.emphasize, .btn-play {
+			display: none;
+		}
+	}
+
 	&:before {
 		content: '';
 		background: #000;
@@ -67,6 +77,15 @@
 	> * {
 		position: relative;
 		z-index: 1;
+	}
+
+	.jq-video {
+		display: none;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 
 	.emphasize {
@@ -1932,6 +1951,8 @@
 	}
 
 	.video-cut {
+		height: 56.2vw;
+		
 		.emphasize .saying {
 			font-size: 4vw;
 		}
