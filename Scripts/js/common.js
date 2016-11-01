@@ -94,9 +94,9 @@
 			});
 		});
 
-		$(common._slideshow).on('click', function(){
+		$(common._slideshow).parent().on('click', function(){
 			if (projects.device() !== 'PC') {
-				$(this).toggleClass('is-hover');
+				$(this).find(common._slideshow).toggleClass('is-hover');
 			}
 		});
 

@@ -923,12 +923,12 @@
 					@include animation(slideshow-5 0.83s steps(4, end) infinite);
 				}
 
-				&:nth-child(1) .hover-block, &:nth-child(5) .hover-block, &:nth-child(6) .hover-block, &:nth-child(8) .hover-block, &:nth-child(9) .hover-block {
+				&:nth-child(1) .hover-block, &:nth-child(3) .hover-block, &:nth-child(5) .hover-block, &:nth-child(6) .hover-block, &:nth-child(8) .hover-block, &:nth-child(9) .hover-block {
 					height: 600%;
 					@include animation(slideshow-6 1s steps(5, end) infinite);
 				}
 
-				&:nth-child(3) .hover-block, &:nth-child(11) .hover-block {
+				&:nth-child(11) .hover-block {
 					height: 700%;
 					@include animation(slideshow-7 1.17s steps(6, end) infinite);
 				}
@@ -1746,11 +1746,9 @@
 				}
 			}
 
-			&:nth-child(3), &:nth-child(11) {
-				.is-hover .hover-block {
-					height: 700%;
-					@include animation(slideshow-7 1.17s steps(6, end) infinite);
-				}
+			&:nth-child(11) .is-hover .hover-block {
+				height: 700%;
+				@include animation(slideshow-7 1.17s steps(6, end) infinite);
 			}
 
 			&:nth-child(4), &:nth-child(12) {
@@ -1765,7 +1763,7 @@
 				@include animation(slideshow-8 1.33s steps(7, end) infinite);
 			}
 
-			&:nth-child(1), &:nth-child(5), &:nth-child(6), &:nth-child(8), &:nth-child(9) {
+			&:nth-child(1), &:nth-child(3), &:nth-child(5), &:nth-child(6), &:nth-child(8), &:nth-child(9) {
 				.is-hover .hover-block {
 					height: 600%;
 					@include animation(slideshow-6 1s steps(5, end) infinite);
