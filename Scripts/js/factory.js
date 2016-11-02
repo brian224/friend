@@ -584,7 +584,7 @@
                         },
                         onStateChange : function(event) {
                             if ( event.data === 0 && ! _loop ) {
-                                projects.mediaRemove();
+                                // projects.mediaRemove();
 
                                 if ( stateChange ) {
                                     if ( typeof(stateChange) === 'function' ) {

@@ -57,6 +57,11 @@
 		document.addEventListener('touchmove', touchMoveHandler, false);
 	}
 
+	// 影片播完後復原
+	page.prototype.Recovery = function() {
+		$(common._jqPlay).parent().removeClass('play-video');
+	}
+
 	projects.$w.load(function(){
 		projects.FBInit();
 		common.offClick();
@@ -113,7 +118,7 @@
 		}
 
 		if ($(common._video).data('media').match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i) !== null) {
-			projects.mediaAppend($(common._video).data('media'));
+			projects.mediaAppend($(common._video).data('media'), false, common.Recovery);
 		}
 
 		if ($('.l-content').hasClass('index')) {
