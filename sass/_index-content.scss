@@ -587,6 +587,13 @@
 	.desc {
 		font-weight: bold;
 		letter-spacing: 1px;
+
+		&.manager {
+			width: auto;
+			position: absolute;
+			right: 1vw;
+			bottom: 0;
+		}
 	}
 
 	.btn-rainbow {
@@ -883,6 +890,45 @@
 @include respond(Desktops) {
 	.dog-list .list {
 		cursor: pointer;
+
+		&:hover {
+			img {
+				position: relative;
+			}
+
+			.hover-block {
+				display: inline-block;
+			}
+
+			.hover-hide {
+				display: none;
+			}
+
+			&:nth-child(2) .hover-block, &:nth-child(10) .hover-block {
+				height: 500%;
+				@include animation(slideshow-5 0.83s steps(4, end) infinite);
+			}
+
+			&:nth-child(1) .hover-block, &:nth-child(3) .hover-block, &:nth-child(5) .hover-block, &:nth-child(6) .hover-block, &:nth-child(8) .hover-block, &:nth-child(9) .hover-block {
+				height: 600%;
+				@include animation(slideshow-6 1s steps(5, end) infinite);
+			}
+
+			&:nth-child(11) .hover-block {
+				height: 700%;
+				@include animation(slideshow-7 1.17s steps(6, end) infinite);
+			}
+
+			&:nth-child(7) .hover-block {
+				height: 800%;
+				@include animation(slideshow-8 1.33s steps(7, end) infinite);
+			}
+
+			&:nth-child(4) .hover-block, &:nth-child(12) .hover-block {
+				height: 1000%;
+				@include animation(slideshow-10 1.67s steps(9, end) infinite);
+			}
+		}
 	}
 }
 
@@ -904,45 +950,6 @@
 			width: 25%;
 			height: 33.33%;
 			overflow: hidden;
-
-			&:hover, &.is-hover {
-				img {
-					position: relative;
-				}
-
-				.hover-block {
-					display: inline-block;
-				}
-
-				.hover-hide {
-					display: none;
-				}
-
-				&:nth-child(2) .hover-block, &:nth-child(10) .hover-block {
-					height: 500%;
-					@include animation(slideshow-5 0.83s steps(4, end) infinite);
-				}
-
-				&:nth-child(1) .hover-block, &:nth-child(3) .hover-block, &:nth-child(5) .hover-block, &:nth-child(6) .hover-block, &:nth-child(8) .hover-block, &:nth-child(9) .hover-block {
-					height: 600%;
-					@include animation(slideshow-6 1s steps(5, end) infinite);
-				}
-
-				&:nth-child(11) .hover-block {
-					height: 700%;
-					@include animation(slideshow-7 1.17s steps(6, end) infinite);
-				}
-
-				&:nth-child(7) .hover-block {
-					height: 800%;
-					@include animation(slideshow-8 1.33s steps(7, end) infinite);
-				}
-
-				&:nth-child(4) .hover-block, &:nth-child(12) .hover-block {
-					height: 1000%;
-					@include animation(slideshow-10 1.67s steps(9, end) infinite);
-				}
-			}
 
 			&:nth-child(1) .desc {
 				top: 14%;
@@ -1689,6 +1696,45 @@
 		width: 33.33%;
 		height: 25%;
 
+		&.is-hover {
+			img {
+				position: relative;
+			}
+
+			.hover-block {
+				display: inline-block;
+			}
+
+			.hover-hide {
+				display: none;
+			}
+
+			&:nth-child(2) .hover-block, &:nth-child(10) .hover-block {
+				height: 500%;
+				@include animation(slideshow-5 0.83s steps(4, end) infinite);
+			}
+
+			&:nth-child(1) .hover-block, &:nth-child(3) .hover-block, &:nth-child(5) .hover-block, &:nth-child(6) .hover-block, &:nth-child(8) .hover-block, &:nth-child(9) .hover-block {
+				height: 600%;
+				@include animation(slideshow-6 1s steps(5, end) infinite);
+			}
+
+			&:nth-child(11) .hover-block {
+				height: 700%;
+				@include animation(slideshow-7 1.17s steps(6, end) infinite);
+			}
+
+			&:nth-child(7) .hover-block {
+				height: 800%;
+				@include animation(slideshow-8 1.33s steps(7, end) infinite);
+			}
+
+			&:nth-child(4) .hover-block, &:nth-child(12) .hover-block {
+				height: 1000%;
+				@include animation(slideshow-10 1.67s steps(9, end) infinite);
+			}
+		}
+
 		&:nth-child(2) .desc {
 			left: 4%;
 		}
@@ -1723,6 +1769,11 @@
 }
 
 @include respond(Tablets-Mobiles) {
+	.main-cut {
+		width: 100vw;
+		overflow: hidden;
+	}
+
 	.dog-list {
 		.list.is-hover {
 			img {
@@ -1769,6 +1820,61 @@
 					@include animation(slideshow-6 1s steps(5, end) infinite);
 				}
 			}
+		}
+	}
+
+	.hint-wrap {
+		background: rgba(255, 255, 255, 0.72);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 200vw;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		@include transition(ease-in all 0.3s);
+
+		&.step-2 {
+			left: -100vw;
+		}
+
+		&.step-complete {
+			left: -100vw;
+			opacity: 0;
+		}
+
+		.btn-hint {
+			display: block;
+			width: 100vw;
+			height: 100%;
+			outline: none;
+			color: #363e46;
+			font-size: 16px;
+			font-weight: bold;
+			letter-spacing: 1px;
+			line-height: 1.5em;
+			@include transition(ease-in all 0.3s);
+
+			&.slide-hint .svg-icon {
+				width: 62px;
+				height: 55px;
+			}
+
+			&.tap-hint .svg-icon {
+				width: 43px;
+				height: 63px;
+			}
+
+			.text {
+				margin-top: 10px;
+				display: block;
+			}
+		}
+
+		.svg-icon {
+			fill: #363e46;
 		}
 	}
 }
@@ -2508,6 +2614,10 @@
 
 		.desc {
 			font-size: 15px;
+
+			&.manager {
+				text-shadow: 1px 1px 0 #fff5ee, -1px 1px 0 #fff5ee, 1px -1px 0 #fff5ee, -1px -1px 0 #fff5ee;
+			}
 		}
 
 		.btn-rainbow {

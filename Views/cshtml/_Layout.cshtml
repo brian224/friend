@@ -26,9 +26,11 @@
 	<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '993310334093143');fbq('track', "PageView");</script>
 	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=993310334093143&ev=PageView&noscript=1"/></noscript>
 	<!-- End Facebook Pixel Code -->
+	<script type="application/javascript">(function(w,d,t,r,u){w[u]=w[u]||[];w[u].push({'projectId':'10000','properties':{'pixelId':'10000148'}});var s=d.createElement(t);s.src=r;s.async=true;s.onload=s.onreadystatechange=function(){var y,rs=this.readyState,c=w[u];if(rs&&rs!="complete"&&rs!="loaded"){return}try{y=YAHOO.ywa.I13N.fireBeacon;w[u]=[];w[u].push=function(p){y([p])};y(c)}catch(e){}};var scr=d.getElementsByTagName(t)[0],par=scr.parentNode;par.insertBefore(s,scr)})(window,document,"script","https://s.yimg.com/wi/ytc.js","dotq");</script>
 	@RenderSection("header",false)
 </head>
 <body>
+<!-- <body style="display: none;"> -->
 	<header class="l-header b-clearfix">
 		<h1 class="logo">
 			<a href="http://richart.tw/" class="b-link b-hide-text richart ga_click_trace" ga_cat="Nav" ga_event="click" ga_label="richart_logo">
@@ -73,11 +75,11 @@
 		<p class="copyright">©台新國際商業銀行 <br class="b-dt-hide">Copyright Taishin International Bank. <span class="b-m-block">All Rights Reserved.</span></p>
 	</footer>
 </body>
-<script type="text/javascript" src="@Url.Content("~/Scripts/plugin/jquery/jquery.min.js")?JS=20160216_01"></script>
-<script type="text/javascript" defer src="@Url.Content("~/Scripts/plugin/owl.carousel/owl.carousel.min.js")?JS=20160216_01"></script>
-<script type="text/javascript" defer src="@Url.Content("~/Scripts/plugin/preload/jquery.preload.min.js")?JS=20160216_01"></script>
-<script type="text/javascript" defer src="@Url.Content("~/Scripts/js/ga.js")?JS=20160216_01" id="gaScript" data-id="UA-72250086-18"></script>
-<script type="text/javascript" defer src="@Url.Content("~/Scripts/js/factory.min.js")?JS=20160216_01"></script>
-<script type="text/javascript" defer src="@Url.Content("~/Scripts/js/common.min.js")?JS=20160216_01"></script>
+<script src="@Url.Content("~/Scripts/plugin/jquery/jquery.min.js")?JS=20160216_01"></script>
+<script defer src="@Url.Content("~/Scripts/plugin/owl.carousel/owl.carousel.min.js")?JS=20160216_01"></script>
+<script defer src="@Url.Content("~/Scripts/plugin/preload/jquery.preload.min.js")?JS=20160216_01"></script>
+<script defer src="@Url.Content("~/Scripts/js/ga.js")?JS=20160216_01" id="gaScript" data-id="UA-72250086-18"></script>
+<script defer src="@Url.Content("~/Scripts/js/factory.min.js")?JS=20160216_01"></script>
+<script defer src="@Url.Content("~/Scripts/js/common.min.js")?JS=20160216_01"></script>
 @RenderSection("scripts",false)
 </html>

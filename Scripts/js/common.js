@@ -4,6 +4,7 @@
 	var common = new page();
 
 	function page() {
+		this._dateTime  = new Date();
 		this._menu      = '.jq-menu';
 		this._share     = '.jq-share';
 		this._slideDown = '.jq-slide-down';
@@ -12,11 +13,21 @@
 		this._slideshow = '.jq-m-slideshow';
 		this._video     = '.jq-video';
 		this._jqPlay    = '.jq-play';
+		this._jqHint    = '.jq-hint';
+		this._hintWrap  = '.hint-wrap';
 		this._speed     = 400;
 		this._images    = [];
 		this._number    = 0;
 	}
 
+	// 設定公開時間
+	page.prototype.Timer = function() {
+		if (!(common._dateTime.getFullYear() >= '2016' && common._dateTime.getMonth() >= '10' && common._dateTime.getDate() >= '5')) {
+			window.location.href = 'http://richart.tw/';
+		} else {
+			projects.$b.attr('style', '');
+		}
+	}
 	// 點擊目標區域以外的地方可關閉目標區域
 	page.prototype.offClick = function() {
 		projects.$d.off('click').on('click' , function(e){
@@ -99,22 +110,40 @@
 			});
 		});
 
-		$(common._slideshow).parent().on('click', function(){
-			if (projects.device() !== 'PC') {
-				$(this).find(common._slideshow).toggleClass('is-hover');
+		$(common._slideshow).on('click', function(){
+			if (projects.device() === 'Mobile') {
+				$(this).parent().siblings().find(common._slideshow).removeClass('is-hover');
+				$(this).toggleClass('is-hover');
+			} else if (projects.device() === 'Tablet') {
+				$(this).siblings().removeClass('is-hover');
+				$(this).toggleClass('is-hover');
 			}
 		});
 
-		projects.owlEvents('changed.owl.carousel' , function(){
+		$(common._jqHint).on('click touchmove', function(){
+			if ($(common._hintWrap).hasClass('step-1')) {
+				$(common._hintWrap).addClass('step-2 holdon').removeClass('step-1').on('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+					$(this).removeClass('holdon');
+				});
+			} else if ($(common._hintWrap).hasClass('step-2') && !$(common._hintWrap).hasClass('holdon')) {
+				$(common._hintWrap).addClass('step-complete').removeClass('step-2').on('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+					$(common._hintWrap).remove();
+					localStorage.setItem('hint', 'done');
+				});
+			}
+		});
+
+		$('.jQ-owl-xs').on('changed.owl.carousel' , function(){
 			$(common._slideshow).removeClass('is-hover');
 		});
 	});
 
 	projects.$d.ready(function(){
+		// common.Timer();
 		projects.mediaGet();
 
-		if (projects.device() === 'Mobile') {
-			projects.owlCarousel('.jQ-owl-xs');
+		if (localStorage.getItem('hint') === 'done') {
+			$(common._hintWrap).remove();
 		}
 
 		if ($(common._video).data('media').match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i) !== null) {
@@ -140,6 +169,10 @@
 					$('.l-loading').addClass('is-hide').on('webkitTransitionEnd oTransitionend oTransitionEnd msTransitionEnd transitionend', function(){
 						$(this).remove();
 					});
+
+					if (projects.device() === 'Mobile') {
+						projects.owlCarousel('.jQ-owl-xs');
+					}
 				}
 			});
 		}
