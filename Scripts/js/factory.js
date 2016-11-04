@@ -585,6 +585,7 @@
                         onStateChange : function(event) {
                             if ( event.data === 0 && ! _loop ) {
                                 // projects.mediaRemove();
+                                projects._media._player.stopVideo();
 
                                 if ( stateChange ) {
                                     if ( typeof(stateChange) === 'function' ) {
