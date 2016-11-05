@@ -28,6 +28,7 @@
 			projects.$b.attr('style', '');
 		}
 	}
+	
 	// 點擊目標區域以外的地方可關閉目標區域
 	page.prototype.offClick = function() {
 		projects.$d.off('click').on('click' , function(e){
@@ -139,7 +140,7 @@
 	});
 
 	projects.$d.ready(function(){
-		// common.Timer();
+		common.Timer();
 		projects.mediaGet();
 
 		if (localStorage.getItem('hint') === 'done') {
