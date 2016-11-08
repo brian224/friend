@@ -594,6 +594,8 @@
                                         eval(stateChange);
                                     }
                                 }
+                            } else if (event.data === 2) {
+                                $('.video-cut').removeClass('play-video').addClass('replay-mode');
                             }
                         }
                     }

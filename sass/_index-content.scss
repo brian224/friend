@@ -56,7 +56,17 @@
 			display: block;
 		}
 
-		.emphasize, .btn-play {
+		.emphasize, > .btn-play {
+			display: none;
+		}
+	}
+
+	&.replay-mode {
+		.replay-wrap {
+			display: flex;
+		}
+
+		.emphasize, > .btn-play {
 			display: none;
 		}
 	}
@@ -70,7 +80,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		opacity: 0.5;
+		opacity: 0.3;
 		z-index: 0;
 	}
 
@@ -90,35 +100,6 @@
 
 	.emphasize {
 		color: #fff;
-
-		.saying {
-			display: block;
-		}
-
-		.celebrity {
-			padding: 0 0.5em;
-			display: inline-block;
-			position: relative;
-			font-size: 0.7143em;
-
-			&:before, &:after {
-				content: '';
-				background: #fff;
-				display: block;
-				width: 1em;
-				height: 1px;
-				position: absolute;
-				top: 50%;
-			}
-
-			&:before {
-				left: 100%;
-			}
-
-			&:after {
-				right: 100%;
-			}
-		}
 	}
 
 	.btn-play {
@@ -130,9 +111,67 @@
 			display: block;
 			fill: #fff;
 		}
+	}
+
+	.replay-wrap {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
 
 		.text {
+			margin-top: 0.625vw;
 			display: block;
+			color: #fff;
+			letter-spacing: 1px;
+			line-height: 1.5em;
+		}
+
+		.share-wrap {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			left: 0;
+			right: 0;
+		}
+
+		.b-link {
+			position: relative;
+			border-radius: 8px;
+			@include box-sizing(border-box);
+
+			.svg-icon {
+				position: absolute;
+				top: 50%;
+				left: 0;
+			}
+
+			.text {
+				margin-top: 0;
+			}
+		}
+
+		.facebook {
+			background: #3b578a;
+
+			.svg-icon {
+				fill: #3b578a;
+			}
+		}
+
+		.line {
+			background: #34c723;
+
+			.svg-icon {
+				color: #34c723;
+				fill: #fff;
+			}
 		}
 	}
 }
@@ -930,6 +969,23 @@
 			}
 		}
 	}
+
+	.video-cut .replay-wrap .b-link {
+		padding-left: 2.8vw;
+		width: 15.52vw;
+		height: 3.33vw;
+
+		.svg-icon {
+			margin-top: -1.4vw;
+			width: 2.8vw;
+			height: 2.8vw;
+		}
+
+		.text {
+			font-size: 1.35vw;
+			line-height: 3.33vw;
+		}
+	}
 }
 
 @include respond(Desktops-Tablets) {
@@ -1048,17 +1104,26 @@
 		}
 
 		.btn-play {
-			margin-top: 1.04vw;
-			color: #fff;
+			margin-bottom: 1.04vw;
 
 			.svg-icon {
 				width: 7.97vw;
 				height: 7.92vw;
 			}
+		}
 
+		.replay-wrap {
 			.text {
-				margin-top: 1.25em;
-				font-size: 1.04vw;
+				font-size: 1.67vw;
+			}
+
+			.btn-replay .svg-icon {
+				width: 6.04vw;
+				height: 6.04vw;
+			}
+
+			.share-wrap {
+				bottom: 5vw;
 			}
 		}
 	}
@@ -1823,6 +1888,28 @@
 		}
 	}
 
+	.video-cut .replay-wrap .b-link {
+		margin: 0 10px;
+		padding-left: 36px;
+		width: 160px;
+		height: 44px;
+
+		.text {
+			font-size: 14px;
+			line-height: 44px;
+		}
+
+		.svg-icon {
+			margin-top: -18px;
+			width: 36px;
+			height: 36px;
+		}
+
+		&.line .svg-icon {
+			left: 0.7vw;
+		}
+	}
+
 	.hint-wrap {
 		background: rgba(255, 255, 255, 0.72);
 		display: flex;
@@ -2057,20 +2144,31 @@
 	.video-cut {
 		height: 56.2vw;
 		
-		.emphasize .saying {
+		.emphasize {
 			font-size: 4vw;
 		}
 
 		.btn-play {
-			margin-top: 10px;
+			margin-bottom: 10px;
 
 			.svg-icon {
-				width: 44px;
-				height: 44px;
+				width: 72px;
+				height: 72px;
+			}
+		}
+
+		.replay-wrap {
+			.text {
+				font-size: 12px;
 			}
 
-			.text {
-				margin-top: 10px;
+			.share-wrap {
+				align-items: flex-start;
+				bottom: 3vw;
+			}
+
+			.b-link.line .svg-icon {
+				left: 10px;
 			}
 		}
 	}
@@ -2649,6 +2747,24 @@
 @include respond(Iphone5) {
 	.l-loading.b-dt-hide img {
 		width: 280px;
+	}
+
+	.video-cut .replay-wrap .b-link {
+		padding-left: 30px;
+		width: 128px;
+		height: 36px;
+
+		.svg-icon {
+			margin-top: -15px;
+			width: 30px;
+			height: 30px;
+		}
+
+		.text {
+			font-size: 12px;
+			letter-spacing: 0;
+			line-height: 36px;
+		}
 	}
 
 	.after-cut {

@@ -12,21 +12,12 @@
 		this._weighing  = '.jq-weight';
 		this._slideshow = '.jq-m-slideshow';
 		this._video     = '.jq-video';
-		this._jqPlay    = '.jq-play';
+		this._jqPlay    = '.jq-play, .jq-replay';
 		this._jqHint    = '.jq-hint';
 		this._hintWrap  = '.hint-wrap';
 		this._speed     = 400;
 		this._images    = [];
 		this._number    = 0;
-	}
-
-	// 設定公開時間
-	page.prototype.Timer = function() {
-		if (!(common._dateTime.getFullYear() >= '2016' && common._dateTime.getMonth() >= '10' && common._dateTime.getDate() >= '5')) {
-			window.location.href = 'http://richart.tw/';
-		} else {
-			projects.$b.attr('style', '');
-		}
 	}
 	
 	// 點擊目標區域以外的地方可關閉目標區域
@@ -71,7 +62,7 @@
 
 	// 影片播完後復原
 	page.prototype.Recovery = function() {
-		$(common._jqPlay).parent().removeClass('play-video');
+		$(common._jqPlay).parents('.video-cut').removeClass('play-video').addClass('replay-mode');
 	}
 
 	projects.$w.load(function(){
@@ -99,7 +90,7 @@
 		});
 
 		$(common._jqPlay).on('click', function(){
-			$(this).parent().addClass('play-video');
+			$(this).parents('.video-cut').addClass('play-video').removeClass('replay-mode');
 			projects._media._player.playVideo();
 		});
 
@@ -140,7 +131,6 @@
 	});
 
 	projects.$d.ready(function(){
-		common.Timer();
 		projects.mediaGet();
 
 		if (localStorage.getItem('hint') === 'done') {
