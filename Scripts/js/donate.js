@@ -19,7 +19,7 @@
         if( !$self.parent().hasClass(hash) ){
             $self.parent().siblings().removeClass(hash);
             $self.parent().addClass(hash);
-            jQuery(donate._tab).removeClass(_regex).addClass(tab);
+            jQuery(donate._tab + ', .donate-tab-hd').removeClass(_regex).addClass(tab);
         }
     });
 

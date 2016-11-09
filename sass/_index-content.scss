@@ -40,7 +40,7 @@
 }
 
 .video-cut {
-	background: image-url('index/bg-video.jpg') 0 0 no-repeat;
+	background: image-url('index/bg-video.jpg') center 0 no-repeat;
 	background-size: auto 100%;
 	display: flex;
 	align-items: center;
@@ -103,6 +103,7 @@
 	}
 
 	.btn-play {
+		opacity: 0.95;
 		color: #fff;
 		font-weight: bold;
 		letter-spacing: 1px;
@@ -110,6 +111,10 @@
 		.svg-icon {
 			display: block;
 			fill: #fff;
+		}
+
+		.text {
+			display: block;
 		}
 	}
 
@@ -1104,11 +1109,16 @@
 		}
 
 		.btn-play {
-			margin-bottom: 1.04vw;
+			margin-top: 1.04vw;
 
 			.svg-icon {
 				width: 7.97vw;
 				height: 7.92vw;
+			}
+
+			.text {
+				margin-top: 0.625vw;
+				font-size: 1.67vw;
 			}
 		}
 
@@ -2142,22 +2152,30 @@
 	}
 
 	.video-cut {
-		height: 56.2vw;
+		height: 75vw;
 		
 		.emphasize {
 			font-size: 4vw;
 		}
 
 		.btn-play {
-			margin-bottom: 10px;
+			margin-top: 10px;
 
 			.svg-icon {
-				width: 72px;
-				height: 72px;
+				width: 64px;
+				height: 64px;
+			}
+
+			.text {
+				margin-top: 10px;
 			}
 		}
 
 		.replay-wrap {
+			.btn-play {
+				margin: 0;
+			}
+
 			.text {
 				font-size: 12px;
 			}
@@ -2167,8 +2185,27 @@
 				bottom: 3vw;
 			}
 
-			.b-link.line .svg-icon {
-				left: 10px;
+			.b-link {
+				padding-left: 30px;
+				width: 128px;
+				height: 36px;
+				@include transform(scale(0.9));
+
+				.svg-icon {
+					margin-top: -15px;
+					width: 30px;
+					height: 30px;
+				}
+
+				.text {
+					font-size: 12px;
+					letter-spacing: 0;
+					line-height: 36px;
+				}
+
+				&.line .svg-icon {
+					left: 10px;
+				}
 			}
 		}
 	}
@@ -2747,24 +2784,6 @@
 @include respond(Iphone5) {
 	.l-loading.b-dt-hide img {
 		width: 280px;
-	}
-
-	.video-cut .replay-wrap .b-link {
-		padding-left: 30px;
-		width: 128px;
-		height: 36px;
-
-		.svg-icon {
-			margin-top: -15px;
-			width: 30px;
-			height: 30px;
-		}
-
-		.text {
-			font-size: 12px;
-			letter-spacing: 0;
-			line-height: 36px;
-		}
 	}
 
 	.after-cut {
