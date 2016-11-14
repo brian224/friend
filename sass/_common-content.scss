@@ -207,6 +207,7 @@
 	.facebook, .line {
 		.svg-icon {
 			fill: #696969;
+			color: #fff;
 		}
 	}
 
@@ -371,21 +372,21 @@
 
 	.m-nav-menu {
 		background: rgba(62, 69, 79, 0.95);
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		justify-content: center;
 		width: 75vw;
 		position: fixed;
 		top: 0;
 		bottom: 0;
 		right: 0;
 		box-shadow: -25vw 0 0 rgba(0, 0, 0, 0.5);
-		font-size: 18px;
-		line-height: 40px;
 		@include transition(ease-in all 0.3s);
 		@include transform(rotateY(90deg));
 		@include transform-origin(right);
+
+		.menu-wrap {
+			width: 100%;
+			font-size: 18px;
+			line-height: 40px;
+		}
 
 		.list {
 			padding-left: 50px;

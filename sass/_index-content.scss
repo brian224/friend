@@ -2155,11 +2155,19 @@
 		height: 75vw;
 		
 		.emphasize {
+			margin-top: -54px;
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right: 0;
 			font-size: 4vw;
 		}
 
 		.btn-play {
-			margin-top: 10px;
+			margin: -24px 0 0 -32px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
 
 			.svg-icon {
 				width: 64px;

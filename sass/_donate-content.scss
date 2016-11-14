@@ -74,6 +74,8 @@ $major-color-2 : #f4c479;
 
     .svg-icon {
         position : absolute;
+        @include opacity(.4);
+        @include transition(opacity 1s);
 
         &.is-human {
             top    : 0;
@@ -97,8 +99,6 @@ $major-color-2 : #f4c479;
         height   : 100%;
         position : relative;
         @include inline-block;
-        @include opacity(.4);
-        @include transition(opacity 1s);
 
         &:nth-child(1) {
             .donate-tab-btn {
@@ -112,8 +112,16 @@ $major-color-2 : #f4c479;
             }
         }
 
+        .donate-tab-btn {
+            &:before , &:after, .text {
+                @include transition(ease-in all 0.3s);
+            }
+        }
+
         &.is-active {
-            @include opacity(1);
+            .svg-icon {
+                @include opacity(1);
+            }
 
             .donate-tab-btn .text:before {
                 opacity: 0;
@@ -122,6 +130,7 @@ $major-color-2 : #f4c479;
             &:nth-child(1) {
                 .donate-tab-btn {
                     top : 33%;
+
                     &:before , &:after {
                         background-color: $major-color-1;
                     }
@@ -154,7 +163,7 @@ $major-color-2 : #f4c479;
         height   : 0;
         position : absolute;
         top      : 0;
-        z-index  : 2;
+        z-index  : 3;
         @include transition(ease-in all 0.3s);
    }
 }
@@ -516,6 +525,16 @@ $major-color-2 : #f4c479;
         width : 62.24vw;
         height : 11vw;
 
+        &:before {
+            margin-left : -8.6vw;
+            left        : 50%;
+        }
+
+        &:after {
+            margin-right : -8.6vw;
+            right        : 50%;
+        }
+
         .svg-icon {
             &.is-human {
                 width  : 11.7vw;
@@ -809,16 +828,6 @@ $major-color-2 : #f4c479;
             border-left  : 0.89vw solid transparent;
             @include animation(suspension 1.5s ease-in-out infinite);
         }
-
-        &:before {
-            margin-left : -8.6vw;
-            left        : 50%;
-        }
-
-        &:after {
-            margin-right : -8.6vw;
-            right        : 50%;
-        }
     }
 
     .donate-section {
@@ -938,6 +947,16 @@ $major-color-2 : #f4c479;
     .donate-tab-hd {
         width  : 85vw;
         height : 14.5vw;
+
+        &:before {
+            margin-left : -10.8vw;
+            left        : 50%;
+        }
+
+        &:after {
+            margin-right : -10.8vw;
+            right        : 50%;
+        }
 
         .svg-icon {
             &.is-human {

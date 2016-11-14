@@ -32,7 +32,7 @@
 	<script>(function(){if (typeof window.APPIER_RETARGET == 'undefined') {(function(w, d, s, m) {var f = d.getElementsByTagName('script')[0],j = d.createElement('script'),ns = 'APPIER_RETARGET';w._appierSendQueue = w._appierSendQueue || [];w['appierRetargetJson'] = { id: s, site: m};j.async = true;j.src = '//jscdn.appier.net/aa.js?id='+m;f.parentNode.insertBefore(j, f);!w[ns] && (w[ns] = {});(!w[ns].send) && (w[ns].send = function(j){w._appierSendQueue.push(j);});})(window, document,'JiOf','sugarfun.com.tw');}})();</script>
 	@RenderSection("header",false)
 </head>
-<body style="display: none;">
+<body>
 	<header class="l-header b-clearfix">
 		<h1 class="logo">
 			<a href="http://richart.tw/" class="b-link b-hide-text richart ga_click_trace" ga_cat="Nav" ga_event="click" ga_label="richart_logo">
@@ -44,32 +44,34 @@
 			<button class="btn-menu b-dt-hide jq-menu">
 				<em class="text"></em>
 			</button>
-			<ul class="m-nav-menu">
-				<li class="list">
-					<a href="donate" class="b-link foot-print ga_click_trace" ga_cat="Nav" ga_event="click" ga_label="help">
-						<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20160420_01#foot-print"/></svg>
-						<em class="text">我要幫助浪浪</em>
-					</a>
-				</li>
-				<li class="list">
-					<a href="/" class="b-link index ga_click_trace" ga_cat="Nav" ga_event="click" ga_label="index">
-						<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20160420_01#index"/></svg>
-						<em class="text b-dt-hide">首頁</em>
-					</a>
-				</li>
-				<li class="list">
-					<button class="b-link facebook jq-share ga_click_trace" ga_cat="Nav" ga_event="click" ga_label="facbook">
-						<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20160420_01#facebook"/></svg>
-						<em class="text b-dt-hide">Facebook 分享</em>
-					</button>
-				</li>
-				<li class="list b-md-hide">
-					<a href="http://line.naver.jp/R/msg/text/?今天的你或許吃飽了，但是他，還在等著。伸手幫助浪浪：http://richart-friend.sugarfun.com.tw/?utm_source=line" class="b-link line ga_click_trace" target="_blank" ga_cat="Nav" ga_event="click" ga_label="line">
-						<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20160420_01#line"/></svg>
-						<em class="text b-dt-hide">Line 分享</em>
-					</a>
-				</li>
-			</ul>
+			<div class="m-nav-menu b-middle">
+				<ul class="menu-wrap">
+					<li class="list">
+						<a href="donate" class="b-link foot-print ga_click_trace" ga_cat="Nav" ga_event="click" ga_label="help">
+							<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20160420_01#foot-print"/></svg>
+							<em class="text">我要幫助浪浪</em>
+						</a>
+					</li>
+					<li class="list">
+						<a href="/" class="b-link index ga_click_trace" ga_cat="Nav" ga_event="click" ga_label="index">
+							<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20160420_01#index"/></svg>
+							<em class="text b-dt-hide">首頁</em>
+						</a>
+					</li>
+					<li class="list">
+						<button class="b-link facebook jq-share ga_click_trace" ga_cat="Nav" ga_event="click" ga_label="facbook">
+							<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20160420_01#facebook"/></svg>
+							<em class="text b-dt-hide">Facebook 分享</em>
+						</button>
+					</li>
+					<li class="list b-md-hide">
+						<a href="http://line.naver.jp/R/msg/text/?今天的你或許吃飽了，但是他，還在等著。伸手幫助浪浪：http://richart-friend.sugarfun.com.tw/?utm_source=line" class="b-link line ga_click_trace" target="_blank" ga_cat="Nav" ga_event="click" ga_label="line">
+							<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20160420_01#line"/></svg>
+							<em class="text b-dt-hide">Line 分享</em>
+						</a>
+					</li>
+				</ul>
+			</use>
 		</nav>
 	</header>
 	@RenderBody()
