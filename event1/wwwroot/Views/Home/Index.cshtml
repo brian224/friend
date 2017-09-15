@@ -1,0 +1,354 @@
+﻿@{
+	Layout="~/Views/Shared/_Layout.cshtml";
+}
+@section header{ 
+	<link rel="stylesheet" href="@Url.Content("~/Content/css/index.css")?CSS=20161004_01">
+}
+	<div class="l-loading">
+		<div class="loading-ani">
+			<div class="bg"><img src="@Url.Content("~/Content/img/Shared/loading.png")?img=20160511_01" alt=""></div>
+			<div class="heart"><img src="@Url.Content("~/Content/img/Shared/loading.png")?img=20160511_01" alt=""></div>
+			<div class="hand"><img src="@Url.Content("~/Content/img/Shared/loading.png")?img=20160511_01" alt=""></div>
+			<div class="head"><img src="@Url.Content("~/Content/img/Shared/loading.png")?img=20160511_01" alt=""></div>
+		</div>
+		<span class="percentage">0%</span>
+	</div>
+	<div class="l-content index">
+		<div class="main-content">
+			<div class="section-cut main-cut">
+				<div class="dog-list jQ-owl-xs" data-items="1" data-ctrl="false" data-dots="true" data-mouse-drag="true" data-touch-drag="true">
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/01-ani.png")?img=20160511_01" alt="阿布 / 8歲 木柵拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/01.png")?img=20160511_01" alt="阿布 / 8歲 木柵拾獲">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">阿布</b>/ 8歲</span>
+								<span class="situation">木柵拾獲</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/02-ani.png")?img=20160511_01" alt="皮皮 / 1歲半 永和仁愛公園拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/02.png")?img=20160511_01" alt="皮皮 / 1歲半 永和仁愛公園拾獲">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">皮皮</b>/ 1歲半</span>
+								<span class="situation">永和仁愛公園拾獲</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/03-ani.png")?img=20160511_01" alt="趴趴 / 1歲多 鶯歌拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/03.png")?img=20160511_01" alt="趴趴 / 1歲多 鶯歌拾獲">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">趴趴</b>/ 1歲多</span>
+								<span class="situation">鶯歌拾獲</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/04-ani.png")?img=20160511_01" alt="捲黑 / 4歲 板橋拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/04.png")?img=20160511_01" alt="捲黑 / 4歲 板橋拾獲">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">捲黑</b>/ 4歲</span>
+								<span class="situation">板橋拾獲</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/09-ani.png")?img=20160511_01" alt="貝貝 / 6歲 棄養懷孕母狗生">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/09.png")?img=20160511_01" alt="貝貝 / 6歲 棄養懷孕母狗生">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">貝貝</b>/ 6歲</span>
+								<span class="situation">棄養懷孕母狗生</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/05-ani.png")?img=20160511_01" alt="大黑 / 5歲 板橋拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/05.png")?img=20160511_01" alt="大黑 / 5歲 板橋拾獲">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">大黑</b>/ 5歲</span>
+								<span class="situation">板橋拾獲</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/07-ani.png")?img=20160511_01" alt="甜甜 / 6歲 棄養懷孕母狗生">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/07.png")?img=20160511_01" alt="甜甜 / 6歲 棄養懷孕母狗生">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">甜甜</b>/ 6歲</span>
+								<span class="situation">棄養懷孕母狗生</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/08-ani.png")?img=20160511_01" alt="米妮 / 10歲以上 車禍救援">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/08.png")?img=20160511_01" alt="米妮 / 10歲以上 車禍救援">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">米妮</b>/ 10歲以上</span>
+								<span class="situation">車禍救援</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/06-ani.png")?img=20160511_01" alt="牛妹妹 / 約8歲 台北動檢所搶救">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/06.png")?img=20160511_01" alt="牛妹妹 / 約8歲 台北動檢所搶救">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">牛妹妹</b>/ 約8歲</span>
+								<span class="situation">台北動檢所搶救</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/10-ani.png")?img=20160511_01" alt="弟弟 / 3歲 汐止拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/10.png")?img=20160511_01" alt="弟弟 / 3歲 汐止拾獲">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">弟弟</b>/ 3歲</span>
+								<span class="situation">汐止拾獲</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/11-ani.png")?img=20160511_01" alt="可樂 / 12歲 景美拾獲">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/11.png")?img=20160511_01" alt="可樂 / 12歲 景美拾獲">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">可樂</b>/ 12歲</span>
+								<span class="situation">景美拾獲</span>
+							</em>
+						</figure>
+					</div>
+					<div class="list jq-m-slideshow">
+						<figure class="img-wrap">
+							<img class="hover-block" data-src="@Url.Content("~/Content/img/index/dogs/12-ani.png")?img=20160511_01" alt="吐司 / 4歲 新北市動檢所搶救">
+							<img class="hover-hide" data-src="@Url.Content("~/Content/img/index/dogs/12.png")?img=20160511_01" alt="吐司 / 4歲 新北市動檢所搶救">
+							<em class="desc hover-hide">
+								<span class="info"><b class="name">吐司</b>/ 4歲</span>
+								<span class="situation">新北市動檢所搶救</span>
+							</em>
+						</figure>
+					</div>
+				</div>
+				<button class="btn-slide-down b-m-hide jq-slide-down"></button>
+				<div class="hint-wrap b-md-hide step-1">
+					<button class="btn-hint slide-hint jq-hint">
+						<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#finger-slide"/></svg>
+						<em class="text">左右滑動看更多</em>
+					</button>
+					<button class="btn-hint tap-hint jq-hint">
+						<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#finger-tap"/></svg>
+						<em class="text">點擊看動態</em>
+					</button>
+				</div>
+			</div>
+			<div class="section-cut video-cut">
+				<div class="jq-video" data-media="https://www.youtube.com/watch?v=cRIfctJYbE4&autoplay=0&loop=0" data-fullscreen="false" data-inner="true"></div>
+				<em class="emphasize">點擊看完整版浪浪的故事</em>
+				<button class="btn-play jq-play ga_click_trace" ga_cat="movie" ga_event="click" ga_label="play">
+					<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#play"/></svg>
+					<em class="text">PLAY</em>
+				</button>
+				<div class="replay-wrap">
+					<button class="btn-play jq-play ga_click_trace" ga_cat="movie" ga_event="click" ga_label="play">
+						<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#play"/></svg>
+						<em class="text">PLAY</em>
+					</button>
+					<div class="share-wrap">
+						<button class="b-link facebook jq-share ga_click_trace" ga_cat="movie" ga_event="click" ga_label="facbook">
+							<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#facebook"/></svg>
+							<em class="text">Facebook 分享</em>
+						</button>
+						<a href="http://line.naver.jp/R/msg/text/?因人為棄養或舉報，許多流浪動物進了收容所面臨生死交關。而從收容所救回來的他們，雖然免於安樂死的恐懼，但是，救援了，然後呢？http://richart-friend.sugarfun.com.tw/?utm_source=line" class="b-link line b-md-hide ga_click_trace" target="_blank" ga_cat="movie" ga_event="click" ga_label="line">
+							<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#line"/></svg>
+							<em class="text">Line 分享</em>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="section-cut encounter-cut">
+				<h3 class="section-title">你知道嗎？</h3>
+				<em class="desc">流浪動物被抓進收容所之後，<br class="b-dt-hide">若沒有被即時搶救或是認養，<br>則會面臨生死關頭．．．</em>
+				<svg class="svg-icon encounter-linear"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#encounter"/></svg>
+				<ul class="encounter-list">
+					<li class="list">
+						<div class="what-happened"><span class="b-m-block">台灣每年近</span><strong class="strong b-dt-block">111,000</strong><span class="b-dt-block b-align-right">隻狗狗</span><b class="bold b-block b-align-right">在街頭生活</b></div>
+						<svg class="svg-icon curve"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#encounter-2"/></svg>
+						<svg class="svg-icon abandon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#abandon"/></svg>
+						<svg class="svg-icon tear-drop"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#tear-drop"/></svg>
+					</li>
+					<li class="list">
+						<div class="what-happened"><span class="b-block">在2015年有</span><strong class="strong">79,000</strong>隻狗狗<b class="bold b-block b-align-right">被抓進收容所</b></div>
+						<svg class="svg-icon curve"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#encounter-2"/></svg>
+						<svg class="svg-icon shelter"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#shelter"/></svg>
+						<svg class="svg-icon web"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#web"/></svg>
+					</li>
+					<li class="list">
+						<div class="what-happened"><span class="b-block"><b class="b-m-block">2016年，</b>短短的春天裡就有</span><strong class="strong">2,000</strong>隻流浪狗<b class="bold b-block b-align-right">遭安樂死</b></div>
+						<svg class="svg-icon curve"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#encounter-2"/></svg>
+						<svg class="svg-icon euthanasia"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#euthanasia"/></svg>
+						<svg class="svg-icon soul"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#soul"/></svg>
+					</li>
+					<li class="list">
+						<div class="what-happened"><strong class="strong">台灣各縣市2016年春天</strong>安樂死流浪動物數量圖</div>
+						<svg class="svg-icon curve"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#encounter-3"/></svg>
+						<div class="map">
+							<ul class="kill-list">
+								<li class="count">基隆市98隻</li>
+								<li class="count">宜蘭縣143隻</li>
+								<li class="count">南投縣419隻</li>
+								<li class="count">屏東縣421隻</li>
+								<li class="count">澎湖縣67隻</li>
+								<li class="count">嘉義縣65隻</li>
+								<li class="count">彰化縣446隻</li>
+								<li class="count">台中市85隻</li>
+								<li class="count">新竹市30隻</li>
+								<li class="count">金門縣79隻</li>
+								<li class="count">桃園市52隻</li>
+							</ul>
+							<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#taiwan-map"/></svg>
+						</div>
+					</li>
+					<li class="list">
+						<em class="text">近年來觀念宣導，<br class="b-dt-hide">加上台灣各縣市民間機構的積極救援，<br class="b-dt-hide">讓安樂死率逐年下降中.....</em>
+						<div class="what-happened"><strong class="strong">歷年全國收容所</strong>平均安樂死率變化圖</div>
+						<ol class="bar-graph">
+							<li class="year-data">
+								<div class="bar-wrap">
+									<span class="percentage">62%</span>
+									<span class="year">2013</span>
+								</div>
+							</li>
+							<li class="year-data">
+								<div class="bar-wrap">
+									<span class="percentage">48%</span>
+									<span class="year">2014</span>
+								</div>
+							</li>
+							<li class="year-data">
+								<div class="bar-wrap">
+									<span class="percentage">30%</span>
+									<span class="year">2015</span>
+								</div>
+							</li>
+							<li class="year-data">
+								<div class="bar-wrap">
+									<span class="percentage">21%</span>
+									<span class="year">2016 Q1</span>
+								</div>
+							</li>
+						</ol>
+					</li>
+				</ul>
+				<span class="source">資料來源：農委會</span>
+				<button class="btn-slide-down jq-slide-down"></button>
+			</div>
+			<div class="section-cut after-cut">
+				<h3 class="section-title">救援了，然後呢？</h3>
+				<em class="desc">從收容所救回來的浪犬們，<br class="b-dt-hide">雖然免於安樂死的恐懼，<br class="b-m-hide">但接下來的生存問題，<br class="b-dt-hide">仍然是龐大的壓力，<br class="b-m-hide">即便如此，<br class="b-dt-hide">座落在新店山區的協力園愛心共養流浪狗中途之家<br>仍長期與新北市流浪動物保護協會合作，<br class="b-dt-hide">照顧救援後無法被送養的犬貓。</em>
+				<ul class="situation-list">
+					<li class="list">
+						<p class="story"><em class="emphasize">協力園提供的環境</em>總坪數4000坪<br>總共規劃了12區<br>共有4座化糞池<br>園所內最高有1000隻以上的狗<br>狗狗們的每天放風時間4小時以上<br>狗狗放風的活動範圍平面面積有1000坪</p>
+						<svg class="svg-icon encounter-linear"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#encounter"/></svg>
+						<div class="animation-wrap">
+							<svg class="svg-icon ground-2"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#ground-2"/></svg>
+							<svg class="svg-icon ball"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#ball"/></svg>
+							<svg class="svg-icon play-ball"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#play-ball"/></svg>
+						</div>
+					</li>
+					<li class="list">
+						<p class="story"><em class="emphasize">無微不至的照顧</em>1位70歲高齡的負責人<br>每天平均勞動8小時<br>10位高齡工作人員<br>照顧浪犬已經有32年<br>平均工作人員年齡65歲</p>
+						<svg class="svg-icon encounter-linear"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#encounter"/></svg>
+						<div class="animation-wrap">
+							<svg class="svg-icon ground-3"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#ground-3"/></svg>
+							<svg class="svg-icon senior-official"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#senior-official"/></svg>
+						</div>
+					</li>
+					<li class="list">
+						<p class="story"><em class="emphasize">為了狗狗吃的健康</em>每隻狗狗都可以吃到3種不同的飼料<br>每個月需要5400公斤的飼料量<br>狗狗的平均壽命為15歲<br>狗奶奶已經照顧了幾千隻的愛孫</p>
+						<div class="animation-wrap jq-weight-ani">
+							<svg class="svg-icon ground"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#ground"/></svg>
+							<svg class="svg-icon food-2" data-weight="1747"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#dog-food-2"/></svg>
+							<svg class="svg-icon food-3" data-weight="1821"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#dog-food-3"/></svg>
+							<svg class="svg-icon food-1" data-weight="1832"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#dog-food-1"/></svg>
+							<div class="scale">
+								<div class="platform"></div>
+								<svg class="svg-icon"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?SVG=20161004_01#scale"/></svg>
+								<em class="count"><strong class="jq-weight">0</strong>kg</em>
+								<div class="pointer"><i class="center"></i></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<button class="btn-slide-down jq-slide-down"></button>
+			</div>
+			<div class="section-cut donate-cut">
+				<h3 class="section-title">現在就伸出手 一起幫助浪浪</h3>
+				<p class="desc">本活動將贊助新北市流浪動物保護協會購買狗狗飼料費用，希望讓園內浪犬可以放心飽餐、繼續在廣大腹地中自在的奔馳。</p>
+				<p class="desc">協會所購買飼料將全數送給協力園愛心共養流浪狗中途之家，Richart邀請您一同響應。</p>
+				<p class="desc manager">協力園負責人 楊香</p>
+				<a href="donate" class="b-link btn-rainbow ga_click_trace" ga_cat="btn" ga_event="click" ga_label="help"><em class="text">了解如何幫助浪浪</em><i class="icon-arrow-right"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="l-not-support">
+		<div class="m-not-support b-text-center">
+			<div class="m-not-support-content">
+				<div class="m-not-support-hd">
+					<p class="m-not-support-title"><b>很抱歉，您目前使用的瀏覽器無法支援瀏覽。</b></p>
+					<p class="m-not-support-desc">建議您升級瀏覽器，以利瀏覽此網站的所有內容，謝謝您的配合。</p>
+				</div>
+				<div class="m-not-support-bd">
+					<ul>
+						<li>
+							<a href="https://www.google.com.tw/chrome/browser/desktop/">
+								<span class="m-not-support-figure">
+									<img src="@Url.Content("~/content/img/not-support/chrome.png")?img=20160511_01" alt="Google Chrome">
+								</span>
+								<p class="m-not-support-desc">Google Chrome</p>
+							</a>
+						</li>
+						<li>
+							<a href="https://www.mozilla.org/zh-TW/firefox/new/">
+								<span class="m-not-support-figure">
+									<img src="@Url.Content("~/content/img/not-support/firefox.png")?img=20160511_01" alt="Mozilla Firefox">
+								</span>
+								<p class="m-not-support-desc">Mozilla Firefox</p>
+							</a>
+						</li>
+						<li>
+							<a href="http://windows.microsoft.com/zh-tw/internet-explorer/download-ie">
+								<span class="m-not-support-figure">
+									<img src="@Url.Content("~/content/img/not-support/ie.png")?img=20160511_01" alt="Internet Explorer">
+								</span>
+								<p class="m-not-support-desc">Internet Explorer</p>
+							</a>
+						</li>
+						<li>
+							<a href="https://support.apple.com/zh_TW/downloads/safari">
+								<span class="m-not-support-figure">
+									<img src="@Url.Content("~/content/img/not-support/safari.png")?img=20160511_01" alt="Safari">
+								</span>
+								<p class="m-not-support-desc">Safari</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="m-not-support-ft">
+					<div class="m-not-support-copyright">
+						<p class="m-not-support-info"><em>© 台新國際商業銀行 Copyright Taishin International Bank. All Rights Reserved.</em></p>
+						<p class="m-not-support-browers">建議瀏覽器：IE10+, Chrome, Safari, Firefox</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+@section scripts{}

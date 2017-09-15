@@ -1,0 +1,121 @@
+﻿$ie-support       : 10;
+$rwd-color-change : false;
+$tablet-min-width : 768px;
+$mobile-min-width : 320px;
+$main-max-width   : 1200px;
+$main-min-width   : 1000px;
+$nav-change-width : 1152px;
+$content-width    : 960px;
+$side-width       : 260px;
+$header-height    : (
+    md : 80px,
+    sm : 60px,
+    xs : 40px
+);
+$content-padding  : (
+    md : 25px,
+    sm : 20px,
+    xs : 8px
+);
+
+$font-size   : 13px;
+$font-family : Helvetica, "微軟正黑體" , "Microsoft JhengHei" , "Heiti TC" , "黑體" , Arial , sans-serif , serif;
+$icon-family : richart-webfont;
+
+$screen-pc     : ($main-min-width + 1);
+$screen-mobile : 740px;
+
+$b-row-md : null; // px
+$b-row-sm : null; // px
+$b-row-xs : null; // px
+
+$space-md : null; // px
+$space-sm : null; // px
+$space-xs : null; // px
+
+$color-major : #3E454F;
+$color-minor : #0AB;
+$color-aid   : #F44;
+
+$color-text-major : null;
+$color-text-minor : null;
+$color-text-aid   : null;
+
+$color-border-major : null;
+$border-minor-color : null;
+
+$color-link        : null;
+$color-info        : null;
+$color-warning     : null;
+$color-disabled    : null;
+$color-placeholder : null;
+$color-facebook    : #359;
+$color-line        : #3B3;
+$color-youtube     : #C11;
+
+$color-white        : #FFF;
+$color-black        : #000;
+$color-gray         : gray; // #808080
+$color-gray-l-p10   : lighten($color-gray , 10%); // #9a9a9a
+$color-gray-l-p20   : lighten($color-gray , 20%); // #b3b3b3
+$color-gray-l-p30   : lighten($color-gray , 30%); // #cdcdcd
+$color-gray-l-p40   : lighten($color-gray , 40%); // #e6e6e6
+$color-gray-d-p10   : darken($color-gray , 10%); // #676767
+$color-gray-d-p20   : darken($color-gray , 20%); // #4d4d4d
+$color-gray-d-p30   : darken($color-gray , 30%); // #343434
+$color-gray-d-p40   : darken($color-gray , 40%); // #1a1a1a
+$color-transparent  : transparent;
+$color-red          : #F66;
+$color-green        : #4A7;
+$color-green-dark   : #163;
+$color-green-light  : #285;
+$color-yellow       : #FD6;
+$color-yellow-dark  : #FC0;
+$color-yellow-light : #FEA;
+$color-ocean        : #099;
+
+
+$color : (
+    'white'        : $color-white,
+    'black'        : $color-black,
+    'gray'         : $color-gray,
+    'gray-l-p40'   : $color-gray-l-p40,
+    'gray-l-p30'   : $color-gray-l-p30,
+    'gray-l-p20'   : $color-gray-l-p20,
+    'gray-l-p10'   : $color-gray-l-p10,
+    'gray-d-p40'   : $color-gray-d-p40,
+    'gray-d-p30'   : $color-gray-d-p30,
+    'gray-d-p20'   : $color-gray-d-p20,
+    'gray-d-p10'   : $color-gray-d-p10,
+    'transparent'  : $color-transparent,
+    'facebook'     : $color-facebook,
+    'line'         : $color-line,
+    'major'        : $color-major,
+    'minor'        : $color-minor,
+    'aid'          : $color-aid,
+    'red'          : $color-red,
+    'green'        : $color-green,
+    'green-dark'   : $color-green-dark,
+    'green-light'  : $color-green-light,
+    'yellow'       : $color-yellow,
+    'yellow-dark'  : $color-yellow-dark,
+    'yellow-light' : $color-yellow-light,
+    'ocean'        : $color-ocean
+);
+
+$icon : (
+    bone              : '\e900',
+    bone-line         : '\e901',
+    check             : '\e902',
+    cloud             : '\e903',
+    facebook          : '\e904',
+    line              : '\e905',
+    menu              : '\e906',
+    stack-logo        : '\e907',
+    stack-logo-slogon : '\e908',
+    stack-logo-tie    : '\e909'
+);
+
+$transition-times   : .3s; // .3s or 1s
+
+$form-border-radius : null; // px

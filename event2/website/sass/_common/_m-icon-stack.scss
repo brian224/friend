@@ -1,0 +1,13 @@
+.m-icon-stack {
+    position : relative;
+    @include inline-block;
+    @include inline-block-space;
+
+    .m-icon {
+        &.is-absolute {
+            top      : 0;
+            left     : 0;
+            position : absolute;
+        }
+    }
+}

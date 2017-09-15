@@ -1,0 +1,67 @@
+html, body {
+    font-family : $font-family;
+    line-height : 1.6;
+    color       : $color-black;
+    background  : $color-white;
+}
+
+b, strong {
+    font-weight : bold;
+}
+
+img {
+    vertical-align : middle;
+
+    &.is-max-width {
+        max-width : 100%;
+    }
+
+    &.is-max-height {
+        max-height : 100%;
+    }
+}
+
+a, button {
+    @include button-default;
+
+    &.is-underline {
+        text-decoration : underline;
+    }
+}
+
+a {
+    color           : inherit;
+    text-decoration : none;
+    @include inline-block;
+}
+
+input, textarea {
+    font-family : $font-family;
+    line-height : 1.6;
+}
+
+@include respond(Desktops) {
+    html , body {
+        font-size : 13px;
+    }
+
+    button {
+        @include cursor(pointer);
+    }
+}
+
+@include respond(Desktops-Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {
+    html , body {
+        font-size : units(13px, $tablet-min-width, 1vw);
+    }
+}
+
+@include respond(Mobiles) {
+    html , body {
+        font-size : units(13px, $mobile-min-width, 1vw);
+    }
+}

@@ -1,0 +1,369 @@
+@mixin inline {
+    @include display-table;
+
+    > * {
+        @include display-table-cell;
+
+        .m-form-type {
+            &:not([type="radio"]):not([type="checkbox"]) {
+                border-left : none;
+            }
+        }
+    }
+}
+
+.m-form {
+    width    : 100%;
+    position : relative;
+}
+
+.m-form-item {
+    @include inline-block-space;
+    @include box-sizing(border-box);
+}
+
+.m-form-label {
+
+}
+
+.m-form-elem {
+    display : block;
+    /*@at-root {
+        span#{&} {
+        }
+    }*/
+}
+
+.m-form-type {
+    outline : 0;
+    @include clearfix;
+    @include border-radius(0);
+    @include box-sizing(border-box);
+    @include transition(border-color $transition-times);
+
+    &:not([type="radio"]):not([type="checkbox"]) {
+        line-height  : 20px;
+        border-width : 1px;
+        border-style : solid;
+
+        @each $key, $value in $color {
+            &.is-border-#{$key} {
+                border-color : $value;
+            }
+        }
+
+        &:not([type="search"]) {
+            width : 100%;
+        }
+
+        &.is-error {
+            border-color : $color-aid;
+        }
+    }
+
+    &[type="radio"], &[type="checkbox"] {
+        top      : 0;
+        left     : -99999px;
+        position : absolute;
+
+        & ~ * {
+            display : block;
+            @include inline-block-space;
+
+            > * {
+                @include inline-block;
+            }
+
+            .m-icon {
+                border-style : solid;
+                position     : relative;
+                @include box-sizing(border-box);
+
+                &[class^="b-bg-"], &[class*=" b-bg-"] {
+                    background : transparent !important;
+                }
+
+                &:before {
+                    top        : 50%;
+                    left       : 50%;
+                    max-width  : 0;
+                    max-height : 0;
+                    position   : absolute;
+                    @include clearfix;
+                    @include transition(max-width $transition-times, max-height $transition-times);
+                    @include transform(translateX(-50%) translateY(-50%));
+                }
+
+                @each $key, $value in $color {
+                    &.b-bg-#{$key} {
+                        &.m-icon {
+                            border-color : $value;
+                        }
+                    }
+
+                    &[data-checked-color="#{$key}"] {
+                        &.m-icon-radio {
+                            &:before {
+                                background : $value;
+                            }
+                        }
+
+                        &.m-icon-check {
+                            &:before {
+                                color : $value;
+                            }
+                        }
+                    }
+                }
+
+                &.m-icon-radio {
+                    @include border-radius(50%);
+
+                    &:before {
+                        content : "";
+                        width   : 68%;
+                        height  : 68%;
+                        @include border-radius(50%);
+                    }
+                }
+            }
+        }
+
+        &:checked ~ * {
+            .m-icon {
+                &:before {
+                    max-width  : 20px;
+                    max-height : 20px;
+                    /*@include opacity(1);*/
+                }
+            }
+        }
+    }
+
+    @at-root {
+        textarea#{&} {
+            &:not([data-resize]) {
+                resize : none;
+            }
+
+            &[data-resize="all"] {
+                resize : both;
+            }
+
+            &[data-resize="x"] {
+                resize : horizontal;
+            }
+
+            &[data-resize="y"] {
+                resize : vertical;
+            }
+        }
+    }
+}
+
+.m-form-addon {
+    /*line-height : 20px;*/
+    vertical-align : top !important;
+    white-space    : nowrap;
+    @include box-sizing(border-box);
+
+    > * {
+        line-height : 20px;
+        display     : block;
+        @include box-sizing(border-box);
+    }
+}
+
+.m-form-validate {
+    > * {
+        &.is-error {
+            color : $color-aid;
+        }
+    }
+}
+
+@include respond(Desktops) {
+    .m-form {
+        &.is-inline, &.is-inline-md, &.is-inline-dt {
+            @include inline;
+        }
+        
+        > * {
+            &:not(:only-child) {
+                label.m-form-label {
+                    &:first-child {
+                        margin-left : 18px;
+                    }
+                }
+            }
+        }
+    }
+
+    .m-form-label {
+        @at-root {
+            label#{&} {
+                &:not(:first-child) {
+                    margin-left  : 60px;
+                }
+            }
+        }
+    }
+
+    .m-form-type {
+        &[type="radio"], &[type="checkbox"] {
+            & ~ * {
+                margin-top    : 10px;
+                margin-bottom : 10px;
+
+                .m-icon {
+                    margin-right : 10px;
+                    width        : 20px;
+                    height       : 20px;
+
+                    &.m-icon-radio {
+                        border-width : 4px;
+                    }
+
+                    &.m-icon-check {
+                        border-width : 2px;
+                    }
+                }
+            }
+        }
+
+        &:not([type="checkbox"]):not([type="radio"]) {
+            padding : 10px 10px;
+            height  : 40px;
+        }
+    }
+
+    .m-form-addon {
+        > * {
+            padding-top    : 10px;
+            padding-bottom : 10px;
+            height         : 40px;
+        }
+    }
+}
+
+@include respond(Desktops-Tablets) {}
+
+@include respond(Tablets-Mobiles) {
+    .m-form-type {
+        &[type="radio"], &[type="checkbox"] {
+            & ~ * .m-icon.m-icon-check {
+                border-width : 1px;
+            }
+        }
+    }
+}
+
+@include respond(Tablets) {
+    .m-form {
+        &.is-inline, &.is-inline-dt, &.is-inline-tm, &.is-inline-sm {
+            @include inline;
+        }
+
+        > * {
+            &:not(:only-child) {
+                label.m-form-label {
+                    &:first-child {
+                        margin-left : units(17px, $tablet-min-width, 1vw);
+                    }
+                }
+            }
+        }
+    }
+
+    .m-form-label {
+        @at-root {
+            label#{&} {
+                &:not(:first-child) {
+                    margin-left  : units(45px, $tablet-min-width, 1vw);
+                }
+            }
+        }
+    }
+
+    .m-form-type {
+        &[type="radio"], &[type="checkbox"] {
+            & ~ * {
+                margin-top    : units(8px, $tablet-min-width, 1vw);
+                margin-bottom : units(8px, $tablet-min-width, 1vw);
+
+                .m-icon {
+                    margin-right : units(8px, $tablet-min-width, 1vw);
+                    width        : units(15px, $tablet-min-width, 1vw);
+                    height       : units(15px, $tablet-min-width, 1vw);
+
+                    &.m-icon-radio {
+                        border-width : units(3px, $tablet-min-width, 1vw);
+                    }
+                }
+            }
+        }
+
+        &:not([type="checkbox"]):not([type="radio"]) {
+            padding : units(8px, $tablet-min-width, 1vw) units(8px, $tablet-min-width, 1vw);
+            height  : units(36px, $tablet-min-width, 1vw);
+        }
+    }
+
+    .m-form-addon {
+        > * {
+            padding-top    : units(8px, $tablet-min-width, 1vw);
+            padding-bottom : units(8px, $tablet-min-width, 1vw);
+            height         : units(36px, $tablet-min-width, 1vw);
+        }
+    }
+}
+
+@include respond(Mobiles) {
+    .m-form {
+        &.is-inline, &.is-inline-tm, &.is-inline-xs {
+            @include inline;
+        }
+    }
+
+    .m-form-label {
+        @at-root {
+            label#{&} {
+                &:not(:first-child) {
+                    margin-left  : units(16px, $mobile-min-width, 1vw);
+                }
+            }
+        }
+    }
+
+    .m-form-type {
+        &[type="radio"], &[type="checkbox"] {
+            & ~ * {
+                margin-top    : units(5px, $mobile-min-width, 1vw);
+                margin-bottom : units(5px, $mobile-min-width, 1vw);
+
+                .m-icon {
+                    margin-right : units(5px, $mobile-min-width, 1vw);
+                    width        : units(16px, $mobile-min-width, 1vw);
+                    height       : units(16px, $mobile-min-width, 1vw);
+
+                    &.m-icon-radio {
+                        border-width : units(3px, $mobile-min-width, 1vw);
+                    }
+                }
+            }
+        }
+
+        &:not([type="checkbox"]):not([type="radio"]) {
+            padding : units(5px, $mobile-min-width, 1vw) units(5px, $mobile-min-width, 1vw);
+            height  : units(30px, $mobile-min-width, 1vw);
+        }
+    }
+
+    .m-form-addon {
+        > * {
+            padding-top    : units(5px, $mobile-min-width, 1vw);
+            padding-bottom : units(5px, $mobile-min-width, 1vw);
+            height         : units(30px, $mobile-min-width, 1vw);
+        }
+    }
+}

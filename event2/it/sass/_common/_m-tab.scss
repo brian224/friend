@@ -1,0 +1,297 @@
+.m-tab {
+    position : relative;
+    @include clearfix;
+    @include box-sizing(border-box);
+}
+
+.m-tab-hd {
+    @include clearfix;
+    @include inline-block-space;
+
+    @each $key, $value in $color {
+        &[data-default-bgcolor="#{$key}"] {
+            > li {
+                &:not(.is-active) {
+                    .m-tab-item {
+                        &:before {
+                            background : $value;
+                        }
+                    }
+                }
+            }
+        }
+
+        &[data-default-color="#{$key}"] {
+            > li {
+                &:not(.is-active) {
+                    .m-tab-item {
+                        color : $value;
+                    }
+                }
+            }
+        }
+
+        &[data-active-bgcolor="#{$key}"] {
+            > li {
+                &.is-active {
+                    .m-tab-item {
+                        &:before {
+                            background : $value;
+                        }
+
+                        &:after {
+                            background : darken($value, 10%);
+                        }
+                    }
+                }
+            }
+        }
+
+        &[data-active-color="#{$key}"] {
+            > li {
+                &.is-active {
+                    .m-tab-item {
+                        color : $value;
+                    }
+                }
+            }
+        }
+
+        &[data-active-icon="#{$key}"] {
+            > li {
+                &.is-active {
+                    .m-tab-item {
+                        .m-icon {
+                            color : $value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    > li {
+        position : relative;
+        @include inline-block;
+        @include transition(z-index $transition-times);
+
+        &:not(.is-active) {
+            z-index : 1;
+        }
+
+        &.is-active {
+            z-index : 2;
+        }
+
+        &:first-child {
+            .m-tab-item {
+                &:before {
+                    right : 0;
+                    @include transform(skew(30deg));
+                }
+
+                &:after {
+                    @include transform(skew(30deg));
+                }
+            }
+        }
+
+        &:last-child {
+            .m-tab-item {
+                &:before {
+                    left : 0;
+                    @include transform(skew(-30deg));
+                }
+            }
+        }
+    }
+}
+
+.m-tab-item {
+    width    : 100%;
+    position : relative;
+    @include inline-block-space;
+
+    &:before, &:after {
+        content  : "";
+        top      : 0;
+        height   : 100%;
+        position : absolute;
+        
+    }
+
+    &:before {
+        width   : 120%;
+        z-index : 1;
+        @include transition(background-color $transition-times);
+    }
+
+    &:after {
+        right   : 0;
+        z-index : 2;
+        @include transition(background-color $transition-times);
+    }
+
+    > * {
+        position : relative;
+        z-index  : 2;
+        @include inline-block;
+    }
+}
+
+.m-tab-bd {
+    width    : 100%;
+    position : relative;
+    @include clearfix;
+
+    &:before {
+        content  : "";
+        top      : 0;
+        right    : 0;
+        height   : 100%;
+        position : absolute;
+        z-index  : 2;
+    }
+
+    @each $key, $value in $color {
+        &.b-bg-#{$key} {
+            &:before {
+                background : darken($value, 10%);
+            }
+        }
+    }
+
+    > ul {
+        width       : 200%;
+        white-space : nowrap;
+        @include inline-block-space;
+        @include box-sizing(border-box);
+        @include transition(transform $transition-times);
+        @include transform(translateX(0) translateZ(1px));
+
+        &.is-slide {
+            @include transform(translateX(-50%) translateZ(1px));
+        }
+
+        > li {
+            width       : 50%;
+            display     : none;
+            white-space : normal;
+            @include box-sizing(border-box);
+
+            &.is-active, &.is-actived {
+                vertical-align : top !important;
+                @include inline-block;
+            }
+        }
+    }
+}
+
+@include respond(Desktops) {
+    .m-tab-hd {
+        > li {
+            .m-icon {
+                font-size : 280%;
+            }
+        }
+    }
+
+    .m-tab-item {
+        padding-top    : 25px;
+        padding-bottom : 25px;
+
+        &:after {
+            width : 10px;
+        }
+
+        > .m-icon {
+            margin-right : 10px;
+        }
+    }
+
+    .m-tab-bd {
+        &:before {
+            width : 10px;
+        }
+
+        > ul {
+            > li {
+                padding : 50px;
+            }
+        }
+    }
+}
+
+@include respond(Desktops-Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {
+    .m-tab-hd {
+        > li {
+            .m-icon {
+                font-size : 240%;
+            }
+        }
+    }
+
+    .m-tab-item {
+        padding-top    : units(15px, $tablet-min-width, 1vw);
+        padding-bottom : units(15px, $tablet-min-width, 1vw);
+
+        &:after {
+            width : units(8px, $tablet-min-width, 1vw);
+        }
+
+        > .m-icon {
+            margin-right : units(8px, $tablet-min-width, 1vw);
+        }
+    }
+
+    .m-tab-bd {
+        &:before {
+            width : units(8px, $tablet-min-width, 1vw);
+        }
+
+        > ul {
+            > li {
+                padding : units(30px, $tablet-min-width, 1vw);
+            }
+        }
+    }
+}
+
+@include respond(Mobiles) {
+    .m-tab-hd {
+        > li {
+            .m-icon {
+                font-size : 200%;
+            }
+        }
+    }
+
+    .m-tab-item {
+        padding-top    : units(10px, $mobile-min-width, 1vw);
+        padding-bottom : units(10px, $mobile-min-width, 1vw);
+
+        &:after {
+            width : units(5px, $mobile-min-width, 1vw);
+        }
+
+        > .m-icon {
+            margin-right : units(5px, $mobile-min-width, 1vw);
+        }
+    }
+
+    .m-tab-bd {
+        &:before {
+            width : units(5px, $mobile-min-width, 1vw);
+        }
+
+        > ul {
+            > li {
+                padding : units(15px, $mobile-min-width, 1vw);
+            }
+        }
+    }
+}

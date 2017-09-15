@@ -1,0 +1,434 @@
+﻿// fixed
+@mixin fixed {
+    position                   : fixed;
+    -webkit-overflow-scrolling : touch;
+}
+
+@mixin inline-block-space {
+    letter-spacing  : -0.31em !important;
+    /*line-height     : 0;*/
+    /*line-height    : normal;*/
+    *letter-spacing : normal; // IE < 8
+    *word-spacing   : -0.43em; // IE < 8
+    text-rendering  : optimizespeed;
+
+    > * {
+        /*&:not(.b-middle) {*/
+            *display       : inline;
+            letter-spacing : normal;
+            /*line-height    : normal;*/
+        /*}*/
+    }
+}
+
+@mixin cursor( $cursor : null ) {
+    @if $cursor == grab {
+        cursor : -webkit-grab;
+        cursor : -moz-grab;
+        cursor : -ms-grab;
+        cursor : -o-grab;
+        cursor : grab;
+    } @else if $cursor == grabbing {
+        cursor : -webkit-grabbing;
+        cursor : -moz-grabbing;
+        cursor : -ms-grabbing;
+        cursor : -o-grabbing;
+        cursor : grabbing;
+    } @else {
+        cursor : $cursor;
+    }
+}
+
+// placeholder text
+@mixin placeholder( $color : $color-placeholder ) {
+    &::-moz-placeholder {
+        color   : $color;
+        @if $color == transparent {
+            @include opacity(0);
+        } @else {
+            @include opacity(1);
+        }
+        
+    }
+
+    &:-ms-input-placeholder {
+        color : $color;
+        @if $color == transparent {
+            @include opacity(0);
+        } @else {
+            @include opacity(1);
+        }
+    }
+
+    &::-webkit-input-placeholder { 
+        color : $color;
+        @if $color == transparent {
+            @include opacity(0);
+        } @else {
+            @include opacity(1);
+        }
+    }
+}
+
+@mixin search-clear($attr : null) {
+    @if $attr == none {
+        &::-ms-clear ,
+        &::-ms-reveal {
+            width   : 0;
+            height  : 0;
+            display : none;
+            @include appearance(none);
+        }
+
+        &::-webkit-search-decoration ,
+        &::-webkit-search-cancel-button ,
+        &::-webkit-search-results-button ,
+        &::-webkit-search-results-decoration {
+            display : none;
+            @include appearance(none);
+        }
+    }
+}
+
+@mixin autofill( $background-color : #FFF !important , $color : #CCC !important ) {
+    &::-moz-autofill {
+        color            : $color;
+        background-color : $background-color;
+    }
+
+    &:-ms-autofill {
+        color            : $color;
+        background-color : $background-color;
+    }
+
+    &:-webkit-autofill , &:-webkit-autofill:hover , &:-webkit-autofill:focus { 
+        color            : $color;
+        background-color : $background-color;
+    }
+}
+
+@mixin accordion-icon($type : null) {
+    @if $type == plus {
+        content : "\002B";
+    } @else if $type == minus {
+        content : "\2212";
+    }
+}
+
+// text-size-adjust
+@mixin text-size-adjust {
+    -webkit-text-size-adjust : none;
+    -moz-text-size-adjust    : none;
+    -o-text-size-adjust      : none;
+    -ms-text-size-adjust     : none;
+    text-size-adjust         : none;
+}
+
+// display
+@mixin display-table($vertical: middle) {
+    display         : table;
+    vertical-align  : $vertical;
+    table-layout    : auto;
+    word-wrap       : break-word;
+    word-break      : break-all;
+    /*border-collapse : collapse;
+    border-spacing  : 0;*/
+}
+
+@mixin display-table-cell($vertical: middle) {
+    display        : table-cell;
+    vertical-align : $vertical;
+}
+
+@mixin font-min-size( $size : 0px , $devices-width : null , $unit : null ) {
+    @if ( $devices-width == null ) {
+        font-size         : $size !important;
+        -webkit-transform : scale(($size / 12px)) !important;
+    } @else {
+        font-size         : units($size , $devices-width , $unit) !important;
+        -webkit-transform : scale(#{($size / 12px) - ( ( $size / 1px ) / ( $devices-width / 1px ) * 5 )}) !important;
+    }
+}
+
+// touch-action
+@mixin touch-action {
+    -ms-touch-action    : manipulation;
+    touch-action        : manipulation;
+    -webkit-user-select : none;
+    -moz-user-select    : none;
+    -ms-user-select     : none;
+    user-select         : none;
+}
+
+// appearance
+@mixin appearance( $type : menulist ) {
+    -webkit-appearance : $type;
+    -moz-appearance    : $type;
+    -ms-appearance     : $type;
+    -o-appearance      : $type;
+    appearance         : $type;
+}
+
+@function stroke($stroke , $color) {
+    $shadow : ();
+    $from   : $stroke*-1;
+    @for $i from $from through $stroke {
+       @for $j from $from through $stroke {
+            $shadow : append($shadow , $i * 1px $j * 1px 0 $color , comma);
+        }
+    }
+    @return $shadow;
+}
+
+@mixin stroke($stroke , $color) {
+    @include text-shadow(stroke($stroke, $color));
+}
+
+// disabled
+@mixin disabled {
+    &:disabled , &[disabled="disabled"] {
+        color  : $color-gray-l-p20 !important;
+        @include cursor(not-allowed);
+        @include text-shadow(rgba($color-white , .75) 1px 1px 0);
+    }
+
+    @at-root {
+        select#{&} {
+            &:read-only {
+                &:disabled , &[disabled="disabled"] {
+                    border-color : lighten($color-gray-l-p20 , 5%);
+                    @include cursor(not-allowed);
+                }
+            }
+        }
+
+        input#{&} {
+            &:disabled {
+                border-color : lighten($color-gray-l-p20 , 5%);
+                background   : transparent;
+                @include box-shadow(rgba($color-white , .75) 1px 1px 0);
+            }
+
+            &[type="checkbox"] , &[type="radio"] {
+                &:disabled ~ * {
+                    color : $color-disabled;
+                }   
+            }
+        }
+    }
+}
+
+// readonly
+@mixin readonly {
+    &:read-only {
+        border-color : lighten($color-disabled , 20%);
+        @include cursor(not-allowed);
+    }
+
+    &:-moz-read-only {
+        border-color : lighten($color-disabled , 20%);
+        @include cursor(not-allowed);
+    }
+
+    @at-root {
+        select#{&} {
+            &:read-only {
+                @include cursor(auto);
+            }
+
+            &:-moz-read-only {
+                @include cursor(auto);
+            }
+        }
+    }
+}
+
+// button default
+@mixin button-default {
+    margin         : 0;
+    padding        : 0;
+    font-size      : inherit;
+    border         : 0;
+    border-spacing : 0;
+    position       : relative;
+    background     : none;
+    outline        : 0;
+    text-indent    : 0;
+    text-rendering : auto;
+    text-transform : none;
+    speak          : none;
+    @include transform(translate(0, 0));
+    @include touch-action;
+
+    @at-root {
+        button {
+            font-family : $font-family;
+        }
+    }
+}
+
+// browsers
+@mixin browsers($browsers) {
+    @if $browsers == 'IE8' {
+        @media \0screen { @content; }
+    } @else if $browsers == 'IE9' {
+        @media all and ( min-width : 0\0 ) and ( min-resolution : .001dpcm ) { @content; }
+    } @else if $browsers == 'IE8&IE9' {
+        @media all and ( min-width : 0\0 ) and ( min-resolution : .001dpcm ) { @content; }
+        @media \0screen { @content; }
+    } @else if $browsers == 'IE' {
+        @media screen\0 { @content; }
+    } @else if $browsers == 'Edge' {
+        @supports ( -ms-ime-align : auto ) { @content; }
+    } @else if $browsers == 'FireFox' {
+        @-moz-document url-prefix() { @content; }
+    } @else if $browsers == 'Chrome' {
+        @media screen and ( -webkit-min-device-pixel-ratio : 0 ) { 
+            @supports ( not ( -ms-accelerator : true ) ) and ( not ( -moz-appearance : none ) ) { @content; }
+        }
+    } @else if $browsers == 'Safari' {
+        _::-webkit-full-page-media, _:future, :root { @content; }
+    }
+}
+
+// devices
+@mixin devices( $devices ) {
+    @if $devices == 'l-pad' {
+        @media only screen and ( min-device-width : 1024px ) and ( max-device-width : 1366px ) and ( orientation : landscape ) and ( -webkit-min-device-pixel-ratio : 2 ) { @content; }
+        @media only screen and ( min-device-width : 768px ) and ( max-device-width : 1024px ) and ( orientation : landscape ) { @content; }
+        @media only screen and ( min-device-width : 768px ) and ( max-device-width : 1024px ) and ( orientation : landscape ) and ( -webkit-min-device-pixel-ratio : 2 ) { @content; }
+    } @else if $devices == 'p-pad' {
+        @media only screen and ( min-device-width : 1024px ) and ( max-device-width : 1366px ) and ( orientation : portrait ) and ( -webkit-min-device-pixel-ratio : 2 ) { @content; }
+        @media only screen and ( min-device-width : 768px ) and ( max-device-width : 1024px ) and ( orientation : portrait ) { @content; }
+        @media only screen and ( min-device-width : 768px ) and ( max-device-width : 1024px ) and ( orientation : portrait ) and ( -webkit-min-device-pixel-ratio : 2 ) { @content; }
+    } @else if $devices == 'iphone' {
+        @media only screen and ( min-device-width : 320px ) and ( max-device-width : 359px ) and ( orientation : portrait ) and ( -webkit-min-device-pixel-ratio : 2 ) { @content; }
+        @media only screen and ( device-width : 375px ) and ( orientation : portrait ) and ( -webkit-min-device-pixel-ratio : 2 ) ,
+               only screen and ( device-width : 667px ) and ( orientation : landscape ) and ( -webkit-min-device-pixel-ratio : 2 ) { @content; }
+        @media only screen and ( device-width : 414px ) and ( orientation : portrait ) and ( -webkit-min-device-pixel-ratio : 3 ) ,
+               only screen and ( device-width : 736px ) and ( orientation : landscape ) and ( -webkit-min-device-pixel-ratio : 3 ) { @content; }
+    }
+}
+
+// screen
+@mixin screen( $screen ) {
+    @if $screen == '4/3' {
+        @media ( max-aspect-ratio : 87/50 ) { @content; }
+    }@if $screen == '2/1' {
+        @media ( min-aspect-ratio : 21/10 ) { @content; }
+    } @else if $screen == 'landscape' {
+        // screen width > height
+        @media (orientation  : landscape ) { @content; }
+    } @else if $screen == 'portrait' {
+        // screen width < height
+        @media (orientation  : portrait ) { @content; }
+    }
+}
+
+// RWD
+@mixin respond( $media ) {
+    @if $media == Desktops {
+        @if $ie-support == 8 {
+            // IE8 only
+            @media \0screen { @content; }
+        }
+        @media screen and ( min-width : $screen-pc ) { @content; }
+    } @else if $media == Desktops-Tablets {
+        
+        @if $ie-support == 8 {
+            // IE8 only
+            @media \0screen { @content; }
+        }
+        @media screen and ( min-width : $screen-mobile ) { @content; }
+    } @else if $media == Tablets-Mobiles {
+        @media screen and ( max-width : ($screen-pc - 1) ) { @content; }
+    } @else if $media == Tablets {
+        @media screen and ( min-width : $screen-mobile ) and ( max-width : ($screen-pc - 1) ) { @content; }
+    } @else if $media == Mobiles {
+        @media screen and ( max-width : ($screen-mobile - 1) ) { @content; }
+    } @else if $media == Iphone5 {
+        @media screen and ( max-width : 374px ) { @content; }
+    }
+}
+
+@mixin media-min( $value : null , $type : 'width' ) {
+    @if $type == 'width' {
+        @media screen and ( min-width : $value ) { @content; }
+    } @else if $type == 'height' {
+        @media screen and ( min-height : $value ) { @content; }
+    }
+}
+
+@mixin media-max( $value : null , $type : 'width' ) {
+    @if $type == 'width' {
+        @media screen and ( max-width : ( $value - 1 ) ) { @content; }
+    } @else if $type == 'height' {
+        @media screen and ( max-height : ( $value - 1 ) ) { @content; }
+    }
+}
+
+@mixin media-min-max( $min-value : null , $max-value : null , $type : 'width' ) {
+    @if $type == 'width' {
+        @media screen and ( min-width : $min-value ) and ( max-width : ($max-value - 1) ) { @content; }
+    } @else if $type == 'height' {
+        @media screen and ( min-height : $min-value ) and ( max-height : ($max-value - 1) ) { @content; }
+    }
+}
+
+// not support
+@mixin not-support {
+    @if ( $ie-support - 1 ) == 9 {
+        @media \0screen\,screen\9 { @content; }
+        @media all and ( min-width : 0\0 ) and ( min-resolution : .001dpcm ) { @content; }
+    } @else if ( $ie-support - 1 ) == 8 {
+        @media \0screen\,screen\9 { @content; }
+    } @else if ( $ie-support - 1 ) == 7 {
+        @media screen\9 { @content; }
+    }
+}
+
+// unit
+@function units($number , $width , $nuit, $digits: null , $fn: null) {
+    $pow : if($digits == null, 1, pow(10, $digits));
+
+    @if ( unit($number) == 'px' ) {
+        @if ( $fn == 'ceil' ) {
+            @return ( ceil(( $number / 1px ) / ( $width / 1px ) * 100 * $pow) / $pow * $nuit );
+        } @else if ( $fn == 'floor' ) {
+            @return ( floor(( $number / 1px ) / ( $width / 1px ) * 100 * $pow) / $pow * $nuit );
+        } @else {
+            @if ( $digits == null ) {
+                @return ( (( $number / 1px ) / ( $width / 1px ) * 100 * $pow) / $pow * $nuit );
+            } @else {
+                @return ( round(( $number / 1px ) / ( $width / 1px ) * 100 * $pow) / $pow * $nuit );
+            }
+        }
+    } @else {
+        @if ( $fn == 'ceil' ) {
+            @return ( ceil($number / ( $width / 1px ) * 100 * $pow) / $pow * $nuit );
+        } @else if ( $fn == 'floor' ) {
+            @return ( floor($number / ( $width / 1px ) * 100 * $pow) / $pow * $nuit );
+        } @else {
+            @if ( $digits == null ) {
+                @return ( ($number / ( $width / 1px ) * 100 * $pow) / $pow * $nuit );
+            } @else {
+                @return ( round($number / ( $width / 1px ) * 100 * $pow) / $pow * $nuit );
+            }
+        }
+    }
+}
+
+// icon
+@mixin font-icon($font-family: null) {
+    font-family    : $font-family;
+    speak          : none;
+    font-style     : normal;
+    font-weight    : normal;
+    font-variant   : normal;
+    text-transform : none;
+    line-height    : 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing  : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+}

@@ -1,0 +1,240 @@
+.m-nav {
+    /*top      : 0;*/
+    right    : 0;
+    height   : auto;
+    z-index  : 3;
+    display  : block;
+    position : absolute;
+    /*@include fixed;*/
+    @include box-sizing(border-box);
+    @include transition(transform $transition-times);
+
+    &:not(.is-nav) {
+        @include transform(translateX(100%));
+    }
+
+    .is-nav {
+        @include transform(translateX(0));
+    }
+
+    > ul {
+        @include inline-block-space;
+        @include box-sizing(border-box);
+
+        > li {
+            /*line-height : 20px;*/
+
+            > a {
+                display : block;
+
+                &.is-active {
+                    color : $color-yellow-dark !important;
+                }
+
+                > * {
+                    display : block;
+                }
+            }
+        }
+    }
+}
+
+.m-nav-item {
+    .m-icon {
+        @include border-radius(50%);
+    }
+}
+
+@include respond(Desktops) {
+    .m-nav {
+        top           : 5px;
+        padding-right : 80px;
+        padding-left  : 20px;
+        /*height        : map-get($header-height, md);*/
+
+        > ul {
+            &.m-nav-link {
+                > li {
+                    margin-right : 20px;
+                    margin-left  : 20px;
+                }
+            }
+
+            &.m-nav-share {
+                > li {
+                    &:first-child {
+                        margin-right : 10px;
+                        margin-left  : 20px;
+                    }
+
+                    &:last-child {
+                        margin-right : 20px;
+                        margin-left  : 10px;
+                    }
+                }
+            }
+
+            > li {
+                > a {
+                    padding-top    : 20px;
+                    padding-bottom : 20px;
+                    /*height         : 30px;
+                    line-height    : 30px;*/
+                }
+            }
+        }
+    }
+
+    .m-nav-item {
+        .m-icon {
+            width       : 30px;
+            height      : 30px;
+            line-height : 30px;
+        }
+    }
+}
+
+@include respond(Desktops-Tablets) {
+    .m-nav {
+        background: $color-black;
+
+        > ul {
+            @include clearfix;
+
+            > li {
+                float : left;
+            }
+        }
+    }
+}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {
+    .m-nav {
+        top           : units(5px, $tablet-min-width, 1vw);
+        padding-right : units(60px, $tablet-min-width, 1vw);
+        padding-left  : units(15px, $tablet-min-width, 1vw);
+        /*height        : units(map-get($header-height, sm), $tablet-min-width, 1vw);*/
+
+        > ul {
+            &.m-nav-link {
+                > li {
+                    margin-right : units(15px, $tablet-min-width, 1vw);
+                    margin-left  : units(15px, $tablet-min-width, 1vw);
+                }
+            }
+
+            &.m-nav-share {
+                > li {
+                    &:first-child {
+                        margin-right : units(8px, $tablet-min-width, 1vw);
+                        margin-left  : units(15px, $tablet-min-width, 1vw);
+                    }
+
+                    &:last-child {
+                        margin-right : units(15px, $tablet-min-width, 1vw);
+                        margin-left  : units(8px, $tablet-min-width, 1vw);
+                    }
+                }
+            }
+
+            > li {
+                > a {
+                    padding-top    : units(10px, $tablet-min-width, 1vw);
+                    padding-bottom : units(10px, $tablet-min-width, 1vw);
+                    /*height         : units(30px, $tablet-min-width, 1vw);*/
+                    /*line-height    : units(30px, $tablet-min-width, 1vw);*/
+                }
+            }
+        }
+    }
+
+    .m-nav-item {
+        .m-icon {
+            width       : 30px;
+            height      : 30px;
+            line-height : 30px;
+        }
+    }
+}
+
+@include respond(Mobiles) {
+    .m-nav {
+        padding-top : units((map-get($header-height, xs) + 5px), $mobile-min-width, 1vw);
+        background  : rgba($color-black, 0.85);
+        width       : 50vw;
+        height      : 100vh;
+
+        &:before {
+            display : none;
+        }
+
+        > ul {
+            padding-right : units(map-get($content-padding, xs), $mobile-min-width, 1vw);
+            padding-left  : units(map-get($content-padding, xs), $mobile-min-width, 1vw);
+            width         : 100%;
+            vertical-align: top;
+            /*height        : 100%;*/
+
+            &.m-nav-link {
+                > li {
+                    margin-top    : units(10px, $mobile-min-width, 1vw);
+                    margin-bottom : units(10px, $mobile-min-width, 1vw);
+                }
+            }
+
+            &.m-nav-share {
+                > li {
+                    margin-right : units(5px, $mobile-min-width, 1vw);
+                    margin-left  : units(5px, $mobile-min-width, 1vw);
+                }
+            }
+
+            > li {
+                > a {
+                    padding-top    : units(10px, $mobile-min-width, 1vw);
+                    padding-bottom : units(10px, $mobile-min-width, 1vw);
+                }
+            }
+        }
+    }
+
+    .m-nav-item {
+        margin-top : units(10px, $mobile-min-width, 1vw);
+        
+        .m-icon {
+            width       : units(30px, $mobile-min-width, 1vw);
+            height      : units(30px, $mobile-min-width, 1vw);
+            line-height : units(30px, $mobile-min-width, 1vw);
+        }
+    }
+
+    @include screen(landscape) {
+        .m-nav {
+            padding-top: 8vw;
+
+            > ul.m-nav-link > li {
+                margin: 0;
+
+                > a {
+                    padding: 5px 0;
+                }
+            }
+
+            .b-desc {
+                font-size: 16px;
+            }
+        }
+
+        .m-nav-item {
+            margin-top: 0;
+            
+            .m-icon {
+                width       : 44px;
+                height      : 44px;
+                line-height : 44px;
+            }
+        }
+    }
+}

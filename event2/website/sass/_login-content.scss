@@ -1,0 +1,1282 @@
+.login {
+    position : relative;
+    
+    &:before, &:after {
+        bottom   : 0;
+        position : absolute;
+        @include font-icon($icon-family);
+    }
+
+    &:before {
+        right   : 50%;
+        z-index : 1;
+    }
+
+    &:after {
+        left    : 50%;
+        z-index : 3;
+    }
+
+    @each $key, $value in $icon {
+        &[data-icon="#{$key}"] {
+            &:before, &:after {
+                content : "#{$value}";
+            }
+        }
+    }
+
+    @each $key, $value in $color {
+        &[data-before-color="#{$key}"] {
+            &:before {
+                color : $value;
+            }
+        }
+
+        &[data-after-color="#{$key}"] {
+            &:after {
+                color : $value;
+            }
+        }
+    }
+}
+
+.login-hd {
+    line-height : 1.4;
+    position    : relative;
+
+    &[class^="b-bg-"], &[class*=" b-bg-"] {
+        &:before {
+            content  : "";
+            top      : 0;
+            left     : 50%;
+            width    : 100vw;
+            height   : 100%;
+            position : absolute;
+            z-index  : 1;
+            @include transform(translateX(-50%));
+        }
+    }
+
+    > * {
+        position : relative;
+        z-index  : 3;
+    }
+
+    &:after {
+        content         : "";
+        bottom          : 0;
+        left            : 50%;
+        width           : 100vw;
+        background      : image-url("login/grassland.png") no-repeat center center;
+        background-size : auto 100%;
+        position        : absolute;
+        z-index         : 2;
+        @include transform(translateX(-50%));
+    }
+
+    @each $key, $value in $color {
+        &[data-grassland-color="#{$key}"] {
+            &:after {
+                background-color : $value;
+            }
+        }
+
+        &.b-bg-#{$key} {
+            background : transparent !important;
+
+            &:before {
+                background : $value;
+            }
+        }
+    }
+}
+
+.login-icon {
+    position : relative;
+
+    > * {
+        &:not(.login-love-group) {
+            left     : 50%;
+            position : absolute;
+            @include transform-origin(center, bottom);
+            @include transform(translateX(-50%) scale(0));
+        }
+    }
+}
+
+.login-love-group {
+    left     : 50%;
+    position : relative;
+    display  : block;
+    @include transform-origin(center, bottom);
+    @include transform(translateX(-50%) scale(0));
+    @include animation(scale ($transition-times * 3) ($transition-times * 4.5) forwards linear);
+
+    &:before, &:after {
+        content : "";
+    }
+
+    &:before {
+        background      : image-url("login/love.png") no-repeat center center;
+        background-size : 100% auto;
+        @include inline-block;
+    }
+
+    &:after {
+        left            : 50%;
+        background      : image-url("login/chart.png") no-repeat center center;
+        background-size : 100% auto;
+        position        : absolute;
+        @include transform(translateX(-50%));
+    }
+}
+
+.login-dog-leg {
+    background      : image-url("login/dog-leg.png") no-repeat center center;
+    background-size : 100% auto;
+    @include animation(scale-left ($transition-times * 3) ($transition-times * 2.5) forwards linear);
+
+    &:before, &:after {
+        content         : "";
+        left            : 50%;
+        background      : image-url("login/love.png") no-repeat center center;
+        background-size : 100% auto;
+        position        : absolute;
+        @include opacity(1);
+        @include transform-origin(center, center);
+        @include transform(translateX(-50%) translateY(0) scale(0));
+    }
+
+    &:before {
+        @include animation(love ($transition-times * 6) ($transition-times * 5) infinite linear);
+    }
+
+    &:after {
+        @include animation(love ($transition-times * 6) ($transition-times * 5.5) infinite linear);
+    }
+}
+
+.login-dog-jump {
+    background      : image-url("login/dog-jump.png") no-repeat center center;
+    background-size : 100% auto;
+    @include animation(scale-left ($transition-times * 3) ($transition-times * 3) forwards linear);
+
+    &:before {
+        content         : "";
+        left            : 50%;
+        background      : image-url("login/love.png") no-repeat center center;
+        background-size : 100% auto;
+        position        : absolute;
+        @include opacity(1);
+        @include transform-origin(center, center);
+        @include transform(translateX(-50%) translateY(0) scale(0));
+    }
+
+    &:before {
+        @include animation(love ($transition-times * 6) ($transition-times * 6) infinite linear);
+    }
+}
+
+.login-cat {
+    background      : image-url("login/cat.png") no-repeat center center;
+    background-size : 100% auto;
+    @include animation(scale-right ($transition-times * 3) ($transition-times * 3.5) forwards linear);
+}
+
+.login-dog-eye {
+    background      : image-url("login/dog-eye.png") no-repeat center center;
+    background-size : 100% auto;
+    @include animation(scale-right ($transition-times * 3) ($transition-times * 4) forwards linear);
+
+    &:before, &:after {
+        content         : "";
+        left            : 50%;
+        background      : image-url("login/love.png") no-repeat center center;
+        background-size : 100% auto;
+        position        : absolute;
+        @include opacity(1);
+        @include transform-origin(center, center);
+        @include transform(translateX(-50%) translateY(0) scale(0));
+    }
+
+    &:before {
+        @include animation(love ($transition-times * 6) ($transition-times * 6.5) infinite linear);
+    }
+
+    &:after {
+        @include animation(love ($transition-times * 6) ($transition-times * 7) infinite linear);
+    }
+}
+
+.login-icon-bg {
+    top      : 0;
+    left     : 50%;
+    width    : 100vw;
+    height   : 100%;
+    position : absolute;
+    z-index  : 1;
+    @include transform(translateX(-50%));
+
+    &:before, &:after {
+        content         : "";
+        left            : 50%;
+        background      : image-url("login/mountain.png") no-repeat center center;
+        background-size : 100% auto;
+        position        : absolute;
+        @include transform-origin(center, bottom);
+        @include transform(translateX(-50%) scale(0));
+    }
+
+    &:before {
+        z-index : 4;
+        @include animation(scale ($transition-times * 3) forwards linear);
+    }
+
+    &:after {
+        z-index : 3;
+        @include animation(scale ($transition-times * 3) $transition-times forwards linear);
+    }
+}
+
+.login-icon-frame {
+    width    : 100%;
+    height   : 100%;
+    position : relative;
+    z-index  : 1;
+
+    &:before, &:after {
+        content         : "";
+        left            : 50%;
+        background      : image-url("login/mountain.png") no-repeat center center;
+        background-size : 100% auto;
+        position        : absolute;
+        @include transform-origin(center, bottom);
+        @include transform(translateX(-50%) scale(0));
+    }
+
+    &:before {
+        z-index : 4;
+        @include animation(scale ($transition-times * 3) ($transition-times * 1.5) forwards linear);
+    }
+
+    &:after {
+        z-index : 3;
+        @include animation(scale ($transition-times * 3) ($transition-times * 2) forwards linear);
+    }
+
+    > * {
+        position : absolute;
+
+        &.m-icon {
+            &.is-one, &.is-two {
+                right : 50%;
+            }
+
+            &.is-three, &.is-four, &.is-five  {
+                left : 50%;
+            }
+
+            &.is-one, &.is-three, &.is-five {
+                z-index : 2;
+                @include animation(cloud 10s infinite alternate linear);
+            }
+
+            &.is-two, &.is-four {
+                z-index : 1;
+                @include animation(cloud 10s infinite alternate-reverse linear);
+            }
+        }
+    }
+}
+
+.login-bd {
+    position : relative;
+    z-index  : 2;
+}
+
+.login-gift {
+    position : relative;
+
+    &[class^="b-bg-"], &[class*=" b-bg-"] {
+        background : transparent !important;
+    }
+
+    @each $key, $value in $color {
+        &.b-bg-#{$key} {
+            &:after {
+                background : $value;
+            }
+        }
+    }
+
+    &:after {
+        content  : "";
+        top      : 0;
+        left     : 0;
+        width    : 100%;
+        height   : 100%;
+        position : absolute;
+        z-index  : 1;
+        @include border-radius(50%);
+    }
+
+    > * {
+        position : relative;
+        z-index  : 2;
+    }
+}
+
+.login-tab {
+    position : relative;
+}
+
+.login-tab-bd {
+    margin-right : auto;
+    margin-left  : auto;
+}
+
+.login-item {
+    background : lighten($color-gray , 44.5%);
+    position   : relative;
+}
+
+.login-item-bd {
+    @include clearfix;
+}
+
+.login-box-dialog {
+    position : relative;
+
+    &:after {
+        content         : "";
+        background      : image-url("login/dialog-dog.png") no-repeat center center;
+        background-size : 100% auto;
+        @include inline-block;
+    }
+}
+
+.login-box-message {
+    position : relative;
+
+    &:before, &:after {
+        content : "";
+    }
+
+    &:before {
+        background      : image-url("login/love.png") no-repeat center center;
+        background-size : 100% auto;
+        position        : relative;
+        @include inline-block;
+    }
+
+    &:after {
+        bottom          : 0;
+        left            : 50%;
+        background      : image-url("login/dialog.png") no-repeat center center;
+        background-size : 100% auto;
+        position        : absolute;
+        @include transform(translateX(-50%));
+    }
+}
+
+@mixin love($width: null) {
+    width  : $width;
+    height : (292 / 336 * $width);
+}
+
+@mixin chart($width: null) {
+    width  : $width;
+    height : (152 / 224 * $width);
+}
+
+@mixin dog-leg($width: null) {
+    width  : $width;
+    height : (224 / 154 * $width);
+}
+
+@mixin dog-jump($width: null) {
+    width  : $width;
+    height : (156 / 156 * $width);
+}
+
+@mixin cat($width: null) {
+    width  : $width;
+    height : (124 / 104 * $width);
+}
+
+@mixin dog-eye($width: null) {
+    width  : $width;
+    height : (112 / 132 * $width);
+}
+
+@mixin mountain($width: null) {
+    width  : $width;
+    height : (184 / 352 * $width);
+}
+
+@mixin blanket($width: null) {
+    width  : $width;
+    height : (136 / 184 * $width);
+}
+
+@mixin bowl($width: null) {
+    width  : $width;
+    height : (136 / 160 * $width);
+}
+
+@mixin dialog($width: null) {
+    width  : $width;
+    height : (32 / 32 * $width);
+}
+
+@mixin dialog-dog($width: null) {
+    width  : $width;
+    height : (128 / 160 * $width);
+}
+
+@include keyframes(cloud) {
+    from {
+        @include transform(translateX(15%));
+    }
+
+    to {
+        @include transform(translateX(-15%));
+    }
+}
+
+@include keyframes(scale) {
+    0%{
+        @include transform(translateX(-50%) scale(0));
+    }
+
+    10% {
+        @include transform(translateX(-50%) scale(1.2));
+    }
+
+    20% {
+        @include transform(translateX(-50%) scale(0.8));
+    }
+
+    30%, 100% {
+        @include transform(translateX(-50%) scale(1));
+    }
+}
+
+@include keyframes(scale-left) {
+    0%{
+        @include transform(translateX(-50%) translateX(-30%) scale(0));
+    }
+
+    10% {
+        @include transform(translateX(-50%) translateX(-20%) scale(1.2));
+    }
+
+    20% {
+        @include transform(translateX(-50%) translateX(-10%) scale(0.8));
+    }
+
+    30%, 100% {
+        @include transform(translateX(-50%) translateX(0) scale(1));
+    }
+}
+
+@include keyframes(scale-right) {
+    0%{
+        @include transform(translateX(-50%) translateX(30%) scale(0));
+    }
+
+    10% {
+        @include transform(translateX(-50%) translateX(20%) scale(1.2));
+    }
+
+    20% {
+        @include transform(translateX(-50%) translateX(10%) scale(0.8));
+    }
+
+    30%, 100% {
+        @include transform(translateX(-50%) translateX(0) scale(1));
+    }
+}
+
+@include keyframes(love) {
+    0%{
+        @include opacity(1);
+        @include transform(translateX(-50%) translateY(0) scale(0));
+    }
+
+    5% {
+        @include opacity(1);
+        @include transform(translateX(-50%) translateY(0) scale(1.2));
+    }
+
+    10% {
+        @include opacity(1);
+        @include transform(translateX(-50%) translateY(0) scale(0.8));
+    }
+
+    15% {
+        @include opacity(1);
+        @include transform(translateX(-50%) translateY(0) scale(1));
+    }
+
+    20% {
+        @include opacity(1);
+        @include transform(translateX(-50%) translateY(0) scale(1));
+    }
+
+    40%, 100% {
+        @include opacity(0);
+        @include transform(translateX(-50%) translateY(-120%) scale(1));
+    }
+}
+
+@include respond(Desktops) {
+    .login {
+        &:before, &:after {
+            margin-bottom : -55px;
+            font-size     : 170px;
+        }
+
+        &:before {
+            margin-right : 215px;
+        }
+
+        &:after {
+            margin-left : 290px;
+        }
+    }
+
+    .login-hd {
+        padding-top : 100px;
+
+        &:after {
+            height : 88px;
+        }
+    }
+
+    .login-title-group {
+        > * {
+            &:not(:first-child) {
+                margin-top : 10px;
+            }
+        }
+    }
+
+    .login-icon {
+        padding-top    : 15px;
+        padding-bottom : 45px;
+    }
+
+    .login-love-group {
+        &:before {
+            @include love(336px);
+        }
+
+        &:after {
+            top : 35px;
+            @include chart(224px);
+        }
+    }
+
+    .login-dog-leg {
+        bottom      : 30px;
+        margin-left : -260px;
+        @include dog-leg(154px);
+
+        &:before {
+            top         : -10px;
+            margin-left : -125px;
+            @include love(20px);
+        }
+
+        &:after {
+            top         : 40px;
+            margin-left : -15px;
+            @include love(34px);
+        }
+    }
+
+    .login-dog-jump {
+        bottom      : 55px;
+        margin-left : -130px;
+        @include dog-jump(156px);
+
+        &:before {
+            top         : -120px;
+            margin-left : -90px;
+            @include love(56px);
+        }
+    }
+
+    .login-cat {
+        bottom      : 30px;
+        margin-left : 90px;
+        @include cat(104px);
+    }
+
+    .login-dog-eye {
+        bottom      : 65px;
+        margin-left : 230px;
+        @include dog-eye(132px);
+
+        &:before {
+            top         : -60px;
+            margin-left : 10px;
+            @include love(56px);
+        }
+
+        &:after {
+            top         : -110px;
+            margin-left : 80px;
+            @include love(40px);
+        }
+    }
+
+    .login-icon-bg {
+        &:before, &:after {
+            bottom : 84px;
+        }
+
+        &:before {
+            margin-left : -500px;
+            @include mountain(180px);
+        }
+
+        &:after {
+            margin-left : -400px;
+            @include mountain(150px);
+        }
+    }
+
+    .login-icon-frame {
+        &:before, &:after {
+            bottom : 84px;
+        }
+
+        &:before {
+            margin-left : 350px;
+            @include mountain(280px);
+        }
+
+        &:after {
+            margin-left : 455px;
+            @include mountain(360px);
+        }
+
+        > .m-icon {
+            &.m-icon-cloud {
+                font-size : 150px;
+            }
+
+            &.is-one, &.is-two, &.is-five {
+                bottom : 84px;
+            }
+
+            &.is-one {
+                margin-right : 250px;
+            }
+
+            &.is-two {
+                margin-right : -20px;
+            }
+
+            &.is-three {
+                bottom      : 40px;
+                margin-left : -10px;
+            }
+
+            &.is-four {
+                bottom      : 145px;
+                margin-left : 180px;
+            }
+
+            &.is-five {
+                margin-left : 290px;
+            }
+        }
+    }
+
+    .login-bd {
+        margin-top : -20px;
+    }
+
+    .login-gift {
+        width  : 84px;
+        height : 84px;
+
+        &.is-blanket {
+            .login-gift-figure {
+                margin-left : 10px;
+                @include blanket(92px);
+            }
+        }
+
+        &.is-bowl {
+            .login-gift-figure {
+                margin-left : 20px;
+                @include bowl(80px);
+            }
+        }
+
+        &.is-none {
+            .login-gift-figure {
+                @include love(50px);
+            }
+        }
+    }
+
+    .login-tab {
+        margin-right: 70px;
+        margin-left: 70px;
+    }
+
+    .login-tab-hd {
+        margin-bottom : 20px;
+        height        : 75px;
+    }
+
+    .login-tab-bd {
+        > * {
+            &:not(:first-child) {
+                margin-top : 20px;
+            }
+        }
+    }
+
+    .login-item {
+        padding : 15px;
+    }
+
+    .login-item-bd {
+        padding-right : 10px !important;
+        height        : 120px;
+    }
+
+    .login-box-dialog {
+        &:after {
+            margin-top : 45px;
+            @include dialog-dog(160px);
+        }
+    }
+
+    .login-box-message {
+        padding : 30px 35px;
+        @include border-radius(20px);
+
+        &:before {
+            top          : -4px;
+            margin-right : 5px;
+            @include love(26px);
+        }
+
+        &:after {
+            margin-bottom : -32px;
+            @include dialog(32px);
+        }
+    }
+
+    .login-box-ft {
+        margin-top : 10px;
+    }
+}
+
+@include respond(Desktops-Tablets) {}
+
+@include respond(Tablets-Mobiles) {
+    .login-item-bd {
+        overflow                   : scroll;
+        -webkit-overflow-scrolling : touch;
+    }
+}
+
+@include respond(Tablets) {
+    .login {
+        &:before, &:after {
+            margin-bottom : units(-40px, $tablet-min-width, 1vw);
+            font-size     : units(125px, $tablet-min-width, 1vw);
+        }
+
+        &:before {
+            margin-right : units(130px, $tablet-min-width, 1vw);
+        }
+
+        &:after {
+            margin-left : units(100px, $tablet-min-width, 1vw);
+        }
+    }
+
+    .login-hd {
+        padding-top : units(65px, $tablet-min-width, 1vw);
+
+        &:after {
+            height : units(66px, $tablet-min-width, 1vw);
+        }
+    }
+
+    .login-title-group {
+        > * {
+            &:not(:first-child) {
+                margin-top : units(8px, $tablet-min-width, 1vw);
+            }
+        }
+    }
+
+    .login-icon {
+        padding-top    : units(12px, $tablet-min-width, 1vw);
+        padding-bottom : units(32px, $tablet-min-width, 1vw);
+    }
+
+    .login-love-group {
+        &:before {
+            @include love(units(252px, $tablet-min-width, 1vw));
+        }
+
+        &:after {
+            top : units(18px, $tablet-min-width, 1vw);
+            @include chart(units(168px, $tablet-min-width, 1vw));
+        }
+    }
+
+    .login-dog-leg {
+        bottom      : units(22px, $tablet-min-width, 1vw);
+        margin-left : units(-195px, $tablet-min-width, 1vw);
+        @include dog-leg(units(115px, $tablet-min-width, 1vw));
+
+        &:before {
+            top         : units(-8px, $tablet-min-width, 1vw);
+            margin-left : units(-92px, $tablet-min-width, 1vw);
+            @include love(units(15px, $tablet-min-width, 1vw));
+        }
+
+        &:after {
+            top         : units(30px, $tablet-min-width, 1vw);
+            margin-left : units(-12px, $tablet-min-width, 1vw);
+            @include love(units(25px, $tablet-min-width, 1vw));
+        }
+    }
+
+    .login-dog-jump {
+        bottom      : units(40px, $tablet-min-width, 1vw);
+        margin-left : units(-95px, $tablet-min-width, 1vw);
+        @include dog-jump(units(117px, $tablet-min-width, 1vw));
+
+        &:before {
+            top         : units(-90px, $tablet-min-width, 1vw);
+            margin-left : units(-65px, $tablet-min-width, 1vw);
+            @include love(units(42px, $tablet-min-width, 1vw));
+        }
+    }
+
+    .login-cat {
+        bottom      : units(22px, $tablet-min-width, 1vw);
+        margin-left : units(65px, $tablet-min-width, 1vw);
+        @include cat(units(78px, $tablet-min-width, 1vw));
+    }
+
+    .login-dog-eye {
+        bottom      : units(48px, $tablet-min-width, 1vw);
+        margin-left : units(170px, $tablet-min-width, 1vw);
+        @include dog-eye(units(100px, $tablet-min-width, 1vw));
+
+        &:before {
+            top         : units(-45px, $tablet-min-width, 1vw);
+            margin-left : units(8px, $tablet-min-width, 1vw);
+            @include love(units(42px, $tablet-min-width, 1vw));
+        }
+
+        &:after {
+            top         : units(-82px, $tablet-min-width, 1vw);
+            margin-left : units(60px, $tablet-min-width, 1vw);
+            @include love(units(30px, $tablet-min-width, 1vw));
+        }
+    }
+
+    .login-icon-bg {
+        &:before, &:after {
+            bottom : units(63px, $tablet-min-width, 1vw);
+        }
+
+        &:before {
+            margin-left : units(-375px, $tablet-min-width, 1vw);
+            @include mountain(units(135px, $tablet-min-width, 1vw));
+        }
+
+        &:after {
+            margin-left : units(-300px, $tablet-min-width, 1vw);
+            @include mountain(units(112px, $tablet-min-width, 1vw));
+        }
+    }
+
+    .login-icon-frame {
+        &:before, &:after {
+            bottom : units(63px, $tablet-min-width, 1vw);
+        }
+
+        &:before {
+            margin-left : units(260px, $tablet-min-width, 1vw);
+            @include mountain(units(210px, $tablet-min-width, 1vw));
+        }
+
+        &:after {
+            margin-left : units(340px, $tablet-min-width, 1vw);
+            @include mountain(units(270px, $tablet-min-width, 1vw));
+        }
+
+        > .m-icon {
+            &.m-icon-cloud {
+                font-size : units(110px, $tablet-min-width, 1vw);
+            }
+
+            &.is-one, &.is-two, &.is-five {
+                bottom : units(63px, $tablet-min-width, 1vw);
+            }
+
+            &.is-one {
+                margin-right : units(185px, $tablet-min-width, 1vw);
+            }
+
+            &.is-two {
+                margin-right : units(-15px, $tablet-min-width, 1vw);
+            }
+
+            &.is-three {
+                bottom      : units(30px, $tablet-min-width, 1vw);
+                margin-left : units(-8px, $tablet-min-width, 1vw);
+            }
+
+            &.is-four {
+                bottom      : units(105px, $tablet-min-width, 1vw);
+                margin-left : units(135px, $tablet-min-width, 1vw);
+            }
+
+            &.is-five {
+                margin-left : units(215px, $tablet-min-width, 1vw);
+            }
+        }
+    }
+
+    .login-bd {
+        margin-top : units(-15px, $tablet-min-width, 1vw);
+    }
+
+    .login-gift {
+        width  : units(63px, $tablet-min-width, 1vw);
+        height : units(63px, $tablet-min-width, 1vw);
+
+        &.is-blanket {
+            .login-gift-figure {
+                margin-left : units(8px, $tablet-min-width, 1vw);
+                @include blanket(units(70px, $tablet-min-width, 1vw));
+            }
+        }
+
+        &.is-bowl {
+            .login-gift-figure {
+                margin-left : units(15px, $tablet-min-width, 1vw);
+                @include bowl(units(60px, $tablet-min-width, 1vw));
+            }
+        }
+
+        &.is-none {
+            .login-gift-figure {
+                @include love(units(35px, $tablet-min-width, 1vw));
+            }
+        }
+    }
+
+    .login-tab {
+        margin-right : units(20px, $tablet-min-width, 1vw);
+        margin-left  : units(20px, $tablet-min-width, 1vw);
+    }
+
+    .login-tab-hd {
+        margin-bottom : units(15px, $tablet-min-width, 1vw);
+    }
+
+    .login-tab-bd {
+        > * {
+            &:not(:first-child) {
+                margin-top : units(15px, $tablet-min-width, 1vw);
+            }
+        }
+    }
+
+    .login-item {
+        padding : units(12px, $tablet-min-width, 1vw);
+    }
+
+    .login-item-bd {
+        height : units(90px, $tablet-min-width, 1vw);
+    }
+
+    .login-box-dialog {
+        &:after {
+            margin-top : units(35px, $tablet-min-width, 1vw);
+            @include dialog-dog(units(120px, $tablet-min-width, 1vw));
+        }
+    }
+
+    .login-box-message {
+        padding : units(22px, $tablet-min-width, 1vw) (25px, $tablet-min-width, 1vw);
+        @include border-radius(units(15px, $tablet-min-width, 1vw));
+
+        &:before {
+            top          : units(-3px, $tablet-min-width, 1vw);
+            margin-right : units(4px, $tablet-min-width, 1vw);
+            @include love(units(20px, $tablet-min-width, 1vw));
+        }
+
+        &:after {
+            margin-bottom : units(-24px, $tablet-min-width, 1vw);
+            @include dialog(units(24px, $tablet-min-width, 1vw));
+        }
+    }
+
+    .login-box-ft {
+        margin-top : units(8px, $tablet-min-width, 1vw);
+    }
+}
+
+@include respond(Mobiles) {
+    .login {
+        &:before, &:after {
+            margin-bottom : units(-27px, $mobile-min-width, 1vw);
+            font-size     : units(85px, $mobile-min-width, 1vw);
+        }
+
+        &:before {
+            margin-right : units(25px, $mobile-min-width, 1vw);
+        }
+
+        &:after {
+            margin-left : units(30px, $mobile-min-width, 1vw);
+        }
+    }
+
+    .login-hd {
+        padding-top : units(40px, $mobile-min-width, 1vw);
+
+        &:after {
+            height : units(44px, $mobile-min-width, 1vw);
+        }
+    }
+
+    .login-title-group {
+        > * {
+            &:not(:first-child) {
+                margin-top : units(10px, $mobile-min-width, 1vw);
+            }
+        }
+    }
+
+    .login-icon {
+        padding-top    : units(10px, $mobile-min-width, 1vw);
+        padding-bottom : units(25px, $mobile-min-width, 1vw);
+    }
+
+    .login-love-group {
+        &:before {
+            @include love(units(138px, $mobile-min-width, 1vw));
+        }
+
+        &:after {
+            top : units(15px, $mobile-min-width, 1vw);
+            @include chart(units(82px, $mobile-min-width, 1vw));
+        }
+    }
+
+    .login-dog-leg {
+        bottom      : units(20px, $mobile-min-width, 1vw);
+        margin-left : units(-90px, $mobile-min-width, 1vw);
+        @include dog-leg(units(56px, $mobile-min-width, 1vw));
+
+        &:before {
+            top         : units(-10px, $mobile-min-width, 1vw);
+            margin-left : units(-45px, $mobile-min-width, 1vw);
+            @include love(units(12px, $mobile-min-width, 1vw));
+        }
+
+        &:after {
+            top         : units(5px, $mobile-min-width, 1vw);
+            margin-left : units(-10px, $mobile-min-width, 1vw);
+            @include love(units(20px, $mobile-min-width, 1vw));
+        }
+    }
+
+    .login-dog-jump {
+        bottom      : units(35px, $mobile-min-width, 1vw);
+        margin-left : units(-45px, $mobile-min-width, 1vw);
+        @include dog-jump(units(58px, $mobile-min-width, 1vw));
+
+        &:before {
+            top         : units(-45px, $mobile-min-width, 1vw);
+            margin-left : units(-40px, $mobile-min-width, 1vw);
+            @include love(units(28px, $mobile-min-width, 1vw));
+        }
+    }
+
+    .login-cat {
+        bottom      : units(20px, $mobile-min-width, 1vw);
+        margin-left : units(40px, $mobile-min-width, 1vw);
+        @include cat(units(32px, $mobile-min-width, 1vw));
+    }
+
+    .login-dog-eye {
+        bottom      : units(30px, $mobile-min-width, 1vw);
+        margin-left : units(85px, $mobile-min-width, 1vw);
+        @include dog-eye(units(46px, $mobile-min-width, 1vw));
+
+        &:before {
+            top         : units(-30px, $mobile-min-width, 1vw);
+            margin-left : units(5px, $mobile-min-width, 1vw);
+            @include love(units(28px, $mobile-min-width, 1vw));
+        }
+
+        &:after {
+            top         : units(-55px, $mobile-min-width, 1vw);
+            margin-left : units(35px, $mobile-min-width, 1vw);
+            @include love(units(20px, $mobile-min-width, 1vw));
+        }
+    }
+
+    .login-icon-bg {
+        &:before, &:after {
+            bottom : units(42px, $mobile-min-width, 1vw);
+        }
+
+        &:before {
+            margin-left : units(-140px, $mobile-min-width, 1vw);
+            @include mountain(units(60px, $mobile-min-width, 1vw));
+        }
+
+        &:after {
+            margin-left : units(-110px, $mobile-min-width, 1vw);
+            @include mountain(units(45px, $mobile-min-width, 1vw));
+        }
+    }
+
+    .login-icon-frame {
+        &:before, &:after {
+            bottom : units(42px, $mobile-min-width, 1vw);
+        }
+
+        &:before {
+            margin-left : units(100px, $mobile-min-width, 1vw);
+            @include mountain(units(90px, $mobile-min-width, 1vw));
+        }
+
+        &:after {
+            margin-left : units(150px, $mobile-min-width, 1vw);
+            @include mountain(units(130px, $mobile-min-width, 1vw));
+        }
+
+        > .m-icon {
+            &.m-icon-cloud {
+                font-size : units(75px, $mobile-min-width, 1vw);
+            }
+
+            &.is-one, &.is-two, &.is-five {
+                bottom : units(42px, $mobile-min-width, 1vw);
+            }
+
+            &.is-one {
+                margin-right : units(90px, $mobile-min-width, 1vw);
+            }
+
+            &.is-two {
+                margin-right : units(-10px, $mobile-min-width, 1vw);
+            }
+
+            &.is-three {
+                bottom      : units(20px, $mobile-min-width, 1vw);
+                margin-left : units(-80px, $mobile-min-width, 1vw);
+            }
+
+            &.is-four {
+                bottom      : units(70px, $mobile-min-width, 1vw);
+                margin-left : units(-10px, $mobile-min-width, 1vw);
+            }
+
+            &.is-five {
+                margin-left : units(30px, $mobile-min-width, 1vw);
+            }
+        }
+    }
+
+    .login-bd {
+        margin-top : units(-10px, $mobile-min-width, 1vw);
+    }
+
+    .login-gift {
+        width  : units(60px, $mobile-min-width, 1vw);
+        height : units(60px, $mobile-min-width, 1vw);
+
+        &.is-blanket {
+            .login-gift-figure {
+                margin-left : units(5px, $mobile-min-width, 1vw);
+                @include blanket(units(70px, $mobile-min-width, 1vw));
+            }
+        }
+
+        &.is-bowl {
+            .login-gift-figure {
+                margin-left : units(10px, $mobile-min-width, 1vw);
+                @include bowl(units(60px, $mobile-min-width, 1vw));
+            }
+        }
+
+        &.is-none {
+            .login-gift-figure {
+                @include love(units(35px, $mobile-min-width, 1vw));
+            }
+        }
+    }
+
+    .login-tab-hd {
+        margin-bottom : units(10px, $mobile-min-width, 1vw);
+        height        : units(135px, $mobile-min-width, 1vw);
+    }
+
+    .login-tab-bd {
+        > * {
+            &:not(:first-child) {
+                margin-top : units(10px, $mobile-min-width, 1vw);
+            }
+        }
+    }
+
+    .login-item {
+        padding : units(5px, $mobile-min-width, 1vw);
+    }
+
+    .login-item-bd {
+        height : units(100px, $mobile-min-width, 1vw);
+    }
+
+    .login-box-dialog {
+        &:after {
+            margin-top : units(25px, $mobile-min-width, 1vw);
+            @include dialog-dog(units(80px, $mobile-min-width, 1vw));
+        }
+    }
+
+    .login-box-message {
+        padding : units(15px, $mobile-min-width, 1vw) units(20px, $mobile-min-width, 1vw);
+        @include border-radius(units(10px, $mobile-min-width, 1vw));
+
+        &:before {
+            top          : units(-3px, $mobile-min-width, 1vw);
+            margin-right : units(4px, $mobile-min-width, 1vw);
+            @include love(units(20px, $mobile-min-width, 1vw));
+        }
+
+        &:after {
+            margin-bottom : units(-16px, $mobile-min-width, 1vw);
+            @include dialog(units(16px, $mobile-min-width, 1vw));
+        }
+    }
+
+    .login-box-ft {
+        margin-top : units(5px, $mobile-min-width, 1vw);
+    }
+}

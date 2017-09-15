@@ -1,0 +1,718 @@
+@mixin basic-table {
+    width : 100%;
+    @include display-table;
+    @include box-sizing(border-box);
+
+    > * {
+        @include display-table-cell;
+        @include box-sizing(border-box);
+
+        &.b-table-nowrap {
+            width       : 1%;
+            white-space : nowrap;
+        }
+    }
+}
+
+// br
+[class^="b-br-"] , [class*=" b-br-"] {
+    display : none !important;
+}
+
+// normalize
+.b-normalize {
+    @import "_common/normalize";
+
+    &:after {
+        content : "";
+        width   : 100%;
+        height  : 0;
+        clear   : both;
+        display : block;
+        @include clearfix;
+    }
+}
+
+// clearfix
+.b-clearfix {
+    &:after {
+        content : "";
+        width   : 100%;
+        height  : 0;
+        display : block;
+        clear   : both;
+        @include clearfix;
+    }
+}
+
+// vertical-align middle
+.b-middle {
+    height    : 100%;
+    position  : relative;
+    @include inline-block-space;
+
+    &:before {
+        content     : "";
+        font-size   : 0;
+        height      : 100%;
+        line-height : 0;
+        zoom        : 1;
+        @include inline-block;
+    }
+
+    > * {
+        @include inline-block;
+    }
+}
+
+// mark
+.b-mark {
+    color      : inherit;
+    background : transparent;
+}
+
+// text-align
+.b-text-left {
+    text-align : left !important;
+}
+
+.b-text-center {
+    text-align : center !important;
+}
+
+.b-text-right {
+    text-align : right !important;
+}
+
+.b-text-justify {
+    text-align : justify !important;
+}
+
+// text-italic
+.b-text-italic {
+    font-style : italic;
+}
+
+// hide
+.b-hide {
+    display : none !important;
+}
+
+// block
+.b-block {
+    display : block !important;
+}
+
+// inline
+.b-inline {
+    display : inline-block !important;
+    @include inline-block;
+}
+
+// table
+.b-table {
+    @include basic-table;
+}
+
+// float
+.b-float-left {
+    float : left;
+}
+
+.b-float-right {
+    float : right;
+}
+
+// row
+.b-row , [class^="b-row-"] , [class*=" b-row-"] {
+    @include clearfix;
+
+    &.b-clearfix {
+        overflow : visible;
+        @extend .b-clearfix;
+    }
+}
+
+// col
+[class^="b-col-"] , [class*=" b-col-"] {
+    min-height : 1px;
+    position   : relative;
+    @include box-sizing(border-box);
+}
+
+.b-hide-text {
+    display     : block;
+    width       : 0;
+    height      : 0;
+    overflow    : hidden;
+    line-height : 0;
+    text-indent : 200%;
+    white-space : nowrap;
+}
+
+.b-bold {
+    font-weight: bold;
+}
+
+// color
+@each $key , $value in $color {
+    .b-text-#{$key} {
+        color : #{$value} !important;
+    }
+
+    .b-bg-#{$key} {
+        background-color : #{$value} !important;
+    }
+
+    $opacity : 100;
+    @while $opacity > 0 {
+        .b-bg-#{$key}-opacity-#{$opacity} {
+            background-color : rgba($value, ($opacity / 100)) !important;
+        }
+
+        $opacity : $opacity - 5;
+    }
+}
+
+@include respond(Desktops) {
+    // br
+    .b-br-md {
+        display : block !important;
+    }
+
+    // text-align
+    .b-text-left-md {
+        text-align : left !important;
+    }
+
+    .b-text-center-md {
+        text-align : center !important;
+    }
+
+    .b-text-right-md {
+        text-align : right !important;
+    }
+
+    .b-text-justify-md {
+        text-align : justify !important;
+    }
+
+    // test italic
+    .b-text-italic-md {
+        font-style : italic;
+    }
+
+    // hide
+    .b-hide-md {
+        display : none !important;
+    }
+
+    // block
+    .b-block-md {
+        display : block !important;
+    }
+
+    // inline
+    .b-inline-md {
+        display : inline-block !important;
+        @include inline-block;
+    }
+
+    // table
+    .b-table-md {
+        @include basic-table;
+    }
+
+    //  float
+    .b-float-left-md {
+        float : left;
+    }
+
+    .b-float-right-md {
+        float : right;
+    }
+
+    // row
+    .b-row , .b-row-md , .b-row-dt {
+        margin-right : -#{$b-row-md};
+        margin-left  : -#{$b-row-md};
+
+        > [class^="b-col-md-"] , > [class*=" b-col-md-"] , > [class^="b-col-dt-"] , > [class*=" b-col-dt-"] {
+            padding-right : #{$b-row-md};
+            padding-left  : #{$b-row-md};
+        }
+    }
+
+    // col
+    $types : 12;
+    $total : 12;
+    @while $types > 0 {
+        .b-col-md-#{$types} {
+            width : ((100% / $total) * $types) !important;
+        }
+
+        $types : $types - 1;
+    }
+
+    .b-col-md-5d {
+        width : 20% !important;
+    }
+
+    @if $rwd-color-change == true {
+        // color
+        @each $key , $value in $color {
+            .b-text-#{$key}-md {
+                color : #{$value} !important;
+            }
+
+            .b-bg-#{$key}-md {
+                background-color : #{$value} !important;
+            }
+
+            $opacity : 100;
+            @while $opacity > 0 {
+                .b-bg-#{$key}-opacity-#{$opacity}-md {
+                    background-color : rgba($value, ($opacity / 100)) !important;
+                }
+
+                $opacity : $opacity - 5;
+            }
+        }
+    }
+}
+
+@include respond(Desktops-Tablets) {
+    // br
+    .b-br-dt {
+        display : block !important;
+    }
+    
+    // text-align
+    .b-text-left-dt {
+        text-align : left !important;
+    }
+
+    .b-text-center-dt {
+        text-align : center !important;
+    }
+
+    .b-text-right-dt {
+        text-align : right !important;
+    }
+
+    .b-text-justify-dt {
+        text-align : justify !important;
+    }
+
+    // test italic
+    .b-text-italic-dt {
+        font-style : italic;
+    }
+
+    // hide
+    .b-hide-dt {
+        display : none !important;
+    }
+
+    // block
+    .b-block-dt {
+        display : block !important;
+    }
+
+    // inline
+    .b-inline-dt {
+        display : inline-block !important;
+        @include inline-block;
+    }
+
+    // table
+    .b-table-dt {
+        @include basic-table;
+    }
+
+    //  float
+    .b-float-left-dt {
+        float : left;
+    }
+
+    .b-float-right-dt {
+        float : right;
+    }
+
+    // col
+    $types : 12;
+    $total : 12;
+    @while $types > 0 {
+        .b-col-dt-#{$types} {
+            width : ((100% / $total) * $types) !important;
+        }
+
+        $types : $types - 1;
+    }
+
+    .b-col-dt-5d {
+        width : 20% !important;
+    }
+
+    @if $rwd-color-change == true {
+        // color
+        @each $key , $value in $color {
+            .b-text-#{$key}-dt {
+                color : #{$value} !important;
+            }
+
+            .b-bg-#{$key}-dt {
+                background-color : #{$value} !important;
+            }
+
+            $opacity : 100;
+            @while $opacity > 0 {
+                .b-bg-#{$key}-opacity-#{$opacity}-dt {
+                    background-color : rgba($value, ($opacity / 100)) !important;
+                }
+
+                $opacity : $opacity - 5;
+            }
+        }
+    }
+}
+
+@include respond(Tablets-Mobiles) {
+    // br
+    .b-br-tm {
+        display : block !important;
+    }
+    
+    // text-align
+    .b-text-left-tm {
+        text-align : left !important;
+    }
+
+    .b-text-center-tm {
+        text-align : center !important;
+    }
+
+    .b-text-right-tm {
+        text-align : right !important;
+    }
+
+    .b-text-justify-tm {
+        text-align : justify !important;
+    }
+
+    // test italic
+    .b-text-italic-tm {
+        font-style : italic;
+    }
+
+    // hide
+    .b-hide-tm {
+        display : none !important;
+    }
+
+    // block
+    .b-block-tm {
+        display : block !important;
+    }
+
+    // inline
+    .b-inline-tm {
+        display : inline-block !important;
+        @include inline-block;
+    }
+
+    // table
+    .b-table-tm {
+        @include basic-table;
+    }
+
+    //  float
+    .b-float-left-tm {
+        float : left;
+    }
+
+    .b-float-right-tm {
+        float : right;
+    }
+
+    // col
+    $types : 12;
+    $total : 12;
+    @while $types > 0 {
+        .b-col-tm-#{$types} {
+            width : ((100% / $total) * $types) !important;
+        }
+
+        $types : $types - 1;
+    }
+
+    .b-col-tm-5d {
+        width : 20% !important;
+    }
+
+    @if $rwd-color-change == true {
+        // color
+        @each $key , $value in $color {
+            .b-text-#{$key}-tm {
+                color : #{$value} !important;
+            }
+
+            .b-bg-#{$key}-tm {
+                background-color : #{$value} !important;
+            }
+
+            $opacity : 100;
+            @while $opacity > 0 {
+                .b-bg-#{$key}-opacity-#{$opacity}-tm {
+                    background-color : rgba($value, ($opacity / 100)) !important;
+                }
+
+                $opacity : $opacity - 5;
+            }
+        }
+    }
+}
+
+@include respond(Tablets) {
+    // br
+    .b-br-sm {
+        display : block !important;
+    }
+
+    // text-align
+    .b-text-left-sm {
+        text-align : left !important;
+    }
+
+    .b-text-center-sm {
+        text-align : center !important;
+    }
+
+    .b-text-right-sm {
+        text-align : right !important;
+    }
+
+    .b-text-justify-sm {
+        text-align : justify !important;
+    }
+
+    // test italic
+    .b-text-italic-sm {
+        font-style : italic;
+    }
+
+    // hide
+    .b-hide-sm {
+        display : none !important;
+    }
+
+    // block
+    .b-block-sm {
+        display : block !important;
+    }
+
+    // inline
+    .b-inline-sm {
+        display : inline-block !important;
+        @include inline-block;
+    }
+
+    // table
+    .b-table-sm {
+        @include basic-table;
+    }
+
+    //  float
+    .b-float-left-sm {
+        float : left;
+    }
+
+    .b-float-right-sm {
+        float : right;
+    }
+
+    // row
+    .b-row , .b-row-sm , .b-row-dt , .b-row-tm {
+        margin-right : -#{$b-row-sm};
+        margin-left  : -#{$b-row-sm};
+
+        > [class^="b-col-sm-"] , > [class*=" b-col-sm-"] , > [class^="b-col-dt-"] , > [class*=" b-col-dt-"] > [class^="b-col-tm-"] , > [class*=" b-col-tm-"] {
+            padding-right : #{$b-row-sm};
+            padding-left  : #{$b-row-sm};
+        }
+    }
+
+    // col
+    $types : 12;
+    $total : 12;
+    @while $types > 0 {
+        .b-col-sm-#{$types} {
+            width : ((100% / $total) * $types) !important;
+        }
+
+        $types : $types - 1;
+    }
+
+    .b-col-sm-5d {
+        width : 20% !important;
+    }
+
+    @if $rwd-color-change == true {
+        // color
+        @each $key , $value in $color {
+            .b-text-#{$key}-sm {
+                color : #{$value} !important;
+            }
+
+            .b-bg-#{$key}-sm {
+                background-color : #{$value} !important;
+            }
+
+            $opacity : 100;
+            @while $opacity > 0 {
+                .b-bg-#{$key}-opacity-#{$opacity}-sm {
+                    background-color : rgba($value, ($opacity / 100)) !important;
+                }
+
+                $opacity : $opacity - 5;
+            }
+        }
+    }
+}
+
+@include respond(Mobiles) {
+    // br
+    .b-br-xs {
+        display : block !important;
+    }
+
+    // text-align
+    .b-text-left-xs {
+        text-align : left !important;
+    }
+
+    .b-text-center-xs {
+        text-align : center !important;
+    }
+
+    .b-text-right-xs {
+        text-align : right !important;
+    }
+
+    .b-text-justify-xs {
+        text-align : justify !important;
+    }
+
+    // test italic
+    .b-text-italic-xs {
+        font-style : italic;
+    }
+
+    // hide
+    .b-hide-xs {
+        display : none !important;
+    }
+
+    // block
+    .b-block-xs {
+        display : block !important;
+    }
+
+    // inline
+    .b-inline-xs {
+        display : inline-block !important;
+        @include inline-block;
+    }
+
+    // table
+    .b-table-xs {
+        @include basic-table;
+    }
+
+    //  float
+    .b-float-left-xs {
+        float : left;
+    }
+
+    .b-float-right-xs {
+        float : right;
+    }
+
+    // row
+    .b-row , .b-row-xs , .b-row-tm {
+        margin-right : -#{$b-row-xs};
+        margin-left  : -#{$b-row-xs};
+
+        > [class^="b-col-xs-"] , > [class*=" b-col-xs-"] , > [class^="b-col-tm-"] , > [class*=" b-col-tm-"] {
+            padding-right : #{$b-row-xs};
+            padding-left  : #{$b-row-xs};
+        }
+    }
+
+    // col
+    $types : 12;
+    $total : 12;
+    @while $types > 0 {
+        .b-col-xs-#{$types} {
+            width : ((100% / $total) * $types) !important;
+        }
+
+        $types : $types - 1;
+    }
+
+    .b-col-xs-5d {
+        width : 20% !important;
+    }
+
+    @if $rwd-color-change == true {
+        // color
+        @each $key , $value in $color {
+            .b-text-#{$key}-xs {
+                color : #{$value} !important;
+            }
+
+            .b-bg-#{$key}-xs {
+                background-color : #{$value} !important;
+            }
+
+            $opacity : 100;
+            @while $opacity > 0 {
+                .b-bg-#{$key}-opacity-#{$opacity}-xs {
+                    background-color : rgba($value, ($opacity / 100)) !important;
+                }
+
+                $opacity : $opacity - 5;
+            }
+        }
+    }
+
+    @include screen('portrait') {
+        .b-br-portrait-xs {
+            display : block !important;
+        }
+
+        .b-hide-portrait-xs {
+            display : none !important;
+        }
+    }
+
+    @include screen('landscape') {
+        .b-br-landscape-xs {
+            display : block !important;
+        }
+
+        .b-hide-landscape-xs {
+            display : none !important;
+        }
+    }
+}
+
+@include browsers('IE8') {
+    @if $ie-support == 8 {
+        .b-middle {
+            &:before {
+                font-size : 0.1px;
+            }
+        }
+    }
+}

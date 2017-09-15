@@ -1,0 +1,4044 @@
+.l-body {
+	&.is-full {
+		height: 100vh;
+
+		.m-header.is-scroll[data-scroll-bgcolor="yellow"] {
+			background: none;
+		}
+
+		.btn-scroll, .stories-side {
+			opacity: 0;
+			z-index: -1;
+		}
+
+		.l-footer {
+			display: none;
+		}
+	}
+
+	&[data-cut="0"] {
+		.m-header-logo .svg-icon, .m-header-nav-ctrl .svg-icon {
+			fill: $color-white;
+		}
+
+		.m-header-nav-ctrl {
+			&:before, &:after, .m-header-bar {
+				background: $color-white !important;
+			}
+		}
+	}
+
+	&[data-cut="1"] .dog-rescue[data-play="false"] {
+		.rescue-content {
+			@include animation(rotate3d ($transition-times * 1.5) ($transition-times * 7) forwards linear);
+		}
+
+		.mountain, .mountain-2 {
+			@include animation(scale ($transition-times * 3) forwards linear);
+		}
+
+		.dog {
+			@include animation(dog-appear ($transition-times * 2) forwards linear);
+
+			&.is-scared {
+				.dog-tail {
+					@include animation(dog-tail $transition-times ($transition-times * 2) forwards linear);
+				}
+
+				.dog-ear-left {
+					@include animation(dog-ear-left $transition-times ($transition-times * 2) forwards linear);
+				}
+
+				.dog-ear-right {
+					@include animation(dog-ear-right $transition-times ($transition-times * 2) forwards linear);
+				}
+			}
+		}
+	}
+
+	&[data-cut="2"] .cat-rescue[data-play="false"] {
+		.trash {
+			@include animation(scale-right ($transition-times * 3) forwards linear);
+		}
+
+		.rescue-content {
+			@include animation(rotate3d ($transition-times * 1.5) forwards linear);
+		}
+
+		.cat-ill {
+			@include animation(cat-appear ($transition-times * 1.5) ($transition-times * 2.5) forwards linear);
+		}
+	}
+}
+
+.b-show-i5 {
+	display: none;
+}
+
+.stories {
+	position: relative;
+
+	.stories-side {
+		@include display-flex;
+		@include align-items(center);
+		@include justify-content(center);
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		right: 0;
+		z-index: 3;
+		pointer-events: none;
+
+		.btn-dot {
+			pointer-events: auto;
+		}
+	}
+}
+
+.m-cut {
+	position: relative;
+}
+
+.main-cut {
+	background: $color-black;
+	height: 100vh;
+
+	&[data-choice="video"] {
+		.jQ-video {
+			display: block;
+			@include animation(fade-in 1s forwards linear);
+		}
+
+		.btn-skip {
+			display: block;
+		}
+	}
+
+	&[data-choice="question"] .choice {
+		@include display-flex;
+		@include animation(fade-in 1s forwards linear);
+
+		.content-wrap {
+			@include animation(fade-in 1s forwards linear);
+		}
+		
+		.svg-icon {
+			filter: drop-shadow(3px 0 3px rgba($color-black, 0.35));
+		}
+	}
+
+	&[data-choice="medical"] .medical, &[data-choice="help"] .help, &[data-choice="ignore"] .ignore {
+		@include display-flex;
+		@include animation(fade-in 1s forwards linear);
+
+		> * {
+			@include transform(translateZ(1px));
+		}
+	}
+
+	&[data-type="cat"] {
+		.choice {
+			background-image: image-url('stories/choice-cat.jpg');
+		}
+
+		.medical {
+			background-image: image-url('stories/medical-cat.jpg');
+		}
+
+		.help {
+			background-image: image-url('stories/help-cat.jpg');
+		}
+	}
+	
+	&[data-type="dog"] {
+		.choice {
+			background-image: image-url('stories/choice-dog.jpg');
+		}
+
+		.medical {
+			background-image: image-url('stories/medical-dog.jpg');
+		}
+
+		.help {
+			background-image: image-url('stories/help-dog.jpg');
+
+			.content-wrap {
+				.cut-title, .b-desc {
+					color: $color-white;
+				}
+			}
+		}
+	}
+
+	.jQ-video {
+		display: none;
+		opacity: 0;
+		@include transition(ease-in all 0.3s);
+	}
+
+	.choice, .medical, .help, .ignore {
+		display: none;
+		@include align-items(center);
+		@include justify-content(center);
+		height: 100%;
+		opacity: 0;
+	}
+
+	.choice, .medical, .help {
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+
+	.choice .content-wrap {
+		opacity: 0;
+	}
+
+	.medical {
+		@include align-items(flex-end);
+
+		.medical-list {
+			@include display-flex;
+			@include align-items(center);
+			@include justify-content(center);
+			font-size: 0;
+			line-height: 0;
+
+			.btn-medical.is-active {
+				.icon-wrap {
+					background: $color-yellow-dark;
+
+					&:after {
+						opacity: 1;
+					}
+				}
+
+				.svg-icon {
+					opacity: 1;
+				}
+
+				.text {
+					color: $color-yellow-dark;
+				}
+			}
+
+			.icon-wrap {
+				position: relative;
+				border-radius: 50%;
+				box-shadow: 0 0 10px rgba($color-black, 0.5);
+				@include transition(ease-in all 0.3s);
+
+				&:after {
+					content: '';
+					display: block;
+					width: 0;
+					height: 0;
+					position: absolute;
+					top: 100%;
+					left: 50%;
+					opacity: 0;
+					border-style: solid;
+					border-top-color: $color-yellow-dark;
+					border-right-color: transparent;
+					border-left-color: transparent;
+					border-bottom: 0;
+					@include transition(ease-in all 0.3s);
+				}
+			}
+
+			.svg-icon {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				fill: $color-white;
+				@include transition(ease-in all 0.3s);
+			}
+
+			.text {
+				color: $color-white;
+				letter-spacing: 1px;
+				line-height: 1.5em;
+				text-shadow: 0 0 5px rgba($color-black, 0.5);
+				@include transition(ease-in all 0.3s);
+			}
+		}
+
+		.btn-wrap {
+			&.is-disable .m-button {
+				cursor: none;
+				pointer-events: none;
+				opacity: 0;
+			}
+
+			&:not(.is-disable) .m-button {
+				cursor: pointer;
+				pointer-events: auto;
+				opacity: 1;
+			}
+
+			.m-button {
+				@include transition(ease-in all 0.3s);
+			}
+		}
+	}
+
+	.content-wrap {
+		width: 100%;
+		letter-spacing: 1px;
+
+		.cut-title {
+			margin-bottom: 0.75em;
+			line-height: 1.5em;
+		}
+
+		.b-desc {
+			margin-bottom: 1.6em;
+		}
+	}
+
+	.btn-skip {
+		display: none;
+		position: fixed;
+
+		&:hover {
+			.btn-icon {
+				&:before, &:after {
+					background: $color-white;
+				}
+			}
+
+			.text {
+				color: $color-white;
+			}
+		}
+
+		.btn-icon {
+			display: block;
+			position: relative;
+
+			&:before, &:after {
+				content: '';
+				background: $color-gray-l-p30;
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				@include transform-origin(center, center);
+				@include transition(ease-in all 0.3s);
+			}
+
+			&:before {
+				@include transform(rotate(45deg));
+			}
+
+			&:after {
+				@include transform(rotate(-45deg));
+			}
+		}
+
+		.text {
+			color: $color-gray-l-p30;
+			@include transition(ease-in all 0.3s);
+		}
+	}
+
+	.btn-scroll {
+		margin-left: -26px;
+		@include display-flex;
+		@include align-items(center);
+		@include justify-content(center);
+		@include flex-direction(column);
+		position: absolute;
+		bottom: 16px;
+		left: 50%;
+		@include animation(suspension 1.5s ease-in-out infinite);
+
+		.svg-icon {
+			fill: $color-white;
+		}
+
+		.text {
+			margin-top: 8px;
+			line-height: 1.5em;
+		}
+	}
+}
+
+.dog-rescue, .cat-rescue {
+	box-sizing: border-box;
+
+	&[data-play="true"] .rescue-content {
+		opacity: 1;
+		@include transform(rotate3d(1, 0, 0, 0deg));
+	}
+
+	.rescue-content {
+		background: rgba($color-white, 0.9);
+		opacity: 0;
+		z-index: 2;
+		@include transform-origin(center, bottom);
+		@include transform(rotate3d(1, 0, 0, 90deg));
+
+		&:before, &:after {
+			content: '';
+			background: $color-white;
+			height: 1px;
+			position: absolute;
+		}
+	}
+}
+
+.dog-rescue {
+	background: #005154;
+	overflow: hidden;
+
+	&[data-play="true"] {
+		.mountain, .mountain-2 {
+			@include transform(scale(1));
+		}
+
+		.dog {
+			opacity: 1;
+			@include transform(translateX(0) scale(1));
+
+			.dog-tail {
+				@include transform(rotate(-10deg));
+			}
+
+			.dog-ear-left {
+				@include transform(rotate(48deg));
+			}
+
+			.dog-ear-right {
+				@include transform(rotate(-40deg));
+			}
+		}
+	}
+
+	&:before, &:after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 0;
+	}
+
+	&:before {
+		background: #739555;
+	}
+
+	&:after {
+		background: #85a7ac;
+	}
+
+	.scense-wrap {
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			@include transform(skew(40deg));
+		}
+
+		&:before {
+			background: #f6cea6;
+			z-index: 3;
+		}
+
+		&:after {
+			background: #ddd1b8;
+			z-index: 1;
+		}
+	}
+
+	.rescue-content:after {
+		bottom: 0;
+		left: 0;
+		@include transform-origin(left, bottom);
+	}
+
+	.cloud {
+		position: absolute;
+
+		&.is-one, &.is-three, &.is-five {
+			z-index : 2;
+			@include animation(cloud 10s infinite alternate linear);
+		}
+
+		&.is-two, &.is-four {
+			z-index : 1;
+			@include animation(cloud 10s infinite alternate-reverse linear);
+		}
+
+		&.is-back {
+			fill: #104244;
+			z-index: 0;
+		}
+
+		&.is-front {
+			fill: #007e6c;
+			z-index: 2;
+		}
+	}
+
+	.mountain, .mountain-2 {
+		position: absolute;
+		z-index: 1;
+		@include transform-origin(center, bottom);
+		@include transform(scale(0));
+	}
+
+	.mountain {
+		&.is-two {
+			@include animation-delay($transition-times !important);
+		}
+
+		&.is-three {
+			@include animation-delay(($transition-times * 1.5) !important);
+		}
+
+		&.is-four {
+			@include animation-delay(($transition-times * 2) !important);
+		}
+
+		&.is-five {
+			@include animation-delay(($transition-times * 2.5) !important);
+		}
+	}
+
+	.mountain-2 {
+		fill: #60853e;
+
+		&.is-two {
+			@include animation-delay($transition-times !important);
+		}
+	}
+
+	.dog {
+		position: absolute;
+		opacity: 0;
+		@include transform-origin(top, left);
+		@include transform(translateX(-30%) scale(0));
+
+		.dog-tail, .dog-ear-left, .dog-ear-right {
+			position: absolute;
+		}
+
+		.dog-tail {
+			@include transform-origin(top, right);
+		}
+
+		.dog-ear-left {
+			@include transform-origin(0%, 92%);
+		}
+
+		.dog-ear-right {
+			@include transform-origin(97%, 59%);
+		}
+
+		.story-dog {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.teer {
+			position: absolute;
+			fill: #75a9db;
+		}
+
+		.blood {
+			position: absolute;
+			fill: #831e1f;
+
+			&.is-second {
+				@include animation-delay(0.6s !important);
+			}
+		}
+	}
+
+	.blue-car, .yellow-car {
+		position: absolute;
+		z-index: 2;
+
+		.light, .wheel {
+			position: absolute;
+		}
+	}
+
+	.blue-car {
+		@include animation-delay(($transition-times * 1) !important);
+
+		.car-blue {
+			@include animation(engine 0.3s infinite linear);
+		}
+	}
+
+	.yellow-car {
+		@include animation-delay(($transition-times * 2) !important);
+
+		.car-yellow {
+			@include animation(engine 0.3s infinite linear);
+		}
+	}
+}
+
+.cat-rescue {
+	background: #003d63;
+
+	&[data-play="true"] {
+		.trash {
+			@include transform(scale(1));
+		}
+
+		.cat-ill {
+			opacity: 1;
+			@include transform(translateX(0));
+
+			.cat-body {
+				@include animation(asthma ($transition-times * 5) infinite linear);
+			}
+		}
+	}
+
+	.cloud, .grass-2, .brick, .trash {
+		position: absolute;
+	}
+
+	.cloud, .grass-2 {
+		fill: #24678f;
+	}
+
+	.cloud {
+		&.is-two, &.is-three {
+			@include animation(cloud 10s infinite alternate linear);
+		}
+
+		&.is-one {
+			@include animation(cloud 10s infinite alternate-reverse linear);
+		}
+	}
+
+	.brick {
+		&.is-one, &.is-three {
+			fill: #004874;
+		}
+
+		&.is-two, &.is-four {
+			fill: #003555;
+		}
+	}
+
+	.grass-2 {
+		@include transform-origin(center, bottom);
+		@include animation(grass-2-sway 3s ease-in-out infinite);
+	}
+
+	.trash {
+		@include transform-origin(center, bottom);
+		@include transform(scale(0));
+
+		&.is-one {
+			@include animation-delay(($transition-times * 1.5) !important);
+		}
+
+		&.is-two {
+			@include animation-delay($transition-times !important);
+		}
+	}
+
+	.rescue-content {
+		@include animation-delay(($transition-times * 4) !important);
+	}
+
+	.scense-wrap {
+		background: #b6cbce;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	.cat-ill {
+		position: absolute;
+		z-index: 2;
+		opacity: 0;
+		@include transform-origin(center, right);
+		@include transform(translateX(15%));
+
+		> * {
+			position: absolute;
+		}
+
+		.cat-body {
+			@include transform-origin(center, center);
+		}
+	}
+
+	.grass {
+		position: absolute;
+		bottom: -1px;
+		left: 50%;
+		fill: #68b148;
+		@include transform-origin(center, bottom);
+		@include animation(grass-sway 2s ease-in-out infinite);
+	}
+}
+
+.about-pack {
+	background: #68b148;
+	overflow: hidden;
+
+	&:before {
+		content: '';
+		background: #428e38;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 1;
+	}
+
+	.pets-window {
+		position: absolute;
+		overflow: hidden;
+		left: 50%;
+		z-index: 0;
+
+		> * {
+			position: absolute;
+		}
+
+		.window-cat-head {
+			@include animation(shake ($transition-times * 15) ($transition-times * -6) infinite linear);
+			@include transform-origin(center, bottom);
+		}
+
+		.window-cat-tail {
+			@include animation(wagging ($transition-times * 15) infinite linear);
+			@include transform-origin(center, bottom);
+		}
+
+		.window-reflex {
+			z-index: 2;
+		}
+	}
+
+	.sway-dog {
+		position: absolute;
+
+		> * {
+			position: absolute;
+		}
+
+		.dog-tail {
+			@include animation(wagging ($transition-times * 10) ($transition-times * -4) infinite linear);
+			@include transform-origin(center, bottom);
+		}
+	}
+
+	.jump-dog {
+		position: absolute;
+		z-index: 1;
+		@include transform-origin(right, bottom);
+		@include animation(jump 5s infinite cubic-bezier(0, 0, 0.2, 1));
+	}
+
+	.grass {
+		position: absolute;
+		fill: #428e38;
+		@include transform-origin(center, bottom);
+		@include animation(grass-3-sway 1s ease-in-out infinite);
+	}
+}
+
+.rescue-content {
+	box-sizing: border-box;
+	letter-spacing: 1px;
+
+	.rescue-title {
+		line-height: 1.5em;
+	}
+
+	.b-desc {
+		line-height: 1.6em;
+	}
+}
+
+.has-arrow {
+	&.b-bg-black .text {
+		color: $color-gray-l-p30;
+	}
+
+	.text {
+		position: relative;
+		font-size: 14px;
+		letter-spacing: 1px;
+		@include transition(ease-in all 0.3s);
+
+		&:after {
+			content: '';
+			display: block;
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: 50%;
+			@include transition(ease-in all 0.3s);
+		}
+	}
+}
+
+.pets-intro {
+	position: relative;
+	@include transition(ease-in all 0.3s);
+
+	&[data-index="1"] {
+		background: #71bfae;
+	}
+
+	&[data-index="2"] {
+		background: #d6dfc4;
+	}
+
+	&[data-index="3"] {
+		background: #a7b8c8;
+	}
+
+	&[data-index="4"] {
+		background: #afa9af;
+	}
+
+	&[data-index="5"] {
+		background: #acc7b4;
+	}
+
+	&[data-index="6"] {
+		background: #c3cb9e;
+	}
+
+	&[data-index="7"] {
+		background: #b3c193;
+	}
+
+	&[data-index="8"] {
+		background: #cdd7c5;
+	}
+
+	.desc-wrap {
+		position: absolute;
+	}
+}
+
+.photo-wrap {
+	position: relative;
+	overflow: hidden;
+}
+
+.pet-content {
+	position: relative;
+	letter-spacing: 1px;
+
+	.b-desc {
+		line-height: 1.6em;
+	}
+
+	.img-wrap img {
+		width: 100%;
+	}
+}
+
+.owl-stage-outer {
+	overflow: visible;
+}
+
+.owl-stage {
+	margin: 0 auto
+}
+
+.owl-item {
+	display: inline-block;
+	vertical-align: top;
+	@include transition(ease-in all 0.3s);
+}
+
+.m-owl-ctrl {
+	.owl-prev, .owl-next {
+		position: absolute;
+		cursor: pointer;
+		overflow: hidden;
+		text-indent: 200%;
+		white-space: nowrap;
+
+		&:before, &:after {
+			content: '';
+			background: $color-white;
+			display: block;
+			position: absolute;
+		}
+
+		&:before {
+			top: 0;
+		}
+
+		&:after {
+			bottom: 0;
+		}
+	}
+
+	.owl-prev {
+		&:before, &:after {
+			left: 0;
+		}
+
+		&:before {
+			@include transform(skew(-40deg));
+			@include transform-origin(left, bottom);
+		}
+
+		&:after {
+			@include transform(skew(40deg));
+			@include transform-origin(left, top);
+		}
+	}
+
+	.owl-next {
+		&:before, &:after {
+			right: 0;
+		}
+
+		&:before {
+			@include transform(skew(40deg));
+			@include transform-origin(right, bottom);
+		}
+
+		&:after {
+			@include transform(skew(-40deg));
+			@include transform-origin(right, top);
+		}
+	}
+
+	&.disabled {
+		display: none;
+	}
+}
+
+.donations {
+	background: #e0e0e0;
+
+	.donations-wrap {
+		.info-title, .b-desc, .b-link {
+			font-size: 14px;
+			line-height: 1.5em;
+		}
+
+		.info-title {
+			padding-bottom: 5px;
+		}
+
+		.info-desc {
+			width: 100%;
+			border-top: 1px solid $color-black;
+		}
+	}
+}
+
+.donations-wrap .list {
+	@include display-flex;
+}
+
+.l-footer {
+	margin-top: 0 !important;
+}
+
+@include keyframes(fade-in) {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@include keyframes(suspension) {
+	0%, 100% {
+		margin-bottom: 10px;
+	}
+
+	50% {
+		margin-bottom: 0px;
+	}
+}
+
+@include keyframes(cloud) {
+	from {
+		@include transform(translateX(15%));
+	}
+
+	to {
+		@include transform(translateX(-15%));
+	}
+}
+
+@include keyframes(scale) {
+	0%{
+		@include transform(scale(0));
+	}
+
+	10% {
+		@include transform(scale(1.2));
+	}
+
+	20% {
+		@include transform(scale(0.8));
+	}
+
+	30%, 100% {
+		@include transform(scale(1));
+	}
+}
+
+@include keyframes(rotate3d) {
+	0%{
+		opacity: 0;
+		@include transform(rotate3d(1, 0, 0, 90deg));
+	}
+
+	100% {
+		opacity: 1;
+		@include transform(rotate3d(1, 0, 0, 0deg));
+	}
+}
+
+@include keyframes(dog-appear) {
+	0%{
+		opacity: 0;
+		@include transform(translateX(-30%) scale(0));
+	}
+
+	100% {
+		opacity: 1;
+		@include transform(translateX(0) scale(1));
+	}
+}
+
+@include keyframes(dog-tail) {
+	0% {
+		@include transform(rotate(0deg));
+	}
+
+	100% {
+		@include transform(rotate(-10deg));
+	}
+}
+
+@include keyframes(dog-ear-right) {
+	0% {
+		@include transform(rotate(0deg));
+	}
+
+	100% {
+		@include transform(rotate(-40deg));
+	}
+}
+
+@include keyframes(dog-ear-left) {
+	0% {
+		@include transform(rotate(0deg));
+	}
+
+	100% {
+		@include transform(rotate(48deg));
+	}
+}
+
+@include keyframes(cat-appear) {
+	0%{
+		opacity: 0;
+		@include transform(translateX(15%));
+	}
+
+	100% {
+		opacity: 1;
+		@include transform(translateX(0));
+	}
+}
+
+@include keyframes(scale-right) {
+	0%{
+		@include transform(translateX(30%) scale(0));
+	}
+
+	10% {
+		@include transform(translateX(20%) scale(1.2));
+	}
+
+	20% {
+		@include transform(translateX(10%) scale(0.8));
+	}
+
+	30%, 100% {
+		@include transform(translateX(0) scale(1));
+	}
+}
+
+@include keyframes(drop-dt) {
+	0% {
+		margin-top: 0px;
+	}
+
+	60%, 100% {
+		margin-top: 20px;
+		opacity: 0;
+	}
+}
+
+@include keyframes(drop-xs) {
+	0% {
+		margin-top: 0px;
+	}
+
+	60%, 100% {
+		margin-top: 10px;
+		opacity: 0;
+	}
+}
+
+@include keyframes(yellow-car-md) {
+	0% {
+		margin-left: -2247px;
+	}
+
+	100% {
+		margin-left: -1247px;
+	}
+}
+
+@include keyframes(blue-car-md) {
+	0% {
+		margin-left: 1009px;
+	}
+
+	100% {
+		margin-left: 509px;
+	}
+}
+
+@include keyframes(yellow-car-sm) {
+	0% {
+		margin-left: -1448px;
+	}
+
+	100% {
+		margin-left: -748px;
+	}
+}
+
+@include keyframes(blue-car-sm) {
+	0% {
+		margin-left: 605px;
+	}
+
+	100% {
+		margin-left: 305px;
+	}
+}
+
+@include keyframes(yellow-car-xs) {
+	0% {
+		margin-right: 376px;
+	}
+
+	100% {
+		margin-right: 76px;
+	}
+}
+
+@include keyframes(engine) {
+	0%, 100% {
+		top: 0px;
+	}
+
+	50% {
+		top: 1px;
+	}
+}
+
+@include keyframes(grass-sway) {
+	0%, 80%, 100% {
+		@include transform(skew(0, 0));
+	}
+
+	40% {
+		@include transform(skew(3deg, 0deg));
+	}
+}
+
+@include keyframes(grass-2-sway) {
+	0%, 80%, 100% {
+		@include transform(skew(0, 0));
+	}
+
+	40% {
+		@include transform(skew(5deg, 1deg));
+	}
+}
+
+@include keyframes(grass-3-sway) {
+	0%, 100% {
+		@include transform(skew(0, 0));
+	}
+
+	50% {
+		@include transform(skew(3deg, 0deg));
+	}
+}
+
+@include keyframes(asthma) {
+	0%, 60%, 100% {
+		@include transform(scale(1));
+	}
+
+	30% {
+		@include transform(scale(0.98));
+	}
+}
+
+@include keyframes(shake) {
+	0%, 10%, 20%, 30%, 40%, 100% {
+		@include transform(rotate(0deg));
+	}
+
+	5%, 25% {
+		@include transform(rotate(-5deg));
+	}
+
+	15%, 35% {
+		@include transform(rotate(5deg));
+	}
+}
+
+@include keyframes(wagging) {
+	0%, 10%, 20%, 30%, 40%, 100% {
+		@include transform(rotate(0deg));
+	}
+
+	5%, 25% {
+		@include transform(rotate(10deg));
+	}
+
+	15%, 35% {
+		@include transform(rotate(-10deg));
+	}
+}
+
+@include keyframes(jump) {
+	0%, 20%, 40%, 100% {
+		@include transform(rotate(0deg));
+	}
+
+	10%, 30% {
+		@include transform(rotate(15deg));
+	}
+}
+
+@include respond(Desktops) {
+	.l-body[data-cut="1"] .dog-rescue[data-play="false"] {
+		.blue-car {
+			@include animation(blue-car-md 0.5s forwards linear);
+		}
+
+		.yellow-car {
+			@include animation(yellow-car-md 0.5s forwards linear);
+		}
+	}
+
+	.m-header:not(.is-scroll) {
+		.m-header-nav-ctrl:not(.is-nav) {
+			&:before, &:after, .m-header-bar {
+				box-shadow: 0 0 5px rgba($color-black, 0.5);
+			}
+		}
+
+		.m-header-logo .svg-icon, .m-header-nav-ctrl .svg-icon {
+			filter: drop-shadow(0 0 5px rgba($color-black, 0.5));
+		}
+	}
+
+	.stories .stories-side {
+		padding-right: 20px;
+
+		.btn-dot {
+			margin: 6px 0;
+			background: $color-white;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			@include transition(ease-in all 0.3s);
+
+			&.is-curr, &:hover {
+				background: $color-yellow-dark;
+			}
+		}
+	}
+
+	.main-cut {
+		&[data-choice="ignore"] .ignore .content-wrap {
+			width: 750px;
+		}
+
+		.content-wrap {
+			padding: 0 40px;
+			box-sizing: border-box;
+		}
+
+		.medical .content-wrap .medical-list {
+			.btn-medical:hover {
+				.icon-wrap {
+					background: $color-yellow-dark;
+
+					&:after {
+						opacity: 1;
+					}
+				}
+
+				.svg-icon {
+					opacity: 1;
+				}
+
+				.text {
+					color: $color-yellow-dark;
+				}
+			}
+
+			.icon-wrap {
+				margin: 0 32px;
+			}
+		}
+
+		.btn-skip {
+			width: 40px;
+			top: 80px;
+			right: 28px;
+
+			.btn-icon {
+				width: 40px;
+				height: 40px;
+
+				&:before, &:after {
+					margin: -3px 0 0 -20px;
+					width: 40px;
+					height: 6px;
+					border-radius: 3px;
+				}
+			}
+
+			.text {
+				letter-spacing: 4px;
+				@include transform(scale(0.8));
+			}
+		}
+	}
+
+	.dog-rescue {
+		height: 658px;
+
+		&[data-play="true"] {
+			.blue-car {
+				margin-left: 509px;
+			}
+
+			.yellow-car {
+				margin-left: -1247px;
+			}
+		}
+
+		&:before {
+			height: 340px;
+		}
+
+		&:after {
+			height: 186px;
+		}
+
+		.scense-wrap {
+			&:before, &:after {
+				width: 202px;
+				height: 16px;
+				bottom: 80px;
+				left: 50%;
+			}
+
+			&:before {
+				margin-left: -300px;
+			}
+
+			&:after {
+				margin-left: 84px;
+				box-shadow: 384px 0 0 #ddd1b8;
+			}
+		}
+
+		.rescue-content {
+			margin-right: -45px;
+			top: 77px;
+			right: 50%;
+
+			&:before {
+				width: 82%;
+				top: 1px;
+				right: 0;
+				@include transform(rotate(225deg));
+				@include transform-origin(right, top);
+			}
+
+			&:after {
+				width: 115%;
+				@include transform(rotate(10deg));
+			}
+		}
+
+		.cloud {
+			&.is-one {
+				margin-right: 495px;
+				width: 264px;
+				height: 83px;
+				top: 100px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-left: 190px;
+				width: 333px;
+				height: 104px;
+				bottom: 380px;
+				left: 50%;
+			}
+
+			&.is-three {
+				margin-right: 320px;
+				width: 292px;
+				height: 90px;
+				bottom: 340px;
+				right: 50%;
+			}
+
+			&.is-four {
+				margin-left: 508px;
+				width: 292px;
+				height: 90px;
+				bottom: 337px;
+				left: 50%;
+			}
+
+			&.is-five {
+				margin-right: 420px;
+				width: 71px;
+				height: 22px;
+				bottom: 255px;
+				right: 50%;
+			}
+		}
+
+		.mountain, .mountain-2 {
+			bottom: 340px;
+		}
+
+		.mountain {
+			&.is-one {
+				margin-right: 406px;
+				width: 258px;
+				height: 132px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-right: 314px;
+				width: 184px;
+				height: 96px;
+				right: 50%;
+			}
+
+			&.is-three {
+				margin-right: -11px;
+				width: 154px;
+				height: 80px;
+				right: 50%;
+			}
+
+			&.is-four {
+				margin-left: 360px;
+				width: 342px;
+				height: 178px;
+				left: 50%;
+			}
+
+			&.is-five {
+				margin-left: 270px;
+				width: 284px;
+				height: 148px;
+				left: 50%;
+			}
+		}
+
+		.mountain-2 {
+			left: 50%;
+
+			&.is-one {
+				margin-left: -228px;
+				width: 312px;
+				height: 109px;
+			}
+
+			&.is-two {
+				margin-left: -56px;
+				width: 258px;
+				height: 90px;
+			}
+		}
+
+		.dog {
+			margin-left: 88px;
+			width: 293px;
+			height: 273px;
+			bottom: 86px;
+			left: 50%;
+			z-index: 2;
+
+			.dog-tail {
+				width: 46px;
+				height: 68px;
+				top: 44px;
+				left: 0;
+			}
+
+			.dog-ear-right {
+				width: 62px;
+				height: 58px;
+				top: 6px;
+				left: 121px;
+			}
+
+			.dog-ear-left {
+				width: 49px;
+				height: 49px;
+				top: 0;
+				right: 0;
+			}
+
+			.story-dog {
+				width: 293px;
+				height: 273px;
+			}
+
+			.teer {
+				width: 16px;
+				height: 27px;
+				top: 111px;
+				left: 182px;
+			}
+
+			.blood {
+				&.is-first {
+					width: 11px;
+					height: 16px;
+					top: 207px;
+					left: 103px;
+				}
+
+				&.is-second {
+					width: 16px;
+					height: 27px;
+					top: 230px;
+					left: 110px;
+				}
+			}
+		}
+
+		.blue-car, .yellow-car {
+			left: 50%;
+		}
+
+		.blue-car {
+			margin-left: 1009px;
+			width: 868px;
+			height: 331px;
+			bottom: 106px;
+
+			.light {
+				width: 156px;
+				height: 51px;
+				top: 175px;
+				left: -76px;
+			}
+
+			.car-blue {
+				width: 868px;
+				height: 331px;
+				position: relative;
+			}
+
+			.wheel {
+				top: 194px;
+				left: 77px;
+			}
+		}
+
+		.yellow-car {
+			margin-left: -2247px;
+			width: 862px;
+			height: 371px;
+			bottom: -75px;
+
+			.light {
+				width: 470px;
+				height: 171px;
+				bottom: 63px;
+				right: -312px;
+			}
+
+			.car-yellow {
+				width: 862px;
+				height: 371px;
+				position: relative;
+			}
+
+			.wheel {
+				top: 233px;
+				right: 101px;
+			}
+		}
+
+		.wheel {
+			width: 137px;
+			height: 137px;
+		}
+	}
+
+	.cat-rescue {
+		height: 616px;
+
+		.cloud {
+			width: 223px;
+			height: 72px;
+			left: 50%;
+
+			&.is-one {
+				margin-left: 264px;
+				top: -12px;
+			}
+
+			&.is-two {
+				margin-left: 363px;
+				top: -46px;
+			}
+
+			&.is-three {
+				margin-left: -100px;
+				top: 60px;
+			}
+		}
+
+		.brick {
+			width: 97px;
+			height: 74px;
+
+			&.is-one {
+				margin-right: 327px;
+				top: 78px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-right: 231px;
+				width: 87px;
+				height: 66px;
+				top: 127px;
+				right: 50%;
+			}
+
+			&.is-three {
+				margin-left: 24px;
+				top: 152px;
+				left: 50%;
+			}
+
+			&.is-four {
+				margin-left: 460px;
+				top: 154px;
+				left: 50%;
+			}
+		}
+
+		.grass-2 {
+			width: 360px;
+			height: 54px;
+
+			&.is-one {
+				margin-right: 612px;
+				top: 252px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-right: 248px;
+				top: 240px;
+				right: 50%;
+			}
+
+			&.is-three {
+				margin-right: -90px;
+				top: 230px;
+				right: 50%;
+			}
+
+			&.is-four {
+				margin-left: 104px;
+				top: 230px;
+				left: 50%;
+			}
+
+			&.is-five {
+				margin-left: 356px;
+				top: 240px;
+				left: 50%;
+			}
+
+			&.is-six {
+				margin-left: 612px;
+				top: 252px;
+				left: 50%;
+			}
+		}
+
+		.trash {
+			width: 260px;
+			height: 202px;
+			right: 50%;
+			z-index: 2;
+
+			&.is-one {
+				margin-right: 495px;
+				top: 120px;
+			}
+
+			&.is-two {
+				margin-right: 370px;
+				top: 150px;
+			}
+		}
+
+		.rescue-content {
+			margin-left: 60px;
+			top: 90px;
+			left: 50%;
+
+			&:before {
+				width: 82%;
+				top: 0;
+				left: 0;
+				@include transform(rotate(135deg));
+				@include transform-origin(left, bottom);
+			}
+
+			&:after {
+				width: 115%;
+				bottom: 0;
+				right: 0;
+				@include transform(rotate(-10deg));
+				@include transform-origin(right, top);
+			}
+		}
+
+		.scense-wrap {
+			height: 336px;
+
+			.cat-ill {
+				margin-right: -80px;
+				width: 489px;
+				height: 265px;
+				top: -31px;
+				right: 50%;
+
+				.cat {
+					width: 368px;
+					height: 265px;
+					right: 0;
+					top: 0;
+				}
+
+				.food {
+					width: 161px;
+					height: 98px;
+					top: 68px;
+					left: 0;
+				}
+			}
+
+			.grass {
+				width: 579px;
+				height: 87px;
+
+				&.is-one {
+					margin-left: -926px;
+				}
+
+				&.is-two {
+					margin-left: -391px;
+				}
+
+				&.is-three {
+					margin-left: 144px;
+				}
+			}
+		}
+	}
+
+	.about-pack {
+		height: 600px;
+
+		&:before {
+			height: 116px;
+		}
+
+		.pets-window {
+			margin-left: 33px;
+			width: 786px;
+			height: 259px;
+			top: 84px;
+
+			.window-content, .window-reflex {
+				width: 786px;
+				height: 299px;
+			}
+
+			.window-cat-head {
+				width: 66px;
+				height: 58px;
+				top: 26px;
+				left: 370px;
+			}
+
+			.window-cat-tail {
+				width: 61px;
+				height: 126px;
+				top: 148px;
+				left: 52px;
+			}
+		}
+
+		.sway-dog {
+			margin-left: -34px;
+			width: 190px;
+			height: 190px;
+			bottom: 98px;
+			left: 50%;
+
+			.dog-tail {
+				width: 19px;
+				height: 45px;
+				position: absolute;
+				top: 61px;
+				right: 0;
+			}
+
+			.dog-body {
+				width: 190px;
+				height: 190px;
+			}
+		}
+
+		.jump-dog {
+			margin-left: 165px;
+			width: 225px;
+			height: 253px;
+			bottom: -40px;
+			left: 50%;
+		}
+
+		.rescue-content {
+			padding: 0 35px;
+			width: 500px;
+			position: absolute;
+			top: 0;
+			right: 50%;
+		}
+
+		.grass {
+			width: 394px;
+			height: 58px;
+			right: 50%;
+
+			&.is-one {
+				margin-right: 202px;
+				bottom: 94px;
+			}
+
+			&.is-two {
+				margin-right: -185px;
+				bottom: 108px;
+			}
+		}
+
+		.btn-wrap {
+			bottom: 35px;
+		}
+	}
+
+	.rescue-content {
+		padding: 35px 25px;
+		width: 412px;
+
+		.rescue-title {
+			margin-bottom: 20px;
+			font-size: 40px;
+		}
+
+		.b-desc {
+			margin-bottom: 1.5em;
+			font-size: 16px;
+		}
+
+		.b-highlight {
+			font-size: 22px;
+		}
+	}
+
+	.pets-intro {
+		height: 663px;
+
+		.photo-wrap {
+			margin-left: -684px;
+			width: 1366px;
+		}
+
+		.btn-wrap {
+			bottom: 48px;
+		}
+	}
+
+	.pet-content {
+		&[data-index="1"] .desc-wrap {
+			margin-right: 70px;
+			width: 280px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="2"] .desc-wrap {
+			margin-left: 100px;
+			width: 270px;
+			top: 180px;
+			left: 50%;
+		}
+
+		&[data-index="3"] .desc-wrap {
+			margin-right: 70px;
+			width: 260px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="4"] .desc-wrap {
+			margin-right: 70px;
+			width: 260px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="5"] .desc-wrap {
+			margin-right: 70px;
+			width: 280px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="6"] .desc-wrap {
+			margin-right: 70px;
+			width: 270px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="7"] .desc-wrap {
+			margin-right: 25px;
+			width: 300px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="8"] .desc-wrap {
+			margin-right: 45px;
+			width: 280px;
+			top: 180px;
+			right: 50%;
+		}
+
+		.pet-title {
+			margin-bottom: 10px;
+
+			.name {
+				padding-right: 10px;
+				font-size: 40px;
+				line-height: 1.5em;
+			}
+
+			.age {
+				font-size: 18px;
+			}
+		}
+
+		.b-desc {
+			font-size: 16px;
+		}
+	}
+
+	.m-owl-ctrl {
+		.owl-prev, .owl-next {
+			margin-top: -33px;
+			width: 40px;
+			height: 66px;
+			top: 50%;
+
+			&:before, &:after {
+				width: 7px;
+				height: 33px;
+			}
+		}
+
+		.owl-prev {
+			margin-left: -480px;
+			left: 50%;
+		}
+
+		.owl-next {
+			margin-right: -480px;
+			right: 50%;
+		}
+	}
+
+	.donations {
+		.donations-wrap {
+			margin: 0 auto;
+			width: 816px;
+
+			.list .img-wrap {
+				margin: 0 25px;
+			}
+		}
+	}
+
+	.has-arrow .text:after {
+		right: -22px;
+	}
+
+	@include browsers('Safari') {
+		.m-header-logo {
+			width: 99%;
+		}
+	}
+}
+
+@include respond(Desktops-Tablets) {
+	.m-cut .btn-wrap {
+		position: absolute;
+		left: 0;
+		right: 0;
+		z-index: 1;
+	}
+
+	.main-cut {
+		&[data-choice="question"] .choice .content-wrap {
+			.svg-icon {
+				margin-right: 40px;
+				margin-bottom: 10px;
+				width: 98px;
+				height: 74px;
+			}
+
+			.cut-title {
+				font-size: 40px;
+				text-shadow: 0 0 18px $color-black;
+
+				.b-highlight {
+					font-size: 46px;
+				}
+			}
+
+			.btn-wrap {
+				margin: 60px 0;
+				position: relative;
+
+				.m-button {
+					margin: 0 32px;
+					width: 208px;
+
+					.text {
+						font-size: 18px;
+					}
+				}
+			}
+		}
+
+		&[data-choice="medical"] .medical .content-wrap {
+			padding-bottom: 12vh;
+
+			.cut-title {
+				font-size: 40px;
+
+				.hint {
+					font-size: 18px;
+				}
+			}
+
+			.medical-list {
+				.icon-wrap {
+					width: 76px;
+					height: 76px;
+
+					&:after {
+						margin-top: -2px;
+						margin-left: -12px;
+						border-top-width: 12px;
+						border-right-width: 12px;
+						border-left-width: 12px;
+					}
+
+					.svg-icon {
+						margin: -26px 0 0 -26px;
+						width: 52px;
+						height: 52px;
+
+						&.x-ray {
+							margin: -33px 0 0 -33px;
+							width: 66px;
+							height: 66px;
+						}
+					}
+				}
+
+				.text {
+					margin-top: 12px;
+					font-size: 18px;
+				}
+			}
+
+			.btn-wrap {
+				position: relative;
+
+				.m-button {
+					width: 244px;
+
+					.text {
+						font-size: 18px;
+					}
+				}
+			}
+		}
+
+		&[data-choice="ignore"] .ignore .content-wrap .cut-title {
+			font-size: 40px;
+		}
+
+		.medical .medical-list .icon-wrap {
+			background: rgba($color-white, 0.3);
+
+			.svg-icon {
+				opacity: 0.5;
+			}
+		}
+
+		.content-wrap {
+			.cut-title {
+				font-size: 48px;
+				line-height: 1.2em;
+			}
+
+			.b-desc {
+				font-size: 18px;
+				line-height: 1.6em;
+			}
+
+			.b-highlight {
+				font-size: 24px;
+			}
+
+			.m-button {
+				margin-top: 30px;
+			}
+		}
+
+		.btn-scroll .svg-icon {
+			width: 33px;
+			height: 47px;
+		}
+	}
+
+	.dog-rescue, .cat-rescue {
+		.rescue-content {
+			position: absolute;
+		}
+	}
+
+	.dog-rescue .dog {
+		.teer {
+			@include animation(drop-dt 2s 0.3s infinite linear);
+		}
+
+		.blood {
+			@include animation(drop-dt 2s infinite linear);
+		}
+	}
+
+	.pets-intro .photo-wrap {
+		position: absolute;
+		top: 0;
+		left: 50%;
+	}
+
+	.donations-wrap {
+		padding: 35px 0;
+		@include display-flex;
+		@include align-items(stretch);
+		@include justify-content(center);
+
+		.list {
+			@include display-flex;
+			@include align-items(stretch);
+			@include justify-content(flex-end);
+			width: 50%;
+
+			&:first-child {
+				padding-right: 20px;
+				@include flex-direction(row-reverse);
+			}
+
+			&:last-child {
+				padding-left: 20px;
+			}
+
+			.donations-info {
+				padding-top: 20px;
+				@include display-flex;
+				@include align-items(center);
+				@include justify-content(center);
+				@include flex-direction(column);
+			}
+
+			.info-desc {
+				padding-top: 10px;
+				@include flex-grow(1);
+			}
+
+			.img-wrap {
+				@include display-flex;
+				@include align-items(center);
+				line-height: 0;
+			}
+		}
+
+		.is-pack {
+			width: 113px;
+			height: 145px;
+		}
+
+		.qr-code {
+			width: 128px;
+			height: 128px;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	.has-arrow {
+		&.b-bg-black {
+			&:hover {
+				.text {
+					color: $color-white;
+
+					&:after {
+						border-left-color: $color-white;
+					}
+				}
+			}
+
+			.text:after {
+				border-left-color: $color-gray-l-p30;
+			}
+		}
+
+		.text:after {
+			margin-top: -5px;
+			border-top: 5px solid transparent;
+			border-bottom: 5px solid transparent;
+			border-left: 10px solid $color-black;
+		}
+	}
+
+	@include browsers('Safari') {
+		.m-header .m-header-logo .svg-icon, .m-header-nav-ctrl .svg-icon {
+			filter: none !important;
+		}
+
+		.main-cut[data-choice="question"] .choice .content-wrap .svg-icon {
+			filter: none !important;
+		}
+	}
+}
+
+@include respond(HD) {
+	.main-cut .content-wrap {
+		max-width: 1080px;
+	}
+}
+
+@include respond(Tablets-Mobiles) {
+	.m-header:not(.is-scroll) {
+		.m-header-nav-ctrl:not(.is-nav) {
+			&:before, &:after, .m-header-bar {
+				box-shadow: 0 0 3px rgba($color-black, 0.5);
+			}
+		}
+
+		.m-header-logo .svg-icon, .m-header-nav-ctrl .svg-icon {
+			filter: drop-shadow(0 0 2px rgba($color-black, 0.75));
+		}
+	}
+
+	.main-cut {
+		&[data-choice="help"] .help .content-wrap {
+			.cut-title, .b-desc {
+				color: $color-white;
+			}
+		}
+
+		.btn-scroll .svg-icon {
+			margin: 0 auto;
+		}
+	}
+
+	.stories .stories-side {
+		padding-right: 10px;
+		line-height: 0;
+
+		.btn-dot {
+			width: 24px;
+			height: 24px;
+			position: relative;
+
+			&.is-curr:before, &:hover:before {
+				background: $color-yellow-dark;
+			}
+
+			&:before {
+				content: '';
+				margin: -6px 0 0 -6px;
+				background: $color-white;
+				display: block;
+				width: 12px;
+				height: 12px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				border-radius: 50%;
+				@include transition(ease-in all 0.3s);
+			}
+		}
+	}
+}
+
+@include respond(Tablets) {
+	.l-body[data-cut="1"] .dog-rescue[data-play="false"] {
+		.blue-car {
+			@include animation(blue-car-sm 0.5s forwards linear);
+		}
+
+		.yellow-car {
+			@include animation(yellow-car-sm 0.5s forwards linear);
+		}
+	}
+
+	.main-cut {
+		&[data-choice="medical"] .medical .content-wrap .medical-list {
+			@include justify-content(space-around);
+
+			.icon-wrap {
+				margin: 0 auto;
+			}
+		}
+
+		&[data-choice="help"] .help .content-wrap {
+			width: auto;
+		}
+
+		&[data-choice="ignore"] .ignore .content-wrap {
+			width: 670px;
+		}
+
+		&[data-type="dog"] .medical {
+			background-position: -80vw center;
+		}
+
+		.btn-skip {
+			width: 40px;
+			top: 60px;
+			right: 30px;
+
+			.btn-icon {
+				width: 40px;
+				height: 40px;
+
+				&:before, &:after {
+					margin: -2px 0 0 -20px;
+					width: 40px;
+					height: 4px;
+					border-radius: 2px;
+				}
+			}
+
+			.text {
+				margin-top: -2px;
+				letter-spacing: 4px;
+				@include transform(scale(0.8));
+			}
+		}
+	}
+
+	.dog-rescue {
+		height: 395px;
+
+		&[data-play="true"] {
+			.blue-car {
+				margin-left: 305px;
+			}
+
+			.yellow-car {
+				margin-left: -748px;
+			}
+		}
+
+		&:before {
+			height: 204px;
+		}
+
+		&:after {
+			height: 112px;
+		}
+
+		.scense-wrap {
+			&:before, &:after {
+				width: 120px;
+				height: 10px;
+				bottom: 48px;
+				left: 50%;
+			}
+
+			&:before {
+				margin-left: -180px;
+			}
+
+			&:after {
+				margin-left: 50px;
+				box-shadow: 230px 0 0 #ddd1b8;
+			}
+		}
+
+		.rescue-content {
+			margin-right: -27px;
+			top: 46px;
+			right: 50%;
+
+			&:before {
+				width: 82%;
+				top: 1px;
+				right: 0;
+				@include transform(rotate(225deg));
+				@include transform-origin(right, top);
+			}
+
+			&:after {
+				width: 113%;
+				@include transform(rotate(8deg));
+			}
+		}
+
+		.cloud {
+			&.is-one {
+				margin-right: 297px;
+				width: 158px;
+				height: 50px;
+				top: 60px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-left: 114px;
+				width: 200px;
+				height: 62px;
+				bottom: 228px;
+				left: 50%;
+			}
+
+			&.is-three {
+				margin-right: 192px;
+				width: 175px;
+				height: 54px;
+				bottom: 204px;
+				right: 50%;
+			}
+
+			&.is-four {
+				margin-left: 305px;
+				width: 175px;
+				height: 54px;
+				bottom: 202px;
+				left: 50%;
+			}
+
+			&.is-five {
+				margin-right: 252px;
+				width: 43px;
+				height: 13px;
+				bottom: 153px;
+				right: 50%;
+			}
+		}
+
+		.mountain, .mountain-2 {
+			bottom: 204px;
+		}
+
+		.mountain {
+			&.is-one {
+				margin-right: 244px;
+				width: 155px;
+				height: 79px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-right: 188px;
+				width: 110px;
+				height: 58px;
+				right: 50%;
+			}
+
+			&.is-three {
+				margin-right: -7px;
+				width: 92px;
+				height: 48px;
+				right: 50%;
+			}
+
+			&.is-four {
+				margin-left: 216px;
+				width: 205px;
+				height: 107px;
+				left: 50%;
+			}
+
+			&.is-five {
+				margin-left: 162px;
+				width: 170px;
+				height: 89px;
+				left: 50%;
+			}
+		}
+
+		.mountain-2 {
+			left: 50%;
+
+			&.is-one {
+				margin-left: -137px;
+				width: 187px;
+				height: 65px;
+			}
+
+			&.is-two {
+				margin-left: -34px;
+				width: 155px;
+				height: 54px;
+			}
+		}
+
+		.dog {
+			margin-left: 53px;
+			width: 176px;
+			height: 164px;
+			bottom: 52px;
+			left: 50%;
+			z-index: 2;
+
+			.dog-tail {
+				width: 28px;
+				height: 41px;
+				top: 26px;
+				left: 0;
+			}
+
+			.dog-ear-right {
+				width: 37px;
+				height: 35px;
+				top: 6px;
+				left: 73px;
+			}
+
+			.dog-ear-left {
+				width: 29px;
+				height: 29px;
+				top: 0;
+				right: 0;
+			}
+
+			.story-dog {
+				width: 176px;
+				height: 164px;
+			}
+
+			.teer {
+				width: 10px;
+				height: 16px;
+				top: 67px;
+				left: 109px;
+			}
+
+			.blood {
+				&.is-first {
+					width: 7px;
+					height: 10px;
+					top: 124px;
+					left: 62px;
+				}
+
+				&.is-second {
+					width: 10px;
+					height: 16px;
+					top: 138px;
+					left: 66px;
+				}
+			}
+		}
+
+		.blue-car, .yellow-car {
+			left: 50%;
+		}
+
+		.blue-car {
+			margin-left: 605px;
+			width: 521px;
+			height: 199px;
+			bottom: 64px;
+
+			.light {
+				width: 94px;
+				height: 31px;
+				top: 105px;
+				left: -46px;
+			}
+
+			.car-blue {
+				width: 521px;
+				height: 199px;
+			}
+
+			.wheel {
+				top: 116px;
+				left: 46px;
+			}
+		}
+
+		.yellow-car {
+			margin-left: -1448px;
+			width: 517px;
+			height: 223px;
+			bottom: -45px;
+
+			.light {
+				width: 282px;
+				height: 103px;
+				bottom: 38px;
+				right: -187px;
+			}
+
+			.car-yellow {
+				width: 517px;
+				height: 223px;
+			}
+
+			.wheel {
+				top: 140px;
+				right: 61px;
+			}
+		}
+
+		.wheel {
+			width: 82px;
+			height: 82px;
+		}
+	}
+
+	.cat-rescue {
+		height: 370px;
+
+		.cloud {
+			width: 134px;
+			height: 43px;
+			left: 50%;
+
+			&.is-one {
+				margin-left: 158px;
+				top: -7px;
+			}
+
+			&.is-two {
+				margin-left: 218px;
+				top: -28px;
+			}
+
+			&.is-three {
+				margin-left: -60px;
+				top: 36px;
+			}
+		}
+
+		.brick {
+			width: 58px;
+			height: 44px;
+
+			&.is-one {
+				margin-right: 196px;
+				top: 47px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-right: 139px;
+				width: 52px;
+				height: 40px;
+				top: 76px;
+				right: 50%;
+			}
+
+			&.is-three {
+				margin-left: 14px;
+				top: 91px;
+				left: 50%;
+			}
+
+			&.is-four {
+				margin-left: 276px;
+				top: 92px;
+				left: 50%;
+			}
+		}
+
+		.grass-2 {
+			width: 216px;
+			height: 32px;
+
+			&.is-one {
+				margin-right: 367px;
+				top: 151px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-right: 149px;
+				top: 144px;
+				right: 50%;
+			}
+
+			&.is-three {
+				margin-right: -54px;
+				top: 138px;
+				right: 50%;
+			}
+
+			&.is-four {
+				margin-left: 62px;
+				top: 138px;
+				left: 50%;
+			}
+
+			&.is-five {
+				margin-left: 214px;
+				top: 144px;
+				left: 50%;
+			}
+
+			&.is-six {
+				margin-left: 367px;
+				top: 151px;
+				left: 50%;
+			}
+		}
+
+		.trash {
+			width: 156px;
+			height: 121px;
+			right: 50%;
+			z-index: 2;
+
+			&.is-one {
+				margin-right: 297px;
+				top: 54px;
+			}
+
+			&.is-two {
+				margin-right: 222px;
+				top: 72px;
+			}
+		}
+
+		.rescue-content {
+			margin-left: 54px;
+			top: 54px;
+			left: 50%;
+
+			&:before {
+				width: 82%;
+				top: 0;
+				left: 0;
+				@include transform(rotate(135deg));
+				@include transform-origin(left, bottom);
+			}
+
+			&:after {
+				width: 115%;
+				bottom: 0;
+				right: 0;
+				@include transform(rotate(-5deg));
+				@include transform-origin(right, top);
+			}
+		}
+
+		.scense-wrap {
+			height: 202px;
+
+			.cat-ill {
+				margin-right: -48px;
+				width: 293px;
+				height: 159px;
+				top: -19px;
+				right: 50%;
+
+				.cat {
+					width: 221px;
+					height: 159px;
+					right: 0;
+					top: 0;
+				}
+
+				.food {
+					width: 97px;
+					height: 59px;
+					top: 41px;
+					left: 0;
+				}
+			}
+
+			.grass {
+				width: 347px;
+				height: 52px;
+
+				&.is-one {
+					margin-left: -556px;
+				}
+
+				&.is-two {
+					margin-left: -235px;
+				}
+
+				&.is-three {
+					margin-left: 86px;
+				}
+			}
+		}
+	}
+
+	.about-pack {
+		height: 360px;
+
+		&:before {
+			height: 70px;
+		}
+
+		.pets-window {
+			margin-left: 20px;
+			width: 472px;
+			height: 155px;
+			top: 50px;
+
+			.window-content, .window-reflex {
+				width: 472px;
+				height: 180px;
+			}
+
+			.window-cat-head {
+				width: 40px;
+				height: 35px;
+				top: 16px;
+				left: 222px;
+			}
+
+			.window-cat-tail {
+				width: 37px;
+				height: 76px;
+				top: 89px;
+				left: 31px;
+			}
+		}
+
+		.sway-dog {
+			margin-left: -20px;
+			width: 114px;
+			height: 114px;
+			bottom: 59px;
+			left: 50%;
+
+			.dog-tail {
+				width: 11px;
+				height: 27px;
+				position: absolute;
+				top: 37px;
+				right: 0;
+			}
+
+			.dog-body {
+				width: 114px;
+				height: 114px;
+			}
+		}
+
+		.jump-dog {
+			margin-left: 160px;
+			width: 135px;
+			height: 152px;
+			bottom: -32px;
+			left: 50%;
+		}
+
+		.rescue-content {
+			padding: 0 21px;
+			width: 380px;
+			position: absolute;
+			top: 0;
+			right: 50%;
+		}
+
+		.grass {
+			width: 236px;
+			height: 35px;
+			right: 50%;
+
+			&.is-one {
+				margin-right: 121px;
+				bottom: 56px;
+			}
+
+			&.is-two {
+				margin-right: -111px;
+				bottom: 65px;
+			}
+		}
+
+		.btn-wrap {
+			bottom: 16px;
+		}
+	}
+
+	.rescue-content {
+		padding: 20px 15px;
+		width: 312px;
+
+		.rescue-title {
+			margin-bottom: 12px;
+			font-size: 30px;
+		}
+
+		.b-desc {
+			margin-bottom: 1.5em;
+			font-size: 12px;
+		}
+
+		.b-highlight {
+			font-size: 15px;
+		}
+	}
+
+	.pets-intro {
+		height: 460px;
+
+		.photo-wrap {
+			margin-left: -474px;
+			width: 948px;
+		}
+
+		.btn-wrap {
+			bottom: 32px;
+		}
+	}
+
+	.pet-content {
+		&[data-index="1"] .desc-wrap {
+			margin-right: 20px;
+			width: 220px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="2"] .desc-wrap {
+			margin-left: 50px;
+			width: 200px;
+			top: 180px;
+			left: 50%;
+		}
+
+		&[data-index="3"] .desc-wrap {
+			margin-right: 10px;
+			width: 230px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="4"] .desc-wrap {
+			margin-right: 20px;
+			width: 220px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="5"] .desc-wrap {
+			margin-right: 20px;
+			width: 220px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="6"] .desc-wrap {
+			width: 240px;
+			top: 170px;
+			right: 50%;
+		}
+
+		&[data-index="7"] .desc-wrap {
+			margin-right: -10px;
+			width: 250px;
+			top: 180px;
+			right: 50%;
+		}
+
+		&[data-index="8"] .desc-wrap {
+			margin-right: -10px;
+			width: 250px;
+			top: 180px;
+			right: 50%;
+		}
+
+		.pet-title {
+			margin-bottom: 10px;
+
+			.name {
+				padding-right: 10px;
+				font-size: 30px;
+				line-height: 1.5em;
+			}
+
+			.age {
+				font-size: 15px;
+			}
+		}
+
+		.b-desc {
+			font-size: 12px;
+		}
+	}
+
+	.donations-wrap {
+		.list .img-wrap {
+			margin: 0 20px;
+		}
+
+		.is-pack {
+			width: 100px;
+			height: 128px;
+		}
+	}
+
+	.m-owl-ctrl {
+		.owl-prev, .owl-next {
+			margin-top: -25px;
+			width: 30px;
+			height: 50px;
+			top: 50%;
+
+			&:before, &:after {
+				width: 6px;
+				height: 25px;
+			}
+		}
+
+		.owl-prev {
+			margin-right: 306px;
+			right: 50%;
+		}
+
+		.owl-next {
+			margin-left: 306px;
+			left: 50%;
+		}
+	}
+
+	.has-arrow .text:after {
+		right: -16px;
+	}
+
+	@include browsers('Safari') {
+		.l-body.is-full, .main-cut {
+			height: calc(100vh - 56px);
+		}
+	}
+}
+
+@include respond(Mobiles) {
+	.l-body {
+		-webkit-text-size-adjust: none;
+
+		&[data-cut="1"] .dog-rescue[data-play="false"] .yellow-car {
+			@include animation(yellow-car-xs 0.5s forwards linear);
+		}
+	}
+
+	.main-cut {
+		&[data-choice="question"] .choice .content-wrap {
+			.svg-icon {
+				margin-right: 20px;
+				margin-bottom: 5px;
+				width: 49px;
+				height: 37px;
+			}
+
+			.cut-title {
+				font-size: 30px;
+				text-shadow: 0 0 9px $color-black;
+
+				.b-highlight {
+					font-size: 36px;
+				}
+			}
+
+			.btn-wrap {
+				margin: 30px 0;
+				position: relative;
+
+				.m-button {
+					margin: 0 16px;
+					padding: 0 20px;
+
+					.text {
+						vertical-align: top;
+						font-size: 14px;
+					}
+				}
+			}
+		}
+
+		&[data-choice="medical"] .medical .content-wrap {
+			padding-bottom: 12vh;
+
+			.cut-title {
+				font-size: 32px;
+
+				.hint {
+					font-size: 18px;
+					line-height: 1.5em;
+				}
+			}
+
+			.medical-list {
+				margin: 20px auto 0 auto;
+				width: 270px;
+				@include flex-wrap(wrap);
+
+				.list {
+					margin-bottom: 20px;
+					width: 90px;
+				}
+
+				.icon-wrap {
+					margin: 0 auto;
+					width: 52px;
+					height: 52px;
+
+					&:after {
+						margin-top: -2px;
+						margin-left: -8px;
+						border-top-width: 8px;
+						border-right-width: 8px;
+						border-left-width: 8px;
+					}
+
+					.svg-icon {
+						margin: -18px 0 0 -18px;
+						width: 36px;
+						height: 36px;
+
+						&.x-ray {
+							margin: -21px 0 0 -21px;
+							width: 42px;
+							height: 42px;
+						}
+					}
+				}
+
+				.text {
+					margin-top: 10px;
+					font-size: 14px;
+				}
+			}
+
+			.btn-wrap .m-button .text {
+				vertical-align: top;
+				font-size: 14px;
+			}
+		}
+
+		&[data-choice="ignore"] .ignore .content-wrap {
+			padding: 0 40px 0 30px;
+			box-sizing: border-box;
+		}
+
+		&[data-choice="help"] .help .content-wrap {
+			width: auto;
+		}
+
+		&[data-type="dog"] .medical {
+			background-position: -140vw center;
+		}
+
+		&[data-type="cat"] .medical {
+			background-position: -70vw center;
+		}
+
+		.medical {
+			.cut-title {
+				text-shadow: 0 0 5px rgba($color-black, 0.5);
+			}
+
+			.medical-list .icon-wrap {
+				background: rgba($color-white, 0.5);
+
+				.svg-icon {
+					opacity: 0.7;
+				}
+			}
+		}
+
+		.content-wrap {
+			.cut-title {
+				font-size: 28px;
+			}
+
+			.b-desc {
+				font-size: 14px;
+
+				.b-highlight {
+					font-size: 18px;
+				}
+			}
+		}
+
+		.btn-skip {
+			width: 36px;
+			top: 12.5vw;
+			right: 3.5vw;
+
+			.btn-icon {
+				margin-left: -4px;
+				width: 36px;
+				height: 36px;
+
+				&:before, &:after {
+					margin: -2px 0 0 -18px;
+					width: 36px;
+					height: 3px;
+					border-radius: 2px;
+				}
+			}
+
+			.text {
+				margin-top: -4px;
+				font-size: 12px;
+				font-weight: bold;
+				letter-spacing: 5px;
+				@include transform(scale(0.7));
+				@include transform-origin(left, center);
+			}
+		}
+
+		.btn-scroll {
+			.svg-icon {
+				width: 22px;
+				height: 32px;
+			}
+
+			.text {
+				font-size: 12px;
+			}
+		}
+	}
+
+	.dog-rescue, .cat-rescue {
+		.rescue-content {
+			margin-right: auto;
+			margin-left: auto;
+			padding: 10px 16px;
+			width: 254px;
+			position: relative;
+		}
+	}
+
+	.dog-rescue {
+		height: 468px;
+
+		&[data-play="true"] .yellow-car {
+			margin-right: 76px;
+		}
+
+		&:before {
+			height: 280px;
+		}
+
+		&:after {
+			height: 178px;
+		}
+
+		.cloud {
+			&.is-one, &.is-four {
+				left: 50%;
+			}
+
+			&.is-two, &.is-five {
+				right: 50%;
+			}
+
+			&.is-one {
+				margin-left: 52px;
+				top: 12px;
+			}
+
+			&.is-two {
+				margin-right: 105px;
+				top: 54px;
+			}
+
+			&.is-four {
+				margin-left: 137px;
+				top: 195px;
+			}
+
+			&.is-five {
+				margin-right: 118px;
+				top: 253px;
+			}
+
+			&.is-back {
+				width: 146px;
+				height: 46px;
+			}
+
+			&.is-front {
+				width: 36px;
+				height: 11px;
+			}
+		}
+
+		.mountain-2 {
+			margin-left: -52px;
+			width: 162px;
+			height: 59px;
+			top: 131px;
+			left: 50%;
+		}
+
+		.mountain {
+			&.is-one {
+				margin-right: -36px;
+				width: 260px;
+				height: 136px;
+				top: 53px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-left: -11px;
+				width: 81px;
+				height: 43px;
+				top: 146px;
+				left: 50%;
+			}
+
+			&.is-three {
+				margin-left: 38px;
+				width: 122px;
+				height: 64px;
+				top: 125px;
+				left: 50%;
+			}
+		}
+
+		.rescue-content {
+			margin-top: 70px;
+
+			&:after {
+				width: 53%;
+				@include transform(rotate(36deg));
+			}
+		}
+
+		.scense-wrap {
+			&:before, &:after {
+				width: 101px;
+				height: 8px;
+				bottom: 75px;
+			}
+
+			&:before {
+				margin-right: -40px;
+				right: 50%;
+			}
+
+			&:after {
+				margin-left: 150px;
+				left: 50%;
+			}
+		}
+
+		.dog {
+			margin-left: -22px;
+			width: 164px;
+			height: 153px;
+			bottom: 98px;
+			left: 50%;
+			z-index: 3;
+
+			.dog-tail {
+				width: 26px;
+				height: 38px;
+				top: 25px;
+				left: 0;
+			}
+
+			.dog-ear-right {
+				width: 35px;
+				height: 32px;
+				top: 6px;
+				left: 68px;
+			}
+
+			.dog-ear-left {
+				width: 27px;
+				height: 27px;
+				top: 0;
+				right: 0;
+			}
+
+			.story-dog {
+				width: 164px;
+				height: 153px;
+			}
+
+			.teer {
+				width: 9px;
+				height: 15px;
+				top: 62px;
+				left: 102px;
+				@include animation(drop-xs 2s 0.3s infinite linear);
+			}
+
+			.blood {
+				@include animation(drop-xs 2s 0.3s infinite linear);
+
+				&.is-first {
+					width: 6px;
+					height: 9px;
+					top: 116px;
+					left: 58px;
+				}
+
+				&.is-second {
+					width: 9px;
+					height: 15px;
+					top: 129px;
+					left: 62px;
+				}
+			}
+		}
+
+		.yellow-car {
+			margin-right: 376px;
+			width: 431px;
+			height: 186px;
+			bottom: 18px;
+			right: 50%;
+
+			.light {
+				width: 235px;
+				height: 86px;
+				bottom: 20px;
+				right: -166px;
+			}
+
+			.car-yellow {
+				width: 431px;
+				height: 186px;
+			}
+
+			.wheel {
+				width: 68px;
+				height: 68px;
+				top: 116px;
+				right: 50px;
+			}
+		}
+	}
+
+	.cat-rescue {
+		padding-top: 50px;
+		height: 452px;
+
+		.cloud {
+			width: 130px;
+			height: 42px;
+			left: 50%;
+
+			&.is-one {
+				margin-left: -12px;
+				top: -18px;
+			}
+
+			&.is-two {
+				margin-left: 48px;
+				top: -32px;
+			}
+		}
+
+		.brick {
+			width: 49px;
+			height: 37px;
+
+			&.is-one {
+				margin-right: 86px;
+				top: 33px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-right: 120px;
+				top: 70px;
+				right: 50%;
+			}
+
+			&.is-three {
+				margin-left: 116px;
+				top: 44px;
+				left: 50%;
+			}
+
+			&.is-four {
+				margin-left: 31px;
+				width: 44px;
+				height: 33px;
+				top: 126px;
+				right: 50%;
+			}
+		}
+
+		.grass-2 {
+			width: 180px;
+			height: 27px;
+			top: 238px;
+
+			&.is-two {
+				margin-left: -61px;
+				left: 50%;
+			}
+
+			&.is-three {
+				margin-left: 111px;
+				left: 50%;
+			}
+		}
+
+		.trash {
+			right: 50%;
+			z-index: 2;
+
+			&.is-one {
+				margin-right: 90px;
+				width: 162px;
+				height: 126px;
+				top: 145px;
+			}
+
+			&.is-two {
+				margin-right: 42px;
+				width: 130px;
+				height: 101px;
+				top: 188px;
+			}
+		}
+
+		.rescue-content {
+			&:before {
+				width: 35%;
+				bottom: 0;
+				left: 0;
+				@include transform-origin(left, bottom);
+				@include transform(rotate(35deg));
+			}
+
+			&:after {
+				width: 16%;
+				bottom: 0;
+				right: 0;
+				@include transform-origin(right, bottom);
+				@include transform(rotate(-50deg));
+			}
+		}
+
+		.scense-wrap {
+			height: 188px;
+
+			.cat-ill {
+				margin-right: -141px;
+				width: 282px;
+				height: 150px;
+				top: -38px;
+				right: 50%;
+
+				.cat {
+					width: 208px;
+					height: 150px;
+					right: 0;
+					top: 0;
+				}
+
+				.food {
+					width: 80px;
+					height: 49px;
+					top: 68px;
+					left: 0;
+				}
+			}
+
+			.grass {
+				width: 292px;
+				height: 44px;
+
+				&.is-one {
+					margin-left: -349px;
+				}
+
+				&.is-two {
+					margin-left: -78px;
+				}
+			}
+		}
+	}
+
+	.about-pack {
+		padding-bottom: 212px;
+
+		&:before {
+			height: 30px;
+		}
+
+		.grass {
+			width: 198px;
+			height: 29px;
+
+			&.is-one {
+				margin-right: -15px;
+				bottom: 28px;
+				right: 50%;
+			}
+
+			&.is-two {
+				margin-left: 1px;
+				bottom: 23px;
+				left: 50%;
+			}
+		}
+
+		.pets-window {
+			margin-left: -83px;
+			width: 358px;
+			height: 118px;
+			bottom: 69px;
+
+			.window-content, .window-reflex {
+				width: 358px;
+				height: 136px;
+			}
+
+			.window-content {
+				top: 0;
+				left: -30px;
+			}
+
+			.window-cat-head {
+				width: 33px;
+				height: 29px;
+				top: 9px;
+				left: 137px;
+			}
+
+			.window-cat-tail {
+				width: 32px;
+				height: 59px;
+				top: 66px;
+				left: -9px;
+			}
+		}
+
+		.sway-dog {
+			margin-right: 55px;
+			width: 95px;
+			height: 95px;
+			bottom: 25px;
+			right: 50%;
+
+			.dog-tail {
+				width: 10px;
+				height: 23px;
+				position: absolute;
+				top: 31px;
+				right: 0;
+			}
+
+			.dog-body {
+				width: 95px;
+				height: 95px;
+			}
+		}
+
+		.jump-dog {
+			margin-left: 36px;
+			width: 101px;
+			height: 114px;
+			bottom: -28px;
+			left: 50%;
+		}
+
+		.rescue-content {
+			padding: 10px 28px;
+		}
+
+		.btn-wrap {
+			padding: 0 28px;
+		}
+	}
+
+	.rescue-content {
+		.rescue-title {
+			margin-bottom: 10px;
+			font-size: 24px;
+			font-weight: bold;
+		}
+
+		.b-desc {
+			margin-bottom: 1.2em;
+			font-size: 12px;
+			line-height: 1.25em;
+		}
+
+		.b-highlight {
+			font-size: 14px;
+		}
+	}
+
+	.pets-intro .btn-wrap {
+		position: absolute;
+		bottom: 24px;
+		left: 0;
+		right: 0;
+	}
+
+	.pet-content {
+		.desc-wrap {
+			width: 75vw;
+			bottom: 33vw;
+			left: 12.5vw;
+		}
+
+		.pet-title {
+			.name {
+				padding-right: 10px;
+				font-size: 33px;
+				line-height: 1.5em;
+			}
+
+			.age {
+				font-size: 12px;
+			}
+		}
+
+		.b-desc {
+			font-size: 12px;
+		}
+	}
+
+	.m-owl-ctrl {
+		.owl-prev, .owl-next {
+			width: 40px;
+			height: 32px;
+			bottom: 28px;
+			z-index: 1;
+
+			&:before, &:after {
+				width: 4px;
+				height: 16px;
+			}
+		}
+
+		.owl-prev {
+			left: 6.1vw;
+		}
+
+		.owl-next {
+			right: 4.6875vw;
+		}
+	}
+
+	.donations-wrap {
+		padding-bottom: 20px;
+
+		.list {
+			padding-top: 20px;
+			padding-right: 20px;
+			padding-left: 20px;
+			@include align-items(center);
+			@include justify-content(flex-end);
+			@include flex-direction(row-reverse);
+
+			> .b-link {
+				@include display-flex;
+				@include align-items(center);
+				@include justify-content(flex-end);
+				@include flex-direction(row-reverse);
+				width: 100%;
+			}
+
+			.donations-info {
+				@include flex-grow(1);
+			}
+	
+			.img-wrap {
+				margin-right: 20px;
+				width: 100px;
+	
+				.svg-icon, .img-switch {
+					width: 100px;
+					height: 100px;
+
+					img {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		.info-desc {
+			padding-top: 5px;
+		}
+	}
+
+	.m-button {
+		padding: 0 30px;
+		height: 40px;
+		line-height: 40px;
+	}
+
+	.has-arrow {
+		&.b-bg-black .text:after {
+			border-left-color: $color-gray-l-p30;
+		}
+
+		.text:after {
+			margin-top: -3px;
+			right: -11px;
+			border-top: 3px solid transparent;
+			border-bottom: 3px solid transparent;
+			border-left: 6px solid $color-black;
+		}
+	}
+
+	.m-footer-copyright {
+		display: block;
+		@include transform(scale(0.85));
+	}
+
+	@include screen(landscape) {
+		.b-hide-landscape {
+			display: none;
+		}
+
+		.main-cut {
+			&[data-choice="medical"] .medical {
+				background-position: center center;
+				@include align-items(center);
+
+				.content-wrap {
+					padding-bottom: 0;
+
+					.medical-list {
+						margin-top: 10px;
+						@include flex-wrap(nowrap);
+						width: 100%;
+
+						.list {
+							margin-bottom: 10px;
+						}
+					}
+				}
+			}
+
+			&[data-choice="help"] {
+				height: auto;
+				min-height: 100vh;
+
+				.help {
+					padding-bottom: 60px;
+					@include align-items(flex-start);
+
+					.content-wrap {
+						padding-top: 12.5vw;
+						padding-right: 40px;
+						padding-left: 40px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include respond(Iphone5) {
+	.b-show-i5 {
+		display: block;
+	}
+
+	.main-cut {
+		.medical {
+			@include align-items(center);
+
+			.content-wrap {
+				padding-bottom: 0;
+			}
+		}
+
+		.help {
+			@include align-items(flex-end);
+
+			.content-wrap {
+				margin-bottom: 100px;
+			}
+		}
+
+		.content-wrap {
+			.cut-title {
+				font-size: 22px;
+			}
+
+			.b-desc {
+				font-size: 12px;
+			}
+		}
+	}
+}
+
+@include devices('iphone') {
+	.l-body:not(.is-full) .main-cut {
+		height: calc(100vh - 68px);
+	}
+}
+
+@include browsers('IE') {
+	.dog-rescue .rescue-content > * {
+		@include transform(translateZ(0));
+	}
+}
+
+@include browsers('Safari') {
+	.pets-intro {
+		&[data-index="1"] .photo-wrap {
+			&:before, &:after {
+				background: #71bfae;
+			}
+		}
+
+		&[data-index="2"] .photo-wrap {
+			&:before, &:after {
+				background: #d6dfc4;
+			}
+		}
+
+		&[data-index="3"] .photo-wrap {
+			&:before, &:after {
+				background: #a7b8c8;
+			}
+		}
+
+		&[data-index="4"] .photo-wrap {
+			&:before, &:after {
+				background: #afa9af;
+			}
+		}
+
+		&[data-index="5"] .photo-wrap {
+			&:before, &:after {
+				background: #acc7b4;
+			}
+		}
+
+		&[data-index="6"] .photo-wrap {
+			&:before, &:after {
+				background: #c3cb9e;
+			}
+		}
+
+		&[data-index="7"] .photo-wrap {
+			&:before, &:after {
+				background: #b3c193;
+			}
+		}
+
+		&[data-index="8"] .photo-wrap {
+			&:before, &:after {
+				background: #cdd7c5;
+			}
+		}
+
+		.photo-wrap {
+			&:before, &:after {
+				content: '';
+				display: block;
+				width: 2px;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				z-index: 1;
+				@include transition(ease-in all 0.3s);
+			}
+
+			&:before {
+				left: -1px;
+			}
+
+			&:after {
+				right: -1px;
+			}
+		}
+	}
+}

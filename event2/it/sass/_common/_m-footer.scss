@@ -1,0 +1,152 @@
+.m-footer {
+    line-height : 1.2;
+    position    : relative;
+}
+
+.m-footer-tools {
+    > ul {
+        margin-right : auto;
+        margin-left  : auto;
+        @include display-table;
+
+        > li {
+            @include display-table-cell;
+        }
+    }
+}
+
+.m-footer-logo {
+    position : relative;
+}
+
+@mixin pack($width: null) {
+    width  : $width;
+    height : (56 / 44 * $width);
+}
+
+@mixin petique($width: null) {
+    width  : $width;
+    height : (62 / 64 * $width);
+}
+
+@mixin hahow($width: null) {
+    width  : $width;
+    height : (24 / 80 * $width);
+}
+
+@mixin udf($width: null) {
+    width  : $width;
+    height : (24 / 80 * $width);
+}
+
+@include respond(Desktops) {
+    .m-footer {
+        padding-top    : 15px;
+        padding-bottom : 15px;
+    }
+
+    .m-footer-tools {
+        margin-bottom : 10px;
+        
+        > ul {
+            > li {
+                padding-right : 15px;
+                padding-left  : 15px;
+            }
+        }
+    }
+
+    .m-footer-logo {
+        &.is-pack {
+            @include pack(44px);
+        }
+
+        &.is-petique {
+            @include petique(40px);
+        }
+
+        &.is-hahow {
+            @include hahow(80px);
+        }
+
+        &.is-udf {
+            @include udf(80px);
+        }
+    }
+}
+
+@include respond(Desktops-Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {
+    .m-footer {
+        padding-top    : units(12px, $tablet-min-width, 1vw);
+        padding-bottom : units(12px, $tablet-min-width, 1vw);
+    }
+
+    .m-footer-tools {
+        margin-bottom : units(8px, $tablet-min-width, 1vw);
+        
+        > ul {
+            > li {
+                padding-right : units(12px, $tablet-min-width, 1vw);
+                padding-left  : units(12px, $tablet-min-width, 1vw);
+            }
+        }
+    }
+
+    .m-footer-logo {
+        &.is-pack {
+            @include pack(units(34px, $tablet-min-width, 1vw));
+        }
+
+        &.is-petique {
+            @include petique(units(30px, $tablet-min-width, 1vw));
+        }
+
+        &.is-hahow {
+            @include hahow(units(60px, $tablet-min-width, 1vw));
+        }
+
+        &.is-udf {
+            @include udf(units(60px, $tablet-min-width, 1vw));
+        }
+    }
+}
+
+@include respond(Mobiles) {
+    .m-footer {
+        padding-top    : units(8px, $mobile-min-width, 1vw);
+        padding-bottom : units(8px, $mobile-min-width, 1vw);
+    }
+
+    .m-footer-tools {
+        margin-bottom : units(5px, $mobile-min-width, 1vw);
+
+        > ul {
+            > li {
+                padding-right : units(8px, $mobile-min-width, 1vw);
+                padding-left  : units(8px, $mobile-min-width, 1vw);
+            }
+        }
+    }
+
+    .m-footer-logo {
+        &.is-pack {
+            @include pack(units(22px, $mobile-min-width, 1vw));
+        }
+
+        &.is-petique {
+            @include petique(units(31px, $mobile-min-width, 1vw));
+        }
+
+        &.is-hahow {
+            @include hahow(units(40px, $mobile-min-width, 1vw));
+        }
+
+        &.is-udf {
+            @include udf(units(40px, $mobile-min-width, 1vw));
+        }
+    }
+}

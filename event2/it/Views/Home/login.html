@@ -1,0 +1,503 @@
+<!--#include virtual="/Views/Shared/_Document.html" -->
+<head>
+    <!--#include virtual="/Views/Shared/_Meta.html" -->
+    <title>Richart - 最能幫年輕人存到錢的銀行</title>
+    <!--#include virtual="/Views/Shared/_GlobalLink.html" -->
+    <!-- self link begin -->
+    <link rel="stylesheet" href="/Scripts/plugin/jquery.scrollbar/jquery.scrollbar.css?css=20170821_01">
+    <link rel="stylesheet" href="/Scripts/plugin/sugarfunbox/sugarfunbox.css?css=20170821_01">
+    <link rel="stylesheet" href="/Content/css/login.css?css=20170821_01">
+    <!-- self link end -->
+</head>
+<body>
+    <div class="l-body jQ-body b-bg-green">
+        <!-- ==================== l-header begin ==================== -->
+        <!--#include virtual="/Views/Shared/_Header.html" -->
+        <!-- ==================== l-header end ==================== -->
+        <div class="l-main jQ-main">
+            <main class="l-content jQ-content">
+                <div class="login" data-icon="cloud" data-before-color="green-light" data-after-color="yellow">
+                    <header class="login-hd b-bg-yellow b-text-center" data-grassland-color="green">
+                        <div class="login-title-group">
+                            <h2 class="b-h2">加入救援行列，<br class="b-br-xs">讓更多浪浪有希望！</h2>
+                            <p class="b-desc"><b>Richart 感謝您支持巴克的救援行動，<br>參加活動就可以<em class="b-h4">月月抽愛心寵物碗</em>或是<em class="b-h4">愛心寵物毯</em>喲（各 100 名，連抽 3 個月）！</b></p>
+                        </div>
+                        <div class="login-icon">
+                            <i class="login-love-group"></i>
+                            <i class="login-dog-leg"></i>
+                            <i class="login-dog-jump"></i>
+                            <i class="login-cat"></i>
+                            <i class="login-dog-eye"></i>
+                        </div>
+                        <div class="login-icon-bg">
+                            <div class="login-icon-frame">
+                                <i class="m-icon m-icon-cloud is-one b-text-yellow-light"></i>
+                                <i class="m-icon m-icon-cloud is-two b-text-yellow-dark"></i>
+                                <i class="m-icon m-icon-cloud is-three b-text-yellow-light"></i>
+                                <i class="m-icon m-icon-cloud is-four b-text-yellow-dark"></i>
+                                <i class="m-icon m-icon-cloud is-five b-text-yellow-light"></i>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="login-bd">
+                        <div class="m-tab jQ-tab" data-active="is-active" data-actived="is-actived" data-slide="is-slide" data-transition="b-transition-none">
+                            <ul class="m-tab-hd" data-default-bgcolor="green-light" data-active-bgcolor="white" data-default-color="white" data-active-color="black" data-active-icon="ocean">
+                                <li class="is-active b-col-dt-6 b-col-xs-6 b-text-center">
+                                    <button type="button" class="m-tab-item b-h4 jQ-tabItem"><i class="m-icon m-icon-bone"></i><b class="b-text-left-xs">我已經有 <br class="b-br-xs">Richart 帳戶</b></button>
+                                </li>
+                                <li class="b-col-dt-6 b-col-xs-6 b-text-center">
+                                    <button type="button" class="m-tab-item b-h4 jQ-tabItem"><i class="m-icon m-icon-bone-line"></i><b class="b-text-left-xs">我沒有 <br class="b-br-xs">Richart 帳戶</b></button>
+                                </li>
+                            </ul>
+                            <div class="m-tab-bd b-bg-white">
+                                <ul class="jQ-tabBd" >
+                                    <li class="is-active">
+                                        <div class="login-tab">
+                                            <div class="login-tab-hd">
+                                                <p class="b-desc b-text-center">凡於下方登錄 Richart 用戶資料後，活動期間內使用 Richart「轉帳」功能成功完成跨行轉出交易，<br class="b-br-md">每筆轉帳交易 Richart 將會<b class="b-text-red">額外捐出 NT5 元</b> 給「台灣巴克動物懷善救援協會」，讓浪浪們開心玩樂奔跑！</p>
+                                            </div>
+                                            <!-- 如果只需要 form submit 請移除 data-submit，使用 data-submit 只需放入 function name EX: b2e.js 裡的 b2e.no function -->
+                                            <form data-submit="b2e.has">
+                                                <div class="login-tab-bd b-col-dt-9">
+                                                    <div class="m-form-group">
+                                                        <ul>
+                                                            <li>
+                                                                <label class="m-form is-inline-dt">
+                                                                    <small class="m-form-addon b-desc b-col-dt-3 b-text-white b-text-center"><b class="b-bg-green-light">身分證字號</b></small>
+                                                                    <div class="m-form-item b-col-dt-9">
+                                                                        <div class="m-form-label">
+                                                                            <span class="m-form-elem">
+                                                                                <input type="text" name="id" class="m-form-type is-border-green-light b-desc required idcard" data-msg="身分證字號為必填" data-msg-idcard="身分證字號格式錯誤" autocomplete="off" maxlength="10">
+                                                                            </span>
+                                                                        </div>
+                                                                        <small class="m-form-validate">
+                                                                            <!-- 上面 name 的名稱 和 for 的名稱 相同 可以自動驗證 -->
+                                                                            <label for="id" class="is-error b-text-richart-red b-desc"></label>
+                                                                        </small>
+                                                                    </div>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label class="m-form is-inline-dt">
+                                                                    <small class="m-form-addon b-desc b-col-dt-3 b-text-white b-text-center"><b class="b-bg-green-light">手機號碼</b></small>
+                                                                    <div class="m-form-item b-col-dt-9">
+                                                                        <div class="m-form-label">
+                                                                            <span class="m-form-elem">
+                                                                                <input type="text" name="phone" class="m-form-type is-border-green-light b-desc required phone" data-msg="手機號碼為必填" data-msg-phone="手機號碼格式錯誤" autocomplete="off" maxlength="10" minlength="10">
+                                                                            </span>
+                                                                        </div>
+                                                                        <small class="m-form-validate">
+                                                                            <!-- 上面 name 的名稱 和 for 的名稱 相同 可以自動驗證 -->
+                                                                            <label for="phone" class="is-error b-text-richart-red b-desc"></label>
+                                                                        </small>
+                                                                    </div>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <div class="m-form is-inline-dt">
+                                                                    <small class="m-form-addon b-desc b-col-dt-3 b-text-white b-text-center"><b class="b-bg-green-light">選擇希望抽獎贈品</b></small>
+                                                                    <div class="m-form-item b-col-dt-9">
+                                                                        <label class="m-form-label b-inline">
+                                                                            <div class="m-form-elem">
+                                                                                <input type="radio" name="gifts" class="m-form-type required" data-msg="請選擇希望抽獎贈品">
+                                                                                <span>
+                                                                                    <i class="m-icon m-icon-radio b-bg-green-light" data-checked-color="green-dark"></i>
+                                                                                    <b class="b-h4 b-text-green-light">寵物毯</b>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="m-form-addon">
+                                                                                <div class="login-gift is-blanket b-bg-yellow b-middle">
+                                                                                    <figure class="login-gift-figure">
+                                                                                        <img src="/Content/img/login/blanket.png?img=20170816_01" class="is-max-width" alt="寵物毯">
+                                                                                    </figure>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="m-form-label b-inline">
+                                                                            <div class="m-form-elem">
+                                                                                <input type="radio" name="gifts" class="m-form-type required">
+                                                                                <span>
+                                                                                    <i class="m-icon m-icon-radio b-bg-green-light" data-checked-color="green-dark"></i>
+                                                                                    <b class="b-h4 b-text-green-light">寵物碗</b>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="m-form-addon">
+                                                                                <div class="login-gift is-bowl b-bg-yellow b-middle">
+                                                                                    <figure class="login-gift-figure">
+                                                                                        <img src="/Content/img/login/bowl.png?img=20170816_01" class="is-max-width" alt="寵物碗">
+                                                                                    </figure>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="m-form-label b-inline">
+                                                                            <div class="m-form-elem">
+                                                                                <input type="radio" name="gifts" class="m-form-type required">
+                                                                                <span>
+                                                                                    <i class="m-icon m-icon-radio b-bg-green-light" data-checked-color="green-dark"></i>
+                                                                                    <b class="b-h4 b-text-green-light">不參加抽獎</b>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="m-form-addon">
+                                                                                <div class="login-gift is-none b-bg-yellow b-middle b-text-center">
+                                                                                    <figure class="login-gift-figure">
+                                                                                        <img src="/Content/img/login/love.png?img=20170816_01" class="is-max-width" alt="不參加抽獎">
+                                                                                    </figure>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <small class="m-form-validate">
+                                                                            <!-- 上面 name 的名稱 和 for 的名稱 相同 可以自動驗證 -->
+                                                                            <label for="gifts" class="is-error b-text-richart-red b-desc"></label>
+                                                                        </small>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="login-item">
+                                                        <div class="login-item-bd jQ-scrollbar">
+                                                            <div class="m-item">
+                                                                <div class="m-item-hd">
+                                                                    <span class="b-desc b-text-green-light"><b>【個人資料保護之法定告知事項】</b></span>
+                                                                    <p>親愛的客戶您好，由於個人資料之蒐集，涉及您的隱私權益，台新國際商業銀行股份有限公司〈以下簡稱本行〉向您蒐集個人資料時，依據個人資料保護法第8條第1項規定，應明確告知您下列事項：〈一〉非公務機關名稱〈二〉蒐集之目的〈三〉個人資料之類別〈四〉個人資料利用之期間、地區、對象及方式〈五〉當事人依個人資料保護法第3條規定得行使之權利及方式〈六〉當事人得自由選擇提供個人資料時，不提供將對其權益之影響。</p>
+                                                                </div>
+                                                                <ol class="m-item-bd ">
+                                                                    <li data-label="一、">
+                                                                        <p>本行蒐集您個人資料之特定目的如下：<br>您在 Richart by Taishin Bank 參加「毛孩告急! 救援浪浪 不再忽視」活動及其相關程序 ( 包括但不限於獲獎通知與領取獎品及代辦中獎所得稅申報 )。</p>
+                                                                    </li>
+                                                                    <li data-label="二、">
+                                                                        <p>本行蒐集您的個人資料類別，如身分證統一編號、聯絡方式等詳如您在本行官方網頁填寫之內容。</p>
+                                                                    </li>
+                                                                    <li data-label="三、">
+                                                                        <div>
+                                                                            <p>本行將您的個人資料為利用之期間、地區、對象及方式：</p>
+                                                                            <ol>
+                                                                                <li>
+                                                                                    <div>
+                                                                                        <p>期間：</p>
+                                                                                        <ol>
+                                                                                            <li data-label="(1)"><p>特定目的存續期間。</p></li>
+                                                                                            <li data-label="(2)"><p>依相關法令所定 ( 例如商業會計法等 ) 或因執行業務所必須之保存期間或依個別契約就資料之保存所定之保存年限 ( 以期限最長者為準)。</p></li>
+                                                                                        </ol>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>地區：以下第 ( 三 ) 點所列之利用對象，其國內及國外所在地。</p>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div>
+                                                                                        <p>對象：</p>
+                                                                                        <ol>
+                                                                                            <li data-label="(1)"><p>本行 ( 含受本行委託處理事務之委外機構 )。</p></li>
+                                                                                            <li data-label="(2)"><p>依法令規定利用之機構 ( 例如：本行所屬金融控股公司及金融控股公司之其他子公司等 )。</p></li>
+                                                                                            <li data-label="(3)"><p>其他業務相關之機構 ( 例如：通匯行、財團法人金融聯合徵信中心、臺灣票據交換所、財金資訊股份有限公司、信用保證機構、信用卡國際組織、收單機構暨特約商店等 )。</p></li>
+                                                                                            <li data-label="(4)"><p>依法有權機關或金融監理機關。</p></li>
+                                                                                            <li data-label="(5)"><p>您所同意之對象 ( 例如本行共同行銷或交互運用客戶資料之公司、與本行合作推廣業務之公司、國內外稅務扣繳義務人等 )。</p></li>
+                                                                                            <li data-label="(6)"><p>與我國政府簽訂條約、協議之外國政府機構。</p></li>
+                                                                                        </ol>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>方式：符合個人資料保護相關法令以自動化機器或其他非自動化之利用方式。</p>
+                                                                                </li>
+                                                                            </ol>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li data-label="四、">
+                                                                        <div>
+                                                                            <p>依據個人資料保護法第3條規定，您就本行保有您的個人資料，得行使下列權利：</p>
+                                                                            <ol>
+                                                                                <li><p>除有個人資料保護法第 10 條所規定之例外情形外，得向本行查詢、請求閱覽或請求製給複製本，惟本行依個人資料保護法第14條規定，得酌收必要成本費用。</p></li>
+                                                                                <li><p>得向本行請求補充或更正個人資料，惟依個人資料保護法施行細則第 19 條規定，您應適當釋明其原因及事實。</p></li>
+                                                                                <li><p>本行如有違反個人資料保護法規定蒐集、處理或利用您的個人資料，依個人資料保護法第 11 條第 4 項規定，您得向本行請求停止蒐集您的個人資料。</p></li>
+                                                                                <li><p>依個人資料保護法第 11 條第 2 項規定，個人資料正確性有爭議者，得向本行請求停止處理或利用您的個人資料。惟依該項但書規定，本行因執行業務所必須並註明其爭議或經您書面同意者，不在此限。</p></li>
+                                                                                <li><p>依個人資料保護法第 11 條第 3 項規定，個人資料蒐集之特定目的消失或期限屆滿時，得向本行請求刪除、停止處理或利用您的個人資料。惟依該項但書規定，本行因執行業務所必須或經您書面同意者，不在此限。</p></li>
+                                                                            </ol>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li data-label="五、">
+                                                                        <p>您如欲行使上述個人資料保護法第 3 條規定之各項權利，有關如何行使之方式，您得向本行 ( 申請各項業務專線 <a href="tel:0800-000-456">0800-000-456</a> 或客戶服務專線<a href="tel:02-26553355">02-26553355</a> ) 或於本行網址 ( <a href="http://www.taishinbank.com.tw" target="_blank">www.taishinbank.com.tw</a> ) 查詢。</p>
+                                                                    </li>
+                                                                    <li data-label="六、">
+                                                                        <p>您得自由選擇是否提供相關個人資料及類別，惟您所拒絕提供之個人資料及類別，如果是辦理業務審核或作業所需之資料，將影響本行進行必要之業務審核或作業而無法提供您相關服務，或依美國海外帳戶稅收遵循法可能將您於本行之帳戶列為不合作帳戶 ( Recalcitrant Account )，敬請見諒。</p>
+                                                                    </li>
+                                                                </ol>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="m-form b-text-center">
+                                                        <div class="m-form-item">
+                                                            <label class="m-form-label b-inline">
+                                                                <div class="m-form-elem">
+                                                                    <input type="checkbox" name="agree" class="m-form-type required" data-msg="請勾選閱讀並同意個人資料保護法相關事項">
+                                                                    <span>
+                                                                        <i class="m-icon m-icon-check b-bg-green-light" data-checked-color="green-dark"></i>
+                                                                        <b class="b-desc b-text-green-light">我已閱讀並同意個人資料保護法相關事項</b>
+                                                                    </span>
+                                                                </div>
+                                                            </label>
+                                                            <small class="m-form-validate b-block">
+                                                                <!-- 上面 name 的名稱 和 for 的名稱 相同 可以自動驗證 -->
+                                                                <label for="agree" class="is-error b-text-richart-red b-desc"></label>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <ul class="m-button-group b-text-center">
+                                                        <li>
+                                                            <button type="submit" class="m-button is-arrow b-bg-yellow-dark" data-content="jQuery('#popup').html()" data-close-click="false" data-close-btn="false" data-before-open="login.popup" data-popup="我了解了||http://richart-story.sugarfun.com.tw/"><b class="b-desc">確認參加</b></button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="login-tab">
+                                            <div class="login-tab-hd">
+                                                <p class="b-desc b-text-center">凡於下方登錄個人資料後，活動期間內成功完成註冊 Richart 數位活儲帳戶並首次登入使用 Richart APP，Richart 將會幫你<b class="b-text-red">捐出您的用戶禮 NT300 元</b>，<b class="b-text-red">並再加碼捐 NT200 元</b> 給「台灣巴克動物懷善救援協會」，<br class="b-br-md">讓浪浪們開心玩樂奔跑！</p>
+                                            </div>
+                                            <!-- 如果只需要 form submit 請移除 data-submit，使用 data-submit 只需放入 function name EX: b2e.js 裡的 b2e.no function -->
+                                            <form data-submit="b2e.no">
+                                                <div class="login-tab-bd b-col-dt-9">
+                                                    <div class="m-form-group">
+                                                        <ul>
+                                                            <li>
+                                                                <label class="m-form is-inline-dt">
+                                                                    <small class="m-form-addon b-desc b-col-dt-3 b-text-white b-text-center"><b class="b-bg-green-light">身分證字號</b></small>
+                                                                    <div class="m-form-item b-col-dt-9">
+                                                                        <div class="m-form-label">
+                                                                            <span class="m-form-elem">
+                                                                                <input type="text" name="id" class="m-form-type is-border-green-light b-desc required idcard" data-msg="身分證字號為必填" data-msg-idcard="身分證字號格式錯誤" autocomplete="off" maxlength="10">
+                                                                            </span>
+                                                                        </div>
+                                                                        <small class="m-form-validate">
+                                                                            <!-- 上面 name 的名稱 和 for 的名稱 相同 可以自動驗證 -->
+                                                                            <label for="id" class="is-error b-text-richart-red b-desc"></label>
+                                                                        </small>
+                                                                    </div>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <label class="m-form is-inline-dt">
+                                                                    <small class="m-form-addon b-desc b-col-dt-3 b-text-white b-text-center"><b class="b-bg-green-light">手機號碼</b></small>
+                                                                    <div class="m-form-item b-col-dt-9">
+                                                                        <div class="m-form-label">
+                                                                            <span class="m-form-elem">
+                                                                                <input type="text" name="phone" class="m-form-type is-border-green-light b-desc required phone" data-msg="手機號碼為必填" data-msg-phone="手機號碼格式錯誤" autocomplete="off" maxlength="10" minlength="10">
+                                                                            </span>
+                                                                        </div>
+                                                                        <small class="m-form-validate">
+                                                                            <!-- 上面 name 的名稱 和 for 的名稱 相同 可以自動驗證 -->
+                                                                            <label for="phone" class="is-error b-text-richart-red b-desc"></label>
+                                                                        </small>
+                                                                    </div>
+                                                                </label>
+                                                            </li>
+                                                            <li>
+                                                                <div class="m-form is-inline-dt">
+                                                                    <small class="m-form-addon b-desc b-col-dt-3 b-text-white b-text-center"><b class="b-bg-green-light">選擇希望抽獎贈品</b></small>
+                                                                    <div class="m-form-item b-col-dt-9">
+                                                                        <label class="m-form-label b-inline">
+                                                                            <div class="m-form-elem">
+                                                                                <input type="radio" name="gifts" class="m-form-type required" data-msg="請選擇希望抽獎贈品">
+                                                                                <span>
+                                                                                    <i class="m-icon m-icon-radio b-bg-green-light" data-checked-color="green-dark"></i>
+                                                                                    <b class="b-h4 b-text-green-light">寵物毯</b>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="m-form-addon">
+                                                                                <div class="login-gift is-blanket b-bg-yellow b-middle">
+                                                                                    <figure class="login-gift-figure">
+                                                                                        <img src="/Content/img/login/blanket.png?img=20170816_01" class="is-max-width" alt="寵物毯">
+                                                                                    </figure>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="m-form-label b-inline">
+                                                                            <div class="m-form-elem">
+                                                                                <input type="radio" name="gifts" class="m-form-type required">
+                                                                                <span>
+                                                                                    <i class="m-icon m-icon-radio b-bg-green-light" data-checked-color="green-dark"></i>
+                                                                                    <b class="b-h4 b-text-green-light">寵物碗</b>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="m-form-addon">
+                                                                                <div class="login-gift is-bowl b-bg-yellow b-middle">
+                                                                                    <figure class="login-gift-figure">
+                                                                                        <img src="/Content/img/login/bowl.png?img=20170816_01" class="is-max-width" alt="寵物碗">
+                                                                                    </figure>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <label class="m-form-label b-inline">
+                                                                            <div class="m-form-elem">
+                                                                                <input type="radio" name="gifts" class="m-form-type required">
+                                                                                <span>
+                                                                                    <i class="m-icon m-icon-radio b-bg-green-light" data-checked-color="green-dark"></i>
+                                                                                    <b class="b-h4 b-text-green-light">不參加抽獎</b>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="m-form-addon">
+                                                                                <div class="login-gift is-none b-bg-yellow b-middle b-text-center">
+                                                                                    <figure class="login-gift-figure">
+                                                                                        <img src="/Content/img/login/love.png?img=20170816_01" class="is-max-width" alt="不參加抽獎">
+                                                                                    </figure>
+                                                                                </div>
+                                                                            </div>
+                                                                        </label>
+                                                                        <small class="m-form-validate">
+                                                                            <!-- 上面 name 的名稱 和 for 的名稱 相同 可以自動驗證 -->
+                                                                            <label for="gifts" class="is-error b-text-richart-red b-desc"></label>
+                                                                        </small>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="login-item">
+                                                        <div class="login-item-bd jQ-scrollbar">
+                                                            <div class="m-item">
+                                                                <div class="m-item-hd">
+                                                                    <span class="b-desc b-text-green-light"><b>【個人資料保護之法定告知事項】</b></span>
+                                                                    <p>親愛的客戶您好，由於個人資料之蒐集，涉及您的隱私權益，台新國際商業銀行股份有限公司〈以下簡稱本行〉向您蒐集個人資料時，依據個人資料保護法第8條第1項規定，應明確告知您下列事項：〈一〉非公務機關名稱〈二〉蒐集之目的〈三〉個人資料之類別〈四〉個人資料利用之期間、地區、對象及方式〈五〉當事人依個人資料保護法第3條規定得行使之權利及方式〈六〉當事人得自由選擇提供個人資料時，不提供將對其權益之影響。</p>
+                                                                </div>
+                                                                <ol class="m-item-bd ">
+                                                                    <li data-label="一、">
+                                                                        <p>本行蒐集您個人資料之特定目的如下：<br>您在 Richart by Taishin Bank 參加「毛孩告急! 救援浪浪 不再忽視」活動及其相關程序 ( 包括但不限於獲獎通知與領取獎品及代辦中獎所得稅申報 )。</p>
+                                                                    </li>
+                                                                    <li data-label="二、">
+                                                                        <p>本行蒐集您的個人資料類別，如身分證統一編號、聯絡方式等詳如您在本行官方網頁填寫之內容。</p>
+                                                                    </li>
+                                                                    <li data-label="三、">
+                                                                        <div>
+                                                                            <p>本行將您的個人資料為利用之期間、地區、對象及方式：</p>
+                                                                            <ol>
+                                                                                <li>
+                                                                                    <div>
+                                                                                        <p>期間：</p>
+                                                                                        <ol>
+                                                                                            <li data-label="(1)"><p>特定目的存續期間。</p></li>
+                                                                                            <li data-label="(2)"><p>依相關法令所定 ( 例如商業會計法等 ) 或因執行業務所必須之保存期間或依個別契約就資料之保存所定之保存年限 ( 以期限最長者為準)。</p></li>
+                                                                                        </ol>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>地區：以下第 ( 三 ) 點所列之利用對象，其國內及國外所在地。</p>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div>
+                                                                                        <p>對象：</p>
+                                                                                        <ol>
+                                                                                            <li data-label="(1)"><p>本行 ( 含受本行委託處理事務之委外機構 )。</p></li>
+                                                                                            <li data-label="(2)"><p>依法令規定利用之機構 ( 例如：本行所屬金融控股公司及金融控股公司之其他子公司等 )。</p></li>
+                                                                                            <li data-label="(3)"><p>其他業務相關之機構 ( 例如：通匯行、財團法人金融聯合徵信中心、臺灣票據交換所、財金資訊股份有限公司、信用保證機構、信用卡國際組織、收單機構暨特約商店等 )。</p></li>
+                                                                                            <li data-label="(4)"><p>依法有權機關或金融監理機關。</p></li>
+                                                                                            <li data-label="(5)"><p>您所同意之對象 ( 例如本行共同行銷或交互運用客戶資料之公司、與本行合作推廣業務之公司、國內外稅務扣繳義務人等 )。</p></li>
+                                                                                            <li data-label="(6)"><p>與我國政府簽訂條約、協議之外國政府機構。</p></li>
+                                                                                        </ol>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <p>方式：符合個人資料保護相關法令以自動化機器或其他非自動化之利用方式。</p>
+                                                                                </li>
+                                                                            </ol>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li data-label="四、">
+                                                                        <div>
+                                                                            <p>依據個人資料保護法第3條規定，您就本行保有您的個人資料，得行使下列權利：</p>
+                                                                            <ol>
+                                                                                <li><p>除有個人資料保護法第 10 條所規定之例外情形外，得向本行查詢、請求閱覽或請求製給複製本，惟本行依個人資料保護法第14條規定，得酌收必要成本費用。</p></li>
+                                                                                <li><p>得向本行請求補充或更正個人資料，惟依個人資料保護法施行細則第 19 條規定，您應適當釋明其原因及事實。</p></li>
+                                                                                <li><p>本行如有違反個人資料保護法規定蒐集、處理或利用您的個人資料，依個人資料保護法第 11 條第 4 項規定，您得向本行請求停止蒐集您的個人資料。</p></li>
+                                                                                <li><p>依個人資料保護法第 11 條第 2 項規定，個人資料正確性有爭議者，得向本行請求停止處理或利用您的個人資料。惟依該項但書規定，本行因執行業務所必須並註明其爭議或經您書面同意者，不在此限。</p></li>
+                                                                                <li><p>依個人資料保護法第 11 條第 3 項規定，個人資料蒐集之特定目的消失或期限屆滿時，得向本行請求刪除、停止處理或利用您的個人資料。惟依該項但書規定，本行因執行業務所必須或經您書面同意者，不在此限。</p></li>
+                                                                            </ol>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li data-label="五、">
+                                                                        <p>您如欲行使上述個人資料保護法第 3 條規定之各項權利，有關如何行使之方式，您得向本行 ( 申請各項業務專線 <a href="tel:0800-000-456">0800-000-456</a> 或客戶服務專線<a href="tel:02-26553355">02-26553355</a> ) 或於本行網址 ( <a href="http://www.taishinbank.com.tw" target="_blank">www.taishinbank.com.tw</a> ) 查詢。</p>
+                                                                    </li>
+                                                                    <li data-label="六、">
+                                                                        <p>您得自由選擇是否提供相關個人資料及類別，惟您所拒絕提供之個人資料及類別，如果是辦理業務審核或作業所需之資料，將影響本行進行必要之業務審核或作業而無法提供您相關服務，或依美國海外帳戶稅收遵循法可能將您於本行之帳戶列為不合作帳戶 ( Recalcitrant Account )，敬請見諒。</p>
+                                                                    </li>
+                                                                </ol>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="m-form b-text-center">
+                                                        <div class="m-form-item">
+                                                            <label class="m-form-label b-inline">
+                                                                <div class="m-form-elem">
+                                                                    <input type="checkbox" name="agree" class="m-form-type required" data-msg="請勾選閱讀並同意個人資料保護法相關事項">
+                                                                    <span>
+                                                                        <i class="m-icon m-icon-check b-bg-green-light" data-checked-color="green-dark"></i>
+                                                                        <b class="b-desc b-text-green-light">我已閱讀並同意個人資料保護法相關事項</b>
+                                                                    </span>
+                                                                </div>
+                                                            </label>
+                                                            <small class="m-form-validate b-block">
+                                                                <!-- 上面 name 的名稱 和 for 的名稱 相同 可以自動驗證 -->
+                                                                <label for="agree" class="is-error b-text-richart-red b-desc"></label>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <ul class="m-button-group b-text-center">
+                                                        <li>
+                                                            <button type="submit" class="m-button is-arrow b-bg-yellow-dark" data-content="jQuery('#popup').html()" data-close-click="false" data-close-btn="false" data-before-open="login.popup" data-popup="立即了解如何開戶||https://richart.tw/TSDIB_RichartWeb/static/event/school/index.html?utm_source=richartstory"><b class="b-desc">確認參加</b></button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!-- ==================== l-footer begin ==================== -->
+        <!--#include virtual="/Views/Shared/_Footer.html" -->
+        <!-- ==================== l-footer end ==================== -->
+    </div>
+    <!-- ==================== not support begin ==================== -->
+    <!--#include virtual="/Views/Shared/_Not-Support.html" -->
+    <!-- ==================== not support end ==================== -->
+    <!--#include virtual="/Views/Shared/_GlobalScriptsGA.html" -->
+    <!--[if gt IE 9]><!-->
+    <!-- common script ft begin -->
+    <!--#include virtual="/Views/Shared/_GlobalScriptsLibs.html" -->
+    <script defer type="text/javascript" src="/Scripts/plugin/jquery.validation/jquery.validate.min.js?js=20170821_01"></script>
+    <script defer type="text/javascript" src="/Scripts/plugin/jquery.scrollbar/jquery.scrollbar.min.js?js=20170821_01"></script>
+    <script defer type="text/javascript" src="/Scripts/plugin/sugarfunbox/sugarfunbox.min.js?js=20170821_01"></script>
+    <!--#include virtual="/Views/Shared/_GlobalScriptsFt.html" -->
+    <!-- common script ft end -->
+    <!-- self script begin -->
+    <script defer type="text/javascript" src="/Scripts/js/login.js?js=20170821_01"></script>
+    <script defer type="text/javascript" src="/Scripts/js/b2e.js?js=20170821_01"></script>
+    <script defer type="text/template" id="popup">
+        <div class="m-box">
+            <div class="m-box-bd">
+                <div class="login-box b-text-center">
+                    <div class="login-box-bd">
+                        <div class="login-box-dialog">
+                            <p class="login-box-message b-h4 b-bg-gray-l-p40"><b>感謝您的參與！<br>您的一小步是是浪浪的一大步！</b></p>
+                        </div>
+                    </div>
+                    <footer class="login-box-ft">
+                        <ul class="m-button-group">
+                            <li>
+                                <a href="{{ login._popup._url }}" class="m-button is-arrow b-bg-yellow-dark"><b class="b-desc">{{ login._popup._text }}</b></a>
+                            </li>
+                        </ul>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- self script end -->
+    <!--<![endif]-->
+</body>
+</html>

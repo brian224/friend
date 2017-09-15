@@ -1,0 +1,43 @@
+.m-form-group {
+    position : relative;
+}
+
+@include respond(Desktops) {
+    .m-form-group {
+        > ul {
+            > li {
+                &:not(:first-child) {
+                    margin-top : 15px;
+                }
+            }
+        }
+    }
+}
+
+@include respond(Desktops-Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {
+    .m-form-group {
+        > ul {
+            > li {
+                &:not(:first-child) {
+                    margin-top : units(12px, $tablet-min-width, 1vw);
+                }
+            }
+        }
+    }
+}
+
+@include respond(Mobiles) {
+    .m-form-group {
+        > ul {
+            > li {
+                &:not(:first-child) {
+                    margin-top : units(15px, $mobile-min-width, 1vw);
+                }
+            }
+        }
+    }
+}

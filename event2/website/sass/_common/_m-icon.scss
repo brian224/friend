@@ -1,0 +1,29 @@
+@font-face {
+    font-family : $icon-family;
+    src         : font-url('#{$icon-family}.woff') format('woff'),
+                  font-url('#{$icon-family}.ttf') format('truetype'),
+                  font-url('#{$icon-family}.svg?##{$icon-family}') format('svg');
+    font-weight : normal;
+    font-style  : normal;
+}
+
+.m-icon {
+    @include inline-block;
+    @include font-icon($icon-family);
+}
+
+
+@include browsers('FireFox') {
+    .m-icon_ {
+        &:before {
+            top      : 0.1em;
+            position : relative;
+        }
+    }
+}
+
+@each $key, $value in $icon {
+    .m-icon-#{$key}:before {
+        content : $value;
+    }
+}

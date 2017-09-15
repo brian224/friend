@@ -1,0 +1,276 @@
+.m-header {
+    width    : 100%;
+    height   : 100%;
+    position : relative;
+    @include box-sizing(border-box);
+    @inlcude transition(background-color $transition-times);
+    @include transition(ease-in all 0.3s);
+
+    &.is-scroll {
+        @each $key, $value in $color {
+            &[data-scroll-bgcolor="#{$key}"] {
+                background : rgba($value, .9);
+            }
+        }
+    }
+
+    > h1 {
+        top      : 0;
+        left     : -99999px;
+        position : absolute;
+    }
+}
+
+.m-header-logo {
+    height : 100%;
+
+    .svg-icon {
+        @include transition(ease-in all 0.3s);
+    }
+}
+
+.m-header-nav-ctrl {
+    display  : block;
+    position : relative;
+    z-index  : 4;
+
+    .svg-icon {
+        @include transition(ease-in all 0.3s);
+    }
+
+    @each $key, $value in $color {
+        &[data-bar-color="#{$key}"] {
+            &:before, &:after, .m-header-bar {
+                background : $value;
+            }
+        }
+    }
+
+    &:before, &:after {
+        content  : "";
+        left     : 0;
+        width    : 70%;
+        position : absolute;
+        @include transition(top $transition-times, left $transition-times, transform $transition-times, background-color $transition-times);
+        @include transition(ease-in all 0.3s);
+    }
+
+    &:not(.is-nav) {
+        &:before {
+            top : 0;
+        }
+    }
+
+    &:not(.is-nav) {
+        &:before, &:after {
+            @include transform(rotate(0deg));
+            @include transform-origin(left, center);
+        }
+
+        .m-header-bar {
+            width : 85%;
+        }
+
+        .m-icon {
+            max-height : 20px;
+        }
+    }
+
+    &.is-nav {
+        &:before, &:after, .m-header-bar {
+            background : $color-white;
+        }
+
+        &:before, &:after {
+            top  : 50%;
+            /*left : 50%;*/
+            @include transform-origin(center, center);
+        }
+
+        &:before {
+            @include transform(rotate(45deg) translateY(-50%));
+        }
+
+        &:after {
+            @include transform(rotate(-45deg) translateY(-50%));
+        }
+
+        .m-header-bar {
+            width : 0;
+        }
+
+        .svg-icon {
+            max-height : 0;
+        }
+    }
+}
+
+.m-header-bar {
+    display : block;
+    @include clearfix;
+    @include transition(width $transition-times, background-color $transition-times);
+    @include transition(ease-in all 0.3s);
+}
+
+.m-nav-share {
+    .m-icon {
+        line-height: 0 !important;
+    }
+
+    .svg-icon {
+        fill: $color-white;
+
+        &.facebook {
+            width: 16px;
+            height: 16px;
+        }
+
+        &.line {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
+
+@include respond(Desktops) {
+    .m-header {
+        padding-left  : map-get($content-padding, md);
+        padding-right : map-get($content-padding, md);
+    }
+
+    .m-header-logo .svg-icon {
+        width: 141px;
+        height: 48px;
+    }
+
+    .m-header-nav-ctrl {
+        width : 40px;
+
+        &:not(.is-nav) {
+            &:after {
+                top : 20px;
+            }
+        }
+
+        &.is-nav {
+            &:before {
+                left : -4px;
+            }
+        }
+
+        &:before, &:after, .m-header-bar {
+            height : 6px;
+            @include border-radius(6px);
+        }
+
+        .svg-icon {
+            margin-top : 5px;
+            margin-left : -3px;
+            width: 38px;
+            height: 8px;
+        }
+    }
+
+    .m-header-bar {
+        margin-top    : 10px;
+        margin-bottom : 10px;
+    }
+}
+
+@include respond(Desktops-Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {
+    .m-header {
+        padding-left  : units(map-get($content-padding, sm), $tablet-min-width, 1vw);
+        padding-right : units(map-get($content-padding, sm), $tablet-min-width, 1vw);
+    }
+
+    .m-header-logo .svg-icon {
+        width: 111px;
+        height: 34px;
+    }
+
+    .m-header-nav-ctrl {
+        width : 38px;
+
+        &:not(.is-nav) {
+            &:after {
+                top : 15px;
+            }
+        }
+
+        &.is-nav {
+            &:before {
+                left : -3px;
+            }
+        }
+
+        &:before, &:after, .m-header-bar {
+            height : 4px;
+            @include border-radius(4px);
+        }
+
+        .svg-icon {
+            width: 38px;
+            height: 8px;
+        }
+    }
+
+    .m-header-bar {
+        margin-top    : 8px;
+        margin-bottom : 8px;
+    }
+}
+
+@include respond(Mobiles) {
+    .m-header {
+        padding-left  : units(map-get($content-padding, xs), $mobile-min-width, 1vw);
+        padding-right : units(map-get($content-padding, xs), $mobile-min-width, 1vw);
+    }
+
+    .m-header-logo .svg-icon {
+        width: 70px;
+        height: 24px;
+    }
+
+    .m-header-nav-ctrl {
+        width  : 36px;
+        height : 40px;
+
+        &:not(.is-nav) {
+            &:before {
+                top: 6px;
+            }
+
+            &:after {
+                top : 20px;
+            }
+        }
+
+        &.is-nav {
+            &:before {
+                left : -2px;
+            }
+        }
+
+        &:before, &:after, .m-header-bar {
+            height : 3px;
+            @include border-radius(3px);
+        }
+
+        .svg-icon {
+            width: 33px;
+            height: 7px;
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+        }
+    }
+
+    .m-header-bar {
+        position: absolute;
+        top: 13px;
+    }
+}

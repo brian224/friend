@@ -1,0 +1,404 @@
+﻿@{
+    Layout       = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Full = true;
+    ViewBag.Curr = "story";
+}
+@section header{ 
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/stories.css")?CSS=20170914">
+}
+    <div class="l-main jQ-main is-full">
+        <main class="l-content jQ-content">
+            <div class="stories">
+                <header class="stories-hd"></header>
+                <div class="stories-bd">
+                    <div class="m-cut main-cut" data-choice="video" data-type="" data-elem=".jQ-video">
+                        <div class="jQ-video"></div>
+                        <div class="choice b-text-center">
+                            <div class="content-wrap">
+                                <svg class="svg-icon sos-gradient">
+                                    <linearGradient id="gradient2" gradientUnits="userSpaceOnUse" x1="50.1167" y1="82.1667" x2="50.1167" y2="18.3279">
+                                        <stop offset="0" style="stop-color:#FFAE00"/>
+                                        <stop offset="1" style="stop-color:#FFC600"/>
+                                    </linearGradient>
+                                    <use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#sos-gradient"/>
+                                </svg>
+                                <h2 class="cut-title b-text-white"><em class="b-highlight">他需要你，</em><br>那你會怎麼做呢？</h2>
+                                <div class="btn-wrap">
+                                    <button class="m-button has-arrow b-col-xs-4 b-bg-black jQ-ignore ga_click_trace" ga_cat="story" ga_event="click" ga_label="ignore"><em class="text b-bold">選擇忽視</em></button>
+                                    <button class="m-button has-arrow b-col-xs-4 b-bg-yellow-dark jQ-help ga_click_trace" ga_cat="story" ga_event="click" ga_label="help"><em class="text b-bold">救他吧</em></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medical b-text-center">
+                            <div class="content-wrap">
+                                <h2 class="cut-title b-text-white">請選擇治療項目<span class="hint b-block-xs">(可複選)</span></h2>
+                                <ul class="medical-list">
+                                    <li class="list b-inline">
+                                        <button class="btn-medical jQ-medical" data-price="800">
+                                            <div class="icon-wrap">
+                                                <svg class="svg-icon blood"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#blood"/></svg>
+                                            </div>
+                                            <em class="text b-bold b-inline">血檢</em>
+                                        </button>
+                                    </li>
+                                    <li class="list b-inline">
+                                        <button class="btn-medical jQ-medical" data-price="3000">
+                                            <div class="icon-wrap">
+                                                <svg class="svg-icon surgery"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#surgery"/></svg>
+                                            </div>
+                                            <em class="text b-bold b-inline">開刀</em>
+                                        </button>
+                                    </li>
+                                    <li class="list b-inline">
+                                        <button class="btn-medical jQ-medical" data-price="900">
+                                            <div class="icon-wrap">
+                                                <svg class="svg-icon injections"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#injections"/></svg>
+                                            </div>
+                                            <em class="text b-bold b-inline">除蟲</em>
+                                        </button>
+                                    </li>
+                                    <li class="list b-inline">
+                                        <button class="btn-medical jQ-medical" data-price="600">
+                                            <div class="icon-wrap">
+                                                <svg class="svg-icon screening"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#screening"/></svg>
+                                            </div>
+                                            <em class="text b-bold b-inline">心絲蟲快篩</em>
+                                        </button>
+                                    </li>
+                                    <li class="list b-inline">
+                                        <button class="btn-medical jQ-medical" data-price="400">
+                                            <div class="icon-wrap">
+                                                <svg class="svg-icon x-ray"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#x-ray"/></svg>
+                                            </div>
+                                            <em class="text b-bold b-inline">照X光</em>
+                                        </button>
+                                    </li>
+                                    <li class="list b-inline">
+                                        <button class="btn-medical jQ-medical" data-price="300">
+                                            <div class="icon-wrap">
+                                                <svg class="svg-icon bit"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#bit"/></svg>
+                                            </div>
+                                            <em class="text b-bold b-inline">打點滴</em>
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="btn-wrap is-disable">
+                                    <button class="m-button has-arrow b-bg-yellow-dark b-col-xs-6 jQ-confirm ga_click_trace" ga_cat="help" ga_event="click" ga_label="todo"><em class="text b-bold">確認</em></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="help">
+                            <div class="content-wrap">
+                                <h2 class="cut-title">謝謝你選擇了不忽視，<br>讓他們的故事得以延續。</h2>
+                                <p class="b-desc b-bold">你選擇的救援項目總花費為<span class="calc-money b-highlight"></span>元，<br class="b-hide-landscape">為實際上平均救援費用的<span class="calc-percent b-highlight"></span>%。</p>
+                                <p class="b-desc b-bold">社團法人臺灣巴克動物懷善救援協會，<br class="b-hide-landscape">平均每年拯救150隻需要幫助的浪浪，<br class="b-hide-landscape">讓他們可以獲得完善的照顧。</p>
+                                <a href="https://richart.tw/TSDIB_RichartWeb/RC06/RC062100" class="m-button has-arrow b-bg-yellow-dark"><em class="text b-bold b-block-xs">立即加入救援</em></a>
+                            </div>
+                        </div>
+                        <div class="ignore b-bg-black">
+                            <div class="content-wrap">
+                                <h2 class="cut-title b-text-white">他們的生命，<br class="b-show-i5">其實還有另一種結局…</h2>
+                                <p class="b-desc b-bold b-text-white">臺灣巴克動物懷善救援協會，平均每年救援上百隻受傷或是危急的浪浪，<br>提供浪浪們醫療照顧，並視個案狀況開放認養。<br>堅持不放棄，不忽視每個生命，就有機會改變他們的命運。</p>
+                                <p class="b-desc b-bold b-text-white">伸出援手一起幫助巴克、幫助浪浪，<br>一起替這些生命找辦法。</p>
+                            </div>
+                        </div>
+                        <button class="btn-skip jQ-skip ga_click_trace" ga_cat="story" ga_event="click" ga_label="pass">
+                            <i class="btn-icon"></i>
+                            <em class="text b-block">SKIP</em>
+                        </button>
+                        <button class="btn-scroll jQ-scroll">
+                            <svg class="svg-icon pointer"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#pointer"/></svg>
+                            <em class="text b-bold b-text-white">請往下滑</em>
+                        </button>
+                    </div>
+                    <div class="m-cut dog-rescue" data-play="false">
+                        <div class="bg-wrap">
+                            <svg class="svg-icon cloud is-back is-one"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cloud"/></svg>
+                            <svg class="svg-icon cloud is-back is-two"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cloud"/></svg>
+                            <svg class="svg-icon cloud is-back is-three b-hide-xs"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cloud"/></svg>
+                            <svg class="svg-icon mountain-2 is-one"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#mountain-2"/></svg>
+                            <svg class="svg-icon mountain-2 is-two b-hide-xs"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#mountain-2"/></svg>
+                            <svg class="svg-icon mountain is-one"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#mountain"/></svg>
+                            <svg class="svg-icon mountain is-two"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#mountain"/></svg>
+                            <svg class="svg-icon mountain is-three"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#mountain"/></svg>
+                            <svg class="svg-icon mountain is-four b-hide-xs"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#mountain"/></svg>
+                            <svg class="svg-icon mountain is-five b-hide-xs"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#mountain"/></svg>
+                            <svg class="svg-icon cloud is-front is-four"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cloud"/></svg>
+                            <svg class="svg-icon cloud is-front is-five"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cloud"/></svg>
+                        </div>
+                        <div class="rescue-content">
+                            <h3 class="rescue-title">關於狗狗救援</h3>
+                            <p class="b-desc">一年約有<span class="b-bold"><em class="b-highlight">150</em>隻</span>狗被送進巴克，受傷原因則是以<span class="b-bold">捕獸夾</span>和<span class="b-bold">鋼索</span>為最大宗。</p>
+                            <p class="b-desc">救援一隻狗<span class="b-bold">平均花費</span>為<span class="b-bold"><em class="b-highlight">17,000～22,000</em>元</span>但有許多其他案例需要高昂的手術花費 ....</p>
+                        </div>
+                        <div class="scense-wrap">
+                            <div class="dog">
+                                <svg class="svg-icon dog-tail"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170824_01#story-dog-bleeding-tail"/></svg>
+                                <svg class="svg-icon story-dog body"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170824_01#story-dog-bleeding-body"/></svg>
+                                <svg class="svg-icon dog-ear-right"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170824_01#story-dog-bleeding-ear-right"/></svg>
+                                <svg class="svg-icon dog-ear-left"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170824_01#story-dog-bleeding-ear-left"/></svg>
+                                <svg class="svg-icon story-dog head"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170824_01#story-dog-bleeding-head"/></svg>
+                                <svg class="svg-icon teer"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#drop"/></svg>
+                                <svg class="svg-icon blood is-first"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#drop"/></svg>
+                                <svg class="svg-icon blood is-second"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#drop"/></svg>
+                            </div>
+                            <div class="blue-car b-hide-xs">
+                                <svg class="svg-icon light"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#light"/></svg>
+                                <svg class="svg-icon car-blue"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#car-blue"/></svg>
+                                <svg class="svg-icon wheel"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#wheel"/></svg>
+                            </div>
+                            <div class="yellow-car">
+                                <svg class="svg-icon light"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#light-2"/></svg>
+                                <svg class="svg-icon car-yellow"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#car-yellow"/></svg>
+                                <svg class="svg-icon wheel"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#wheel"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-cut cat-rescue" data-play="false">
+                        <div class="bg-wrap">
+                            <svg class="svg-icon cloud is-one"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cloud"/></svg>
+                            <svg class="svg-icon cloud is-two"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cloud"/></svg>
+                            <svg class="svg-icon cloud is-three b-hide-xs"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cloud"/></svg>
+                            <svg class="svg-icon brick is-one"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#brick"/></svg>
+                            <svg class="svg-icon brick is-two"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#brick"/></svg>
+                            <svg class="svg-icon brick is-three"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#brick"/></svg>
+                            <svg class="svg-icon brick is-four"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#brick"/></svg>
+                            <svg class="svg-icon grass-2 is-one b-hide-xs"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass-2"/></svg>
+                            <svg class="svg-icon grass-2 is-two"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass-2"/></svg>
+                            <svg class="svg-icon grass-2 is-three"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass-2"/></svg>
+                            <svg class="svg-icon grass-2 is-four b-hide-xs"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass-2"/></svg>
+                            <svg class="svg-icon grass-2 is-five b-hide-xs"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass-2"/></svg>
+                            <svg class="svg-icon grass-2 is-six b-hide-xs"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass-2"/></svg>
+                            <svg class="svg-icon trash is-one"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#trash"/></svg>
+                            <svg class="svg-icon trash is-two"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#trash"/></svg>
+                        </div>
+                        <div class="rescue-content">
+                            <h3 class="rescue-title">關於貓咪救援</h3>
+                            <p class="b-desc">一年約有<span class="b-bold"><em class="b-highlight">50</em>隻</span>貓被送進巴克，受傷原因則是以<span class="b-bold">重病</span>或是<span class="b-bold">外力受傷</span>為最大宗。</p>
+                            <p class="b-desc">救援一隻貓<span class="b-bold">平均花費</span>為<span class="b-bold"><em class="b-highlight">12,000～17,000</em>元</span>但有許多其他案例需要高昂的手術花費 ....</p>
+                        </div>
+                        <div class="scense-wrap">
+                            <div class="cat-ill">
+                                <svg class="svg-icon food"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#food"/></svg>
+                                <svg class="svg-icon cat cat-bg"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cat-ill-bg"/></svg>
+                                <svg class="svg-icon cat cat-body"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cat-ill-body"/></svg>
+                                <svg class="svg-icon cat cat-head"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#cat-ill-head"/></svg>
+                            </div>
+                            <svg class="svg-icon grass is-one"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass"/></svg>
+                            <svg class="svg-icon grass is-two"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass"/></svg>
+                            <svg class="svg-icon grass is-three b-hide-xs"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass"/></svg>
+                        </div>
+                    </div>
+                    <div class="m-cut about-pack">
+                        <div class="bg-wrap">
+                            <div class="pets-window">
+                                <svg class="svg-icon window-content"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#window-content"/></svg>
+                                <svg class="svg-icon window-cat-head"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#window-cat-head"/></svg>
+                                <svg class="svg-icon window-cat-tail"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#window-cat-tail"/></svg>
+                                <svg class="svg-icon window-reflex"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#window-reflex"/></svg>
+                            </div>
+                            <div class="sway-dog">
+                                <svg class="svg-icon dog-tail"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#story-dog-2-tail"/></svg>
+                                <svg class="svg-icon dog-body"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#story-dog-2"/></svg>
+                            </div>
+                            <svg class="svg-icon grass is-one"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass"/></svg>
+                            <svg class="svg-icon grass is-two"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#grass"/></svg>
+                            <svg class="svg-icon jump-dog"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#story-dog-1"/></svg>
+                        </div>
+                        <div class="rescue-content">
+                            <h3 class="rescue-title">關於巴克</h3>
+                            <p class="b-desc">全臺灣有數十萬隻弱勢動物，被迫在危險的馬路邊、滿佈捕獸夾的山區、和人類或其他掠食者的險境中求生存。</p>
+                            <p class="b-desc">4200坪的草地狗園上有<span class="b-bold">360隻狗狗</span>快樂生活著，光線充足的貓屋裡有<span class="b-bold">62隻貓咪</span>悠哉過日子。巴克提供最天然的飲食與全年無休的照顧，更積極為毛孩們物色新家庭。平均每月能夠送養6隻狗狗、1隻貓咪。您的支持或領養，將協助巴克幫助更多需要被救援的毛孩。</p>
+                            <p class="b-desc b-bold">生命從來都不只是選擇題，對於巴克來說，生命更像是開放性的問題，而巴克提供的，就是希望。</p>
+                        </div>
+                        <div class="btn-wrap b-text-center-dt b-text-left-xs">
+                            <a href="https://richart.tw/TSDIB_RichartWeb/RC06/RC062100" class="m-button has-arrow b-bg-yellow-dark ga_click_trace" ga_cat="story" ga_event="click" ga_label="pack"><em class="text b-bold b-block-xs">支持巴克救援浪浪</em></a>
+                        </div>
+                    </div>
+                    <div class="m-cut pets-intro" data-index="2">
+                        <div class="photo-wrap jQ-owl" data-items="1" data-ctrl="true" data-dots="false" data-mouse-drag="true" data-touch-drag="true" data-autoplay="false" data-loop="true" data-hover-pause="true">
+                            <div class="pet-content" data-index="2">
+                                <div class="desc-wrap">
+                                    <em class="pet-title b-block b-text-white b-bold">
+                                        <span class="name">皮皮</span>
+                                        <span class="age">四歲男生</span>
+                                    </em>
+                                    <p class="b-desc b-text-white">蜂窩性組織炎傷口癒合後的皮皮，看似脾氣很好，但偶爾為了維護尊嚴（和貓草）也是會和其他貓咪鬥嘴的。</p>
+                                </div>
+                                <figure class="img-wrap b-hide-xs">
+                                    <img src="@Url.Content("~/Content/img/stories/02.jpg")?img=20170907" alt="皮皮">
+                                </figure>
+                                <figure class="img-wrap b-hide-dt">
+                                    <img src="@Url.Content("~/Content/img/stories/02-m.jpg")?img=20170907" alt="皮皮">
+                                </figure>
+                            </div>
+                            <div class="pet-content" data-index="1">
+                                <div class="desc-wrap">
+                                    <em class="pet-title b-block b-text-white b-bold">
+                                        <span class="name">小虎</span>
+                                        <span class="age">七歲男生</span>
+                                    </em>
+                                    <p class="b-desc b-text-white">在貓屋裡綽號是霸氣總裁的小虎其實非常溫柔。即便遭逢捕獸夾夾斷後腿、腎臟排毒功能出現問題，還是不損霸氣魅力與善解人意的乖巧。</p>
+                                </div>
+                                <figure class="img-wrap b-hide-xs">
+                                    <img src="@Url.Content("~/Content/img/stories/01.jpg")?img=20170907" alt="小虎">
+                                </figure>
+                                <figure class="img-wrap b-hide-dt">
+                                    <img src="@Url.Content("~/Content/img/stories/01-m.jpg")?img=20170907" alt="小虎">
+                                </figure>
+                            </div>
+                            <div class="pet-content" data-index="3">
+                                <div class="desc-wrap">
+                                    <em class="pet-title b-block b-text-white b-bold">
+                                        <span class="name">笨笨</span>
+                                        <span class="age">三歲男生</span>
+                                    </em>
+                                    <p class="b-desc b-text-white">被捕獸夾夾斷前肢的笨笨，現在倒是過著大爺般的生活。自從發現人類大腿的魅力後，只要上了大腿就完全不下來，要把笨笨趕下來還要看他臉色。</p>
+                                </div>
+                                <figure class="img-wrap b-hide-xs">
+                                    <img src="@Url.Content("~/Content/img/stories/03.jpg")?img=20170907" alt="笨笨">
+                                </figure>
+                                <figure class="img-wrap b-hide-dt">
+                                    <img src="@Url.Content("~/Content/img/stories/03-m.jpg")?img=20170907" alt="笨笨">
+                                </figure>
+                            </div>
+                            <div class="pet-content" data-index="4">
+                                <div class="desc-wrap">
+                                    <em class="pet-title b-block b-text-white b-bold">
+                                        <span class="name">Rocky</span>
+                                        <span class="age">三歲男生</span>
+                                    </em>
+                                    <p class="b-desc b-text-white">Rocky是個聰明又頑皮的吃貨，而且還有點色的浣熊。雖然減肥中，但其實是個靈活的小胖子喲。</p>
+                                </div>
+                                <figure class="img-wrap b-hide-xs">
+                                    <img src="@Url.Content("~/Content/img/stories/04.jpg")?img=20170907" alt="Rocky">
+                                </figure>
+                                <figure class="img-wrap b-hide-dt">
+                                    <img src="@Url.Content("~/Content/img/stories/04-m.jpg")?img=20170907" alt="Rocky">
+                                </figure>
+                            </div>
+                            <div class="pet-content" data-index="5">
+                                <div class="desc-wrap">
+                                    <em class="pet-title b-block b-text-white b-bold">
+                                        <span class="name">Jack</span>
+                                        <span class="age">七歲男生</span>
+                                    </em>
+                                    <p class="b-desc b-text-white">Jack聰明外向，遇到人就會擺出握手姿勢，並且很會照顧妹妹，是個懂事的好哥哥！</p>
+                                </div>
+                                <figure class="img-wrap b-hide-xs">
+                                    <img src="@Url.Content("~/Content/img/stories/05.jpg")?img=20170907" alt="Jack">
+                                </figure>
+                                <figure class="img-wrap b-hide-dt">
+                                    <img src="@Url.Content("~/Content/img/stories/05-m.jpg")?img=20170907" alt="Jack">
+                                </figure>
+                            </div>
+                            <div class="pet-content" data-index="6">
+                                <div class="desc-wrap">
+                                    <em class="pet-title b-block b-text-white b-bold">
+                                        <span class="name">Chi Chi</span>
+                                        <span class="age">五歲男生</span>
+                                    </em>
+                                    <p class="b-desc b-text-white">Chi chi被發現的時候臉部大半已被細菌侵蝕，但在巴克的堅持下執行了全台第一個狗狗臉部移植手術。Chi Chi擁有著與眾不同的臉，她在狗群中非常有自信，最喜歡和大家打成一片！</p>
+                                </div>
+                                <figure class="img-wrap b-hide-xs">
+                                    <img src="@Url.Content("~/Content/img/stories/06.jpg")?img=20170907" alt="Chi Chi">
+                                </figure>
+                                <figure class="img-wrap b-hide-dt">
+                                    <img src="@Url.Content("~/Content/img/stories/06-m.jpg")?img=20170907" alt="Chi Chi">
+                                </figure>
+                            </div>
+                            <div class="pet-content" data-index="7">
+                                <div class="desc-wrap">
+                                    <em class="pet-title b-block b-text-white b-bold">
+                                        <span class="name">Pumpkin</span>
+                                        <span class="age">十二歲女生</span>
+                                    </em>
+                                    <p class="b-desc b-text-white">Pumpkin是年事已高而且有胰臟炎的老奶奶，雖然行動非常遲緩但還是喜歡玩耍，心情好的時候喜歡在草地上打滾，在Pumpkin身上可以見證赤子之心呢！</p>
+                                </div>
+                                <figure class="img-wrap b-hide-xs">
+                                    <img src="@Url.Content("~/Content/img/stories/07.jpg")?img=20170907" alt="Pumpkin">
+                                </figure>
+                                <figure class="img-wrap b-hide-dt">
+                                    <img src="@Url.Content("~/Content/img/stories/07-m.jpg")?img=20170907" alt="Pumpkin">
+                                </figure>
+                            </div>
+                            <div class="pet-content" data-index="8">
+                                <div class="desc-wrap">
+                                    <em class="pet-title b-block b-text-white b-bold">
+                                        <span class="name">Spirit</span>
+                                        <span class="age">四歲女生</span>
+                                    </em>
+                                    <p class="b-desc b-text-white">原本在街頭流浪的Spirit，視玩球為天命、是大家的開心果，個性非常活潑愛玩，而且喜歡刷存在感，最喜歡跟大家都當好麻吉！</p>
+                                </div>
+                                <figure class="img-wrap b-hide-xs">
+                                    <img src="@Url.Content("~/Content/img/stories/08.jpg")?img=20170907" alt="Spirit">
+                                </figure>
+                                <figure class="img-wrap b-hide-dt">
+                                    <img src="@Url.Content("~/Content/img/stories/08-m.jpg")?img=20170907" alt="Spirit">
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="btn-wrap b-text-center">
+                            <a href="https://richart.tw/TSDIB_RichartWeb/RC06/RC062100" class="m-button has-arrow b-bg-yellow-dark ga_click_trace" ga_cat="story" ga_event="click" ga_label="login"><em class="text b-bold b-block-xs">馬上幫助浪浪</em></a>
+                        </div>
+                    </div>
+                    <div class="m-cut donations">
+                        <ul class="donations-wrap">
+                            <li class="list">
+                                <div class="donations-info">
+                                    <em class="info-title b-block">社團法人臺灣巴克動物懷善救援協會</em>
+                                    <div class="info-desc">
+                                        <span class="b-desc b-block">一個給予浪浪美好未來的組織</span>
+                                    </div>
+                                </div>
+                                <div class="img-wrap">
+                                    <svg class="svg-icon is-pack"><use xlink:href="@Url.Content("~/Content/svg/icon.svg")?svg=20170907#logo-pack"/></svg>
+                                </div>
+                            </li>
+                            <li class="list b-hide-tm">
+                                <div class="donations-info">
+                                    <em class="info-title">請掃 Richart APP Qrcode</em>
+                                    <div class="info-desc b-text-center-dt b-text-left-xs">
+                                        <span class="b-desc b-block">與巴克一起幫助浪浪</span>
+                                    </div>
+                                </div>
+                                <div class="img-wrap qr-code">
+                                    <figure class="img-switch">
+                                        <img src="@Url.Content("~/Content/img/common/qrcode.jpg")?img=20170912" alt="請掃 Richart APP Qrcode">
+                                    </figure>
+                                </div>
+                            </li>
+                            <li class="list b-hide-md">
+                                <a href="https://richart.tw/Richart/app/richart.html?utm_source=storyqrcode" target="_blank" class="b-link">
+                                    <div class="donations-info">
+                                        <em class="info-title">請下載 Richart APP</em>
+                                        <div class="info-desc b-text-center-dt b-text-left-xs">
+                                            <span class="b-desc b-block">與巴克一起幫助浪浪</span>
+                                        </div>
+                                    </div>
+                                    <div class="img-wrap qr-code">
+                                        <figure class="img-switch">
+                                            <img src="@Url.Content("~/Content/img/common/app-icon.png")?img=20170912" alt="請下載 Richart APP">
+                                        </figure>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <aside class="stories-side">
+                    <ol class="m-cut-ctrl">
+                        <li class="list"><button class="btn-dot is-curr jQ-cut"></button></li>
+                        <li class="list"><button class="btn-dot jQ-cut"></button></li>
+                        <li class="list"><button class="btn-dot jQ-cut"></button></li>
+                        <li class="list"><button class="btn-dot jQ-cut"></button></li>
+                        <li class="list"><button class="btn-dot jQ-cut"></button></li>
+                    </ol>
+                </aside>
+            </div>
+        </main>
+    </div>
+@section scripts{
+    <script defer src="@Url.Content("~/Scripts/plugin/owl.carousel/owl.carousel.min.js")?js=20170907"></script>
+    <script defer src="@Url.Content("~/Scripts/js/stories.min.js")?js=20170913_05"></script>
+}

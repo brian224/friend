@@ -1,0 +1,72 @@
+.scroll-wrapper {
+    height : 100%;
+}
+
+.scroll-element {
+    position : absolute;
+    z-index  : 10;
+
+    &.scroll-y {
+        top    : 0;
+        height : 100%;
+    }
+}
+
+.scroll-element_outer , .scroll-element_size , .scroll-element_track {
+    top        : 0;
+    height     : 100%;
+    position   : absolute;
+}
+
+.scroll-element_outer , .scroll-element_track {
+    left  : 50%;
+    @include transform(translateX(-50%));
+}
+
+.scroll-element_outer {
+    width : 100%;
+}
+
+.scroll-element_track {
+    background : lighten($color-gray , 25.5%);
+}
+
+.scroll-element_size {
+    left       : 50%;
+    z-index    : 1;
+}
+
+.scroll-bar {
+    left       : 0;
+    background : $color-green-dark;
+    position   : absolute;
+    z-index    : 5;
+    @include border-radius(50%);
+    @include box-sizing(border-box);
+}
+
+@include respond(Desktops) {
+    .scroll-element {
+        &.scroll-y {
+            right : 0;
+            width : 15px;
+        }
+    }
+
+    .scroll-element_track {
+        width : 5px;
+    }
+
+    .scroll-bar {
+        width  : 14px;
+        height : 14px;
+    }
+}
+    
+@include respond(Desktops-Tablets) {}
+
+@include respond(Tablets-Mobiles) {}
+
+@include respond(Tablets) {}
+
+@include respond(Mobiles) {}
